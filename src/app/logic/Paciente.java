@@ -7,84 +7,54 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Programa AsclepioHC Clase Usuario
+ * Programa AsclepioHC Clase Paciente
  *
- * @author Valverde, Vinueza, Vintimilla
  */
-public class Usuario {
+public class Paciente {
 
     /*-------------------------------------------------------------
-    /Atributos de la clase Usuario :)
+    /Atributos de la clase Paciente
     /-------------------------------------------------------------*/
-    private int ID;
+    private String cedula;
     private String nombre;
     private String apellido;
-    private String cedula;
     private int avatar;
-    private String sexo;
+    private int etapa;
     private Fecha fechaNacimiento;
+    // Lista de fichas medicas (Almacena una lista con las fichas medicas)
+    private List<ResultadoActividad> listaFichas;
 
     /*-------------------------------------------------------------
-    /Constructores de la clase Usuario
+    /Constructores de la clase Paciente
     /-------------------------------------------------------------*/
     /**
      * Constructor por defecto de la clase Usuario
      */
-    public Usuario() {
+    public Paciente() {
     }
 
     /**
      * Constructor de la clase Usuario con parametros
      *
-     * @param ID
      * @param cedula String
      * @param nombre String
      * @param apellido String
      * @param avatar int
-     * @param sexo
+     * @param etapa int
      * @param fechaNacimiento Fecha
      */
-    public Usuario(int ID, String nombre, String apellido, String cedula, int avatar, String sexo, Fecha fechaNacimiento) {
-        this.ID = ID;
+    public Paciente(String cedula, String nombre, String apellido, int avatar, int etapa, Fecha fechaNacimiento) {
+        this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.cedula = cedula;
         this.avatar = avatar;
-        this.sexo = sexo;
+        this.etapa = etapa;
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    /**
-     * Regresa el ID del usuario
-     *
-     * @return int ID
-     */
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
-
-    /**
-     * Regresa el sexo del usuario
-     *
-     * @return String sexo
-     */
-    public String getSexo() {
-        return sexo;
-    }
-
-    /**
-     * Regresa el nombre del usuario
-     *
-     * @return String nombre
-     */
-    public void setSexo(String sexo) {
-        this.sexo = sexo;
-    }
-
+    /*-------------------------------------------------------------
+    /Métodos get y set de la clase Usuario
+    /-------------------------------------------------------------*/
     /**
      * Regresa el nombre del usuario
      *
@@ -194,6 +164,111 @@ public class Usuario {
         return fechaNacimiento.diferenciaEntreFechas(fechaNacimiento);
     }
 
+    /**
+     * Regresa la etapa del usuario
+     *
+     * @return int etapa
+     */
+    public int getEtapa() {
+        return etapa;
+    }
+
+    /**
+     * Asigna la etapa del usuario
+     *
+     * @param etapa int
+     */
+    public void setEtapa(int etapa) {
+        this.etapa = etapa;
+    }
+
+    /**
+     * Regresa la etapa del usuario en modo de String
+     *
+     * @return String etapa
+     */
+    public String getEtapaUsuario() {
+        switch (etapa) {
+            case 1:
+                return "Moderada";
+
+            case 2:
+                return "Avanzada";
+            default:
+                return "Leve";
+        }
+    }
+
+    /**
+     * Método que agrega un resultado a la lista del Usuario
+     *
+     * @param listaFichas recibe una lista de los resultados de Actividades
+     */
+    public void setListaResultado(List<ResultadoActividad> listaFichas) {
+        this.listaFichas = listaFichas;
+    }
+
+    /**
+     * Metodo que permite agregar un resultado a la lista de resultados de
+     * actividad del Usuario
+     *
+     * @param resultado Resultado a agregar
+     */
+    public void agregarResultadoLista(ResultadoActividad resultado) {
+        // Agrega a la listaFichas el resultado de la actividad
+        listaFichas.add(resultado);
+    }
+
+    /**
+     * Recibe el tipo de argumento por el cual se quieren filtrar las búsquedas
+     * de resultados y regresa una lista con Resultados de Actividades
+     *
+     * @param filtro String filtro de actividades a buscar
+     * @return listaFichasFiltro
+     */
+    public List<ResultadoActividad> buscarResultadoActividad(String filtro) {
+        List<ResultadoActividad> listaFichasFiltro = new ArrayList<>();
+
+        try {
+            switch (filtro) {
+                case "Todos": {
+                    // Regresa la lista de resultados de actividades
+                    return listaFichas;
+                }
+
+                case "Moderada": {
+                    // Recorre la lista de resultados de actividades
+                    for (ResultadoActividad resultado : listaFichas) {
+                        // Si el resultado de la actividad es del tipo filtro
+                        if (resultado.getEtapa().equals(filtro)) {
+                            // Agrega el resultado a la lista de resultados filtrados
+                            listaFichasFiltro.add(resultado);
+                        }
+                    }
+                    // Regresa la lista de resultados filtrados
+                    return listaFichasFiltro;
+                }
+
+                case "Hoy": {
+                    // Recorre la lista de resultados de actividades
+                    for (ResultadoActividad resultado : listaFichas) {
+                        // Si el resultado de la actividad es del tipo filtro
+                        if (resultado.getFecha().getDia() == (new Fecha()).getDia()) {
+                            // Agrega el resultado a la lista de resultados filtrados
+                            listaFichasFiltro.add(resultado);
+                        }
+                    }
+                    return listaFichasFiltro;
+                }
+
+            }
+        } catch (NullPointerException npe) {
+            npe.printStackTrace();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+        return listaFichasFiltro;
+    }
 
     /*-------------------------------------------------------------
     /Métodos capa de negocio
@@ -237,6 +312,7 @@ public class Usuario {
                         st = Main.getConnect().prepareStatement("UPDATE usuario SET etapa = ? WHERE cedula = ?");
                         st.setInt(1, nuevoValor);
                         st.setString(2, cedula);
+                        etapa = nuevoValor;
                     } else {
                         JOptionPane.showMessageDialog(null, "Ingrese solamente \"Leve\" - \"Moderada\" - \"Avanzada\"");
                         return false;
@@ -284,7 +360,6 @@ public class Usuario {
      */
     @Override
     public String toString() {
-        return "Usuario{" + "ID=" + ID + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + ", avatar=" + avatar + ", sexo=" + sexo + ", fechaNacimiento=" + fechaNacimiento + '}';
+        return cedula + "      " + nombre + "       " + apellido + "          " + getEdad() + "     " + getEtapaUsuario();
     }
-
 }

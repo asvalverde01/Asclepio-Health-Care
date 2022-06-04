@@ -11,14 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 
- *  Librería sqlite-jdbc-3.20.1.jar - Zulu 17
- * 
- * Clase Main. Se encarga de empezar el programa verificando si
- * existe una base de datos Se encarga de las conexiones y administración de la
- * base de datos
  *
- * @author Valverde, Vinueza, Vintimilla
+ * Librería sqlite-jdbc-3.20.1.jar
+ *
+ * Clase Main. Se encarga de empezar el programa verificando si existe una base
+ * de datos Se encarga de las conexiones y administración de la base de datos
+ *
  */
 public class Main {
 
@@ -96,8 +94,10 @@ public class Main {
             connect = DriverManager.getConnection(url);
             // Se crea la tabla con informacion de usuario
             // Guardar la cedula como ID 
-            // 
             String sql = "CREATE TABLE IF NOT EXISTS usuario (\n"
+                    + "	usuario text\n"
+                    + "	contrasenia text\n"
+                    + "	rol integer\n"
                     + "	cedula text,\n"
                     + "	nombre text,\n"
                     + "	apellido text,\n"
@@ -105,12 +105,14 @@ public class Main {
                     + "	dianac integer,\n"
                     + "	mesnac integer,\n"
                     + "	anionac integer,\n"
-                    + "	etapa integer\n"
+                    + "	especialidad text\n"
+                    + "	correo text\n"
                     + ");";
             PreparedStatement st = connect.prepareStatement(sql);
             st.execute();
 
-            // Se crea la tabla con informacion de actividades
+            // Se crea la tabla con informacion TODO
+            /*
             sql = "CREATE TABLE IF NOT EXISTS actividad (\n"
                     + "	id integer,\n"
                     + "	nombre text,\n"
@@ -123,6 +125,7 @@ public class Main {
                     + ");";
             st = connect.prepareStatement(sql);
             st.execute();
+             */
         } catch (HeadlessException | SQLException x) {
             JOptionPane.showMessageDialog(null, x.getMessage());
             return false;
@@ -286,5 +289,4 @@ public class Main {
         }
         return false;
     }
-} // FIN CLASE  
-
+} // FIN CLASE 
