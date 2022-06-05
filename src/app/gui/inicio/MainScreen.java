@@ -43,7 +43,7 @@ public final class MainScreen extends javax.swing.JFrame {
         // Si la el rol es administrador entonces se muestran más opciones
         if (usuario.getRol().equals("Administrador")) {
             registrarMedicoButton.setVisible(true);
-            content.setBackground(new java.awt.Color(5, 5, 5));
+            content.setBackground(new java.awt.Color(241, 124, 5));
 
         }
 

@@ -11,6 +11,7 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 import java.util.List;
+import javax.swing.JFrame;
 
 public class InicioForm extends javax.swing.JFrame {
 
@@ -37,6 +38,7 @@ public class InicioForm extends javax.swing.JFrame {
      */
     public InicioForm(List<Usuario> usuarios) {
         initComponents();
+        //this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         InicioForm.usuarios = obtenerUsuarioDataBase(usuarios);
     }
 
@@ -159,7 +161,8 @@ public class InicioForm extends javax.swing.JFrame {
         String usuarioInput = usuarioTxt.getText();
         String contraseniaInput = contraseniaTxt.getText();
 
-        // Busca en la lista de usuarios un match en cedula
+
+        // Busca en la lista de usuarios un match en usuairo y contraseña
         for (Usuario usuario : usuarios) {
             if (usuario.getUsuario().equals(usuarioInput)) {
                 if (usuario.getContrasenia().equals(contraseniaInput)) {
@@ -167,12 +170,18 @@ public class InicioForm extends javax.swing.JFrame {
                     main.setVisible(true);
                     main.setLocationRelativeTo(null);
                     this.dispose();
+                    break;
                 }
             }
         }
         if (usuarioInput.equals("") || contraseniaInput.equals("")) {
             JOptionPane.showMessageDialog(null, "Por favor ingrese todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
         }
+
+
+
+        
+        
     }//GEN-LAST:event_entrarButtonActionPerformed
 
     private void usuarioTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioTxtActionPerformed
