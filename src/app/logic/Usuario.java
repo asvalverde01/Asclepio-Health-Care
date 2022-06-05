@@ -1,15 +1,12 @@
 package app.logic;
 
-import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Programa AsclepioHC Clase Usuario
  *
- * @author Valverde, Vinueza, Vintimilla
+ * @author Valverde, Vinueza, Vintimilla, Liria, Ordoñez
  */
 public class Usuario {
 
@@ -25,7 +22,7 @@ public class Usuario {
     private int avatar;
     private String sexo;
     private Fecha fechaNacimiento;
-    
+
 
     /*-------------------------------------------------------------
     /Constructores de la clase Usuario
@@ -48,7 +45,7 @@ public class Usuario {
      * @param sexo
      * @param fechaNacimiento Fecha
      */
-    public Usuario(String usuario, String contrasenia, String nombre, String apellido, String rol, String cedula, int avatar, String sexo, Fecha fechaNacimiento) {    
+    public Usuario(String usuario, String contrasenia, String nombre, String apellido, String rol, String cedula, int avatar, String sexo, Fecha fechaNacimiento) {
         this.usuario = usuario;
         this.contrasenia = contrasenia;
         this.nombre = nombre;
@@ -80,8 +77,6 @@ public class Usuario {
     public void setContrasenia(String contrasenia) {
         this.contrasenia = contrasenia;
     }
-    
-    
 
     /**
      * Regresa el rol del listaFichas
@@ -108,6 +103,7 @@ public class Usuario {
     /**
      * Regresa el nombre del listaFichas
      *
+     * @param sexo
      * @return String nombre
      */
     public void setSexo(String sexo) {

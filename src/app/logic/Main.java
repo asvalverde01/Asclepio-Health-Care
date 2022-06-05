@@ -1,5 +1,6 @@
 package app.logic;
 
+import app.dataStruct.Lista;
 import app.gui.inicio.InicioForm;
 
 import javax.swing.*;
@@ -42,7 +43,7 @@ public class Main {
         /Atributos 
         /-------------------------------------------------------------*/
         // Lista de usuarios registrados
-        List<Usuario> usuarios = new ArrayList<>();
+        Lista usuarios = new Lista();
         // Objeto del archivo de la base de datos
         File file = new File("appdata.sqlite");
 

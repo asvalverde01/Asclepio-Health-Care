@@ -1,5 +1,6 @@
 package app.gui.inicio;
 
+import app.dataStruct.Lista;
 import app.logic.Fecha;
 import app.logic.Main;
 import app.logic.Usuario;
@@ -7,20 +8,16 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.List;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
- * Programa BrainUP InicioPanel permite entrar y registrar
+ * Programa AsclepioHC InicioPanel permite entrar y registrar
  *
- * @author Valverde, Vinueza, Vintimilla
  */
 public class registroMedicoPanel extends javax.swing.JPanel {
 
     // Atributo de lista
-    private static List<Usuario> usuarios;
+    private static Lista usuarios;
     private boolean avatarSeleccionado = false;
     private int avatar;
     private Usuario usuario;
@@ -831,7 +828,7 @@ public class registroMedicoPanel extends javax.swing.JPanel {
      */
     private boolean validarCedulaUnica(String cedula) {
         // Busca en la lista usuarios si ya existe la cedula
-        for (Usuario usuario : usuarios) {
+        for (Usuario usuario : usuarios.getUsuarios()) {
             if (usuario.getCedula().equals(cedula)) {
                 JOptionPane.showMessageDialog(null, "Médico ya registrado");
                 return false;
@@ -843,7 +840,7 @@ public class registroMedicoPanel extends javax.swing.JPanel {
 
     private boolean validarUsuarioUnico(String usuairoNombre) {
         // Busca en la lista usuarios si ya existe el nombre de 
-        for (Usuario usuario : usuarios) {
+        for (Usuario usuario : usuarios.getUsuarios()) {
             if (usuario.getUsuario().equals(usuairoNombre)) {
                 JOptionPane.showMessageDialog(null, "El nombre de usuario ''" + usuairoNombre + "'' ya está en uso");
                 return false;

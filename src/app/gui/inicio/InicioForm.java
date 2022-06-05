@@ -1,5 +1,6 @@
 package app.gui.inicio;
 
+import app.dataStruct.Lista;
 import app.logic.Fecha;
 import static app.logic.Main.connect;
 import app.logic.Usuario;
@@ -11,18 +12,17 @@ import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
 import java.util.List;
-import javax.swing.JFrame;
 
 public class InicioForm extends javax.swing.JFrame {
 
     // Atributo de lista
-    private static List<Usuario> usuarios;
+    private static Lista usuarios = new Lista();
 
-    public static List<Usuario> getUsuarios() {
+    public static Lista getUsuarios() {
         return obtenerUsuarioDataBase(usuarios);
     }
 
-    public void setUsuarios(List<Usuario> usuarios) {
+    public void setUsuarios(Lista usuarios) {
         InicioForm.usuarios = usuarios;
     }
 
@@ -36,7 +36,7 @@ public class InicioForm extends javax.swing.JFrame {
      *
      * @param usuarios
      */
-    public InicioForm(List<Usuario> usuarios) {
+    public InicioForm(Lista usuarios) {
         initComponents();
         //this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         InicioForm.usuarios = obtenerUsuarioDataBase(usuarios);
@@ -62,6 +62,7 @@ public class InicioForm extends javax.swing.JFrame {
         contraseniaTxt = new javax.swing.JPasswordField();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
+        estadoLbl = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -83,7 +84,7 @@ public class InicioForm extends javax.swing.JFrame {
                 entrarButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(entrarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 460, 340, 50));
+        getContentPane().add(entrarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 480, 340, 50));
 
         usuarioTxt.setBackground(new java.awt.Color(204, 204, 204));
         usuarioTxt.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
@@ -145,6 +146,10 @@ public class InicioForm extends javax.swing.JFrame {
         jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
         getContentPane().add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 430, 280, 20));
 
+        estadoLbl.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        estadoLbl.setForeground(new java.awt.Color(153, 0, 51));
+        getContentPane().add(estadoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 440, -1, -1));
+
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
         background.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -161,14 +166,14 @@ public class InicioForm extends javax.swing.JFrame {
         String usuarioInput = usuarioTxt.getText();
         String contraseniaInput = contraseniaTxt.getText();
 
-
         // Busca en la lista de usuarios un match en usuairo y contraseña
-        for (Usuario usuario : usuarios) {
+        for (Usuario usuario : usuarios.getUsuarios()) {
             if (usuario.getUsuario().equals(usuarioInput)) {
                 if (usuario.getContrasenia().equals(contraseniaInput)) {
                     MainScreen main = new MainScreen(usuario);
                     main.setVisible(true);
                     main.setLocationRelativeTo(null);
+                    estadoLbl.setText("");
                     this.dispose();
                     break;
                 }
@@ -176,12 +181,11 @@ public class InicioForm extends javax.swing.JFrame {
         }
         if (usuarioInput.equals("") || contraseniaInput.equals("")) {
             JOptionPane.showMessageDialog(null, "Por favor ingrese todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+            estadoLbl.setText("");
+        } else {
+            estadoLbl.setText("Usuario o contraseña incorrecta");
         }
 
-
-
-        
-        
     }//GEN-LAST:event_entrarButtonActionPerformed
 
     private void usuarioTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioTxtActionPerformed
@@ -272,7 +276,7 @@ public class InicioForm extends javax.swing.JFrame {
         return false;
     }
 
-    private static List<Usuario> obtenerUsuarioDataBase(List<Usuario> usuariosLista) {
+    private static Lista obtenerUsuarioDataBase(Lista usuariosLista) {
 
         Fecha nacimiento = new Fecha();
         // Se obtiene la informacion de la tabla usuario en base de datos
@@ -298,7 +302,7 @@ public class InicioForm extends javax.swing.JFrame {
                 usuario.setRol(rs.getString("rol"));
 
                 // añade el usuario registrado a la lista
-                usuariosLista.add(usuario);
+                usuariosLista.agregar(usuario);
             }
         } catch (HeadlessException | SQLException x) {
             JOptionPane.showMessageDialog(null, x.getMessage());
@@ -311,6 +315,7 @@ public class InicioForm extends javax.swing.JFrame {
     private javax.swing.JLabel background;
     private javax.swing.JPasswordField contraseniaTxt;
     private javax.swing.JButton entrarButton;
+    private javax.swing.JLabel estadoLbl;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
