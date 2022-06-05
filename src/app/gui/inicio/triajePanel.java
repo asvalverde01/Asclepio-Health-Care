@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
  *  InicioPanel permite entrar y registrar
  * @author Valverde, Vinueza, Vintimilla
  */
-public class InicioPanel extends javax.swing.JPanel {
+public class triajePanel extends javax.swing.JPanel {
 
     private Usuario usuario;
 
@@ -23,7 +23,7 @@ public class InicioPanel extends javax.swing.JPanel {
      *
      * @param usuario
      */
-    public InicioPanel(Usuario usuario) {
+    public triajePanel(Usuario usuario) {
         initComponents();
         // Invoca al método actualizarFecha enviando un objeto de fecha actual para actualizar el label fecha con la fecha actual 
         actualizarFecha(new Fecha());
@@ -31,11 +31,7 @@ public class InicioPanel extends javax.swing.JPanel {
         // Método el cual muestra la información el usuairo en los labels del panel
         setInformation();
 
-        // Si la etapa es 2(avanzada) entonces se muestra un mensaje
-        if (usuario.getRol().equals("Administrador")) {
-            msg1.setText("TODO");
-            msg2.setText("TODO");
-        }
+
     }
 
     /**
@@ -56,7 +52,6 @@ public class InicioPanel extends javax.swing.JPanel {
         apellidoLabel = new javax.swing.JLabel();
         fechaNacLabel = new javax.swing.JLabel();
         edadLabel = new javax.swing.JLabel();
-        msg1 = new javax.swing.JLabel();
         msg2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         avatarLogo = new javax.swing.JLabel();
@@ -96,12 +91,12 @@ public class InicioPanel extends javax.swing.JPanel {
 
         bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
         bienvenidaLabel.setForeground(new java.awt.Color(102, 0, 153));
-        bienvenidaLabel.setText("Bienvenido :)");
+        bienvenidaLabel.setText("--");
         bg.add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));
 
         text1Label.setFont(new java.awt.Font("Roboto", 1, 28)); // NOI18N
         text1Label.setForeground(new java.awt.Color(0, 51, 204));
-        text1Label.setText("Recordemos");
+        text1Label.setText("--");
         text1Label.setToolTipText("");
         bg.add(text1Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
 
@@ -124,11 +119,6 @@ public class InicioPanel extends javax.swing.JPanel {
         edadLabel.setForeground(new java.awt.Color(51, 51, 51));
         edadLabel.setText("Edad");
         bg.add(edadLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
-
-        msg1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        msg1.setForeground(new java.awt.Color(51, 0, 102));
-        msg1.setText("Ve al apartado actividades y empieza a ejercitar tu memoria");
-        bg.add(msg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 480, -1, -1));
 
         msg2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         msg2.setForeground(new java.awt.Color(0, 0, 102));
@@ -158,7 +148,6 @@ public class InicioPanel extends javax.swing.JPanel {
     private javax.swing.JLabel fondo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel msg1;
     private javax.swing.JLabel msg2;
     private javax.swing.JLabel nombreLabel;
     private javax.swing.JLabel text1Label;

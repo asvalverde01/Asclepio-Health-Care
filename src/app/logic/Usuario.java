@@ -16,9 +16,11 @@ public class Usuario {
     /*-------------------------------------------------------------
     /Atributos de la clase Usuario :)
     /-------------------------------------------------------------*/
-    private int ID;
+    private String usuario;
+    private String contrasenia;
     private String nombre;
     private String apellido;
+    private String rol;
     private String cedula;
     private int avatar;
     private String sexo;
@@ -36,7 +38,8 @@ public class Usuario {
     /**
      * Constructor de la clase Usuario con parametros
      *
-     * @param ID
+     * @param usuario
+     * @param contrasenia
      * @param cedula String
      * @param nombre String
      * @param apellido String
@@ -44,10 +47,12 @@ public class Usuario {
      * @param sexo
      * @param fechaNacimiento Fecha
      */
-    public Usuario(int ID, String nombre, String apellido, String cedula, int avatar, String sexo, Fecha fechaNacimiento) {
-        this.ID = ID;
+    public Usuario(String usuario, String contrasenia, String nombre, String apellido, String rol, String cedula, int avatar, String sexo, Fecha fechaNacimiento) {    
+        this.usuario = usuario;
+        this.contrasenia = contrasenia;
         this.nombre = nombre;
         this.apellido = apellido;
+        this.rol = rol;
         this.cedula = cedula;
         this.avatar = avatar;
         this.sexo = sexo;
@@ -55,20 +60,43 @@ public class Usuario {
     }
 
     /**
-     * Regresa el ID del usuario
+     * Regresa el usuario del
      *
-     * @return int ID
+     * @return String usuario
      */
-    public int getID() {
-        return ID;
+    public String getUsuario() {
+        return usuario;
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getContrasenia() {
+        return contrasenia;
+    }
+
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
+    
+    
+
+    /**
+     * Regresa el rol del listaFichas
+     *
+     * @return int rol
+     */
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 
     /**
-     * Regresa el sexo del usuario
+     * Regresa el sexo del listaFichas
      *
      * @return String sexo
      */
@@ -77,7 +105,7 @@ public class Usuario {
     }
 
     /**
-     * Regresa el nombre del usuario
+     * Regresa el nombre del listaFichas
      *
      * @return String nombre
      */
@@ -86,7 +114,7 @@ public class Usuario {
     }
 
     /**
-     * Regresa el nombre del usuario
+     * Regresa el nombre del listaFichas
      *
      * @return String nombre
      */
@@ -95,7 +123,7 @@ public class Usuario {
     }
 
     /**
-     * Asigna el nombre del usuario
+     * Asigna el nombre del listaFichas
      *
      * @param nombre String
      */
@@ -104,7 +132,7 @@ public class Usuario {
     }
 
     /**
-     * Regresa el apellido del usuario
+     * Regresa el apellido del listaFichas
      *
      * @return String apellido
      */
@@ -113,7 +141,7 @@ public class Usuario {
     }
 
     /**
-     * Asigna el apellido del usuario
+     * Asigna el apellido del listaFichas
      *
      * @param apellido String
      */
@@ -122,7 +150,7 @@ public class Usuario {
     }
 
     /**
-     * Regresa la cedula del usuario
+     * Regresa la cedula del listaFichas
      *
      * @return String cedula
      */
@@ -131,7 +159,7 @@ public class Usuario {
     }
 
     /**
-     * Asigna la cedula en el usuario
+     * Asigna la cedula en el listaFichas
      *
      * @param cedula String cedula nueva
      */
@@ -140,7 +168,7 @@ public class Usuario {
     }
 
     /**
-     * Regresa el avatar del usuario
+     * Regresa el avatar del listaFichas
      *
      * @return String avatar
      */
@@ -149,7 +177,7 @@ public class Usuario {
     }
 
     /**
-     * Asigna el avatar del usuario
+     * Asigna el avatar del listaFichas
      *
      * @param avatar String
      */
@@ -158,7 +186,7 @@ public class Usuario {
     }
 
     /**
-     * Regresa la fecha de nacimiento del usuario como String
+     * Regresa la fecha de nacimiento del listaFichas como String
      *
      * @return String fechaNacimiento
      */
@@ -167,7 +195,7 @@ public class Usuario {
     }
 
     /**
-     * Regresa la fecha de nacimiento del usuario
+     * Regresa la fecha de nacimiento del listaFichas
      *
      * @return Fecha fechaNacimiento
      */
@@ -176,7 +204,7 @@ public class Usuario {
     }
 
     /**
-     * Asigna la fecha de nacimiento del usuario
+     * Asigna la fecha de nacimiento del listaFichas
      *
      * @param fechaNacimiento Fecha
      */
@@ -185,7 +213,7 @@ public class Usuario {
     }
 
     /**
-     * Regresa la edad del usuario calculada con el metodo
+     * Regresa la edad del listaFichas calculada con el metodo
      * calcularEdad(fechaNacimiento)
      *
      * @return int edad
@@ -199,7 +227,7 @@ public class Usuario {
     /Métodos capa de negocio
     /-------------------------------------------------------------*/
     /**
-     * Metodo que permite modificar un atributo del usuario
+     * Metodo que permite modificar un atributo del listaFichas
      *
      * @param tipo String tipo de atributo
      * @param nuevo String nuevo valor a cambiar
@@ -211,17 +239,18 @@ public class Usuario {
             PreparedStatement st = null;
             switch (tipo) {
                 case "Nombre": {
-                    st = Main.getConnect().prepareStatement("UPDATE usuario SET nombre = ? WHERE cedula = ?");
+                    st = Main.getConnect().prepareStatement("UPDATE listaFichas SET nombre = ? WHERE cedula = ?");
                     st.setString(1, nuevo);
                     st.setString(2, cedula);
                     nombre = nuevo;
                 }
                 case "Apellido": {
-                    st = Main.getConnect().prepareStatement("UPDATE usuario SET apellido = ? WHERE cedula = ?");
+                    st = Main.getConnect().prepareStatement("UPDATE listaFichas SET apellido = ? WHERE cedula = ?");
                     st.setString(1, nuevo);
                     st.setString(2, cedula);
                     apellido = nuevo;
                 }
+                /* TODO
                 case "Etapa": {
                     // Verifica que el nuevo valor sea valido "Leve" , "Moderada" o "Avanzada"
                     if (nuevo.equals("Leve") || nuevo.equals("Moderada") || nuevo.equals("Avanzada")) {
@@ -234,7 +263,7 @@ public class Usuario {
                             default:
                                 nuevoValor = 0;
                         };
-                        st = Main.getConnect().prepareStatement("UPDATE usuario SET etapa = ? WHERE cedula = ?");
+                        st = Main.getConnect().prepareStatement("UPDATE listaFichas SET etapa = ? WHERE cedula = ?");
                         st.setInt(1, nuevoValor);
                         st.setString(2, cedula);
                     } else {
@@ -242,6 +271,7 @@ public class Usuario {
                         return false;
                     }
                 }
+                 */
                 case "fecha": {
                     //Separa el string si encuentra "/"
                     String[] fecha = nuevo.split("/");
@@ -250,7 +280,7 @@ public class Usuario {
                     int mes = Integer.parseInt(fecha[1]);
                     int anio = Integer.parseInt(fecha[2]);
                     // Hace los cambios en el SQL
-                    st = Main.getConnect().prepareStatement("UPDATE usuario SET dianac = ?, mesnac = ?, anionac = ? WHERE cedula = ?");
+                    st = Main.getConnect().prepareStatement("UPDATE listaFichas SET dianac = ?, mesnac = ?, anionac = ? WHERE cedula = ?");
                     st.setInt(1, dia);
                     st.setInt(2, mes);
                     st.setInt(3, anio);
@@ -278,13 +308,13 @@ public class Usuario {
     }
 
     /**
-     * Regresa los valores de usuario
+     * Regresa los valores de listaFichas
      *
-     * @return String info usuario
+     * @return String info listaFichas
      */
     @Override
     public String toString() {
-        return "Usuario{" + "ID=" + ID + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + ", avatar=" + avatar + ", sexo=" + sexo + ", fechaNacimiento=" + fechaNacimiento + '}';
+        return "Usuario{" + "usuario=" + usuario + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + ", avatar=" + avatar + ", sexo=" + sexo + ", fechaNacimiento=" + fechaNacimiento + '}';
     }
 
 }

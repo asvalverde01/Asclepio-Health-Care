@@ -1,7 +1,6 @@
 package app.logic;
 
 import app.gui.inicio.InicioForm;
-import app.gui.inicio.RegistroUsuario;
 
 import javax.swing.*;
 import java.awt.*;
@@ -62,9 +61,7 @@ public class Main {
             mainInicio.setLocationRelativeTo(null);
 
         } else {
-            RegistroUsuario registro = new RegistroUsuario(usuarios);
-            registro.setVisible(true);
-            registro.setLocationRelativeTo(null);
+            System.out.println("no existen");
         }
     }
 
@@ -97,21 +94,25 @@ public class Main {
             String sql = "CREATE TABLE IF NOT EXISTS usuario (\n"
                     + "	usuario text\n"
                     + "	contrasenia text\n"
-                    + "	rol integer\n"
+                    + "	rol integer\n" // Administrador - Medico - Paciente
                     + "	cedula text,\n"
                     + "	nombre text,\n"
                     + "	apellido text,\n"
-                    + "	avatar integer,\n"
-                    + "	dianac integer,\n"
+                    + "	avatar integer,\n" // Avatar en GUI
+                    + "	dianac integer,\n" // Dia de nacimiento
                     + "	mesnac integer,\n"
                     + "	anionac integer,\n"
-                    + "	especialidad text\n"
-                    + "	correo text\n"
+                    + "	especialidad text\n" // Si es rol medico, caso contrario null
+                    + "	correo text\n" // // Si es rol medico o administrador caso contrario null
                     + ");";
             PreparedStatement st = connect.prepareStatement(sql);
             st.execute();
+            
+             sql = "INSERT INTO usuario (cedula, nombre, apellido, avatar, dianac, mesnac, anionac, etapa) VALUES ('" + null + "','" + admin + "', '" + apellido + "', '" + avatar + "', '" + dia + "', '" + mes + "', '" + anio + "', '" + etapa + "')";
+                 st = Main.getConnect().prepareStatement(sql);
+                st.executeUpdate();
 
-            // Se crea la tabla con informacion TODO
+            // Se crea la tabla con informacion TODO - ficha medica
             /*
             sql = "CREATE TABLE IF NOT EXISTS actividad (\n"
                     + "	id integer,\n"

@@ -29,7 +29,7 @@ public class InicioForm extends javax.swing.JFrame {
      *
      * @param usuarios
      */
-    public InicioForm(List<Usuario> usuarios ) {
+    public InicioForm(List<Usuario> usuarios) {
         initComponents();
         InicioForm.usuarios = obtenerUsuarioDataBase(usuarios);
     }
@@ -235,8 +235,7 @@ public class InicioForm extends javax.swing.JFrame {
         }
         return false;
     }
-    
-    
+
     private static List<Usuario> obtenerUsuarioDataBase(List<Usuario> usuariosLista) {
 
         Fecha nacimiento = new Fecha();
@@ -248,16 +247,20 @@ public class InicioForm extends javax.swing.JFrame {
 
             while (rs.next()) {
                 Usuario usuario = new Usuario();
+                usuario.setUsuario(rs.getString("usuario"));
+                usuario.setContrasenia(rs.getString("contrasenia"));
+                usuario.setRol(rs.getString("rol"));
                 usuario.setCedula(rs.getString("cedula"));
                 usuario.setNombre(rs.getString("nombre"));
                 usuario.setApellido(rs.getString("apellido"));
                 usuario.setAvatar(rs.getInt("avatar"));
-                usuario.setEtapa(rs.getInt("etapa"));
 
                 nacimiento.setDia(rs.getInt("dianac"));
                 nacimiento.setMes(rs.getInt("mesnac"));
                 nacimiento.setAnio(rs.getInt("anionac"));
                 usuario.setFechaNacimiento(nacimiento);
+                usuario.setRol(rs.getString("rol"));
+                
                 // añade el usuario registrado a la lista
                 usuariosLista.add(usuario);
             }

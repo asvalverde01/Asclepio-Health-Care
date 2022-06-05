@@ -165,12 +165,12 @@ public class ResultadosPanel extends javax.swing.JPanel {
 
         // Invoca a la funcion buscarResultadoActividad en usuario enviando el filtro por el cual quiero buscar
         // Como resultado obtiene una lista de ResultadoActividad el cual se almacena en listaResultados
-        List<ResultadoActividad> listaResultados = usuario.buscarResultadoActividad(filtro);
+        //List<ResultadoActividad> listaResultados = usuario.buscarResultadoActividad(filtro);
 
         // se recorre la lista de resultados e inserta los valores en la tabla fila por fila
-        listaResultados.forEach(resultadoActividad -> {
-            model.addRow(new Object[]{resultadoActividad.getNombre(), resultadoActividad.getEtapa(), resultadoActividad.getAciertos(), resultadoActividad.getSegundos(), resultadoActividad.getFecha().getDia(), resultadoActividad.getFecha().getMesString()});
-        });
+        //listaResultados.forEach(resultadoActividad -> {
+            //model.addRow(new Object[]{resultadoActividad.getNombre(), resultadoActividad.getEtapa(), resultadoActividad.getAciertos(), resultadoActividad.getSegundos(), resultadoActividad.getFecha().getDia(), resultadoActividad.getFecha().getMesString()});
+        //});
     }//GEN-LAST:event_buscarButtonActionPerformed
 
     public void setUsuario(Usuario usuario) {

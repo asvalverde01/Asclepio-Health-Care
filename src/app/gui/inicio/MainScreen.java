@@ -38,10 +38,11 @@ public final class MainScreen extends javax.swing.JFrame {
         MainScreen.usuario = usuario;
         initComponents();
 
-        // Si la etapa es 2 entonces el boton actividadesButton y statsButton son deshabilitados
-        if (usuario.getEtapa() == 2) {
+        // Si la el rol es administrador entonces se muestran más opciones
+        if (usuario.getRol().equals("Administrador")) {
             actividadesButton.setEnabled(false);
             statsButton.setEnabled(false);
+            statsButton.setVisible(false);
         }
 
         // Inicializa los paneles
@@ -53,7 +54,7 @@ public final class MainScreen extends javax.swing.JFrame {
         MainScreen.userID = usuario.getCedula();
 
         // Obtiene la lista de Resultados de actividades y la asigna al usuario
-        usuario.setListaResultado(Main.obtenerResultadoActividadDataBase(usuario.getCedula()));
+        //usuario.setListaResultado(Main.obtenerResultadoActividadDataBase(usuario.getCedula()));
     }
 
     /**
