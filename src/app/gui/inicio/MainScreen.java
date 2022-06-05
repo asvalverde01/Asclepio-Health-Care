@@ -43,6 +43,8 @@ public final class MainScreen extends javax.swing.JFrame {
         // Si la el rol es administrador entonces se muestran más opciones
         if (usuario.getRol().equals("Administrador")) {
             registrarMedicoButton.setVisible(true);
+            content.setBackground(new java.awt.Color(5, 5, 5));
+
         }
 
         // Inicializa los paneles
@@ -74,6 +76,7 @@ public final class MainScreen extends javax.swing.JFrame {
         helpButton = new javax.swing.JButton();
         homeButton1 = new javax.swing.JButton();
         recButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
         statsButton = new javax.swing.JButton();
         configButton = new javax.swing.JButton();
         contenido = new javax.swing.JPanel();
@@ -139,6 +142,18 @@ public final class MainScreen extends javax.swing.JFrame {
             }
         });
         content.add(recButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 320, 240, 50));
+
+        logoutButton.setBackground(new java.awt.Color(153, 102, 255));
+        logoutButton.setForeground(new java.awt.Color(51, 51, 51));
+        logoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/settings_cog_gear_1.png"))); // NOI18N
+        logoutButton.setText("Cerrar sesión");
+        logoutButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
+        content.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 700, 190, 40));
 
         statsButton.setBackground(new java.awt.Color(55, 202, 236));
         statsButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -264,6 +279,14 @@ public final class MainScreen extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_actividadesButtonActionPerformed
 
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        this.dispose();
+         // Inicia el programa mostrando el inicio
+        InicioForm mainInicio = new InicioForm();
+        mainInicio.setVisible(true);
+        mainInicio.setLocationRelativeTo(null);
+    }//GEN-LAST:event_logoutButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -308,6 +331,7 @@ public final class MainScreen extends javax.swing.JFrame {
     private javax.swing.JButton helpButton;
     private javax.swing.JButton homeButton1;
     private javax.swing.JLabel iconImg;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JButton recButton;
     private javax.swing.JButton registrarMedicoButton;
     private javax.swing.JButton statsButton;

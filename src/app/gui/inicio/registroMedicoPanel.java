@@ -477,6 +477,8 @@ public class registroMedicoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cedulaTxtActionPerformed
 
     private void registrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarBtnActionPerformed
+        // Actualiza la lista de usuarios  
+        usuarios = InicioForm.getUsuarios();
         boolean correcto = false;
         boolean correctoCampos = false;
         boolean valid = true;
@@ -535,7 +537,6 @@ public class registroMedicoPanel extends javax.swing.JPanel {
             contraseniaIgual = false;
         } else {
             // Compara que las contraseñas sean iguales
-            System.out.println("contras " + contrasenia + " - " + contraseniaRep);
             if (contrasenia.equals(contraseniaRep)) {
                 contraseniaIgual = true;
 
@@ -545,7 +546,6 @@ public class registroMedicoPanel extends javax.swing.JPanel {
 
             }
 
-
         }
 
         // Verifica que la cedula sea valida solamente si los campos anteriormente se validaron
@@ -553,7 +553,11 @@ public class registroMedicoPanel extends javax.swing.JPanel {
             valid = validarCedula(cedula);
             if (valid) {
                 // Verifica que la cedula sea unica
-                valid = validarCedulaUnica(cedula);
+                if (validarCedulaUnica(cedula)) {
+                    valid = validarUsuarioUnico(usuario);
+                } else {
+                    valid = false;
+                }
             }
         }
 
@@ -605,16 +609,16 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         // Al final cuando el avatar ya ha sido seleccionado, se procede a continuar a la seleccion de la etapa
         if (avatarSeleccionado && valid && correctoCampos && correcto && contraseniaIgual) {
             // Crea un usuario usando el constructor por parametros
-            System.out.println("registrado");
             Usuario usuarioNuevo = new Usuario(usuario, contrasenia, nombre, apellido, "Medico", cedula, avatar, sexo, nacimiento);
             if (registrarUsuarioDataBase(usuarioNuevo)) {
-                System.out.println("registrado");
+                JOptionPane.showMessageDialog(null, "Registrado correctamente");
+                vaciarCampos();
             } else {
                 System.out.println("error en registro");
             }
         } else {
             // En caso de que el avatar no haya sido seleccionado
-            if (valid && correcto && correctoCampos) {
+            if (valid && correctoCampos && correcto && contraseniaIgual) {
                 JOptionPane.showMessageDialog(null, "Seleccione un avatar");
             }
         }
@@ -829,11 +833,23 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         // Busca en la lista usuarios si ya existe la cedula
         for (Usuario usuario : usuarios) {
             if (usuario.getCedula().equals(cedula)) {
-                JOptionPane.showMessageDialog(null, "Ya existe un usuario con esa cedula");
+                JOptionPane.showMessageDialog(null, "Médico ya registrado");
                 return false;
             }
         }
         // En caso de no encontrarla
+        return true;
+    }
+
+    private boolean validarUsuarioUnico(String usuairoNombre) {
+        // Busca en la lista usuarios si ya existe el nombre de 
+        for (Usuario usuario : usuarios) {
+            if (usuario.getUsuario().equals(usuairoNombre)) {
+                JOptionPane.showMessageDialog(null, "El nombre de usuario ''" + usuairoNombre + "'' ya está en uso");
+                return false;
+            }
+        }
+        // En caso de no encontrar
         return true;
     }
 
@@ -855,17 +871,13 @@ public class registroMedicoPanel extends javax.swing.JPanel {
                 int mes = usuarioNuevo.getFechaNacimiento().getMes();
                 int anio = usuarioNuevo.getFechaNacimiento().getAnio();
 
-
-                System.out.println("paso 1");
                 String SQL = "INSERT INTO usuario (usuario, contrasenia, rol, cedula, nombre, apellido, avatar, dianac, mesnac, anionac) VALUES ('" + usuario + "', '" + contrasenia + "', '" + rol + "', '" + cedula + "', '" + nombre + "', '" + apellido + "', '" + avatar + "', '" + dia + "', '" + mes + "', '" + anio + "')";
                 PreparedStatement st = Main.getConnect().prepareStatement(SQL);
-                System.out.println("paso 2");
                 st.executeUpdate();
-                System.out.println("exito");
                 return true;
 
             } catch (SQLException ex) {
-                
+
                 JOptionPane.showMessageDialog(null, "Error, intente nuevamente");
                 JOptionPane.showMessageDialog(null, ex.getMessage());
                 return false;
@@ -874,5 +886,20 @@ public class registroMedicoPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos");
         }
         return false;
+    }
+
+    private void vaciarCampos() {
+        nombreTxt.setText("");
+        apellidoTxt.setText("");
+        usuarioTxt.setText("");
+        correoTxt.setText("");
+        contraseniaTxt.setText("");
+        contraseniaRepTxt.setText("");
+        cedulaTxt.setText("");
+        diaSpinner.setValue(1);
+        anioSpinner.setValue(2000);
+        habilitarBotones();
+        avatar = 0;
+        avatarSeleccionado = false;
     }
 }

@@ -25,6 +25,11 @@ public class InicioForm extends javax.swing.JFrame {
         InicioForm.usuarios = usuarios;
     }
 
+    public InicioForm() {
+        initComponents();
+        InicioForm.usuarios = obtenerUsuarioDataBase(usuarios);
+    }
+
     /**
      * Creates new form InicioForm
      *
