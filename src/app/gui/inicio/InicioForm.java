@@ -4,6 +4,7 @@ import app.logic.Fecha;
 import static app.logic.Main.connect;
 import app.logic.Usuario;
 import java.awt.HeadlessException;
+import java.awt.event.KeyEvent;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -16,8 +17,8 @@ public class InicioForm extends javax.swing.JFrame {
     // Atributo de lista
     private static List<Usuario> usuarios;
 
-    public List<Usuario> getUsuarios() {
-        return usuarios;
+    public static List<Usuario> getUsuarios() {
+        return obtenerUsuarioDataBase(usuarios);
     }
 
     public void setUsuarios(List<Usuario> usuarios) {
@@ -51,7 +52,7 @@ public class InicioForm extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         mensaje1 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
+        contraseniaTxt = new javax.swing.JPasswordField();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
         background = new javax.swing.JLabel();
@@ -80,6 +81,7 @@ public class InicioForm extends javax.swing.JFrame {
         usuarioTxt.setBackground(new java.awt.Color(204, 204, 204));
         usuarioTxt.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         usuarioTxt.setForeground(new java.awt.Color(51, 51, 51));
+        usuarioTxt.setText("admin");
         usuarioTxt.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         usuarioTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         usuarioTxt.setOpaque(true);
@@ -114,16 +116,21 @@ public class InicioForm extends javax.swing.JFrame {
         jLabel6.setText("Contraseña");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 390, -1, 30));
 
-        jPasswordField1.setBackground(new java.awt.Color(204, 204, 204));
-        jPasswordField1.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        jPasswordField1.setForeground(new java.awt.Color(51, 51, 51));
-        jPasswordField1.setBorder(javax.swing.BorderFactory.createCompoundBorder());
-        jPasswordField1.addActionListener(new java.awt.event.ActionListener() {
+        contraseniaTxt.setBackground(new java.awt.Color(204, 204, 204));
+        contraseniaTxt.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        contraseniaTxt.setForeground(new java.awt.Color(51, 51, 51));
+        contraseniaTxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
+        contraseniaTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jPasswordField1ActionPerformed(evt);
+                contraseniaTxtActionPerformed(evt);
             }
         });
-        getContentPane().add(jPasswordField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 390, 280, 40));
+        contraseniaTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                contraseniaTxtKeyPressed(evt);
+            }
+        });
+        getContentPane().add(contraseniaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 390, 280, 40));
 
         jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
         getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 290, 430, 20));
@@ -132,6 +139,11 @@ public class InicioForm extends javax.swing.JFrame {
         getContentPane().add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 430, 280, 20));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
+        background.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                backgroundKeyPressed(evt);
+            }
+        });
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1360, 800));
 
         pack();
@@ -139,25 +151,22 @@ public class InicioForm extends javax.swing.JFrame {
 
     private void entrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_entrarButtonActionPerformed
 
-        String cedula = usuarioTxt.getText();
-        if (cedula.length() > 0) {
-            if (validarCedula(cedula)) {
-                // Busca en la lista de usuarios un match en cedula
-                usuarios.forEach(usuario -> {
-                    if (usuario.getCedula().equals(cedula)) {
-                        MainScreen main = new MainScreen(usuario);
-                        main.setVisible(true);
-                        main.setLocationRelativeTo(null);
-                        this.setVisible(false);
+        String usuarioInput = usuarioTxt.getText();
+        String contraseniaInput = contraseniaTxt.getText();
 
-                    } else {
-                        JOptionPane.showMessageDialog(this, "No encontrado");
-                    }
-                });
+        // Busca en la lista de usuarios un match en cedula
+        usuarios.forEach(usuario -> {
+            if (usuario.getUsuario().equals(usuarioInput) && usuario.getContrasenia().equals(contraseniaInput)) {
+                MainScreen main = new MainScreen(usuario);
+                main.setVisible(true);
+                main.setLocationRelativeTo(null);
+                this.setVisible(false);
+                
+
+            } else {
+                JOptionPane.showMessageDialog(this, "No encontrado");
             }
-        } else {
-            JOptionPane.showMessageDialog(null, "Ingrese un número de cédula");
-        }
+        });
 
 
     }//GEN-LAST:event_entrarButtonActionPerformed
@@ -167,9 +176,19 @@ public class InicioForm extends javax.swing.JFrame {
         usuarioTxt.setText("");
     }//GEN-LAST:event_usuarioTxtActionPerformed
 
-    private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
+    private void contraseniaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contraseniaTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jPasswordField1ActionPerformed
+    }//GEN-LAST:event_contraseniaTxtActionPerformed
+
+    private void backgroundKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_backgroundKeyPressed
+
+    }//GEN-LAST:event_backgroundKeyPressed
+
+    private void contraseniaTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contraseniaTxtKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            entrarButtonActionPerformed(null);
+        }
+    }//GEN-LAST:event_contraseniaTxtKeyPressed
 
     /**
      * @param args the command line arguments
@@ -188,13 +207,17 @@ public class InicioForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InicioForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InicioForm.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InicioForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InicioForm.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InicioForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InicioForm.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InicioForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(InicioForm.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -260,7 +283,7 @@ public class InicioForm extends javax.swing.JFrame {
                 nacimiento.setAnio(rs.getInt("anionac"));
                 usuario.setFechaNacimiento(nacimiento);
                 usuario.setRol(rs.getString("rol"));
-                
+
                 // añade el usuario registrado a la lista
                 usuariosLista.add(usuario);
             }
@@ -273,12 +296,12 @@ public class InicioForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
+    private javax.swing.JPasswordField contraseniaTxt;
     private javax.swing.JButton entrarButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;

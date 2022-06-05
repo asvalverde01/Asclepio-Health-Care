@@ -54,15 +54,14 @@ public class Main {
         {
             // Se conecta a la base de datos
             conectado = conectarBaseDatos();
-
-            // Inicia el programa mostrando el inicio
-            InicioForm mainInicio = new InicioForm(usuarios);
-            mainInicio.setVisible(true);
-            mainInicio.setLocationRelativeTo(null);
-
         } else {
-            System.out.println("no existen");
+            crearBaseDatos();
+            conectado = conectarBaseDatos();
         }
+        // Inicia el programa mostrando el inicio
+        InicioForm mainInicio = new InicioForm(usuarios);
+        mainInicio.setVisible(true);
+        mainInicio.setLocationRelativeTo(null);
     }
 
 
@@ -91,10 +90,11 @@ public class Main {
             connect = DriverManager.getConnection(url);
             // Se crea la tabla con informacion de usuario
             // Guardar la cedula como ID 
+            System.out.println("creando");
             String sql = "CREATE TABLE IF NOT EXISTS usuario (\n"
-                    + "	usuario text\n"
-                    + "	contrasenia text\n"
-                    + "	rol integer\n" // Administrador - Medico - Paciente
+                    + "	usuario text,\n"
+                    + "	contrasenia text,\n"
+                    + "	rol text,\n" // Administrador - Medico - Paciente
                     + "	cedula text,\n"
                     + "	nombre text,\n"
                     + "	apellido text,\n"
@@ -102,15 +102,15 @@ public class Main {
                     + "	dianac integer,\n" // Dia de nacimiento
                     + "	mesnac integer,\n"
                     + "	anionac integer,\n"
-                    + "	especialidad text\n" // Si es rol medico, caso contrario null
+                    + "	especialidad text,\n" // Si es rol medico, caso contrario null
                     + "	correo text\n" // // Si es rol medico o administrador caso contrario null
                     + ");";
             PreparedStatement st = connect.prepareStatement(sql);
             st.execute();
-            
-             sql = "INSERT INTO usuario (cedula, nombre, apellido, avatar, dianac, mesnac, anionac, etapa) VALUES ('" + null + "','" + admin + "', '" + apellido + "', '" + avatar + "', '" + dia + "', '" + mes + "', '" + anio + "', '" + etapa + "')";
-                 st = Main.getConnect().prepareStatement(sql);
-                st.executeUpdate();
+            // Ingresa por defecto un usuario administrador
+            sql = "INSERT INTO usuario (usuario, contrasenia, rol, cedula, nombre, apellido, avatar, dianac, mesnac, anionac, especialidad, correo) VALUES ('admin', 'admin', 'Administrador', 'admin', 'admin', 'admin', 1, 1, 1, 1, 'admin', 'admin')";
+            st = Main.getConnect().prepareStatement(sql);
+            st.executeUpdate();
 
             // Se crea la tabla con informacion TODO - ficha medica
             /*

@@ -2,6 +2,8 @@ package app.gui.inicio;
 
 import app.logic.Fecha;
 import app.logic.Usuario;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -34,6 +36,43 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         // Invoca al método actualizarFecha enviando un objeto de fecha actual para actualizar el label fecha con la fecha actual 
         actualizarFecha(new Fecha());
         this.usuario = usuario;
+        usuarios = InicioForm.getUsuarios();
+
+        // Permite solamente ingresar letras en el text field
+        nombreTxt.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!(Character.isAlphabetic(c) || (c == KeyEvent.VK_BACK_SPACE) || c == KeyEvent.VK_DELETE)) {
+                    e.consume();  // ignore the event if it's not an alphabet
+                }
+            }
+        }
+        );
+
+        // Permite solamente ingresar letras en el text field
+        apellidoTxt.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!(Character.isAlphabetic(c) || (c == KeyEvent.VK_BACK_SPACE) || c == KeyEvent.VK_DELETE)) {
+                    e.consume();  // ignore the event if it's not an alphabet
+                }
+            }
+        }
+        );
+
+        // Permite solamente ingresar dígitos en el text field
+        cedulaTxt.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || c == KeyEvent.VK_DELETE)) {
+                    e.consume();  // ignore the event if it's not an alphabet
+                }
+            }
+        }
+        );
 
     }
 
@@ -52,9 +91,9 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         bienvenidaLabel = new javax.swing.JLabel();
         msg2 = new javax.swing.JLabel();
         avatarLogo = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        nombreTxt = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
-        jTextField3 = new javax.swing.JTextField();
+        apellidoTxt = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         diaSpinner = new javax.swing.JSpinner();
@@ -66,15 +105,31 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         jToggleButton1 = new javax.swing.JToggleButton();
         jLabel6 = new javax.swing.JLabel();
         anioSpinner = new javax.swing.JSpinner();
-        jTextField4 = new javax.swing.JTextField();
+        cedulaTxt = new javax.swing.JTextField();
         jSeparator2 = new javax.swing.JSeparator();
         jToggleButton2 = new javax.swing.JToggleButton();
         registrarBtn = new javax.swing.JButton();
-        mesCombo = new javax.swing.JComboBox<>();
+        especialidadCombo = new javax.swing.JComboBox<>();
         jSeparator5 = new javax.swing.JSeparator();
         jLabel10 = new javax.swing.JLabel();
         jToggleButton3 = new javax.swing.JToggleButton();
         jLabel11 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        usuarioTxt = new javax.swing.JTextField();
+        jSeparator6 = new javax.swing.JSeparator();
+        jSeparator7 = new javax.swing.JSeparator();
+        correoTxt = new javax.swing.JTextField();
+        correoLbl = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jSeparator8 = new javax.swing.JSeparator();
+        jSeparator9 = new javax.swing.JSeparator();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        mesCombo = new javax.swing.JComboBox<>();
+        contraseniaRepTxt = new javax.swing.JPasswordField();
+        contraseniaTxt = new javax.swing.JPasswordField();
+        jLabel15 = new javax.swing.JLabel();
+        sexoCombo = new javax.swing.JComboBox<>();
         fondo = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(870, 800));
@@ -112,61 +167,63 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
         bienvenidaLabel.setForeground(new java.awt.Color(102, 0, 153));
         bienvenidaLabel.setText("Registrar un médico");
-        bg.add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 170, -1, -1));
+        bg.add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
 
         msg2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         msg2.setForeground(new java.awt.Color(0, 0, 102));
         bg.add(msg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 520, -1, -1));
         bg.add(avatarLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 70, 70));
 
-        jTextField2.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField2.setBorder(null);
-        jTextField2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField2.setOpaque(true);
-        jTextField2.setSelectedTextColor(new java.awt.Color(153, 153, 153));
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        nombreTxt.setBackground(new java.awt.Color(102, 102, 102));
+        nombreTxt.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        nombreTxt.setForeground(new java.awt.Color(255, 255, 255));
+        nombreTxt.setText("Alberto");
+        nombreTxt.setBorder(null);
+        nombreTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        nombreTxt.setOpaque(true);
+        nombreTxt.setSelectedTextColor(new java.awt.Color(153, 153, 153));
+        nombreTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                nombreTxtActionPerformed(evt);
             }
         });
-        bg.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 280, 340, 30));
+        bg.add(nombreTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 340, 30));
 
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-        bg.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 470, 340, 10));
+        bg.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 460, 340, 10));
 
-        jTextField3.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField3.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jTextField3.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField3.setBorder(null);
-        jTextField3.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField3.setOpaque(true);
-        jTextField3.setSelectedTextColor(new java.awt.Color(153, 153, 153));
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        apellidoTxt.setBackground(new java.awt.Color(102, 102, 102));
+        apellidoTxt.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        apellidoTxt.setForeground(new java.awt.Color(255, 255, 255));
+        apellidoTxt.setText("Valverde");
+        apellidoTxt.setBorder(null);
+        apellidoTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        apellidoTxt.setOpaque(true);
+        apellidoTxt.setSelectedTextColor(new java.awt.Color(153, 153, 153));
+        apellidoTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                apellidoTxtActionPerformed(evt);
             }
         });
-        bg.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 360, 340, 30));
+        bg.add(apellidoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 220, 340, 30));
 
         jLabel12.setBackground(new java.awt.Color(51, 51, 51));
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(51, 51, 51));
         jLabel12.setText("Día");
-        bg.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 510, -1, 20));
+        bg.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 510, -1, 20));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 51));
         jLabel3.setText("Nombre");
-        bg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, 30));
+        bg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, -1, 30));
 
         diaSpinner.setValue(1);
-        bg.add(diaSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 540, 90, 30));
+        bg.add(diaSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 540, 90, 30));
 
         jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
-        bg.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 430, 20));
+        bg.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 430, 20));
 
         jToggleButton4.setBackground(new java.awt.Color(204, 153, 255));
         jToggleButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/avatar/avatar4.png"))); // NOI18N
@@ -182,18 +239,18 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 51, 51));
         jLabel5.setText("Fecha de Nacimiento");
-        bg.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 480, -1, -1));
+        bg.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, -1, -1));
 
         jLabel8.setBackground(new java.awt.Color(51, 51, 51));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("Año");
-        bg.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 510, -1, -1));
+        bg.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 510, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel4.setText("Cédula");
-        bg.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 410, -1, -1));
+        jLabel4.setText("Especialidad");
+        bg.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 400, -1, -1));
 
         jToggleButton1.setBackground(new java.awt.Color(153, 153, 255));
         jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/avatar/avatar1.png"))); // NOI18N
@@ -209,26 +266,27 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 51, 51));
         jLabel6.setText("Apellido");
-        bg.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 330, -1, -1));
-        bg.add(anioSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 540, 100, 30));
+        bg.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 190, -1, -1));
+        bg.add(anioSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 540, 100, 30));
 
-        jTextField4.setBackground(new java.awt.Color(51, 51, 51));
-        jTextField4.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        jTextField4.setForeground(new java.awt.Color(255, 255, 255));
-        jTextField4.setBorder(null);
-        jTextField4.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jTextField4.setOpaque(true);
-        jTextField4.setSelectedTextColor(new java.awt.Color(153, 153, 153));
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        cedulaTxt.setBackground(new java.awt.Color(102, 102, 102));
+        cedulaTxt.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        cedulaTxt.setForeground(new java.awt.Color(255, 255, 255));
+        cedulaTxt.setText("0605226992");
+        cedulaTxt.setBorder(null);
+        cedulaTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        cedulaTxt.setOpaque(true);
+        cedulaTxt.setSelectedTextColor(new java.awt.Color(153, 153, 153));
+        cedulaTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
+                cedulaTxtActionPerformed(evt);
             }
         });
-        bg.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 440, 340, 30));
+        bg.add(cedulaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 430, 340, 30));
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        bg.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 310, 340, 10));
+        bg.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 340, 10));
 
         jToggleButton2.setBackground(new java.awt.Color(153, 153, 255));
         jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/avatar/avatar2.png"))); // NOI18N
@@ -253,17 +311,20 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         });
         bg.add(registrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 740, 220, 40));
 
-        mesCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre" }));
-        mesCombo.addActionListener(new java.awt.event.ActionListener() {
+        especialidadCombo.setBackground(new java.awt.Color(102, 102, 102));
+        especialidadCombo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        especialidadCombo.setForeground(new java.awt.Color(51, 51, 51));
+        especialidadCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicina Interna", "Cardiología", "Neurología", "Dermatología", " ", " ", " " }));
+        especialidadCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mesComboActionPerformed(evt);
+                especialidadComboActionPerformed(evt);
             }
         });
-        bg.add(mesCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 540, 110, 30));
+        bg.add(especialidadCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 340, 40));
 
         jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
-        bg.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 390, 340, 10));
+        bg.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 340, 10));
 
         jLabel10.setBackground(new java.awt.Color(51, 51, 51));
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -286,8 +347,110 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(51, 51, 51));
         jLabel11.setText("Mes");
-        bg.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 510, -1, -1));
+        bg.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 510, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel7.setText("Usuario");
+        bg.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, 30));
+
+        usuarioTxt.setBackground(new java.awt.Color(102, 102, 102));
+        usuarioTxt.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        usuarioTxt.setForeground(new java.awt.Color(255, 255, 255));
+        usuarioTxt.setText("asvalverde01");
+        usuarioTxt.setBorder(null);
+        usuarioTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        usuarioTxt.setOpaque(true);
+        usuarioTxt.setSelectedTextColor(new java.awt.Color(153, 153, 153));
+        usuarioTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                usuarioTxtActionPerformed(evt);
+            }
+        });
+        bg.add(usuarioTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 340, 30));
+
+        jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
+        bg.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 320, 340, 10));
+
+        jSeparator7.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
+        bg.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 320, 340, 10));
+
+        correoTxt.setBackground(new java.awt.Color(102, 102, 102));
+        correoTxt.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        correoTxt.setForeground(new java.awt.Color(255, 255, 255));
+        correoTxt.setText("abc@gmail.com");
+        correoTxt.setBorder(null);
+        correoTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        correoTxt.setOpaque(true);
+        correoTxt.setSelectedTextColor(new java.awt.Color(153, 153, 153));
+        correoTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                correoTxtActionPerformed(evt);
+            }
+        });
+        bg.add(correoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 290, 340, 30));
+
+        correoLbl.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        correoLbl.setForeground(new java.awt.Color(0, 51, 51));
+        correoLbl.setText("Correo");
+        bg.add(correoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 260, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel13.setText("Contraseña");
+        bg.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, -1, 30));
+
+        jSeparator8.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator8.setForeground(new java.awt.Color(0, 0, 0));
+        bg.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, 340, 10));
+
+        jSeparator9.setBackground(new java.awt.Color(0, 0, 0));
+        jSeparator9.setForeground(new java.awt.Color(0, 0, 0));
+        bg.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 390, 340, 10));
+
+        jLabel14.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel14.setText("Repetir Contraseña");
+        bg.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 330, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel9.setText("Cédula");
+        bg.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, -1, -1));
+
+        mesCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre" }));
+        mesCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mesComboActionPerformed(evt);
+            }
+        });
+        bg.add(mesCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 540, 110, 30));
+
+        contraseniaRepTxt.setBackground(new java.awt.Color(102, 102, 102));
+        contraseniaRepTxt.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        bg.add(contraseniaRepTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 360, 340, 40));
+
+        contraseniaTxt.setBackground(new java.awt.Color(102, 102, 102));
+        contraseniaTxt.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        bg.add(contraseniaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 340, 40));
+
+        jLabel15.setBackground(new java.awt.Color(51, 51, 51));
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel15.setText("Sexo");
+        bg.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 510, -1, -1));
+
+        sexoCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino" }));
+        sexoCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sexoComboActionPerformed(evt);
+            }
+        });
+        bg.add(sexoCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 540, 160, 30));
+
+        fondo.setBackground(new java.awt.Color(102, 102, 102));
         fondo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         fondo.setForeground(new java.awt.Color(51, 51, 51));
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
@@ -296,37 +459,44 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 800));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void nombreTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTxtActionPerformed
         // TODO add your handling code here:
-        jTextField2.setText("");
-    }//GEN-LAST:event_jTextField2ActionPerformed
+        nombreTxt.setText("");
+    }//GEN-LAST:event_nombreTxtActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void apellidoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_apellidoTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_apellidoTxtActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void cedulaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cedulaTxtActionPerformed
 
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_cedulaTxtActionPerformed
 
     private void registrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarBtnActionPerformed
         boolean correcto = false;
         boolean correctoCampos = false;
         boolean valid = true;
+        boolean contraseniaIgual = false;
 
         // Obtiene los valores ingresados
-        String nombre = jTextField2.getText();
-        String apellido = jTextField3.getText();
+        String nombre = nombreTxt.getText();
+        String apellido = apellidoTxt.getText();
+        String usuario = usuarioTxt.getText();
+        String contrasenia = contraseniaTxt.getText();
+        String contraseniaRep = contraseniaRepTxt.getText();
+        String especialidad = especialidadCombo.getSelectedItem().toString();
+        String sexo = sexoCombo.getSelectedItem().toString();
+
         int dia = (Integer) diaSpinner.getValue();
-        String mes = mesCombo.getSelectedItem().toString();
+        String mes = especialidadCombo.getSelectedItem().toString();
         int anio = (Integer) anioSpinner.getValue();
-        String cedula = jTextField4.getText();
+        String cedula = cedulaTxt.getText();
         Fecha nacimiento = new Fecha();
 
         // Se verifica que se ingresen datos
         // Verifica que nombre solamente contenga letras
         if (nombre.length() <= 0 && apellido.length() <= 0) {
-            JOptionPane.showMessageDialog(null, "Ingrese su nombre y apellido");
+            JOptionPane.showMessageDialog(null, "Ingrese nombre y apellido");
             valid = false;
         } else {
             if (nombre.length() > 0) {
@@ -352,8 +522,24 @@ public class registroMedicoPanel extends javax.swing.JPanel {
                     JOptionPane.showMessageDialog(null, "El apellido no puede estar vacío");
                     valid = false;
                 }
-
             }
+        }
+
+        // Verifica que nombre solamente contenga letras
+        if (contrasenia.length() <= 0 && contraseniaRep.length() <= 0) {
+            JOptionPane.showMessageDialog(null, "Ingrese contraseña");
+            contraseniaIgual = false;
+        } else {
+            if (contrasenia.equals(contraseniaIgual)) {
+                System.out.println("verdad");
+                contraseniaIgual = true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Las contraseñas no son iguales");
+                contraseniaIgual = false;
+                contraseniaTxt.setText("");
+                contraseniaRepTxt.setText("");
+            }
+
         }
 
         // Verifica que la cedula sea valida solamente si los campos anteriormente se validaron
@@ -381,19 +567,18 @@ public class registroMedicoPanel extends javax.swing.JPanel {
             correctoCampos = true;
         }
 
-        // Verifica que el año ingresado sea valido y la edad del usuairo sea mayor a 30
+        // Verifica que el año ingresado sea valido y la edad del usuairo sea mayor a 18
         if (anio >= 1925 || anio <= 2022) {
-            if (((new Fecha().getAnio()) - anio) > 30) {
+            if (((new Fecha().getAnio()) - anio) > 18) {
                 correctoCampos = true;
             } else {
-                JOptionPane.showMessageDialog(null, "No se encuentra en el rango de edad (30 años)");
+                JOptionPane.showMessageDialog(null, "No se encuentra en el rango de edad (18 años)");
                 correctoCampos = false;
             }
         } else {
             JOptionPane.showMessageDialog(null, "El año ingresado se encuentra fuera del rango permitido");
             correctoCampos = false;
         }
-
         if (anio < 1925 || anio > 2022 && correctoCampos) {
             JOptionPane.showMessageDialog(null, "Año inválido");
             correctoCampos = false;
@@ -412,10 +597,10 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         }
 
         // Al final cuando el avatar ya ha sido seleccionado, se procede a continuar a la seleccion de la etapa
-        if (avatarSeleccionado && valid && correctoCampos && correcto) {
+        if (avatarSeleccionado && valid && correctoCampos && correcto && contraseniaIgual) {
             // Crea un usuario usando el constructor por parametros
             System.out.println("registrado");
-            //Usuario usuarioNuevo = new Usuario(cedula, nombre, apellido, avatar, 0, nacimiento);
+            Usuario usuarioNuevo = new Usuario(usuario, contrasenia, nombre, apellido, "Medico", cedula, avatar, sexo, nacimiento);
             // TODO registrar en database
 
         } else {
@@ -426,9 +611,9 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_registrarBtnActionPerformed
 
-    private void mesComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesComboActionPerformed
+    private void especialidadComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especialidadComboActionPerformed
 
-    }//GEN-LAST:event_mesComboActionPerformed
+    }//GEN-LAST:event_especialidadComboActionPerformed
 
     private void jToggleButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton4ActionPerformed
         if (!(avatarSeleccionado)) {
@@ -485,38 +670,70 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jToggleButton1ActionPerformed
 
+    private void usuarioTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_usuarioTxtActionPerformed
+
+    private void correoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_correoTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_correoTxtActionPerformed
+
+    private void mesComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mesComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_mesComboActionPerformed
+
+    private void sexoComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sexoComboActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sexoComboActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSpinner anioSpinner;
+    private javax.swing.JTextField apellidoTxt;
     private javax.swing.JLabel avatarLogo;
     private javax.swing.JPanel bg;
     private javax.swing.JLabel bienvenidaLabel;
+    private javax.swing.JTextField cedulaTxt;
+    private javax.swing.JPasswordField contraseniaRepTxt;
+    private javax.swing.JPasswordField contraseniaTxt;
+    private javax.swing.JLabel correoLbl;
+    private javax.swing.JTextField correoTxt;
     private javax.swing.JSpinner diaSpinner;
+    private javax.swing.JComboBox<String> especialidadCombo;
     private javax.swing.JLabel fechaLabel;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JComboBox<String> mesCombo;
     private javax.swing.JLabel msg2;
+    private javax.swing.JTextField nombreTxt;
     private javax.swing.JButton registrarBtn;
+    private javax.swing.JComboBox<String> sexoCombo;
+    private javax.swing.JTextField usuarioTxt;
     // End of variables declaration//GEN-END:variables
 
     private void actualizarFecha(Fecha actual) {
