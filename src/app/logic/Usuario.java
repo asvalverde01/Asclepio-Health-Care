@@ -25,6 +25,7 @@ public class Usuario {
     private int avatar;
     private String sexo;
     private Fecha fechaNacimiento;
+    
 
     /*-------------------------------------------------------------
     /Constructores de la clase Usuario

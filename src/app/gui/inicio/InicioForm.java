@@ -155,20 +155,19 @@ public class InicioForm extends javax.swing.JFrame {
         String contraseniaInput = contraseniaTxt.getText();
 
         // Busca en la lista de usuarios un match en cedula
-        usuarios.forEach(usuario -> {
-            if (usuario.getUsuario().equals(usuarioInput) && usuario.getContrasenia().equals(contraseniaInput)) {
-                MainScreen main = new MainScreen(usuario);
-                main.setVisible(true);
-                main.setLocationRelativeTo(null);
-                this.setVisible(false);
-                
-
-            } else {
-                JOptionPane.showMessageDialog(this, "No encontrado");
+        for (Usuario usuario : usuarios) {
+            if (usuario.getUsuario().equals(usuarioInput)) {
+                if (usuario.getContrasenia().equals(contraseniaInput)) {
+                    MainScreen main = new MainScreen(usuario);
+                    main.setVisible(true);
+                    main.setLocationRelativeTo(null);
+                    this.dispose();
+                }
             }
-        });
-
-
+        }
+        if (usuarioInput.equals("") || contraseniaInput.equals("")) {
+            JOptionPane.showMessageDialog(null, "Por favor ingrese todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_entrarButtonActionPerformed
 
     private void usuarioTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioTxtActionPerformed

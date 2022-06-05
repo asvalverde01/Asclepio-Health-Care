@@ -1,9 +1,12 @@
 package app.gui.inicio;
 
 import app.logic.Fecha;
+import app.logic.Main;
 import app.logic.Usuario;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -37,6 +40,7 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         actualizarFecha(new Fecha());
         this.usuario = usuario;
         usuarios = InicioForm.getUsuarios();
+        anioSpinner.setValue(2000);
 
         // Permite solamente ingresar letras en el text field
         nombreTxt.addKeyListener(new KeyAdapter() {
@@ -530,15 +534,17 @@ public class registroMedicoPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Ingrese contraseña");
             contraseniaIgual = false;
         } else {
-            if (contrasenia.equals(contraseniaIgual)) {
-                System.out.println("verdad");
+            // Compara que las contraseñas sean iguales
+            System.out.println("contras " + contrasenia + " - " + contraseniaRep);
+            if (contrasenia.equals(contraseniaRep)) {
                 contraseniaIgual = true;
+
             } else {
-                JOptionPane.showMessageDialog(null, "Las contraseñas no son iguales");
+                JOptionPane.showMessageDialog(null, "Las contraseñas no coinciden");
                 contraseniaIgual = false;
-                contraseniaTxt.setText("");
-                contraseniaRepTxt.setText("");
+
             }
+
 
         }
 
@@ -601,8 +607,11 @@ public class registroMedicoPanel extends javax.swing.JPanel {
             // Crea un usuario usando el constructor por parametros
             System.out.println("registrado");
             Usuario usuarioNuevo = new Usuario(usuario, contrasenia, nombre, apellido, "Medico", cedula, avatar, sexo, nacimiento);
-            // TODO registrar en database
-
+            if (registrarUsuarioDataBase(usuarioNuevo)) {
+                System.out.println("registrado");
+            } else {
+                System.out.println("error en registro");
+            }
         } else {
             // En caso de que el avatar no haya sido seleccionado
             if (valid && correcto && correctoCampos) {
@@ -826,5 +835,44 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         }
         // En caso de no encontrarla
         return true;
+    }
+
+    private boolean registrarUsuarioDataBase(Usuario usuarioNuevo) {
+        boolean conectado = Main.isConectado();
+        if (conectado) {
+            // En el la tabla usuario de la base de datos registra los datos
+            try {
+                String usuario = usuarioNuevo.getUsuario();
+                String contrasenia = usuarioNuevo.getContrasenia();
+                String rol = usuarioNuevo.getRol();
+                String cedula = usuarioNuevo.getCedula();
+
+                String nombre = usuarioNuevo.getNombre();
+                String apellido = usuarioNuevo.getApellido();
+                int avatar = usuarioNuevo.getAvatar();
+
+                int dia = usuarioNuevo.getFechaNacimiento().getDia();
+                int mes = usuarioNuevo.getFechaNacimiento().getMes();
+                int anio = usuarioNuevo.getFechaNacimiento().getAnio();
+
+
+                System.out.println("paso 1");
+                String SQL = "INSERT INTO usuario (usuario, contrasenia, rol, cedula, nombre, apellido, avatar, dianac, mesnac, anionac) VALUES ('" + usuario + "', '" + contrasenia + "', '" + rol + "', '" + cedula + "', '" + nombre + "', '" + apellido + "', '" + avatar + "', '" + dia + "', '" + mes + "', '" + anio + "')";
+                PreparedStatement st = Main.getConnect().prepareStatement(SQL);
+                System.out.println("paso 2");
+                st.executeUpdate();
+                System.out.println("exito");
+                return true;
+
+            } catch (SQLException ex) {
+                
+                JOptionPane.showMessageDialog(null, "Error, intente nuevamente");
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+                return false;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos");
+        }
+        return false;
     }
 }

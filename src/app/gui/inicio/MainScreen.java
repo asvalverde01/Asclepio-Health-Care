@@ -222,7 +222,7 @@ public final class MainScreen extends javax.swing.JFrame {
         colorButtons();
         recButton.setBackground(new java.awt.Color(204, 0, 204));
         // TODO
-        showPanel(null);
+        showPanel(pAyuda);
     }//GEN-LAST:event_recButtonActionPerformed
 
     private void homeButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButton1ActionPerformed
