@@ -29,7 +29,6 @@ public class AyudaPanel extends javax.swing.JPanel {
         bg = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         fechaLabel = new javax.swing.JLabel();
-        bienvenidaLabel = new javax.swing.JLabel();
         edadLabel = new javax.swing.JLabel();
         edadLabel2 = new javax.swing.JLabel();
         edadLabel1 = new javax.swing.JLabel();
@@ -55,6 +54,13 @@ public class AyudaPanel extends javax.swing.JPanel {
         edadLabel14 = new javax.swing.JLabel();
         edadLabel15 = new javax.swing.JLabel();
         edadLabel16 = new javax.swing.JLabel();
+        contacto4 = new javax.swing.JLabel();
+        edadLabel17 = new javax.swing.JLabel();
+        edadLabel18 = new javax.swing.JLabel();
+        contacto5 = new javax.swing.JLabel();
+        edadLabel19 = new javax.swing.JLabel();
+        edadLabel20 = new javax.swing.JLabel();
+        bienvenidaLabel = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -74,9 +80,9 @@ public class AyudaPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(44, 44, 44)
                 .addComponent(fechaLabel)
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addContainerGap(456, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,48 +92,43 @@ public class AyudaPanel extends javax.swing.JPanel {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 700, 60));
-
-        bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
-        bienvenidaLabel.setForeground(new java.awt.Color(102, 0, 153));
-        bienvenidaLabel.setText("Ayuda");
-        bg.add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
+        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 870, 60));
 
         edadLabel.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         edadLabel.setForeground(new java.awt.Color(51, 51, 51));
-        edadLabel.setText("Puede ver actividades de otra etapa y realizarlas. ");
+        edadLabel.setText("-");
         bg.add(edadLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, -1, -1));
 
         edadLabel2.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         edadLabel2.setForeground(new java.awt.Color(51, 51, 51));
-        edadLabel2.setText("Según la etapa que haya seleccionado se muestran actividades sugeridas.");
+        edadLabel2.setText("-");
         bg.add(edadLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, 20));
 
         edadLabel1.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
         edadLabel1.setForeground(new java.awt.Color(51, 51, 51));
-        edadLabel1.setText("Actividades");
+        edadLabel1.setText("-");
         bg.add(edadLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, -1));
 
         jSeparator1.setBackground(new java.awt.Color(81, 3, 23));
-        bg.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 130, 450, 20));
+        bg.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 130, 580, 20));
 
         edadLabel3.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
         edadLabel3.setForeground(new java.awt.Color(51, 51, 51));
-        edadLabel3.setText("Resultados");
+        edadLabel3.setText("-");
         bg.add(edadLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, -1, -1));
 
         edadLabel4.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         edadLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        edadLabel4.setText("En la sección de resultados podrá buscar los resultados obtenidos de las");
+        edadLabel4.setText("-");
         bg.add(edadLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, -1, -1));
 
         edadLabel5.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         edadLabel5.setForeground(new java.awt.Color(51, 51, 51));
-        edadLabel5.setText("actividades realizadas. Puede filtrar los resultados que desee observar.");
+        edadLabel5.setText("-");
         bg.add(edadLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
 
         jSeparator3.setBackground(new java.awt.Color(81, 3, 23));
-        bg.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 260, 450, 20));
+        bg.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 260, 580, 20));
 
         edadLabel6.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
         edadLabel6.setForeground(new java.awt.Color(51, 51, 51));
@@ -135,12 +136,12 @@ public class AyudaPanel extends javax.swing.JPanel {
         bg.add(edadLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
 
         jSeparator4.setBackground(new java.awt.Color(81, 3, 23));
-        bg.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 450, 20));
+        bg.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 350, 580, 20));
 
         edadLabel7.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         edadLabel7.setForeground(new java.awt.Color(0, 0, 0));
         edadLabel7.setText("thyara.vintimilla@udla.edu.ec");
-        bg.add(edadLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 610, -1, -1));
+        bg.add(edadLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 610, -1, -1));
 
         edadLabel8.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         edadLabel8.setForeground(new java.awt.Color(51, 51, 51));
@@ -149,66 +150,97 @@ public class AyudaPanel extends javax.swing.JPanel {
 
         edadLabel9.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         edadLabel9.setForeground(new java.awt.Color(51, 51, 51));
-        edadLabel9.setText("cambiar la etapa seleccionada. Además puede eliminar su información.");
+        edadLabel9.setText("-");
         bg.add(edadLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, -1, -1));
 
         jSeparator5.setBackground(new java.awt.Color(81, 3, 23));
-        bg.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 170, 450, 20));
+        bg.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 170, 580, 20));
 
         jSeparator6.setBackground(new java.awt.Color(81, 3, 23));
-        bg.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 460, 450, 20));
+        bg.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 460, 580, 20));
 
         edadLabel10.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
         edadLabel10.setForeground(new java.awt.Color(51, 51, 51));
-        edadLabel10.setText("Contactos");
+        edadLabel10.setText("Desarolladores");
         bg.add(edadLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, -1, -1));
 
         contacto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/contactos/contacto1.png"))); // NOI18N
-        bg.add(contacto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 490, -1, -1));
+        bg.add(contacto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 490, -1, -1));
 
         edadLabel11.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         edadLabel11.setForeground(new java.awt.Color(51, 51, 51));
-        edadLabel11.setText("La pestaña configurar le permite hacer cambios en el nombre, apellido y");
+        edadLabel11.setText("-");
         bg.add(edadLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, -1, -1));
 
         contacto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/contactos/contacto3.png"))); // NOI18N
-        bg.add(contacto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, -1, -1));
+        bg.add(contacto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 490, -1, -1));
 
         edadLabel12.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         edadLabel12.setForeground(new java.awt.Color(204, 204, 0));
         edadLabel12.setText("Estefanía Vinueza ");
-        bg.add(edadLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 590, -1, -1));
+        bg.add(edadLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 590, -1, -1));
 
         contacto3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/contactos/contacto2.png"))); // NOI18N
-        bg.add(contacto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 490, -1, -1));
+        bg.add(contacto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 490, -1, -1));
 
         edadLabel13.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         edadLabel13.setForeground(new java.awt.Color(204, 204, 0));
         edadLabel13.setText("Thyara Vintimitilla");
-        bg.add(edadLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 590, -1, -1));
+        bg.add(edadLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 590, -1, -1));
 
         edadLabel14.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         edadLabel14.setForeground(new java.awt.Color(204, 204, 0));
         edadLabel14.setText("Alberto Valverde");
-        bg.add(edadLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 590, -1, -1));
+        bg.add(edadLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 590, -1, -1));
 
         edadLabel15.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         edadLabel15.setForeground(new java.awt.Color(0, 0, 0));
         edadLabel15.setText("sebastian.valverde@udla.edu.ec");
-        bg.add(edadLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 610, -1, -1));
+        bg.add(edadLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 610, -1, -1));
 
         edadLabel16.setBackground(new java.awt.Color(0, 0, 0));
         edadLabel16.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
         edadLabel16.setForeground(new java.awt.Color(0, 0, 0));
         edadLabel16.setText("jadira.vinueza@udla.edu.ec");
-        bg.add(edadLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 610, -1, -1));
+        bg.add(edadLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 610, -1, -1));
+
+        contacto4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/contactos/contacto1.png"))); // NOI18N
+        bg.add(contacto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 640, -1, -1));
+
+        edadLabel17.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        edadLabel17.setForeground(new java.awt.Color(204, 204, 0));
+        edadLabel17.setText("Fabiana Liria");
+        bg.add(edadLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 740, -1, -1));
+
+        edadLabel18.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        edadLabel18.setForeground(new java.awt.Color(0, 0, 0));
+        edadLabel18.setText("fabiana.liria@udla.edu.ec");
+        bg.add(edadLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 760, -1, -1));
+
+        contacto5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/contactos/contacto1.png"))); // NOI18N
+        bg.add(contacto5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 640, -1, -1));
+
+        edadLabel19.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
+        edadLabel19.setForeground(new java.awt.Color(204, 204, 0));
+        edadLabel19.setText("Jhoann Ordoñez");
+        bg.add(edadLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 740, -1, -1));
+
+        edadLabel20.setFont(new java.awt.Font("Roboto", 0, 14)); // NOI18N
+        edadLabel20.setForeground(new java.awt.Color(0, 0, 0));
+        edadLabel20.setText("johann.ordonez@udla.edu.ec");
+        bg.add(edadLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 760, -1, -1));
+
+        bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
+        bienvenidaLabel.setForeground(new java.awt.Color(102, 0, 153));
+        bienvenidaLabel.setText("Ayuda");
+        bg.add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
 
         fondo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         fondo.setForeground(new java.awt.Color(51, 51, 51));
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
-        bg.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 660));
+        bg.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 800));
 
-        add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 660));
+        add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 800));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -218,6 +250,8 @@ public class AyudaPanel extends javax.swing.JPanel {
     private javax.swing.JLabel contacto1;
     private javax.swing.JLabel contacto2;
     private javax.swing.JLabel contacto3;
+    private javax.swing.JLabel contacto4;
+    private javax.swing.JLabel contacto5;
     private javax.swing.JLabel edadLabel;
     private javax.swing.JLabel edadLabel1;
     private javax.swing.JLabel edadLabel10;
@@ -227,7 +261,11 @@ public class AyudaPanel extends javax.swing.JPanel {
     private javax.swing.JLabel edadLabel14;
     private javax.swing.JLabel edadLabel15;
     private javax.swing.JLabel edadLabel16;
+    private javax.swing.JLabel edadLabel17;
+    private javax.swing.JLabel edadLabel18;
+    private javax.swing.JLabel edadLabel19;
     private javax.swing.JLabel edadLabel2;
+    private javax.swing.JLabel edadLabel20;
     private javax.swing.JLabel edadLabel3;
     private javax.swing.JLabel edadLabel4;
     private javax.swing.JLabel edadLabel5;

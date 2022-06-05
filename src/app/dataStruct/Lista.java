@@ -55,5 +55,13 @@ public class Lista {
     public void predefinir() {
         //agregar();
     }
+    
+    public int tamanio() {
+        return listaUsuarios.size();
+    }
+    
+    public void eliminarElementos() {
+        listaUsuarios.clear();
+    }
 
 }

@@ -277,7 +277,7 @@ public class InicioForm extends javax.swing.JFrame {
     }
 
     private static Lista obtenerUsuarioDataBase(Lista usuariosLista) {
-
+        usuariosLista.eliminarElementos();
         Fecha nacimiento = new Fecha();
         // Se obtiene la informacion de la tabla usuario en base de datos
         try {

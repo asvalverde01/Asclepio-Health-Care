@@ -35,7 +35,6 @@ public class ResultadosPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        bg = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         fechaLabel = new javax.swing.JLabel();
         bienvenidaLabel = new javax.swing.JLabel();
@@ -48,10 +47,8 @@ public class ResultadosPanel extends javax.swing.JPanel {
         jSeparator2 = new javax.swing.JSeparator();
         fondo = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        bg.setBackground(new java.awt.Color(255, 255, 255));
-        bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(81, 3, 113));
         jPanel1.setForeground(new java.awt.Color(255, 153, 153));
@@ -77,23 +74,23 @@ public class ResultadosPanel extends javax.swing.JPanel {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 700, 60));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 700, -1));
 
         bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
         bienvenidaLabel.setForeground(new java.awt.Color(102, 0, 153));
         bienvenidaLabel.setText("Resultados");
-        bg.add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 130, -1, -1));
+        add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, -1));
 
         edadLabel.setFont(new java.awt.Font("Roboto", 1, 28)); // NOI18N
         edadLabel.setForeground(new java.awt.Color(51, 51, 51));
         edadLabel.setText("Filtrar resultados");
-        bg.add(edadLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 210, -1, 40));
+        add(edadLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, -1, 40));
 
         jSeparator1.setBackground(new java.awt.Color(81, 3, 23));
-        bg.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 600, 570, 20));
+        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 580, 570, 20));
 
         filtrarBOX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Leve", "Moderada", "Hoy", "Suma Resta", "Comprensión", "Memoria", "Identificar Letras", "Reconocer sonido", "Identificar colores" }));
-        bg.add(filtrarBOX, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, 210, -1));
+        add(filtrarBOX, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 210, -1));
 
         buscarButton.setBackground(new java.awt.Color(153, 0, 204));
         buscarButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -104,7 +101,7 @@ public class ResultadosPanel extends javax.swing.JPanel {
                 buscarButtonActionPerformed(evt);
             }
         });
-        bg.add(buscarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 210, 130, -1));
+        add(buscarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, 130, -1));
 
         jTable1.setBackground(new java.awt.Color(204, 204, 204));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -140,17 +137,15 @@ public class ResultadosPanel extends javax.swing.JPanel {
             jTable1.getColumnModel().getColumn(5).setResizable(false);
         }
 
-        bg.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 280, 570, 300));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 570, 300));
 
         jSeparator2.setBackground(new java.awt.Color(81, 3, 23));
-        bg.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 180, 570, 20));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 570, 20));
 
         fondo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         fondo.setForeground(new java.awt.Color(51, 51, 51));
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
-        bg.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 660));
-
-        add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 700, 660));
+        add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 800));
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed
@@ -179,7 +174,6 @@ public class ResultadosPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel bg;
     private javax.swing.JLabel bienvenidaLabel;
     private javax.swing.JButton buscarButton;
     private javax.swing.JLabel edadLabel;

@@ -101,7 +101,7 @@ public class InicioPanel extends javax.swing.JPanel {
 
         text1Label.setFont(new java.awt.Font("Roboto", 1, 28)); // NOI18N
         text1Label.setForeground(new java.awt.Color(0, 51, 204));
-        text1Label.setText("Recordemos");
+        text1Label.setText("Perfil");
         text1Label.setToolTipText("");
         bg.add(text1Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
 
@@ -113,29 +113,29 @@ public class InicioPanel extends javax.swing.JPanel {
         apellidoLabel.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
         apellidoLabel.setForeground(new java.awt.Color(51, 51, 51));
         apellidoLabel.setText("apellido");
-        bg.add(apellidoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
+        bg.add(apellidoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
 
         fechaNacLabel.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
         fechaNacLabel.setForeground(new java.awt.Color(51, 51, 51));
         fechaNacLabel.setText("Nacimiento");
-        bg.add(fechaNacLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
+        bg.add(fechaNacLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, -1));
 
         edadLabel.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
         edadLabel.setForeground(new java.awt.Color(51, 51, 51));
         edadLabel.setText("Edad");
-        bg.add(edadLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
+        bg.add(edadLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
 
         msg1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         msg1.setForeground(new java.awt.Color(51, 0, 102));
         msg1.setText("Ve al apartado actividades y empieza a ejercitar tu memoria");
-        bg.add(msg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 480, -1, -1));
+        bg.add(msg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, -1, -1));
 
         msg2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         msg2.setForeground(new java.awt.Color(0, 0, 102));
         bg.add(msg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 520, -1, -1));
 
         jSeparator1.setBackground(new java.awt.Color(81, 3, 23));
-        bg.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 570, 20));
+        bg.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 750, 20));
         bg.add(avatarLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 70, 70));
 
         fondo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N

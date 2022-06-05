@@ -304,14 +304,16 @@ public class Usuario {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Usuario{" + "usuario=" + usuario + ", nombre=" + nombre + ", apellido=" + apellido + ", rol=" + rol + ", cedula=" + cedula + ", avatar=" + avatar + ", sexo=" + sexo + ", fechaNacimiento=" + fechaNacimiento + '}';
+    }
+
     /**
      * Regresa los valores de listaFichas
      *
      * @return String info listaFichas
      */
-    @Override
-    public String toString() {
-        return "Usuario{" + "usuario=" + usuario + ", nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + ", avatar=" + avatar + ", sexo=" + sexo + ", fechaNacimiento=" + fechaNacimiento + '}';
-    }
+    
 
 }

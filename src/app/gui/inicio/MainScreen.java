@@ -16,6 +16,7 @@ public final class MainScreen extends javax.swing.JFrame {
     private ConfigPanel pConfig = null;
     private AyudaPanel pAyuda = null;
     private registroMedicoPanel pRegistrarMedico = null;
+    private buscarMedicoPanel pBuscarMedico = null;
 
     private MainScreen() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -39,12 +40,13 @@ public final class MainScreen extends javax.swing.JFrame {
         initComponents();
         // Por defecto
         registrarMedicoButton.setVisible(false);
+        buscarMedicoButton.setVisible(false);
 
         // Si la el rol es administrador entonces se muestran más opciones
         if (usuario.getRol().equals("Administrador")) {
             registrarMedicoButton.setVisible(true);
-            content.setBackground(new java.awt.Color(241, 124, 5));
-
+            buscarMedicoButton.setVisible(true);
+            content.setBackground(new java.awt.Color(245, 245, 245));
         }
 
         // Inicializa los paneles
@@ -58,8 +60,6 @@ public final class MainScreen extends javax.swing.JFrame {
         // Obtiene la lista de Resultados de actividades y la asigna al usuario
         //usuario.setListaResultado(Main.obtenerResultadoActividadDataBase(usuario.getCedula()));
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -72,6 +72,7 @@ public final class MainScreen extends javax.swing.JFrame {
 
         content = new javax.swing.JPanel();
         iconImg = new javax.swing.JLabel();
+        buscarMedicoButton = new javax.swing.JButton();
         registrarMedicoButton = new javax.swing.JButton();
         helpButton = new javax.swing.JButton();
         homeButton1 = new javax.swing.JButton();
@@ -92,10 +93,23 @@ public final class MainScreen extends javax.swing.JFrame {
         iconImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/home_house.png"))); // NOI18N
         content.add(iconImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 100, 90));
 
-        registrarMedicoButton.setBackground(new java.awt.Color(55, 202, 236));
+        buscarMedicoButton.setBackground(new java.awt.Color(0, 204, 204));
+        buscarMedicoButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buscarMedicoButton.setForeground(new java.awt.Color(51, 51, 51));
+        buscarMedicoButton.setText("Buscar Médico");
+        buscarMedicoButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buscarMedicoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buscarMedicoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarMedicoButtonActionPerformed(evt);
+            }
+        });
+        content.add(buscarMedicoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 500, 240, 50));
+
+        registrarMedicoButton.setBackground(new java.awt.Color(0, 204, 204));
         registrarMedicoButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         registrarMedicoButton.setForeground(new java.awt.Color(51, 51, 51));
-        registrarMedicoButton.setText("Registrar Medico");
+        registrarMedicoButton.setText("Registrar Médico");
         registrarMedicoButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         registrarMedicoButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         registrarMedicoButton.addActionListener(new java.awt.event.ActionListener() {
@@ -103,7 +117,7 @@ public final class MainScreen extends javax.swing.JFrame {
                 registrarMedicoButtonActionPerformed(evt);
             }
         });
-        content.add(registrarMedicoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 470, 240, 50));
+        content.add(registrarMedicoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 440, 240, 50));
 
         helpButton.setBackground(new java.awt.Color(173, 217, 216));
         helpButton.setForeground(new java.awt.Color(51, 51, 51));
@@ -115,7 +129,7 @@ public final class MainScreen extends javax.swing.JFrame {
                 helpButtonActionPerformed(evt);
             }
         });
-        content.add(helpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 590, 190, 40));
+        content.add(helpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 650, 240, 40));
 
         homeButton1.setBackground(new java.awt.Color(42, 147, 213));
         homeButton1.setFont(new java.awt.Font("Montserrat", 1, 25)); // NOI18N
@@ -143,7 +157,7 @@ public final class MainScreen extends javax.swing.JFrame {
         });
         content.add(recButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 320, 240, 50));
 
-        logoutButton.setBackground(new java.awt.Color(153, 102, 255));
+        logoutButton.setBackground(new java.awt.Color(255, 102, 102));
         logoutButton.setForeground(new java.awt.Color(51, 51, 51));
         logoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/settings_cog_gear_1.png"))); // NOI18N
         logoutButton.setText("Cerrar sesión");
@@ -153,12 +167,12 @@ public final class MainScreen extends javax.swing.JFrame {
                 logoutButtonActionPerformed(evt);
             }
         });
-        content.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 700, 190, 40));
+        content.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 710, 240, 40));
 
         statsButton.setBackground(new java.awt.Color(55, 202, 236));
         statsButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         statsButton.setForeground(new java.awt.Color(51, 51, 51));
-        statsButton.setText("Resultados");
+        statsButton.setText("Buscar Paciente");
         statsButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         statsButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         statsButton.addActionListener(new java.awt.event.ActionListener() {
@@ -178,7 +192,7 @@ public final class MainScreen extends javax.swing.JFrame {
                 configButtonActionPerformed(evt);
             }
         });
-        content.add(configButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 540, 190, 40));
+        content.add(configButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 590, 240, 40));
 
         javax.swing.GroupLayout contenidoLayout = new javax.swing.GroupLayout(contenido);
         contenido.setLayout(contenidoLayout);
@@ -196,7 +210,7 @@ public final class MainScreen extends javax.swing.JFrame {
         actividadesButton.setBackground(new java.awt.Color(55, 202, 236));
         actividadesButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         actividadesButton.setForeground(new java.awt.Color(51, 51, 51));
-        actividadesButton.setText("Actividades");
+        actividadesButton.setText("Registrar Paciente");
         actividadesButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         actividadesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         actividadesButton.addActionListener(new java.awt.event.ActionListener() {
@@ -235,7 +249,7 @@ public final class MainScreen extends javax.swing.JFrame {
         Icon icono = new ImageIcon(getClass().getResource("/imagen/icon/news_paper.png"));
         iconImg.setIcon(icono);
         colorButtons();
-        recButton.setBackground(new java.awt.Color(204, 0, 204));
+        recButton.setBackground(new java.awt.Color(42, 147, 213));
         // TODO
         showPanel(pAyuda);
     }//GEN-LAST:event_recButtonActionPerformed
@@ -245,7 +259,7 @@ public final class MainScreen extends javax.swing.JFrame {
         showPanel(pInicio);
         colorButtons();
         pInicio.setInformation();
-        homeButton1.setBackground(new java.awt.Color(204, 0, 204));
+        homeButton1.setBackground(new java.awt.Color(42, 147, 213));
         Icon icono = new ImageIcon(getClass().getResource("/imagen/icon/home_house.png"));
         iconImg.setIcon(icono);
     }//GEN-LAST:event_homeButton1ActionPerformed
@@ -261,7 +275,7 @@ public final class MainScreen extends javax.swing.JFrame {
         Icon icono = new ImageIcon(getClass().getResource("/imagen/icon/puzzle_component.png"));
         iconImg.setIcon(icono);
         colorButtons();
-        registrarMedicoButton.setBackground(new java.awt.Color(204, 0, 204));
+        registrarMedicoButton.setBackground(new java.awt.Color(42, 147, 213));
         // TODO
         showPanel(pRegistrarMedico);
 
@@ -271,21 +285,33 @@ public final class MainScreen extends javax.swing.JFrame {
         Icon icono = new ImageIcon(getClass().getResource("/imagen/icon/cup_reward.png"));
         iconImg.setIcon(icono);
         colorButtons();
-        statsButton.setBackground(new java.awt.Color(204, 0, 204));
+        statsButton.setBackground(new java.awt.Color(42, 147, 213));
         showPanel(pResultados);
     }//GEN-LAST:event_statsButtonActionPerformed
 
     private void actividadesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actividadesButtonActionPerformed
-        // TODO add your handling code here:
+        Icon icono = new ImageIcon(getClass().getResource("/imagen/icon/cup_reward.png"));
+        iconImg.setIcon(icono);
+        colorButtons();
+        actividadesButton.setBackground(new java.awt.Color(42, 147, 213));
+        showPanel(pResultados);
     }//GEN-LAST:event_actividadesButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         this.dispose();
-         // Inicia el programa mostrando el inicio
+        // Inicia el programa mostrando el inicio
         InicioForm mainInicio = new InicioForm();
         mainInicio.setVisible(true);
         mainInicio.setLocationRelativeTo(null);
     }//GEN-LAST:event_logoutButtonActionPerformed
+
+    private void buscarMedicoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarMedicoButtonActionPerformed
+        Icon icono = new ImageIcon(getClass().getResource("/imagen/icon/cup_reward.png"));
+        iconImg.setIcon(icono);
+        colorButtons();
+        buscarMedicoButton.setBackground(new java.awt.Color(42, 147, 213));
+        showPanel(pBuscarMedico);
+    }//GEN-LAST:event_buscarMedicoButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -325,6 +351,7 @@ public final class MainScreen extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton actividadesButton;
+    private javax.swing.JButton buscarMedicoButton;
     private javax.swing.JButton configButton;
     private javax.swing.JPanel contenido;
     private javax.swing.JPanel content;
@@ -362,6 +389,7 @@ public final class MainScreen extends javax.swing.JFrame {
         pConfig = new ConfigPanel(usuario);
         pAyuda = new AyudaPanel();
         pRegistrarMedico = new registroMedicoPanel(usuario);
+        pBuscarMedico = new buscarMedicoPanel(usuario);
 
         pInicio.setUsuario(usuario);
         pResultados.setUsuario(usuario);
@@ -370,8 +398,11 @@ public final class MainScreen extends javax.swing.JFrame {
 
     private void colorButtons() {
         homeButton1.setBackground(new java.awt.Color(55, 202, 236));
-        registrarMedicoButton.setBackground(new java.awt.Color(55, 202, 236));
+        registrarMedicoButton.setBackground(new java.awt.Color(0, 204, 204));
+        buscarMedicoButton.setBackground(new java.awt.Color(0, 204, 204));
         recButton.setBackground(new java.awt.Color(55, 202, 236));
         statsButton.setBackground(new java.awt.Color(55, 202, 236));
+        actividadesButton.setBackground(new java.awt.Color(55, 202, 236));
+        configButton.setBackground(new java.awt.Color(55, 202, 236));
     }
 }
