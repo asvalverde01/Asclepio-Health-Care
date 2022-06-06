@@ -269,6 +269,7 @@ public class Usuario {
                     }
                 }
                  */
+                
                 case "fecha": {
                     //Separa el string si encuentra "/"
                     String[] fecha = nuevo.split("/");

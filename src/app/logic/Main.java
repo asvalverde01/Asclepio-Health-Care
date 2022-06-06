@@ -91,7 +91,7 @@ public class Main {
             connect = DriverManager.getConnection(url);
             // Se crea la tabla con informacion de usuario
             // Guardar la cedula como ID 
-            System.out.println("creando");
+            System.out.println("creando"); 
             String sql = "CREATE TABLE IF NOT EXISTS usuario (\n"
                     + "	usuario text,\n"
                     + "	contrasenia text,\n"
