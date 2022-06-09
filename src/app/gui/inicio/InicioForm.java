@@ -11,7 +11,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
-import java.util.List;
+
 
 public class InicioForm extends javax.swing.JFrame {
 
@@ -54,7 +54,6 @@ public class InicioForm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         entrarButton = new javax.swing.JButton();
         usuarioTxt = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         mensaje1 = new javax.swing.JLabel();
@@ -63,6 +62,8 @@ public class InicioForm extends javax.swing.JFrame {
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
         estadoLbl = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -101,11 +102,6 @@ public class InicioForm extends javax.swing.JFrame {
         });
         getContentPane().add(usuarioTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 340, 280, 40));
 
-        jLabel4.setFont(new java.awt.Font("Roboto", 1, 60)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel4.setText("Asclepio - Health Care");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 50, -1, 70));
-
         jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
         getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 380, 280, 20));
 
@@ -114,7 +110,7 @@ public class InicioForm extends javax.swing.JFrame {
         jLabel5.setText("Usuario");
         getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 340, -1, 30));
 
-        mensaje1.setFont(new java.awt.Font("Dialog", 1, 32)); // NOI18N
+        mensaje1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         mensaje1.setForeground(new java.awt.Color(0, 0, 0));
         mensaje1.setText("Iniciar sesión");
         getContentPane().add(mensaje1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, 230, 40));
@@ -150,6 +146,17 @@ public class InicioForm extends javax.swing.JFrame {
         estadoLbl.setForeground(new java.awt.Color(153, 0, 51));
         getContentPane().add(estadoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 440, -1, -1));
 
+        jLabel7.setFont(new java.awt.Font("Roboto", 1, 60)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(18, 84, 136));
+        jLabel7.setText("Asclepio - Health Care");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 50, -1, 70));
+
+        jLabel4.setFont(new java.awt.Font("Roboto", 1, 62)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setText("Asclepio");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 50, 640, 70));
+
+        background.setForeground(new java.awt.Color(18, 84, 136));
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
         background.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -170,22 +177,25 @@ public class InicioForm extends javax.swing.JFrame {
         for (Usuario usuario : usuarios.getUsuarios()) {
             if (usuario.getUsuario().equals(usuarioInput)) {
                 if (usuario.getContrasenia().equals(contraseniaInput)) {
-                    MainScreen main = new MainScreen(usuario);
-                    main.setVisible(true);
-                    main.setLocationRelativeTo(null);
-                    estadoLbl.setText("");
-                    this.dispose();
-                    break;
+                    for (int i = 0; i <= 100; i++) {
+
+                        MainScreen main = new MainScreen(usuario);
+                        main.setVisible(true);
+                        main.setLocationRelativeTo(null);
+                        estadoLbl.setText("");
+
+                        this.dispose();
+                        break;
+                    }
                 }
             }
+            if (usuarioInput.equals("") || contraseniaInput.equals("")) {
+                JOptionPane.showMessageDialog(null, "Por favor ingrese todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+                estadoLbl.setText("");
+            } else {
+                estadoLbl.setText("Usuario o contraseña incorrecta");
+            }
         }
-        if (usuarioInput.equals("") || contraseniaInput.equals("")) {
-            JOptionPane.showMessageDialog(null, "Por favor ingrese todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
-            estadoLbl.setText("");
-        } else {
-            estadoLbl.setText("Usuario o contraseña incorrecta");
-        }
-
     }//GEN-LAST:event_entrarButtonActionPerformed
 
     private void usuarioTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioTxtActionPerformed
@@ -320,6 +330,7 @@ public class InicioForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;

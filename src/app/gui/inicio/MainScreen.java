@@ -142,7 +142,7 @@ public final class MainScreen extends javax.swing.JFrame {
                 homeButton1ActionPerformed(evt);
             }
         });
-        content.add(homeButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 140, 240, 50));
+        content.add(homeButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 130, 240, 60));
 
         recButton.setBackground(new java.awt.Color(55, 202, 236));
         recButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -385,14 +385,13 @@ public final class MainScreen extends javax.swing.JFrame {
     private void inicializarPaneles(Usuario usuario) {
         pInicio = new InicioPanel(usuario);
 
-        pResultados = new ResultadosPanel(usuario);
         pConfig = new ConfigPanel(usuario);
         pAyuda = new AyudaPanel();
         pRegistrarMedico = new registroMedicoPanel(usuario);
         pBuscarMedico = new buscarMedicoPanel(usuario);
+        pResultados = new ResultadosPanel();
 
         pInicio.setUsuario(usuario);
-        pResultados.setUsuario(usuario);
         pConfig.setUsuario(usuario);
     }
 

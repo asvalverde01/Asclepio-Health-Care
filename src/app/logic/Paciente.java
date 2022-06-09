@@ -22,7 +22,7 @@ public class Paciente {
     private int etapa;
     private Fecha fechaNacimiento;
     // Lista de fichas medicas (Almacena una lista con las fichas medicas)
-    private List<ResultadoActividad> listaFichas;
+    //private List<ResultadoActividad> listaFichas;
 
     /*-------------------------------------------------------------
     /Constructores de la clase Paciente
@@ -200,32 +200,13 @@ public class Paciente {
     }
 
     /**
-     * Método que agrega un resultado a la lista del Usuario
-     *
-     * @param listaFichas recibe una lista de los resultados de Actividades
-     */
-    public void setListaResultado(List<ResultadoActividad> listaFichas) {
-        this.listaFichas = listaFichas;
-    }
-
-    /**
-     * Metodo que permite agregar un resultado a la lista de resultados de
-     * actividad del Usuario
-     *
-     * @param resultado Resultado a agregar
-     */
-    public void agregarResultadoLista(ResultadoActividad resultado) {
-        // Agrega a la listaFichas el resultado de la actividad
-        listaFichas.add(resultado);
-    }
-
-    /**
      * Recibe el tipo de argumento por el cual se quieren filtrar las búsquedas
      * de resultados y regresa una lista con Resultados de Actividades
      *
      * @param filtro String filtro de actividades a buscar
      * @return listaFichasFiltro
      */
+    /*
     public List<ResultadoActividad> buscarResultadoActividad(String filtro) {
         List<ResultadoActividad> listaFichasFiltro = new ArrayList<>();
 
@@ -269,8 +250,9 @@ public class Paciente {
         }
         return listaFichasFiltro;
     }
+     */
 
-    /*-------------------------------------------------------------
+ /*-------------------------------------------------------------
     /Métodos capa de negocio
     /-------------------------------------------------------------*/
     /**

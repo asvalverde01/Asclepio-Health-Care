@@ -91,7 +91,7 @@ public class Main {
             connect = DriverManager.getConnection(url);
             // Se crea la tabla con informacion de usuario
             // Guardar la cedula como ID 
-            System.out.println("creando"); 
+            System.out.println("creando");
             String sql = "CREATE TABLE IF NOT EXISTS usuario (\n"
                     + "	usuario text,\n"
                     + "	contrasenia text,\n"
@@ -156,60 +156,43 @@ public class Main {
      *
      * @param cedulaUsuario String con la cedula del usuario
      * @return listaResultado
+     *
+     * public static List<Formulario> obtenerFormularioDataBase(String
+     * cedulaUsuario) { List<Formulario> listaResultado = new ArrayList<>();
+     * PreparedStatement st = null;
+     *
+     * // Intenta sacar todos los resultados de la base de datos try { st =
+     * Main.getConnect().prepareStatement("SELECT * FROM actividad WHERE id =
+     * ?"); st.setString(1, cedulaUsuario); } catch (SQLException e) {
+     * e.printStackTrace(); } catch (Exception ex) { ex.printStackTrace(); }
+     *
+     * // Mientras hayan filas en la tabla rs try { // Ejecuta la orden y la
+     * guarda en modo de tabla ResultSet rs = null; assert st != null; rs =
+     * st.executeQuery(); while (rs.next()) { String cedulaRe =
+     * rs.getString("id"); String nombreRe = rs.getString("nombre"); int
+     * aciertos = rs.getInt("aciertos"); String etapaRe = rs.getString("etapa");
+     * int segundos = rs.getInt("segundos"); int dia = rs.getInt("dia"); String
+     * mes = rs.getString("mes"); int anio = rs.getInt("anio"); //Crea un objeto
+     * de tipo Fecha Fecha fecha = new Fecha(dia, 0, anio);
+     * fecha.setMesString(mes); //Crea un objeto de tipo Formulario Formulario
+     * resultadoActividad = new Formulario(cedulaRe, nombreRe, aciertos, fecha,
+     * etapaRe, segundos); //Agrega el objeto a la lista
+     * listaResultado.add(resultadoActividad); } } catch (SQLException e) {
+     * e.printStackTrace(); } // regresa la lista de resultados con los valores
+     * de la búsqueda return listaResultado; }
+    *
      */
-    public static List<ResultadoActividad> obtenerResultadoActividadDataBase(String cedulaUsuario) {
-        List<ResultadoActividad> listaResultado = new ArrayList<>();
-        PreparedStatement st = null;
-
-        // Intenta sacar todos los resultados de la base de datos
-        try {
-            st = Main.getConnect().prepareStatement("SELECT * FROM actividad WHERE id = ?");
-            st.setString(1, cedulaUsuario);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        // Mientras hayan filas en la tabla rs
-        try {
-            // Ejecuta la orden y la guarda en modo de tabla
-            ResultSet rs = null;
-            assert st != null;
-            rs = st.executeQuery();
-            while (rs.next()) {
-                String cedulaRe = rs.getString("id");
-                String nombreRe = rs.getString("nombre");
-                int aciertos = rs.getInt("aciertos");
-                String etapaRe = rs.getString("etapa");
-                int segundos = rs.getInt("segundos");
-                int dia = rs.getInt("dia");
-                String mes = rs.getString("mes");
-                int anio = rs.getInt("anio");
-                //Crea un objeto de tipo Fecha
-                Fecha fecha = new Fecha(dia, 0, anio);
-                fecha.setMesString(mes);
-                //Crea un objeto de tipo ResultadoActividad
-                ResultadoActividad resultadoActividad = new ResultadoActividad(cedulaRe, nombreRe, aciertos, fecha, etapaRe, segundos);
-                //Agrega el objeto a la lista
-                listaResultado.add(resultadoActividad);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        // regresa la lista de resultados con los valores de la búsqueda
-        return listaResultado;
-    }
 
     /*-------------------------------------------------------------
-    /Métodos  utsados con la clase ResultadoActividad
+    /Métodos  utsados con la clase Formulario
     /-------------------------------------------------------------*/
     /**
      * Registra el resultado de la actividad en la base de datos
      *
      * @param resultado
      */
-    public static void registrarDataBase(ResultadoActividad resultado) {
+    /*
+    public static void registrarDataBase(Formulario resultado) {
         // Guarda los atributos en la tabla actividad en la base de datos
         if (conectado) {
             // En la tabla actividad de la base de datos registra los datos
@@ -242,7 +225,7 @@ public class Main {
             JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos");
         }
     }
-
+     */
     /**
      * Metodo que elimina el usuario de la base de datos
      *

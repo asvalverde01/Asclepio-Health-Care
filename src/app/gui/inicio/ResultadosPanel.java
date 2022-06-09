@@ -1,29 +1,32 @@
 package app.gui.inicio;
 
+import app.dataStruct.Lista;
 import app.logic.Fecha;
-import app.logic.ResultadoActividad;
-import app.logic.Usuario;
-import java.util.List;
+import javax.swing.DefaultListModel;
 import javax.swing.table.DefaultTableModel;
 
 public class ResultadosPanel extends javax.swing.JPanel {
 
     private final Fecha actual;
-    private Usuario usuario;
+    // Atributo de lista
+    private static Lista usuarios;
     private DefaultTableModel model;
+
+    // Modelo lista
+    private DefaultListModel dlm = new DefaultListModel();
 
     /**
      * Creates new form inicioPanel
      *
      * @param usuario
      */
-    public ResultadosPanel(Usuario usuario) {
+    public ResultadosPanel() {
         initComponents();
-        this.usuario = usuario;
+        this.usuarios = InicioForm.getUsuarios();
         actual = new Fecha();
         actualizarFecha(actual);
         setInformation();
-        model = (DefaultTableModel) this.jTable1.getModel();
+        lstResultados.setModel(dlm);
     }
 
     /**
@@ -39,18 +42,18 @@ public class ResultadosPanel extends javax.swing.JPanel {
         fechaLabel = new javax.swing.JLabel();
         bienvenidaLabel = new javax.swing.JLabel();
         edadLabel = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
         filtrarBOX = new javax.swing.JComboBox<>();
         buscarButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jSeparator2 = new javax.swing.JSeparator();
+        todosBtn = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lstResultados = new javax.swing.JList<>();
         fondo = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(81, 3, 113));
+        jPanel1.setBackground(new java.awt.Color(18, 84, 136));
         jPanel1.setForeground(new java.awt.Color(255, 153, 153));
 
         fechaLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -64,7 +67,7 @@ public class ResultadosPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(fechaLabel)
-                .addContainerGap(298, Short.MAX_VALUE))
+                .addContainerGap(468, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -74,7 +77,7 @@ public class ResultadosPanel extends javax.swing.JPanel {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 700, -1));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 870, -1));
 
         bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
         bienvenidaLabel.setForeground(new java.awt.Color(102, 0, 153));
@@ -86,13 +89,10 @@ public class ResultadosPanel extends javax.swing.JPanel {
         edadLabel.setText("Filtrar resultados");
         add(edadLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 190, -1, 40));
 
-        jSeparator1.setBackground(new java.awt.Color(81, 3, 23));
-        add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 580, 570, 20));
-
         filtrarBOX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Leve", "Moderada", "Hoy", "Suma Resta", "Comprensión", "Memoria", "Identificar Letras", "Reconocer sonido", "Identificar colores" }));
         add(filtrarBOX, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 210, -1));
 
-        buscarButton.setBackground(new java.awt.Color(153, 0, 204));
+        buscarButton.setBackground(new java.awt.Color(18, 84, 136));
         buscarButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         buscarButton.setForeground(new java.awt.Color(0, 0, 0));
         buscarButton.setText("Buscar");
@@ -103,44 +103,29 @@ public class ResultadosPanel extends javax.swing.JPanel {
         });
         add(buscarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, 130, -1));
 
-        jTable1.setBackground(new java.awt.Color(204, 204, 204));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Nombre", "Etapa", "Aciertos", "Segundos", "Dia", "Mes"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-            jTable1.getColumnModel().getColumn(1).setResizable(false);
-            jTable1.getColumnModel().getColumn(2).setResizable(false);
-            jTable1.getColumnModel().getColumn(3).setResizable(false);
-            jTable1.getColumnModel().getColumn(4).setResizable(false);
-            jTable1.getColumnModel().getColumn(5).setResizable(false);
-        }
-
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, 570, 300));
-
         jSeparator2.setBackground(new java.awt.Color(81, 3, 23));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 570, 20));
+
+        todosBtn.setBackground(new java.awt.Color(18, 84, 136));
+        todosBtn.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        todosBtn.setForeground(new java.awt.Color(255, 255, 255));
+        todosBtn.setText("Mostrar todos");
+        todosBtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        todosBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                todosBtnActionPerformed(evt);
+            }
+        });
+        add(todosBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 220, 30));
+
+        lstResultados.setModel(new javax.swing.AbstractListModel<String>() {
+            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            public int getSize() { return strings.length; }
+            public String getElementAt(int i) { return strings[i]; }
+        });
+        jScrollPane2.setViewportView(lstResultados);
+
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 420, 750, 340));
 
         fondo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         fondo.setForeground(new java.awt.Color(51, 51, 51));
@@ -152,24 +137,34 @@ public class ResultadosPanel extends javax.swing.JPanel {
         // Saca el objeto seleccionado del menu desplegable y lo almacena como String en filtro
         String filtro = filtrarBOX.getSelectedItem().toString();
 
-        // Crea la tabla y obtiene el modelo
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-
         // Limpia los contenidos de la tabla
         model.setRowCount(0);
 
         // Invoca a la funcion buscarResultadoActividad en usuario enviando el filtro por el cual quiero buscar
         // Como resultado obtiene una lista de ResultadoActividad el cual se almacena en listaResultados
         //List<ResultadoActividad> listaResultados = usuario.buscarResultadoActividad(filtro);
-
         // se recorre la lista de resultados e inserta los valores en la tabla fila por fila
         //listaResultados.forEach(resultadoActividad -> {
-            //model.addRow(new Object[]{resultadoActividad.getNombre(), resultadoActividad.getEtapa(), resultadoActividad.getAciertos(), resultadoActividad.getSegundos(), resultadoActividad.getFecha().getDia(), resultadoActividad.getFecha().getMesString()});
+        //model.addRow(new Object[]{resultadoActividad.getNombre(), resultadoActividad.getEtapa(), resultadoActividad.getAciertos(), resultadoActividad.getSegundos(), resultadoActividad.getFecha().getDia(), resultadoActividad.getFecha().getMesString()});
         //});
     }//GEN-LAST:event_buscarButtonActionPerformed
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    private void todosBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_todosBtnActionPerformed
+        actualizarLista();
+    }//GEN-LAST:event_todosBtnActionPerformed
+
+    public void setUsuario(Lista usuarioLista) {
+        this.usuarios = usuarios;
+    }
+
+    public void actualizarLista() {
+        dlm.removeAllElements();
+        System.out.println(usuarios.tamanio());
+        usuarios.getUsuarios().forEach(usuario -> {
+            if (usuario.getRol().equals("Medico")) {
+                dlm.addElement(usuario.toString());
+            }
+        });
     }
 
 
@@ -181,10 +176,10 @@ public class ResultadosPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> filtrarBOX;
     private javax.swing.JLabel fondo;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JList<String> lstResultados;
+    private javax.swing.JButton todosBtn;
     // End of variables declaration//GEN-END:variables
 
     private void actualizarFecha(Fecha actual) {

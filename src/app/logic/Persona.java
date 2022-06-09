@@ -13,7 +13,7 @@ public class Persona {
     private int etapa;
     private Fecha fechaNacimiento;
     // Lista de ResultadoActividad (Almacena una lista con los resultados de las actividades realizadas por el usuario)
-    private List<ResultadoActividad> listaResultado;
+    //private List<ResultadoActividad> listaResultado;
 
     /*-------------------------------------------------------------
     /Constructores de la clase Persona
