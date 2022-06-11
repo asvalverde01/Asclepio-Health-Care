@@ -1,5 +1,7 @@
-package app.logic;
+package app.logic.users;
 
+import app.logic.Fecha;
+import app.logic.Main;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 

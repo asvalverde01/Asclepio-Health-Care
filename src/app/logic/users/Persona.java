@@ -1,5 +1,6 @@
-package app.logic;
+package app.logic.users;
 
+import app.logic.Fecha;
 import java.util.List;
 
 public class Persona {

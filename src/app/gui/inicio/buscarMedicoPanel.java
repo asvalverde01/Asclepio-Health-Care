@@ -2,7 +2,7 @@ package app.gui.inicio;
 
 import app.dataStruct.Lista;
 import app.logic.Fecha;
-import app.logic.Usuario;
+import app.logic.users.Usuario;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.DefaultListModel;

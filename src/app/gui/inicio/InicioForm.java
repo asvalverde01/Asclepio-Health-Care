@@ -3,7 +3,7 @@ package app.gui.inicio;
 import app.dataStruct.Lista;
 import app.logic.Fecha;
 import static app.logic.Main.connect;
-import app.logic.Usuario;
+import app.logic.users.Usuario;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
 import java.sql.PreparedStatement;
@@ -11,7 +11,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.swing.JOptionPane;
-import java.util.List;
 
 public class InicioForm extends javax.swing.JFrame {
 
@@ -246,35 +245,6 @@ public class InicioForm extends javax.swing.JFrame {
         });
     }
 
-    private boolean validarCedula(String cedula) {
-        // Verifica que la cedula sea valida
-        // Verifica que solamente hayan digitos en el string cedula
-        if (cedula.matches("[0-9]+")) {
-            // Verifica que el string tenga 10 digitos
-            if (cedula.length() == 10) {
-                // Verifica que la suma de los 2 primeros digitos esten entre 1 y 24
-                if (Integer.parseInt(cedula.substring(0, 2)) >= 1 && Integer.parseInt(cedula.substring(0, 2)) <= 24) {
-                    //Verifica que el tercer digito esten entre 0 y 6
-                    if (Integer.parseInt(cedula.substring(2, 3)) >= 0 && Integer.parseInt(cedula.substring(2, 3)) <= 6) {
-                        return true;
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Cédula inválida");
-                    }
-                } else {
-                    JOptionPane.showMessageDialog(null, "Cédula fuera de rango");
-                    return false;
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Cédula debe constar de 10 dígitos");
-                return false;
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Cédula inválida. Ingrese solamente dígitos");
-            usuarioTxt.setText(" ");
-            return false;
-        }
-        return false;
-    }
 
     private static Lista obtenerUsuarioDataBase(Lista usuariosLista) {
         usuariosLista.eliminarElementos();

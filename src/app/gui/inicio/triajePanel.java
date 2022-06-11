@@ -1,7 +1,7 @@
 package app.gui.inicio;
 
 import app.logic.Fecha;
-import app.logic.Usuario;
+import app.logic.users.Usuario;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 

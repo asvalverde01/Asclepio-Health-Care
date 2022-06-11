@@ -1,7 +1,7 @@
 package app.gui.inicio;
 
 import app.logic.Fecha;
-import app.logic.Usuario;
+import app.logic.users.Usuario;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -128,7 +128,7 @@ public class InicioPanel extends javax.swing.JPanel {
         msg1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         msg1.setForeground(new java.awt.Color(51, 0, 102));
         msg1.setText("Ve al apartado actividades y empieza a ejercitar tu memoria");
-        bg.add(msg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 390, -1, -1));
+        bg.add(msg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, -1, -1));
 
         msg2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         msg2.setForeground(new java.awt.Color(0, 0, 102));

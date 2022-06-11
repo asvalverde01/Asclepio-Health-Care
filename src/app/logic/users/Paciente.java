@@ -1,10 +1,10 @@
-package app.logic;
+package app.logic.users;
 
+import app.logic.Fecha;
+import app.logic.Main;
 import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Programa AsclepioHC Clase Paciente
@@ -18,8 +18,7 @@ public class Paciente {
     private String cedula;
     private String nombre;
     private String apellido;
-    private int avatar;
-    private int etapa;
+    private String sexo;
     private Fecha fechaNacimiento;
     // Lista de fichas medicas (Almacena una lista con las fichas medicas)
     //private List<ResultadoActividad> listaFichas;
@@ -39,16 +38,14 @@ public class Paciente {
      * @param cedula String
      * @param nombre String
      * @param apellido String
-     * @param avatar int
-     * @param etapa int
+     * @param sexo String
      * @param fechaNacimiento Fecha
      */
-    public Paciente(String cedula, String nombre, String apellido, int avatar, int etapa, Fecha fechaNacimiento) {
+    public Paciente(String cedula, String nombre, String apellido, String sexo, Fecha fechaNacimiento) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.avatar = avatar;
-        this.etapa = etapa;
+        this.sexo = sexo;
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -56,7 +53,7 @@ public class Paciente {
     /Métodos get y set de la clase Usuario
     /-------------------------------------------------------------*/
     /**
-     * Regresa el nombre del usuario
+     * Regresa el nombre del paciente
      *
      * @return String nombre
      */
@@ -65,7 +62,7 @@ public class Paciente {
     }
 
     /**
-     * Asigna el nombre del usuario
+     * Asigna el nombre del paciente
      *
      * @param nombre String
      */
@@ -74,7 +71,7 @@ public class Paciente {
     }
 
     /**
-     * Regresa el apellido del usuario
+     * Regresa el apellido del paciente
      *
      * @return String apellido
      */
@@ -83,7 +80,7 @@ public class Paciente {
     }
 
     /**
-     * Asigna el apellido del usuario
+     * Asigna el apellido del paciente
      *
      * @param apellido String
      */
@@ -92,7 +89,7 @@ public class Paciente {
     }
 
     /**
-     * Regresa la cedula del usuario
+     * Regresa la cedula del paciente
      *
      * @return String cedula
      */
@@ -101,7 +98,7 @@ public class Paciente {
     }
 
     /**
-     * Asigna la cedula en el usuario
+     * Asigna la cedula en el paciente
      *
      * @param cedula String cedula nueva
      */
@@ -110,25 +107,25 @@ public class Paciente {
     }
 
     /**
-     * Regresa el avatar del usuario
+     * Regresa el sexo del paciente
      *
-     * @return String avatar
+     * @return String sexo
      */
-    public int getAvatar() {
-        return avatar;
+    public String getSexo() {
+        return sexo;
     }
 
     /**
-     * Asigna el avatar del usuario
+     * Asigna el sexo en el paciente
      *
-     * @param avatar String
+     * @param sexo String sexo nueva
      */
-    public void setAvatar(int avatar) {
-        this.avatar = avatar;
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
     /**
-     * Regresa la fecha de nacimiento del usuario como String
+     * Regresa la fecha de nacimiento del paciente como String
      *
      * @return String fechaNacimiento
      */
@@ -137,7 +134,7 @@ public class Paciente {
     }
 
     /**
-     * Regresa la fecha de nacimiento del usuario
+     * Regresa la fecha de nacimiento del paciente
      *
      * @return Fecha fechaNacimiento
      */
@@ -146,7 +143,7 @@ public class Paciente {
     }
 
     /**
-     * Asigna la fecha de nacimiento del usuario
+     * Asigna la fecha de nacimiento del paciente
      *
      * @param fechaNacimiento Fecha
      */
@@ -155,48 +152,13 @@ public class Paciente {
     }
 
     /**
-     * Regresa la edad del usuario calculada con el metodo
+     * Regresa la edad del paciente calculada con el metodo
      * calcularEdad(fechaNacimiento)
      *
      * @return int edad
      */
     public int getEdad() {
         return fechaNacimiento.diferenciaEntreFechas(fechaNacimiento);
-    }
-
-    /**
-     * Regresa la etapa del usuario
-     *
-     * @return int etapa
-     */
-    public int getEtapa() {
-        return etapa;
-    }
-
-    /**
-     * Asigna la etapa del usuario
-     *
-     * @param etapa int
-     */
-    public void setEtapa(int etapa) {
-        this.etapa = etapa;
-    }
-
-    /**
-     * Regresa la etapa del usuario en modo de String
-     *
-     * @return String etapa
-     */
-    public String getEtapaUsuario() {
-        switch (etapa) {
-            case 1:
-                return "Moderada";
-
-            case 2:
-                return "Avanzada";
-            default:
-                return "Leve";
-        }
     }
 
     /**
@@ -256,7 +218,7 @@ public class Paciente {
     /Métodos capa de negocio
     /-------------------------------------------------------------*/
     /**
-     * Metodo que permite modificar un atributo del usuario
+     * Metodo que permite modificar un atributo del paciente
      *
      * @param tipo String tipo de atributo
      * @param nuevo String nuevo valor a cambiar
@@ -268,13 +230,13 @@ public class Paciente {
             PreparedStatement st = null;
             switch (tipo) {
                 case "Nombre": {
-                    st = Main.getConnect().prepareStatement("UPDATE usuario SET nombre = ? WHERE cedula = ?");
+                    st = Main.getConnect().prepareStatement("UPDATE paciente SET nombre = ? WHERE cedula = ?");
                     st.setString(1, nuevo);
                     st.setString(2, cedula);
                     nombre = nuevo;
                 }
                 case "Apellido": {
-                    st = Main.getConnect().prepareStatement("UPDATE usuario SET apellido = ? WHERE cedula = ?");
+                    st = Main.getConnect().prepareStatement("UPDATE paciente SET apellido = ? WHERE cedula = ?");
                     st.setString(1, nuevo);
                     st.setString(2, cedula);
                     apellido = nuevo;
@@ -291,10 +253,10 @@ public class Paciente {
                             default:
                                 nuevoValor = 0;
                         };
-                        st = Main.getConnect().prepareStatement("UPDATE usuario SET etapa = ? WHERE cedula = ?");
+                        st = Main.getConnect().prepareStatement("UPDATE paciente SET etapa = ? WHERE cedula = ?");
                         st.setInt(1, nuevoValor);
                         st.setString(2, cedula);
-                        etapa = nuevoValor;
+
                     } else {
                         JOptionPane.showMessageDialog(null, "Ingrese solamente \"Leve\" - \"Moderada\" - \"Avanzada\"");
                         return false;
@@ -308,7 +270,7 @@ public class Paciente {
                     int mes = Integer.parseInt(fecha[1]);
                     int anio = Integer.parseInt(fecha[2]);
                     // Hace los cambios en el SQL
-                    st = Main.getConnect().prepareStatement("UPDATE usuario SET dianac = ?, mesnac = ?, anionac = ? WHERE cedula = ?");
+                    st = Main.getConnect().prepareStatement("UPDATE paciente SET dianac = ?, mesnac = ?, anionac = ? WHERE cedula = ?");
                     st.setInt(1, dia);
                     st.setInt(2, mes);
                     st.setInt(3, anio);
@@ -336,12 +298,12 @@ public class Paciente {
     }
 
     /**
-     * Regresa los valores de usuario
+     * Regresa los valores de paciente
      *
-     * @return String info usuario
+     * @return String info paciente
      */
     @Override
     public String toString() {
-        return cedula + "      " + nombre + "       " + apellido + "          " + getEdad() + "     " + getEtapaUsuario();
+        return cedula + "      " + nombre + "       " + apellido + "          " + getEdad();
     }
 }

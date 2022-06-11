@@ -3,7 +3,7 @@ package app.gui.inicio;
 import app.dataStruct.Lista;
 import app.logic.Fecha;
 import app.logic.Main;
-import app.logic.Usuario;
+import app.logic.users.Usuario;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.sql.PreparedStatement;
@@ -491,7 +491,7 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         String sexo = sexoCombo.getSelectedItem().toString();
 
         int dia = (Integer) diaSpinner.getValue();
-        String mes = especialidadCombo.getSelectedItem().toString();
+        String mes = mesCombo.getSelectedItem().toString();
         int anio = (Integer) anioSpinner.getValue();
         String cedula = cedulaTxt.getText();
         Fecha nacimiento = new Fecha();

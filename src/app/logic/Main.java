@@ -1,14 +1,15 @@
 package app.logic;
 
 import app.dataStruct.Lista;
+import app.dataStruct.ListaPacientes;
 import app.gui.inicio.InicioForm;
+import app.logic.users.Paciente;
+import app.logic.users.Usuario;
 
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
@@ -113,21 +114,19 @@ public class Main {
             st = Main.getConnect().prepareStatement(sql);
             st.executeUpdate();
 
-            // Se crea la tabla con informacion TODO - ficha medica
-            /*
-            sql = "CREATE TABLE IF NOT EXISTS actividad (\n"
-                    + "	id integer,\n"
+            // Se crea la tabla con informacion de Paciente
+            sql = "CREATE TABLE IF NOT EXISTS paciente (\n"
+                    + "	cedula integer,\n"
                     + "	nombre text,\n"
-                    + "	aciertos integer,\n"
-                    + "	etapa text,\n"
-                    + "	segundos integer,\n"
+                    + "	apellido text,\n"
+                    + "	sexo text,\n"
                     + "	dia integer,\n"
                     + "	mes text,\n"
                     + "	anio integer\n"
                     + ");";
             st = connect.prepareStatement(sql);
             st.execute();
-             */
+
         } catch (HeadlessException | SQLException x) {
             JOptionPane.showMessageDialog(null, x.getMessage());
             return false;
@@ -152,7 +151,7 @@ public class Main {
     }
 
     /**
-     * Saca de la base de datos todos los resultados de las actividades
+     * Saca de la base de datos todas las fichas
      *
      * @param cedulaUsuario String con la cedula del usuario
      * @return listaResultado
@@ -180,7 +179,7 @@ public class Main {
      * listaResultado.add(resultadoActividad); } } catch (SQLException e) {
      * e.printStackTrace(); } // regresa la lista de resultados con los valores
      * de la búsqueda return listaResultado; }
-    *
+     *
      */
 
     /*-------------------------------------------------------------
@@ -273,5 +272,41 @@ public class Main {
             JOptionPane.showMessageDialog(null, ex1.getMessage());
         }
         return false;
+    }
+
+    public static ListaPacientes getPacientes() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static ListaPacientes obtenerPacientesDataBase() {
+        ListaPacientes pacientesLista = new ListaPacientes();
+        Fecha nacimiento = new Fecha();
+        // Se obtiene la informacion de la tabla usuario en base de datos
+        try {
+            String sql = "SELECT * FROM paciente";
+            PreparedStatement st = connect.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                Paciente nuevoPaciente = new Paciente();
+
+                nuevoPaciente.setCedula(rs.getString("cedula"));
+                nuevoPaciente.setNombre(rs.getString("nombre"));
+                nuevoPaciente.setApellido(rs.getString("apellido"));
+                nuevoPaciente.setSexo(rs.getString("sexo"));
+
+                nacimiento.setDia(rs.getInt("dianac"));
+                nacimiento.setMes(rs.getInt("mesnac"));
+                nacimiento.setAnio(rs.getInt("anionac"));
+                nuevoPaciente.setFechaNacimiento(nacimiento);
+
+                // añade el paciente registrado a la lista
+                pacientesLista.agregar(nuevoPaciente);
+            }
+        } catch (HeadlessException | SQLException x) {
+            JOptionPane.showMessageDialog(null, x.getMessage());
+        }
+        // Regresa el usuario que se ha guardado
+        return pacientesLista;
     }
 } // FIN CLASE 

@@ -1,6 +1,8 @@
 package app.gui.inicio;
 
-import app.logic.Usuario;
+import app.dataStruct.ListaPacientes;
+import app.logic.Main;
+import app.logic.users.Usuario;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
@@ -10,13 +12,15 @@ public final class MainScreen extends javax.swing.JFrame {
 
     public static Usuario usuario;
     public static String userID;
+    public static ListaPacientes listaPacientes;
     // Paneles
     private app.gui.inicio.InicioPanel pInicio = null;
-    private ResultadosPanel pResultados = null;
+    private buscarPacientePanel pResultados = null;
     private ConfigPanel pConfig = null;
     private AyudaPanel pAyuda = null;
     private registroMedicoPanel pRegistrarMedico = null;
     private buscarMedicoPanel pBuscarMedico = null;
+    private registroPacientePanel pRegistrarPaciente = null;
 
     private MainScreen() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -30,6 +34,16 @@ public final class MainScreen extends javax.swing.JFrame {
         this.usuario = usuario;
     }
 
+    public static ListaPacientes getListaPacientes() {
+        return listaPacientes;
+    }
+
+    public static void setListaPacientes(ListaPacientes listaPacientes) {
+        MainScreen.listaPacientes = listaPacientes;
+    }
+    
+    
+
     /**
      * Creates new form MainScreen
      *
@@ -37,6 +51,7 @@ public final class MainScreen extends javax.swing.JFrame {
      */
     public MainScreen(Usuario usuario) {
         MainScreen.usuario = usuario;
+        MainScreen.listaPacientes = Main.obtenerPacientesDataBase();
         initComponents();
         // Por defecto
         registrarMedicoButton.setVisible(false);
@@ -77,11 +92,12 @@ public final class MainScreen extends javax.swing.JFrame {
         helpButton = new javax.swing.JButton();
         homeButton1 = new javax.swing.JButton();
         recButton = new javax.swing.JButton();
-        logoutButton = new javax.swing.JButton();
         statsButton = new javax.swing.JButton();
         configButton = new javax.swing.JButton();
         contenido = new javax.swing.JPanel();
-        actividadesButton = new javax.swing.JButton();
+        salirButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
+        registrarPacienteButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("BrainUP");
@@ -157,18 +173,6 @@ public final class MainScreen extends javax.swing.JFrame {
         });
         content.add(recButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 320, 240, 50));
 
-        logoutButton.setBackground(new java.awt.Color(255, 102, 102));
-        logoutButton.setForeground(new java.awt.Color(51, 51, 51));
-        logoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/settings_cog_gear_1.png"))); // NOI18N
-        logoutButton.setText("Cerrar sesión");
-        logoutButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        logoutButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                logoutButtonActionPerformed(evt);
-            }
-        });
-        content.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 710, 240, 40));
-
         statsButton.setBackground(new java.awt.Color(55, 202, 236));
         statsButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         statsButton.setForeground(new java.awt.Color(51, 51, 51));
@@ -207,18 +211,42 @@ public final class MainScreen extends javax.swing.JFrame {
 
         content.add(contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 870, 800));
 
-        actividadesButton.setBackground(new java.awt.Color(55, 202, 236));
-        actividadesButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        actividadesButton.setForeground(new java.awt.Color(51, 51, 51));
-        actividadesButton.setText("Registrar Paciente");
-        actividadesButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        actividadesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        actividadesButton.addActionListener(new java.awt.event.ActionListener() {
+        salirButton.setBackground(new java.awt.Color(255, 102, 102));
+        salirButton.setForeground(new java.awt.Color(51, 51, 51));
+        salirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/settings_cog_gear_1.png"))); // NOI18N
+        salirButton.setText("Salir");
+        salirButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        salirButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                actividadesButtonActionPerformed(evt);
+                salirButtonActionPerformed(evt);
             }
         });
-        content.add(actividadesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 200, 240, 50));
+        content.add(salirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 760, 240, 30));
+
+        logoutButton.setBackground(new java.awt.Color(255, 102, 102));
+        logoutButton.setForeground(new java.awt.Color(51, 51, 51));
+        logoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/settings_cog_gear_1.png"))); // NOI18N
+        logoutButton.setText("Cerrar sesión");
+        logoutButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        logoutButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutButtonActionPerformed(evt);
+            }
+        });
+        content.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 710, 240, 40));
+
+        registrarPacienteButton.setBackground(new java.awt.Color(55, 202, 236));
+        registrarPacienteButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        registrarPacienteButton.setForeground(new java.awt.Color(51, 51, 51));
+        registrarPacienteButton.setText("Registrar Paciente");
+        registrarPacienteButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        registrarPacienteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        registrarPacienteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarPacienteButtonActionPerformed(evt);
+            }
+        });
+        content.add(registrarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 200, 240, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -289,13 +317,13 @@ public final class MainScreen extends javax.swing.JFrame {
         showPanel(pResultados);
     }//GEN-LAST:event_statsButtonActionPerformed
 
-    private void actividadesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_actividadesButtonActionPerformed
+    private void registrarPacienteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarPacienteButtonActionPerformed
         Icon icono = new ImageIcon(getClass().getResource("/imagen/icon/cup_reward.png"));
         iconImg.setIcon(icono);
         colorButtons();
-        actividadesButton.setBackground(new java.awt.Color(42, 147, 213));
-        showPanel(pResultados);
-    }//GEN-LAST:event_actividadesButtonActionPerformed
+        registrarPacienteButton.setBackground(new java.awt.Color(42, 147, 213));
+        showPanel(pRegistrarMedico);
+    }//GEN-LAST:event_registrarPacienteButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         this.dispose();
@@ -312,6 +340,10 @@ public final class MainScreen extends javax.swing.JFrame {
         buscarMedicoButton.setBackground(new java.awt.Color(42, 147, 213));
         showPanel(pBuscarMedico);
     }//GEN-LAST:event_buscarMedicoButtonActionPerformed
+
+    private void salirButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirButtonActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_salirButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -350,7 +382,6 @@ public final class MainScreen extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton actividadesButton;
     private javax.swing.JButton buscarMedicoButton;
     private javax.swing.JButton configButton;
     private javax.swing.JPanel contenido;
@@ -361,6 +392,8 @@ public final class MainScreen extends javax.swing.JFrame {
     private javax.swing.JButton logoutButton;
     private javax.swing.JButton recButton;
     private javax.swing.JButton registrarMedicoButton;
+    private javax.swing.JButton registrarPacienteButton;
+    private javax.swing.JButton salirButton;
     private javax.swing.JButton statsButton;
     // End of variables declaration//GEN-END:variables
 
@@ -388,8 +421,9 @@ public final class MainScreen extends javax.swing.JFrame {
         pConfig = new ConfigPanel(usuario);
         pAyuda = new AyudaPanel();
         pRegistrarMedico = new registroMedicoPanel(usuario);
+        pRegistrarPaciente = new registroPacientePanel();
         pBuscarMedico = new buscarMedicoPanel(usuario);
-        pResultados = new ResultadosPanel();
+        pResultados = new buscarPacientePanel();
 
         pInicio.setUsuario(usuario);
         pConfig.setUsuario(usuario);
@@ -401,7 +435,7 @@ public final class MainScreen extends javax.swing.JFrame {
         buscarMedicoButton.setBackground(new java.awt.Color(0, 204, 204));
         recButton.setBackground(new java.awt.Color(55, 202, 236));
         statsButton.setBackground(new java.awt.Color(55, 202, 236));
-        actividadesButton.setBackground(new java.awt.Color(55, 202, 236));
+        registrarPacienteButton.setBackground(new java.awt.Color(55, 202, 236));
         configButton.setBackground(new java.awt.Color(55, 202, 236));
     }
 }

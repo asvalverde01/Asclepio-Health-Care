@@ -1,6 +1,6 @@
 package app.dataStruct;
 
-import app.logic.Usuario;
+import app.logic.users.Usuario;
 import java.util.ArrayList;
 
 /**
