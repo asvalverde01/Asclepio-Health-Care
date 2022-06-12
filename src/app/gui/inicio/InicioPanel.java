@@ -113,21 +113,21 @@ public class InicioPanel extends javax.swing.JPanel {
         apellidoLabel.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
         apellidoLabel.setForeground(new java.awt.Color(51, 51, 51));
         apellidoLabel.setText("apellido");
-        bg.add(apellidoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 260, -1, -1));
+        bg.add(apellidoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, -1, -1));
 
         fechaNacLabel.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
         fechaNacLabel.setForeground(new java.awt.Color(51, 51, 51));
         fechaNacLabel.setText("Nacimiento");
-        bg.add(fechaNacLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, -1));
+        bg.add(fechaNacLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
 
         edadLabel.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
         edadLabel.setForeground(new java.awt.Color(51, 51, 51));
         edadLabel.setText("Edad");
-        bg.add(edadLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 340, -1, -1));
+        bg.add(edadLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, -1, -1));
 
         msg1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         msg1.setForeground(new java.awt.Color(51, 0, 102));
-        msg1.setText("Ve al apartado actividades y empieza a ejercitar tu memoria");
+        msg1.setText("TODO");
         bg.add(msg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, -1, -1));
 
         msg2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N

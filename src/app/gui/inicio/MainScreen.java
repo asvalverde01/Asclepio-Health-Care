@@ -322,7 +322,7 @@ public final class MainScreen extends javax.swing.JFrame {
         iconImg.setIcon(icono);
         colorButtons();
         registrarPacienteButton.setBackground(new java.awt.Color(42, 147, 213));
-        showPanel(pRegistrarMedico);
+        showPanel(pRegistrarPaciente);
     }//GEN-LAST:event_registrarPacienteButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed

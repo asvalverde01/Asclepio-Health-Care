@@ -16,9 +16,6 @@ import javax.swing.JOptionPane;
  */
 public class registroPacientePanel extends javax.swing.JPanel {
 
-    // Atributo de lista
-    private boolean avatarSeleccionado = false;
-
     /**
      * Creates new form inicioPanel
      */
@@ -307,7 +304,6 @@ public class registroPacientePanel extends javax.swing.JPanel {
         boolean correcto = false;
         boolean correctoCampos = false;
         boolean valid = true;
-        boolean contraseniaIgual = false;
 
         // Obtiene los valores ingresados
         String nombre = nombreTxt.getText();
@@ -405,7 +401,7 @@ public class registroPacientePanel extends javax.swing.JPanel {
         }
 
         // Al final cuando el avatar ya ha sido seleccionado, se procede a continuar a la seleccion de la etapa
-        if (avatarSeleccionado && valid && correctoCampos && correcto && contraseniaIgual) {
+        if (valid && correctoCampos && correcto) {
             // Crea un usuario usando el constructor por parametros
             Paciente pacienteNuevo = new Paciente(cedula, nombre, apellido, sexo, nacimiento);
             if (registrarPacienteDataBase(pacienteNuevo)) {
@@ -413,11 +409,6 @@ public class registroPacientePanel extends javax.swing.JPanel {
                 vaciarCampos();
             } else {
                 System.out.println("error en registro");
-            }
-        } else {
-            // En caso de que el avatar no haya sido seleccionado
-            if (valid && correctoCampos && correcto && contraseniaIgual) {
-                JOptionPane.showMessageDialog(null, "Seleccione un avatar");
             }
         }
     }//GEN-LAST:event_registrarBtnActionPerformed
@@ -549,9 +540,10 @@ public class registroPacientePanel extends javax.swing.JPanel {
                 int mes = usuarioNuevo.getFechaNacimiento().getMes();
                 int anio = usuarioNuevo.getFechaNacimiento().getAnio();
 
-                String SQL = "INSERT INTO usuario (cedula, nombre, apellido, sexo, dianac, mesnac, anionac) VALUES ('" + cedula + "', '" + nombre + "', '" + apellido + "', '" + sexo + "', '" + dia + "', '" + mes + "', '" + anio + "')";
+                String SQL = "INSERT INTO paciente (cedula, nombre, apellido, sexo, dia, mes, anio) VALUES ('" + cedula + "', '" + nombre + "', '" + apellido + "', '" + sexo + "', '" + dia + "', '" + mes + "', '" + anio + "')";
                 PreparedStatement st = Main.getConnect().prepareStatement(SQL);
                 st.executeUpdate();
+                System.out.println("registrado");
                 return true;
 
             } catch (SQLException ex) {
@@ -574,6 +566,5 @@ public class registroPacientePanel extends javax.swing.JPanel {
         diaSpinner.setValue(1);
         anioSpinner.setValue(2000);
 
-        avatarSeleccionado = false;
     }
 }

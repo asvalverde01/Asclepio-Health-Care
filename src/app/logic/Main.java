@@ -295,9 +295,9 @@ public class Main {
                 nuevoPaciente.setApellido(rs.getString("apellido"));
                 nuevoPaciente.setSexo(rs.getString("sexo"));
 
-                nacimiento.setDia(rs.getInt("dianac"));
-                nacimiento.setMes(rs.getInt("mesnac"));
-                nacimiento.setAnio(rs.getInt("anionac"));
+                nacimiento.setDia(rs.getInt("dia"));
+                nacimiento.setMes(rs.getInt("mes"));
+                nacimiento.setAnio(rs.getInt("anio"));
                 nuevoPaciente.setFechaNacimiento(nacimiento);
 
                 // añade el paciente registrado a la lista
