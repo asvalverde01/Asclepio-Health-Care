@@ -4,7 +4,6 @@ import app.dataStruct.Lista;
 import app.dataStruct.ListaPacientes;
 import app.gui.inicio.InicioForm;
 import app.logic.users.Paciente;
-import app.logic.users.Usuario;
 
 import javax.swing.*;
 import java.awt.*;
@@ -92,7 +91,7 @@ public class Main {
             connect = DriverManager.getConnection(url);
             // Se crea la tabla con informacion de usuario
             // Guardar la cedula como ID 
-            System.out.println("creando");
+            
             String sql = "CREATE TABLE IF NOT EXISTS usuario (\n"
                     + "	usuario text,\n"
                     + "	contrasenia text,\n"
@@ -100,6 +99,7 @@ public class Main {
                     + "	cedula text,\n"
                     + "	nombre text,\n"
                     + "	apellido text,\n"
+                    + "	sexo text,\n"
                     + "	avatar integer,\n" // Avatar en GUI
                     + "	dianac integer,\n" // Dia de nacimiento
                     + "	mesnac integer,\n"
@@ -110,15 +110,15 @@ public class Main {
             PreparedStatement st = connect.prepareStatement(sql);
             st.execute();
             // Ingresa por defecto un usuario administrador
-            sql = "INSERT INTO usuario (usuario, contrasenia, rol, cedula, nombre, apellido, avatar, dianac, mesnac, anionac, especialidad, correo) VALUES ('admin', 'admin', 'Administrador', 'admin', 'admin', 'admin', 1, 1, 1, 1, 'admin', 'admin')";
+            sql = "INSERT INTO usuario (usuario, contrasenia, rol, cedula, nombre, apellido, sexo, avatar, dianac, mesnac, anionac, especialidad, correo) VALUES ('admin', 'admin', 'Administrador', 'admin', 'admin', 'admin' ,'admin', 1, 1, 1, 1, 'admin', 'admin')";
             st = Main.getConnect().prepareStatement(sql);
             st.executeUpdate();
 
             // Se crea la tabla con informacion de Paciente
             sql = "CREATE TABLE IF NOT EXISTS paciente (\n"
-                    + "	cedula integer,\n"
-                    + "	nombre text,\n"
+                    + "	nombre integer,\n"
                     + "	apellido text,\n"
+                    + "	cedula text,\n"
                     + "	sexo text,\n"
                     + "	dia integer,\n"
                     + "	mes text,\n"
@@ -126,6 +126,7 @@ public class Main {
                     + ");";
             st = connect.prepareStatement(sql);
             st.execute();
+            System.out.println("Base de datos creada con usuario administrador");
 
         } catch (HeadlessException | SQLException x) {
             JOptionPane.showMessageDialog(null, x.getMessage());
@@ -289,10 +290,10 @@ public class Main {
 
             while (rs.next()) {
                 Paciente nuevoPaciente = new Paciente();
-
-                nuevoPaciente.setCedula(rs.getString("cedula"));
+              
                 nuevoPaciente.setNombre(rs.getString("nombre"));
                 nuevoPaciente.setApellido(rs.getString("apellido"));
+                nuevoPaciente.setCedula(rs.getString("cedula"));
                 nuevoPaciente.setSexo(rs.getString("sexo"));
 
                 nacimiento.setDia(rs.getInt("dia"));
@@ -301,6 +302,7 @@ public class Main {
                 nuevoPaciente.setFechaNacimiento(nacimiento);
 
                 // añade el paciente registrado a la lista
+                
                 pacientesLista.agregar(nuevoPaciente);
             }
         } catch (HeadlessException | SQLException x) {

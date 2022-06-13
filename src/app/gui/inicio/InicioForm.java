@@ -263,6 +263,7 @@ public class InicioForm extends javax.swing.JFrame {
                 usuario.setCedula(rs.getString("cedula"));
                 usuario.setNombre(rs.getString("nombre"));
                 usuario.setApellido(rs.getString("apellido"));
+                usuario.setSexo(rs.getString("sexo"));
                 usuario.setAvatar(rs.getInt("avatar"));
 
                 nacimiento.setDia(rs.getInt("dianac"));

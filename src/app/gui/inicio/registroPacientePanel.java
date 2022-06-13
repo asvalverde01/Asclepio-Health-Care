@@ -406,6 +406,7 @@ public class registroPacientePanel extends javax.swing.JPanel {
             Paciente pacienteNuevo = new Paciente(cedula, nombre, apellido, sexo, nacimiento);
             if (registrarPacienteDataBase(pacienteNuevo)) {
                 JOptionPane.showMessageDialog(null, "Registrado correctamente");
+                MainScreen.listaPacientes = Main.obtenerPacientesDataBase();
                 vaciarCampos();
             } else {
                 System.out.println("error en registro");
@@ -540,7 +541,7 @@ public class registroPacientePanel extends javax.swing.JPanel {
                 int mes = usuarioNuevo.getFechaNacimiento().getMes();
                 int anio = usuarioNuevo.getFechaNacimiento().getAnio();
 
-                String SQL = "INSERT INTO paciente (cedula, nombre, apellido, sexo, dia, mes, anio) VALUES ('" + cedula + "', '" + nombre + "', '" + apellido + "', '" + sexo + "', '" + dia + "', '" + mes + "', '" + anio + "')";
+                String SQL = "INSERT INTO paciente (nombre, apellido, cedula, sexo, dia, mes, anio) VALUES ('" + nombre + "', '" + apellido + "', '" + cedula + "', '" + sexo + "', '" + dia + "', '" + mes + "', '" + anio + "')";
                 PreparedStatement st = Main.getConnect().prepareStatement(SQL);
                 st.executeUpdate();
                 System.out.println("registrado");

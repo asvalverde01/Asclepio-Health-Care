@@ -489,6 +489,7 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         String contraseniaRep = contraseniaRepTxt.getText();
         String especialidad = especialidadCombo.getSelectedItem().toString();
         String sexo = sexoCombo.getSelectedItem().toString();
+        System.out.println("sexo " + sexo);
 
         int dia = (Integer) diaSpinner.getValue();
         String mes = mesCombo.getSelectedItem().toString();
@@ -859,6 +860,7 @@ public class registroMedicoPanel extends javax.swing.JPanel {
                 String contrasenia = usuarioNuevo.getContrasenia();
                 String rol = usuarioNuevo.getRol();
                 String cedula = usuarioNuevo.getCedula();
+                String sexo = usuarioNuevo.getSexo();
 
                 String nombre = usuarioNuevo.getNombre();
                 String apellido = usuarioNuevo.getApellido();
@@ -868,7 +870,7 @@ public class registroMedicoPanel extends javax.swing.JPanel {
                 int mes = usuarioNuevo.getFechaNacimiento().getMes();
                 int anio = usuarioNuevo.getFechaNacimiento().getAnio();
 
-                String SQL = "INSERT INTO usuario (usuario, contrasenia, rol, cedula, nombre, apellido, avatar, dianac, mesnac, anionac) VALUES ('" + usuario + "', '" + contrasenia + "', '" + rol + "', '" + cedula + "', '" + nombre + "', '" + apellido + "', '" + avatar + "', '" + dia + "', '" + mes + "', '" + anio + "')";
+                String SQL = "INSERT INTO usuario (usuario, contrasenia, rol, cedula, nombre, apellido,  sexo, avatar, dianac, mesnac, anionac) VALUES ('" + usuario + "', '" + contrasenia + "', '" + rol + "', '" + cedula + "', '" + nombre + "', '" + apellido + "', '" + sexo + "', '" + avatar + "', '" + dia + "', '" + mes + "', '" + anio + "')";
                 PreparedStatement st = Main.getConnect().prepareStatement(SQL);
                 st.executeUpdate();
                 return true;

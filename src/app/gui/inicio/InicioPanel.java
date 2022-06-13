@@ -6,8 +6,8 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 /**
- *  Programa BrainUP
- *  InicioPanel permite entrar y registrar
+ * Programa BrainUP InicioPanel permite entrar y registrar
+ *
  * @author Valverde, Vinueza, Vintimilla
  */
 public class InicioPanel extends javax.swing.JPanel {
@@ -123,7 +123,7 @@ public class InicioPanel extends javax.swing.JPanel {
         edadLabel.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
         edadLabel.setForeground(new java.awt.Color(51, 51, 51));
         edadLabel.setText("Edad");
-        bg.add(edadLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, -1, -1));
+        bg.add(edadLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
 
         msg1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         msg1.setForeground(new java.awt.Color(51, 0, 102));
@@ -171,7 +171,13 @@ public class InicioPanel extends javax.swing.JPanel {
     public void setInformation() {
         // Intenta obtener el nombre
         try {
-            bienvenidaLabel.setText("Hola " + usuario.getNombre() + " :)");
+            String saludo = "Hola";
+            if (usuario.getSexo().equals("Femenino")) {
+                saludo = "Bienvenida Dra. ";
+            } else {
+                saludo = "Bienvenido Dr. ";
+            }
+            bienvenidaLabel.setText(saludo + usuario.getNombre());
         } catch (NullPointerException npe) {
             bienvenidaLabel.setText("Hola  usuario");
         } catch (Exception e) {
@@ -179,16 +185,16 @@ public class InicioPanel extends javax.swing.JPanel {
         }
         // Llena los datos de usuario en los labels
         try {
-            nombreLabel.setText("Tu nombre es " + usuario.getNombre());
-            apellidoLabel.setText("Tu apellido es " + usuario.getApellido());
+            nombreLabel.setText("Nombre " + usuario.getNombre());
+            apellidoLabel.setText("Apellido " + usuario.getApellido());
             // Direccion del avatar
             String direccion = "/imagen/icon/avatar/avatar" + usuario.getAvatar() + ".png";
             // Crea un objeto de icono 
             Icon icono = new ImageIcon(getClass().getResource(direccion));
             // Actializa el icono
             avatarLogo.setIcon(icono);
-            fechaNacLabel.setText("Naciste el " + usuario.getFechaNacimientoString());
-            edadLabel.setText("Tu edad es " + usuario.getEdad() + " años");
+            fechaNacLabel.setText("Nacimiento" + usuario.getFechaNacimientoString());
+            edadLabel.setText("Edad" + usuario.getEdad() + " años");
         } catch (NullPointerException npe) {
             bienvenidaLabel.setText("Problema al encontrar usuario");
         } catch (Exception ex) {
