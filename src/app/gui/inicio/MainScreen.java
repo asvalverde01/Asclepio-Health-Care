@@ -35,6 +35,7 @@ public final class MainScreen extends javax.swing.JFrame {
     }
 
     public static ListaPacientes getListaPacientes() {
+        MainScreen.listaPacientes = Main.obtenerPacientesDataBase();
         return listaPacientes;
     }
 

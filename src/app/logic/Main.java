@@ -91,7 +91,7 @@ public class Main {
             connect = DriverManager.getConnection(url);
             // Se crea la tabla con informacion de usuario
             // Guardar la cedula como ID 
-            
+
             String sql = "CREATE TABLE IF NOT EXISTS usuario (\n"
                     + "	usuario text,\n"
                     + "	contrasenia text,\n"
@@ -235,15 +235,15 @@ public class Main {
     public static boolean eliminarUsuarioDataBase(String cedula) {
         try {
             // Elimina el usuario
-            PreparedStatement st = Main.getConnect().prepareStatement("DELETE FROM usuario WHERE cedula = ?");
+            PreparedStatement st = Main.getConnect().prepareStatement("DELETE FROM paciente WHERE cedula = ?");
             st.setString(1, cedula);
             // Ejecuta la consulta SQL
             st.executeUpdate();
-            // Elimina las actividades del usuario
-            st = Main.getConnect().prepareStatement("DELETE FROM actividad WHERE id = ?");
-            st.setString(1, cedula);
+            // Elimina las -- del usuario
+            //st = Main.getConnect().prepareStatement("DELETE FROM tabla WHERE id = ?");
+            //st.setString(1, cedula);
             // Ejecuta la consulta SQL
-            st.executeUpdate();
+            // st.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -290,7 +290,7 @@ public class Main {
 
             while (rs.next()) {
                 Paciente nuevoPaciente = new Paciente();
-              
+
                 nuevoPaciente.setNombre(rs.getString("nombre"));
                 nuevoPaciente.setApellido(rs.getString("apellido"));
                 nuevoPaciente.setCedula(rs.getString("cedula"));
@@ -302,7 +302,6 @@ public class Main {
                 nuevoPaciente.setFechaNacimiento(nacimiento);
 
                 // añade el paciente registrado a la lista
-                
                 pacientesLista.agregar(nuevoPaciente);
             }
         } catch (HeadlessException | SQLException x) {

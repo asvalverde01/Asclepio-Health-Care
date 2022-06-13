@@ -20,6 +20,7 @@ public class Paciente {
     private String apellido;
     private String sexo;
     private Fecha fechaNacimiento;
+
     // Lista de fichas medicas (Almacena una lista con las fichas medicas)
     //private List<ResultadoActividad> listaFichas;
 
@@ -224,77 +225,29 @@ public class Paciente {
      * @param nuevo String nuevo valor a cambiar
      * @return Boolean true si se modifico correctamente false si no
      */
-    public boolean modificarInfoUsuario(String tipo, String nuevo) {
+    public boolean modificarInfoUsuario(String nombre, String apellido, Fecha nuevaFecha) {
         // Modifica el atributo seleccionado en la base de datos
         try {
             PreparedStatement st = null;
-            switch (tipo) {
-                case "Nombre": {
-                    st = Main.getConnect().prepareStatement("UPDATE paciente SET nombre = ? WHERE cedula = ?");
-                    st.setString(1, nuevo);
-                    st.setString(2, cedula);
-                    nombre = nuevo;
-                }
-                case "Apellido": {
-                    st = Main.getConnect().prepareStatement("UPDATE paciente SET apellido = ? WHERE cedula = ?");
-                    st.setString(1, nuevo);
-                    st.setString(2, cedula);
-                    apellido = nuevo;
-                }
-                case "Etapa": {
-                    // Verifica que el nuevo valor sea valido "Leve" , "Moderada" o "Avanzada"
-                    if (nuevo.equals("Leve") || nuevo.equals("Moderada") || nuevo.equals("Avanzada")) {
-                        int nuevoValor;
-                        switch (nuevo) {
-                            case "Moderada":
-                                nuevoValor = 1;
-                            case "Avanzada":
-                                nuevoValor = 2;
-                            default:
-                                nuevoValor = 0;
-                        };
-                        st = Main.getConnect().prepareStatement("UPDATE paciente SET etapa = ? WHERE cedula = ?");
-                        st.setInt(1, nuevoValor);
-                        st.setString(2, cedula);
-
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Ingrese solamente \"Leve\" - \"Moderada\" - \"Avanzada\"");
-                        return false;
-                    }
-                }
-                case "fecha": {
-                    //Separa el string si encuentra "/"
-                    String[] fecha = nuevo.split("/");
-                    // Asigna los valores de dia, mes y anio
-                    int dia = Integer.parseInt(fecha[0]);
-                    int mes = Integer.parseInt(fecha[1]);
-                    int anio = Integer.parseInt(fecha[2]);
-                    // Hace los cambios en el SQL
-                    st = Main.getConnect().prepareStatement("UPDATE paciente SET dianac = ?, mesnac = ?, anionac = ? WHERE cedula = ?");
-                    st.setInt(1, dia);
-                    st.setInt(2, mes);
-                    st.setInt(3, anio);
-                    st.setString(4, cedula);
-                    this.fechaNacimiento.setDia(dia);
-                    this.fechaNacimiento.setMes(mes);
-                    this.fechaNacimiento.setAnio(anio);
-                }
-            }
-            // Ejecuta la consulta
-            try {
-                assert st != null;
-                // Ejecuta la consulta SQL
-                st.executeUpdate();
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return false;
-        } catch (Exception ex) {
+            int dia = nuevaFecha.getDia();
+            int mes = nuevaFecha.getMes();
+            int anio = nuevaFecha.getAnio();
+            // Modifica en la base de datos el nombre, apellido, dia, mes, anio
+            st = Main.getConnect().prepareStatement("UPDATE paciente SET nombre = ?, apellido = ?, dia = ?, mes = ?, anio = ? WHERE cedula = ?");
+            st.setString(1, nombre);
+            st.setString(2, apellido);
+            st.setInt(3, dia);
+            st.setInt(4, mes);
+            st.setInt(5, anio);
+            st.setString(6, cedula);
+            st.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
             ex.printStackTrace();
+            return false;
+
         }
-        return true;
+
     }
 
     /**
