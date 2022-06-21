@@ -120,7 +120,7 @@ public final class MainScreen extends javax.swing.JFrame {
         content.add(iconImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 20, 100, 90));
 
         buscarMedicoButton.setBackground(new java.awt.Color(0, 204, 204));
-        buscarMedicoButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        buscarMedicoButton.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         buscarMedicoButton.setForeground(new java.awt.Color(51, 51, 51));
         buscarMedicoButton.setText("Buscar Médico");
         buscarMedicoButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -130,10 +130,10 @@ public final class MainScreen extends javax.swing.JFrame {
                 buscarMedicoButtonActionPerformed(evt);
             }
         });
-        content.add(buscarMedicoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 500, 240, 50));
+        content.add(buscarMedicoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 370, 240, 40));
 
         registrarMedicoButton.setBackground(new java.awt.Color(0, 204, 204));
-        registrarMedicoButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        registrarMedicoButton.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         registrarMedicoButton.setForeground(new java.awt.Color(51, 51, 51));
         registrarMedicoButton.setText("Registrar Médico");
         registrarMedicoButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -143,9 +143,10 @@ public final class MainScreen extends javax.swing.JFrame {
                 registrarMedicoButtonActionPerformed(evt);
             }
         });
-        content.add(registrarMedicoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 440, 240, 50));
+        content.add(registrarMedicoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 330, 240, 40));
 
         helpButton.setBackground(new java.awt.Color(173, 217, 216));
+        helpButton.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         helpButton.setForeground(new java.awt.Color(51, 51, 51));
         helpButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/chat_sms.png"))); // NOI18N
         helpButton.setText("Ayuda");
@@ -155,10 +156,10 @@ public final class MainScreen extends javax.swing.JFrame {
                 helpButtonActionPerformed(evt);
             }
         });
-        content.add(helpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 650, 240, 40));
+        content.add(helpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 470, 240, 40));
 
         homeButton1.setBackground(new java.awt.Color(42, 147, 213));
-        homeButton1.setFont(new java.awt.Font("Montserrat", 1, 25)); // NOI18N
+        homeButton1.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         homeButton1.setForeground(new java.awt.Color(255, 255, 255));
         homeButton1.setText("Inicio");
         homeButton1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -168,10 +169,10 @@ public final class MainScreen extends javax.swing.JFrame {
                 homeButton1ActionPerformed(evt);
             }
         });
-        content.add(homeButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 130, 240, 60));
+        content.add(homeButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 120, 240, 50));
 
         todoButton.setBackground(new java.awt.Color(55, 202, 236));
-        todoButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        todoButton.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         todoButton.setForeground(new java.awt.Color(51, 51, 51));
         todoButton.setText("TODO");
         todoButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -181,10 +182,10 @@ public final class MainScreen extends javax.swing.JFrame {
                 todoButtonActionPerformed(evt);
             }
         });
-        content.add(todoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 320, 240, 50));
+        content.add(todoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 270, 240, 40));
 
         statsButton.setBackground(new java.awt.Color(55, 202, 236));
-        statsButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        statsButton.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         statsButton.setForeground(new java.awt.Color(51, 51, 51));
         statsButton.setText("Buscar Paciente");
         statsButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -194,9 +195,10 @@ public final class MainScreen extends javax.swing.JFrame {
                 statsButtonActionPerformed(evt);
             }
         });
-        content.add(statsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 260, 240, 50));
+        content.add(statsButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 230, 240, 40));
 
         configButton.setBackground(new java.awt.Color(55, 202, 236));
+        configButton.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         configButton.setForeground(new java.awt.Color(51, 51, 51));
         configButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/settings_cog_gear_1.png"))); // NOI18N
         configButton.setText("Configurar");
@@ -206,22 +208,23 @@ public final class MainScreen extends javax.swing.JFrame {
                 configButtonActionPerformed(evt);
             }
         });
-        content.add(configButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 590, 240, 40));
+        content.add(configButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 420, 240, 40));
 
         javax.swing.GroupLayout contenidoLayout = new javax.swing.GroupLayout(contenido);
         contenido.setLayout(contenidoLayout);
         contenidoLayout.setHorizontalGroup(
             contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 870, Short.MAX_VALUE)
+            .addGap(0, 800, Short.MAX_VALUE)
         );
         contenidoLayout.setVerticalGroup(
             contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGap(0, 600, Short.MAX_VALUE)
         );
 
-        content.add(contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 870, 800));
+        content.add(contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 0, 800, 600));
 
         salirButton.setBackground(new java.awt.Color(255, 102, 102));
+        salirButton.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         salirButton.setForeground(new java.awt.Color(51, 51, 51));
         salirButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/settings_cog_gear_1.png"))); // NOI18N
         salirButton.setText("Salir");
@@ -231,9 +234,10 @@ public final class MainScreen extends javax.swing.JFrame {
                 salirButtonActionPerformed(evt);
             }
         });
-        content.add(salirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 760, 240, 30));
+        content.add(salirButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 560, 240, 30));
 
         logoutButton.setBackground(new java.awt.Color(255, 102, 102));
+        logoutButton.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         logoutButton.setForeground(new java.awt.Color(51, 51, 51));
         logoutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/settings_cog_gear_1.png"))); // NOI18N
         logoutButton.setText("Cerrar sesión");
@@ -243,10 +247,10 @@ public final class MainScreen extends javax.swing.JFrame {
                 logoutButtonActionPerformed(evt);
             }
         });
-        content.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 710, 240, 40));
+        content.add(logoutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 520, 240, 40));
 
         registrarPacienteButton.setBackground(new java.awt.Color(55, 202, 236));
-        registrarPacienteButton.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        registrarPacienteButton.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         registrarPacienteButton.setForeground(new java.awt.Color(51, 51, 51));
         registrarPacienteButton.setText("Registrar Paciente");
         registrarPacienteButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -256,21 +260,17 @@ public final class MainScreen extends javax.swing.JFrame {
                 registrarPacienteButtonActionPerformed(evt);
             }
         });
-        content.add(registrarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 200, 240, 50));
+        content.add(registrarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 190, 240, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, 1100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, 800, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(content, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();

@@ -112,13 +112,13 @@ public class buscarPacientePanel extends javax.swing.JPanel {
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 870, -1));
 
-        bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
+        bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
         bienvenidaLabel.setForeground(new java.awt.Color(102, 0, 153));
         bienvenidaLabel.setText("Búsqueda Paciente");
-        add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 110, -1, -1));
+        add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, -1, -1));
 
         jSeparator2.setBackground(new java.awt.Color(81, 3, 23));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 570, 20));
+        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, 570, 20));
 
         todosBtn.setBackground(new java.awt.Color(18, 84, 136));
         todosBtn.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -130,9 +130,8 @@ public class buscarPacientePanel extends javax.swing.JPanel {
                 todosBtnActionPerformed(evt);
             }
         });
-        add(todosBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 220, 40));
+        add(todosBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 170, -1));
 
-        lstResultados.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         lstResultados.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
             public int getSize() { return strings.length; }
@@ -140,7 +139,7 @@ public class buscarPacientePanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(lstResultados);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, 750, 270));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 730, 150));
 
         cedulaTxt.setBackground(new java.awt.Color(102, 102, 102));
         cedulaTxt.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -154,16 +153,16 @@ public class buscarPacientePanel extends javax.swing.JPanel {
                 cedulaTxtActionPerformed(evt);
             }
         });
-        add(cedulaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 130, 40));
+        add(cedulaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 140, -1));
 
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 130, 10));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 140, 10));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 51, 51));
         jLabel9.setText("Ingrese la cédula del paciente a buscar");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
 
         buscarPacienteButton.setBackground(new java.awt.Color(18, 84, 136));
         buscarPacienteButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
@@ -175,22 +174,22 @@ public class buscarPacientePanel extends javax.swing.JPanel {
                 buscarPacienteButtonActionPerformed(evt);
             }
         });
-        add(buscarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 200, 220, 50));
+        add(buscarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, 200, 30));
 
-        nombreLabel.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
+        nombreLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         nombreLabel.setForeground(new java.awt.Color(51, 51, 51));
         nombreLabel.setText("nombre");
-        add(nombreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 350, -1, -1));
+        add(nombreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, -1, -1));
 
-        apellidoLabel.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
+        apellidoLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         apellidoLabel.setForeground(new java.awt.Color(51, 51, 51));
         apellidoLabel.setText("apellido");
-        add(apellidoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 350, -1, -1));
+        add(apellidoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, -1, -1));
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Encontrado:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 350, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
 
         eliminarPacienteButton.setBackground(new java.awt.Color(255, 102, 102));
         eliminarPacienteButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -201,7 +200,7 @@ public class buscarPacientePanel extends javax.swing.JPanel {
                 eliminarPacienteButtonActionPerformed(evt);
             }
         });
-        add(eliminarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 410, 230, 60));
+        add(eliminarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 360, 210, -1));
 
         modificarPacienteButton.setBackground(new java.awt.Color(0, 204, 204));
         modificarPacienteButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -212,12 +211,12 @@ public class buscarPacientePanel extends javax.swing.JPanel {
                 modificarPacienteButtonActionPerformed(evt);
             }
         });
-        add(modificarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 410, 230, 60));
+        add(modificarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 210, -1));
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 51, 51));
         jLabel10.setText("Ingrese la cédula del doctor a cargo");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
 
         cedulaTxt1.setBackground(new java.awt.Color(102, 102, 102));
         cedulaTxt1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -231,11 +230,11 @@ public class buscarPacientePanel extends javax.swing.JPanel {
                 cedulaTxt1ActionPerformed(evt);
             }
         });
-        add(cedulaTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 130, 40));
+        add(cedulaTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 140, -1));
 
         jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 300, 130, 10));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 250, 140, 10));
 
         buscarPacienteButton1.setBackground(new java.awt.Color(18, 84, 136));
         buscarPacienteButton1.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
@@ -247,12 +246,12 @@ public class buscarPacientePanel extends javax.swing.JPanel {
                 buscarPacienteButton1ActionPerformed(evt);
             }
         });
-        add(buscarPacienteButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 260, 220, 50));
+        add(buscarPacienteButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, 200, 30));
 
         fondo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         fondo.setForeground(new java.awt.Color(51, 51, 51));
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
-        add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 800));
+        add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
         edadLabel.setFont(new java.awt.Font("Roboto", 1, 28)); // NOI18N
         edadLabel.setForeground(new java.awt.Color(51, 51, 51));

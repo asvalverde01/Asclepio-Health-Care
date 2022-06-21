@@ -95,7 +95,7 @@ public class InicioPanel extends javax.swing.JPanel {
 
         bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 870, 60));
 
-        bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
+        bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
         bienvenidaLabel.setForeground(new java.awt.Color(102, 0, 153));
         bienvenidaLabel.setText("Bienvenido :)");
         bg.add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));
@@ -104,7 +104,7 @@ public class InicioPanel extends javax.swing.JPanel {
         text1Label.setForeground(new java.awt.Color(0, 51, 204));
         text1Label.setText("Perfil");
         text1Label.setToolTipText("");
-        bg.add(text1Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
+        bg.add(text1Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
 
         nombreLabel.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
         nombreLabel.setForeground(new java.awt.Color(51, 51, 51));
@@ -125,20 +125,20 @@ public class InicioPanel extends javax.swing.JPanel {
         adminTxt.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         adminTxt.setForeground(new java.awt.Color(51, 0, 102));
         adminTxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/corporate_profile.png"))); // NOI18N
-        bg.add(adminTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 320, -1, -1));
+        bg.add(adminTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 440, 420));
 
         msg2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         msg2.setForeground(new java.awt.Color(0, 0, 102));
         bg.add(msg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 80, 30));
 
         jSeparator1.setBackground(new java.awt.Color(81, 3, 23));
-        bg.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 750, 20));
-        bg.add(avatarLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 70, 70));
+        bg.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 750, 20));
+        bg.add(avatarLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 70, 70));
 
         fondo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         fondo.setForeground(new java.awt.Color(51, 51, 51));
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
-        bg.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 800));
+        bg.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 690));
 
         add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 800));
     }// </editor-fold>//GEN-END:initComponents

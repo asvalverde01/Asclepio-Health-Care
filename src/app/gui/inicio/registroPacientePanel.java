@@ -100,6 +100,7 @@ public class registroPacientePanel extends javax.swing.JPanel {
         sexoCombo = new javax.swing.JComboBox<>();
         fondo = new javax.swing.JLabel();
 
+        setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(870, 800));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -132,10 +133,10 @@ public class registroPacientePanel extends javax.swing.JPanel {
 
         bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 870, 60));
 
-        bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
+        bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
         bienvenidaLabel.setForeground(new java.awt.Color(102, 0, 153));
         bienvenidaLabel.setText("Registrar un paciente");
-        bg.add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, -1, -1));
+        bg.add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 110, -1, -1));
 
         msg2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         msg2.setForeground(new java.awt.Color(0, 0, 102));
@@ -154,11 +155,11 @@ public class registroPacientePanel extends javax.swing.JPanel {
                 nombreTxtActionPerformed(evt);
             }
         });
-        bg.add(nombreTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 340, 30));
+        bg.add(nombreTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 250, 30));
 
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-        bg.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 340, 10));
+        bg.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 250, 10));
 
         apellidoTxt.setBackground(new java.awt.Color(102, 102, 102));
         apellidoTxt.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -172,7 +173,7 @@ public class registroPacientePanel extends javax.swing.JPanel {
                 apellidoTxtActionPerformed(evt);
             }
         });
-        bg.add(apellidoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 220, 340, 30));
+        bg.add(apellidoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 220, 250, 30));
 
         jLabel12.setBackground(new java.awt.Color(51, 51, 51));
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -189,7 +190,7 @@ public class registroPacientePanel extends javax.swing.JPanel {
         bg.add(diaSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, 90, 30));
 
         jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
-        bg.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 160, 460, 20));
+        bg.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 460, 20));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 51, 51));
@@ -220,11 +221,11 @@ public class registroPacientePanel extends javax.swing.JPanel {
                 cedulaTxtActionPerformed(evt);
             }
         });
-        bg.add(cedulaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 340, 30));
+        bg.add(cedulaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, 250, 30));
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        bg.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 340, 10));
+        bg.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 250, 10));
 
         registrarBtn.setBackground(new java.awt.Color(18, 84, 136));
         registrarBtn.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -236,11 +237,11 @@ public class registroPacientePanel extends javax.swing.JPanel {
                 registrarBtnActionPerformed(evt);
             }
         });
-        bg.add(registrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 480, 220, 40));
+        bg.add(registrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 480, 220, 40));
 
         jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
-        bg.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 340, 10));
+        bg.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 250, 250, 10));
 
         jLabel11.setBackground(new java.awt.Color(51, 51, 51));
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -279,7 +280,7 @@ public class registroPacientePanel extends javax.swing.JPanel {
         fondo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         fondo.setForeground(new java.awt.Color(51, 51, 51));
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
-        bg.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 800));
+        bg.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
         add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 800));
     }// </editor-fold>//GEN-END:initComponents
@@ -348,11 +349,11 @@ public class registroPacientePanel extends javax.swing.JPanel {
         // Verifica que la cedula sea valida solamente si los campos anteriormente se validaron
         if (valid) {
             valid = validarCedula(cedula);
-            if (validarCedulaUnica(cedula)) {
+            if (validarCedulaUnica(cedula) && valid) {
                 valid = true;
             } else {
                 valid = false;
-                JOptionPane.showMessageDialog(null, "Paciente ya registrado");
+                JOptionPane.showMessageDialog(null, "Paciente ya registrado o  formato de cédula inválido");
                 //vaciarCampos();
             }
         }
