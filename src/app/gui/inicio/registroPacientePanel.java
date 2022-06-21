@@ -400,7 +400,7 @@ public class registroPacientePanel extends javax.swing.JPanel {
         // Al final cuando el avatar ya ha sido seleccionado, se procede a continuar a la seleccion de la etapa
         if (valid && correctoCampos && correcto) {
             // Crea un usuario usando el constructor por parametros
-            Paciente pacienteNuevo = new Paciente(cedula, nombre, apellido, sexo, nacimiento);
+            Paciente pacienteNuevo = new Paciente(cedula, nombre, apellido, sexo, nacimiento, MainScreen.getUserID());
             if (registrarPacienteDataBase(pacienteNuevo)) {
                 JOptionPane.showMessageDialog(null, "Registrado correctamente");
                 MainScreen.listaPacientes = Main.obtenerPacientesDataBase();
@@ -537,8 +537,10 @@ public class registroPacientePanel extends javax.swing.JPanel {
                 int dia = usuarioNuevo.getFechaNacimiento().getDia();
                 int mes = usuarioNuevo.getFechaNacimiento().getMes();
                 int anio = usuarioNuevo.getFechaNacimiento().getAnio();
+                
+                String idMedico = usuarioNuevo.getIdMedicoResponsable();
 
-                String SQL = "INSERT INTO paciente (nombre, apellido, cedula, sexo, dia, mes, anio) VALUES ('" + nombre + "', '" + apellido + "', '" + cedula + "', '" + sexo + "', '" + dia + "', '" + mes + "', '" + anio + "')";
+                String SQL = "INSERT INTO paciente (nombre, apellido, cedula, sexo, dia, mes, anio, idResponsable) VALUES ('" + nombre + "', '" + apellido + "', '" + cedula + "', '" + sexo + "', '" + dia + "', '" + mes + "', '" + anio + "', '" + idMedico + "')";
                 PreparedStatement st = Main.getConnect().prepareStatement(SQL);
                 st.executeUpdate();
                 System.out.println("registrado");

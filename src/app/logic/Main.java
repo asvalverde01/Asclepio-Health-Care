@@ -3,6 +3,7 @@ package app.logic;
 import app.dataStruct.Lista;
 import app.dataStruct.ListaPacientes;
 import app.gui.inicio.InicioForm;
+import app.gui.inicio.MainScreen;
 import app.logic.users.Paciente;
 
 import javax.swing.*;
@@ -122,7 +123,8 @@ public class Main {
                     + "	sexo text,\n"
                     + "	dia integer,\n"
                     + "	mes text,\n"
-                    + "	anio integer\n"
+                    + "	anio integer,\n"
+                    + "	idResponsable text\n"
                     + ");";
             st = connect.prepareStatement(sql);
             st.execute();
@@ -299,7 +301,10 @@ public class Main {
                 nacimiento.setDia(rs.getInt("dia"));
                 nacimiento.setMes(rs.getInt("mes"));
                 nacimiento.setAnio(rs.getInt("anio"));
+                
                 nuevoPaciente.setFechaNacimiento(nacimiento);
+                nuevoPaciente.setIdMedicoResponsable(rs.getString("idResponsable"));
+
 
                 // añade el paciente registrado a la lista
                 pacientesLista.agregar(nuevoPaciente);

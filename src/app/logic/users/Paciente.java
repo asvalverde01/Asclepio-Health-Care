@@ -2,7 +2,6 @@ package app.logic.users;
 
 import app.logic.Fecha;
 import app.logic.Main;
-import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -20,6 +19,7 @@ public class Paciente {
     private String apellido;
     private String sexo;
     private Fecha fechaNacimiento;
+    private String idMedicoResponsable;
 
     // Lista de fichas medicas (Almacena una lista con las fichas medicas)
     //private List<ResultadoActividad> listaFichas;
@@ -41,13 +41,15 @@ public class Paciente {
      * @param apellido String
      * @param sexo String
      * @param fechaNacimiento Fecha
+     * @param idMedicoResponsable String
      */
-    public Paciente(String cedula, String nombre, String apellido, String sexo, Fecha fechaNacimiento) {
+    public Paciente(String cedula, String nombre, String apellido, String sexo, Fecha fechaNacimiento, String idMedicoResponsable) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellido = apellido;
         this.sexo = sexo;
         this.fechaNacimiento = fechaNacimiento;
+        this.idMedicoResponsable = idMedicoResponsable;
     }
 
     /*-------------------------------------------------------------
@@ -161,6 +163,16 @@ public class Paciente {
     public int getEdad() {
         return fechaNacimiento.diferenciaEntreFechas(fechaNacimiento);
     }
+
+    public String getIdMedicoResponsable() {
+        return idMedicoResponsable;
+    }
+
+    public void setIdMedicoResponsable(String idMedicoResponsable) {
+        this.idMedicoResponsable = idMedicoResponsable;
+    }
+    
+    
 
     /**
      * Recibe el tipo de argumento por el cual se quieren filtrar las búsquedas

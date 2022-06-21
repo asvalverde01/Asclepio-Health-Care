@@ -34,6 +34,14 @@ public final class MainScreen extends javax.swing.JFrame {
         this.usuario = usuario;
     }
 
+    public static String getUserID() {
+        return userID;
+    }
+
+    public static void setUserID(String userID) {
+        MainScreen.userID = userID;
+    }
+
     public static ListaPacientes getListaPacientes() {
         MainScreen.listaPacientes = Main.obtenerPacientesDataBase();
         return listaPacientes;
@@ -50,6 +58,7 @@ public final class MainScreen extends javax.swing.JFrame {
      */
     public MainScreen(Usuario usuario) {
         MainScreen.usuario = usuario;
+        MainScreen.userID = usuario.getCedula();
         MainScreen.listaPacientes = Main.obtenerPacientesDataBase();
         initComponents();
         // Por defecto
@@ -64,8 +73,6 @@ public final class MainScreen extends javax.swing.JFrame {
             registrarPacienteButton.setVisible(false);
             content.setBackground(new java.awt.Color(245, 245, 245));
         }
-        
-
 
         // Inicializa los paneles
         inicializarPaneles(usuario);

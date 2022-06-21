@@ -1,6 +1,5 @@
 package app.gui.inicio;
 
-import app.gui.paciente.*;
 import app.gui.inicio.MainScreen;
 import app.logic.Fecha;
 import app.logic.Main;
