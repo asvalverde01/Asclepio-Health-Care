@@ -26,7 +26,7 @@ public final class MainScreen extends javax.swing.JFrame {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public Usuario getUsuario() {
+    public static Usuario getUsuario() {
         return usuario;
     }
 

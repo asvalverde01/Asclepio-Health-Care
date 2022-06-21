@@ -426,11 +426,11 @@ public class registroMedicoPanel extends javax.swing.JPanel {
 
         contraseniaRepTxt.setBackground(new java.awt.Color(102, 102, 102));
         contraseniaRepTxt.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        bg.add(contraseniaRepTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 360, 340, 40));
+        bg.add(contraseniaRepTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 360, 340, 30));
 
         contraseniaTxt.setBackground(new java.awt.Color(102, 102, 102));
         contraseniaTxt.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        bg.add(contraseniaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 340, 40));
+        bg.add(contraseniaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 340, 30));
 
         jLabel15.setBackground(new java.awt.Color(51, 51, 51));
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N

@@ -30,10 +30,11 @@ public class InicioPanel extends javax.swing.JPanel {
         this.usuario = usuario;
         // Método el cual muestra la información el usuairo en los labels del panel
         setInformation();
+        adminTxt.setVisible(false);
 
         // Si la etapa es 2(avanzada) entonces se muestra un mensaje
         if (usuario.getRol().equals("Administrador")) {
-            msg1.setText("TODO");
+            adminTxt.setVisible(true);
             msg2.setText("TODO");
         }
     }
@@ -56,7 +57,7 @@ public class InicioPanel extends javax.swing.JPanel {
         apellidoLabel = new javax.swing.JLabel();
         fechaNacLabel = new javax.swing.JLabel();
         edadLabel = new javax.swing.JLabel();
-        msg1 = new javax.swing.JLabel();
+        adminTxt = new javax.swing.JLabel();
         msg2 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         avatarLogo = new javax.swing.JLabel();
@@ -107,32 +108,28 @@ public class InicioPanel extends javax.swing.JPanel {
 
         nombreLabel.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
         nombreLabel.setForeground(new java.awt.Color(51, 51, 51));
-        nombreLabel.setText("nombre");
         bg.add(nombreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
 
         apellidoLabel.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
         apellidoLabel.setForeground(new java.awt.Color(51, 51, 51));
-        apellidoLabel.setText("apellido");
         bg.add(apellidoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 260, -1, -1));
 
         fechaNacLabel.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
         fechaNacLabel.setForeground(new java.awt.Color(51, 51, 51));
-        fechaNacLabel.setText("Nacimiento");
         bg.add(fechaNacLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
 
         edadLabel.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
         edadLabel.setForeground(new java.awt.Color(51, 51, 51));
-        edadLabel.setText("Edad");
         bg.add(edadLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
 
-        msg1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        msg1.setForeground(new java.awt.Color(51, 0, 102));
-        msg1.setText("TODO");
-        bg.add(msg1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 480, -1, -1));
+        adminTxt.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        adminTxt.setForeground(new java.awt.Color(51, 0, 102));
+        adminTxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/corporate_profile.png"))); // NOI18N
+        bg.add(adminTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 320, -1, -1));
 
         msg2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         msg2.setForeground(new java.awt.Color(0, 0, 102));
-        bg.add(msg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 520, -1, -1));
+        bg.add(msg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 80, 30));
 
         jSeparator1.setBackground(new java.awt.Color(81, 3, 23));
         bg.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 750, 20));
@@ -148,6 +145,7 @@ public class InicioPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel adminTxt;
     private javax.swing.JLabel apellidoLabel;
     private javax.swing.JLabel avatarLogo;
     private javax.swing.JPanel bg;
@@ -158,7 +156,6 @@ public class InicioPanel extends javax.swing.JPanel {
     private javax.swing.JLabel fondo;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel msg1;
     private javax.swing.JLabel msg2;
     private javax.swing.JLabel nombreLabel;
     private javax.swing.JLabel text1Label;
@@ -177,9 +174,10 @@ public class InicioPanel extends javax.swing.JPanel {
             } else {
                 saludo = "Bienvenido Dr. ";
             }
-            
+
             if (usuario.getRol().equals("Administrador")) {
-                saludo = "Consola Administrativa";
+                saludo = "Consola Administrativa - ";
+                text1Label.setText("Dashboard");
             }
             bienvenidaLabel.setText(saludo + usuario.getNombre());
         } catch (NullPointerException npe) {
@@ -188,21 +186,26 @@ public class InicioPanel extends javax.swing.JPanel {
             bienvenidaLabel.setText("Problema al encontrar usuario");
         }
         // Llena los datos de usuario en los labels
-        try {
-            nombreLabel.setText("Nombre " + usuario.getNombre());
-            apellidoLabel.setText("Apellido " + usuario.getApellido());
-            // Direccion del avatar
-            String direccion = "/imagen/icon/avatar/avatar" + usuario.getAvatar() + ".png";
-            // Crea un objeto de icono 
-            Icon icono = new ImageIcon(getClass().getResource(direccion));
-            // Actializa el icono
-            avatarLogo.setIcon(icono);
-            fechaNacLabel.setText("Nacimiento" + usuario.getFechaNacimientoString());
-            edadLabel.setText("Edad" + usuario.getEdad() + " años");
-        } catch (NullPointerException npe) {
-            bienvenidaLabel.setText("Problema al encontrar usuario");
-        } catch (Exception ex) {
-            System.out.println("Error en InicioPanel al leer los datos del usuario");
+        if (usuario.getRol().equals("Medico")) {
+            try {
+                text1Label.setText("Perfil médico");
+                nombreLabel.setText("Nombre " + usuario.getNombre());
+                apellidoLabel.setText("Apellido " + usuario.getApellido());
+                // Direccion del avatar
+                String direccion = "/imagen/icon/avatar/avatar" + usuario.getAvatar() + ".png";
+                // Crea un objeto de icono 
+                Icon icono = new ImageIcon(getClass().getResource(direccion));
+                // Actializa el icono
+                avatarLogo.setIcon(icono);
+                fechaNacLabel.setText("Nacimiento" + usuario.getFechaNacimientoString());
+                // TODO
+                edadLabel.setText("Edad" +"" + " años");
+            } catch (NullPointerException npe) {
+                bienvenidaLabel.setText("Problema al encontrar usuario");
+            } catch (Exception ex) {
+                System.out.println("Error en InicioPanel al leer los datos del usuario");
+            }
         }
     }
+
 }

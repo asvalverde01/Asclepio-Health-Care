@@ -271,7 +271,7 @@ public class Usuario {
                     }
                 }
                  */
-                
+
                 case "fecha": {
                     //Separa el string si encuentra "/"
                     String[] fecha = nuevo.split("/");
@@ -307,9 +307,45 @@ public class Usuario {
         return true;
     }
 
+    /**
+     * Metodo que permite modificar un atributo del paciente
+     *
+     * @param tipo String tipo de atributo
+     * @param nuevo String nuevo valor a cambiar
+     * @return Boolean true si se modifico correctamente false si no
+     */
+    public boolean modificarInfoUsuario(String nombre, String apellido, Fecha nuevaFecha) {
+        // Modifica el atributo seleccionado en la base de datos
+        try {
+            PreparedStatement st = null;
+            int dia = nuevaFecha.getDia();
+            int mes = nuevaFecha.getMes();
+            int anio = nuevaFecha.getAnio();
+            // Modifica en la base de datos el nombre, apellido, dia, mes, anio
+            st = Main.getConnect().prepareStatement("UPDATE usuario SET nombre = ?, apellido = ?, dianac = ?, mesnac = ?, anionac = ? WHERE cedula = ?");
+            st.setString(1, nombre);
+            st.setString(2, apellido);
+            st.setInt(3, dia);
+            st.setInt(4, mes);
+            st.setInt(5, anio);
+            st.setString(6, cedula);
+            st.executeUpdate();
+            
+            // Cambia en objeto
+            setNombre(nombre);
+            setApellido(apellido);
+            setFechaNacimiento(nuevaFecha);
+            return true;
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        
+    }
+
     @Override
     public String toString() {
-        return "Usuario{" + "usuario=" + usuario + ", nombre=" + nombre + ", apellido=" + apellido + ", rol=" + rol + ", cedula=" + cedula + ", avatar=" + avatar + ", sexo=" + sexo + ", fechaNacimiento=" + fechaNacimiento + '}';
+        return cedula + "      " + nombre + "       " + apellido + "          " + "       " + rol + "          ";
     }
 
     /**
@@ -317,6 +353,4 @@ public class Usuario {
      *
      * @return String info listaFichas
      */
-    
-
 }

@@ -171,8 +171,6 @@ public class Paciente {
     public void setIdMedicoResponsable(String idMedicoResponsable) {
         this.idMedicoResponsable = idMedicoResponsable;
     }
-    
-    
 
     /**
      * Recibe el tipo de argumento por el cual se quieren filtrar las búsquedas
@@ -269,6 +267,6 @@ public class Paciente {
      */
     @Override
     public String toString() {
-        return cedula + "      " + nombre + "       " + apellido + "          " + getEdad();
+        return cedula + "      " + nombre + "       " + apellido;
     }
 }

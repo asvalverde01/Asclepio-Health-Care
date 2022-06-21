@@ -54,6 +54,7 @@ public class InicioForm extends javax.swing.JFrame {
         entrarButton = new javax.swing.JButton();
         usuarioTxt = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         jSeparator4 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         mensaje1 = new javax.swing.JLabel();
@@ -83,10 +84,10 @@ public class InicioForm extends javax.swing.JFrame {
                 entrarButtonActionPerformed(evt);
             }
         });
-        getContentPane().add(entrarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(780, 480, 340, 50));
+        getContentPane().add(entrarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 480, 240, 50));
 
         usuarioTxt.setBackground(new java.awt.Color(204, 204, 204));
-        usuarioTxt.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        usuarioTxt.setFont(new java.awt.Font("Dialog", 0, 22)); // NOI18N
         usuarioTxt.setForeground(new java.awt.Color(51, 51, 51));
         usuarioTxt.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         usuarioTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
@@ -102,7 +103,12 @@ public class InicioForm extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 60)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Asclepio - Health Care");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 50, -1, 70));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 50, -1, 70));
+
+        jLabel7.setFont(new java.awt.Font("Roboto", 1, 62)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(18, 84, 136));
+        jLabel7.setText("Asclepio");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(647, 50, 310, -1));
 
         jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
         getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 380, 280, 20));
@@ -110,20 +116,21 @@ public class InicioForm extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Usuario");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 340, -1, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 350, -1, 30));
 
         mensaje1.setFont(new java.awt.Font("Dialog", 1, 32)); // NOI18N
         mensaje1.setForeground(new java.awt.Color(0, 0, 0));
+        mensaje1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/userSmall.png"))); // NOI18N
         mensaje1.setText("Iniciar sesión");
-        getContentPane().add(mensaje1, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 250, 230, 40));
+        getContentPane().add(mensaje1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 230, 320, 80));
 
         jLabel6.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Contraseña");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 390, -1, 30));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 400, -1, 30));
 
         contraseniaTxt.setBackground(new java.awt.Color(204, 204, 204));
-        contraseniaTxt.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        contraseniaTxt.setFont(new java.awt.Font("Dialog", 0, 22)); // NOI18N
         contraseniaTxt.setForeground(new java.awt.Color(51, 51, 51));
         contraseniaTxt.setBorder(javax.swing.BorderFactory.createCompoundBorder());
         contraseniaTxt.addActionListener(new java.awt.event.ActionListener() {
@@ -139,7 +146,7 @@ public class InicioForm extends javax.swing.JFrame {
         getContentPane().add(contraseniaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 390, 280, 40));
 
         jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 290, 430, 20));
+        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 280, 200, 20));
 
         jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
         getContentPane().add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 430, 280, 20));
@@ -290,6 +297,7 @@ public class InicioForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;

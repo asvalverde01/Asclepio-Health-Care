@@ -3,7 +3,6 @@ package app.logic;
 import app.dataStruct.Lista;
 import app.dataStruct.ListaPacientes;
 import app.gui.inicio.InicioForm;
-import app.gui.inicio.MainScreen;
 import app.logic.users.Paciente;
 
 import javax.swing.*;
@@ -153,81 +152,7 @@ public class Main {
         return true;
     }
 
-    /**
-     * Saca de la base de datos todas las fichas
-     *
-     * @param cedulaUsuario String con la cedula del usuario
-     * @return listaResultado
-     *
-     * public static List<Formulario> obtenerFormularioDataBase(String
-     * cedulaUsuario) { List<Formulario> listaResultado = new ArrayList<>();
-     * PreparedStatement st = null;
-     *
-     * // Intenta sacar todos los resultados de la base de datos try { st =
-     * Main.getConnect().prepareStatement("SELECT * FROM actividad WHERE id =
-     * ?"); st.setString(1, cedulaUsuario); } catch (SQLException e) {
-     * e.printStackTrace(); } catch (Exception ex) { ex.printStackTrace(); }
-     *
-     * // Mientras hayan filas en la tabla rs try { // Ejecuta la orden y la
-     * guarda en modo de tabla ResultSet rs = null; assert st != null; rs =
-     * st.executeQuery(); while (rs.next()) { String cedulaRe =
-     * rs.getString("id"); String nombreRe = rs.getString("nombre"); int
-     * aciertos = rs.getInt("aciertos"); String etapaRe = rs.getString("etapa");
-     * int segundos = rs.getInt("segundos"); int dia = rs.getInt("dia"); String
-     * mes = rs.getString("mes"); int anio = rs.getInt("anio"); //Crea un objeto
-     * de tipo Fecha Fecha fecha = new Fecha(dia, 0, anio);
-     * fecha.setMesString(mes); //Crea un objeto de tipo Formulario Formulario
-     * resultadoActividad = new Formulario(cedulaRe, nombreRe, aciertos, fecha,
-     * etapaRe, segundos); //Agrega el objeto a la lista
-     * listaResultado.add(resultadoActividad); } } catch (SQLException e) {
-     * e.printStackTrace(); } // regresa la lista de resultados con los valores
-     * de la búsqueda return listaResultado; }
-     *
-     */
-
-    /*-------------------------------------------------------------
-    /Métodos  utsados con la clase Formulario
-    /-------------------------------------------------------------*/
-    /**
-     * Registra el resultado de la actividad en la base de datos
-     *
-     * @param resultado
-     */
-    /*
-    public static void registrarDataBase(Formulario resultado) {
-        // Guarda los atributos en la tabla actividad en la base de datos
-        if (conectado) {
-            // En la tabla actividad de la base de datos registra los datos
-            try {
-                // Fecha en la cual se realiza la actividad
-                int dia = resultado.getFecha().getDia();
-                String mes = resultado.getFecha().getMesString();
-                int anio = resultado.getFecha().getAnio();
-
-                // Orden SQL para guardar los datos
-                String SQL = "INSERT INTO actividad (id, nombre, aciertos, etapa, segundos, dia, mes, anio) VALUES";
-                // Appends to SQL
-                SQL = SQL + " ('" + resultado.getId() + "','" + resultado.getNombre() + "', '" + resultado.getAciertos() + "', '" + resultado.getEtapa() + "', '" + resultado.getSegundos() + "' , '" + dia + "', '" + mes + "', '" + anio + "')";
-                // Prepara el objeto de orden SQL
-                PreparedStatement st = Main.getConnect().prepareStatement(SQL);
-                // Ejecuta la orden SQL
-                st.executeUpdate();
-                // regresa true si se registro correctamente
-            } catch (SQLException ex) {
-                JOptionPane.showMessageDialog(null, "Error, intente nuevamente");
-                // Imprime el error en consola
-                ex.printStackTrace();
-            } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null, "Error, intente nuevamente");
-                // Imprime el error en consola
-                ex.printStackTrace();
-            }
-        } else {
-            // Si no se conecta a la base de datos
-            JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos");
-        }
-    }
-     */
+     
     /**
      * Metodo que elimina el usuario de la base de datos
      *
@@ -285,6 +210,7 @@ public class Main {
         ListaPacientes pacientesLista = new ListaPacientes();
         Fecha nacimiento = new Fecha();
         // Se obtiene la informacion de la tabla usuario en base de datos
+        //String medicoActual = MainScreen.getUserID();
         try {
             String sql = "SELECT * FROM paciente";
             PreparedStatement st = connect.prepareStatement(sql);

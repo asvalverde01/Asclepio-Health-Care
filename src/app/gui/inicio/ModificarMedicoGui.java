@@ -3,29 +3,29 @@ package app.gui.inicio;
 import app.gui.inicio.MainScreen;
 import app.logic.Fecha;
 import app.logic.Main;
-import app.logic.users.Paciente;
+import app.logic.users.Usuario;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 public class ModificarMedicoGui extends javax.swing.JFrame {
-    
-    Paciente pacienteModificar;
-    
-    public ModificarMedicoGui(Paciente paciente) {
+
+    Usuario medicoModificar;
+
+    public ModificarMedicoGui(Usuario medico) {
         initComponents();
-        this.pacienteModificar = paciente;
-        diaSpinner.setValue(paciente.getFechaNacimiento().getDia());
-        anioSpinner.setValue(paciente.getFechaNacimiento().getAnio());
+        this.medicoModificar = medico;
+        diaSpinner.setValue(medico.getFechaNacimiento().getDia());
+        anioSpinner.setValue(medico.getFechaNacimiento().getAnio());
         int indice;
-        if (paciente.getSexo().equals("Femenino")) {
+        if (medico.getSexo().equals("Femenino")) {
             indice = 0;
         } else {
             indice = 1;
         }
         sexoCombo.setSelectedIndex(indice);
-        nombreTxt.setText(paciente.getNombre());
-        apellidoTxt.setText(paciente.getApellido());
+        nombreTxt.setText(medico.getNombre());
+        apellidoTxt.setText(medico.getApellido());
 
         // Permite solamente ingresar letras en el text field
         nombreTxt.addKeyListener(new KeyAdapter() {
@@ -51,7 +51,7 @@ public class ModificarMedicoGui extends javax.swing.JFrame {
         }
         );
     }
-    
+
     private ModificarMedicoGui() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
@@ -81,9 +81,14 @@ public class ModificarMedicoGui extends javax.swing.JFrame {
         mesCombo = new javax.swing.JComboBox<>();
         anioSpinner = new javax.swing.JSpinner();
         modificarButton = new javax.swing.JButton();
+        especialidadCombo = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        salirBtn = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
@@ -189,6 +194,33 @@ public class ModificarMedicoGui extends javax.swing.JFrame {
         });
         getContentPane().add(modificarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 450, 220, 40));
 
+        especialidadCombo.setBackground(new java.awt.Color(102, 102, 102));
+        especialidadCombo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        especialidadCombo.setForeground(new java.awt.Color(51, 51, 51));
+        especialidadCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicina Interna", "Cardiología", "Neurología", "Dermatología", " ", " ", " " }));
+        especialidadCombo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                especialidadComboActionPerformed(evt);
+            }
+        });
+        getContentPane().add(especialidadCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 240, 340, 40));
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel4.setText("Especialidad");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, -1, -1));
+
+        salirBtn.setBackground(new java.awt.Color(204, 204, 204));
+        salirBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        salirBtn.setForeground(new java.awt.Color(18, 84, 136));
+        salirBtn.setText("X");
+        salirBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(salirBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(753, 0, 50, -1));
+
         fondo.setBackground(new java.awt.Color(102, 102, 102));
         fondo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         fondo.setForeground(new java.awt.Color(51, 51, 51));
@@ -224,7 +256,7 @@ public class ModificarMedicoGui extends javax.swing.JFrame {
         String nombre = nombreTxt.getText();
         String apellido = apellidoTxt.getText();
         String sexo = sexoCombo.getSelectedItem().toString();
-        
+
         int dia = (Integer) diaSpinner.getValue();
         String mes = mesCombo.getSelectedItem().toString();
         int anio = (Integer) anioSpinner.getValue();
@@ -270,10 +302,10 @@ public class ModificarMedicoGui extends javax.swing.JFrame {
         // Verifica que la fecha ingresada se encuentre dentro de los rangos permitidos
         if (dia < 1 || dia > 31 && correctoCampos) {
             JOptionPane.showMessageDialog(null, "Día inválido");
-            
+
             correctoCampos = false;
         }
-        
+
         if (dia >= 1 && dia <= 31) {
             correctoCampos = true;
         }
@@ -295,7 +327,7 @@ public class ModificarMedicoGui extends javax.swing.JFrame {
             nacimiento.setDia(dia);
             nacimiento.setMes(nacimiento.setMesString(mes));
             nacimiento.setAnio(anio);
-            
+
             correcto = true;
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Verifique los datos en fecha");
@@ -306,22 +338,28 @@ public class ModificarMedicoGui extends javax.swing.JFrame {
         if (correctoCampos && correcto) {
             // Crea un usuario usando el constructor por parametros
             // TODO
-            this.pacienteModificar.modificarInfoUsuario(nombre, apellido, nacimiento);
+            this.medicoModificar.modificarInfoUsuario(nombre, apellido, nacimiento);
 
-            //this.pacienteModificar.modificarInfoUsuario("Fecha", nombre);
-
-            MainScreen.listaPacientes = Main.obtenerPacientesDataBase();
+            //this.medicoModificar.modificarInfoUsuario("Fecha", nombre);
             vaciarCampos();
             this.dispose();
         }
     }//GEN-LAST:event_modificarButtonActionPerformed
+
+    private void especialidadComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especialidadComboActionPerformed
+
+    }//GEN-LAST:event_especialidadComboActionPerformed
+
+    private void salirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirBtnActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_salirBtnActionPerformed
     private void vaciarCampos() {
         nombreTxt.setText("");
         apellidoTxt.setText("");
-        
+
         diaSpinner.setValue(1);
         anioSpinner.setValue(2000);
-        
+
     }
 
     /**
@@ -371,10 +409,12 @@ public class ModificarMedicoGui extends javax.swing.JFrame {
     private javax.swing.JTextField apellidoTxt;
     private javax.swing.JLabel bienvenidaLabel;
     private javax.swing.JSpinner diaSpinner;
+    private javax.swing.JComboBox<String> especialidadCombo;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JSeparator jSeparator2;
@@ -383,6 +423,7 @@ public class ModificarMedicoGui extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> mesCombo;
     private javax.swing.JButton modificarButton;
     private javax.swing.JTextField nombreTxt;
+    private javax.swing.JButton salirBtn;
     private javax.swing.JComboBox<String> sexoCombo;
     // End of variables declaration//GEN-END:variables
 }
