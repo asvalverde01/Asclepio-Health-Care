@@ -55,13 +55,17 @@ public final class MainScreen extends javax.swing.JFrame {
         // Por defecto
         registrarMedicoButton.setVisible(false);
         buscarMedicoButton.setVisible(false);
+        registrarPacienteButton.setVisible(true);
 
         // Si la el rol es administrador entonces se muestran más opciones
         if (usuario.getRol().equals("Administrador")) {
             registrarMedicoButton.setVisible(true);
             buscarMedicoButton.setVisible(true);
+            registrarPacienteButton.setVisible(false);
             content.setBackground(new java.awt.Color(245, 245, 245));
         }
+        
+
 
         // Inicializa los paneles
         inicializarPaneles(usuario);
@@ -99,7 +103,7 @@ public final class MainScreen extends javax.swing.JFrame {
         registrarPacienteButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("BrainUP");
+        setTitle("Asclepio");
         setResizable(false);
 
         content.setBackground(new java.awt.Color(18, 84, 136));

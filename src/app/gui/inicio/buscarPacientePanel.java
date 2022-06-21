@@ -48,9 +48,6 @@ public class buscarPacientePanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         fechaLabel = new javax.swing.JLabel();
         bienvenidaLabel = new javax.swing.JLabel();
-        edadLabel = new javax.swing.JLabel();
-        filtrarBOX = new javax.swing.JComboBox<>();
-        buscarButton = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         todosBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -65,6 +62,9 @@ public class buscarPacientePanel extends javax.swing.JPanel {
         eliminarPacienteButton = new javax.swing.JButton();
         modificarPacienteButton = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
+        edadLabel = new javax.swing.JLabel();
+        filtrarBOX = new javax.swing.JComboBox<>();
+        buscarButton = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -100,25 +100,6 @@ public class buscarPacientePanel extends javax.swing.JPanel {
         bienvenidaLabel.setText("Búsqueda");
         add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 110, -1, -1));
 
-        edadLabel.setFont(new java.awt.Font("Roboto", 1, 28)); // NOI18N
-        edadLabel.setForeground(new java.awt.Color(51, 51, 51));
-        edadLabel.setText("Filtrar resultados");
-        add(edadLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 500, -1, 40));
-
-        filtrarBOX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", "Leve", "Moderada", "Hoy", "Suma Resta", "Comprensión", "Memoria", "Identificar Letras", "Reconocer sonido", "Identificar colores" }));
-        add(filtrarBOX, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 500, 210, -1));
-
-        buscarButton.setBackground(new java.awt.Color(18, 84, 136));
-        buscarButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        buscarButton.setForeground(new java.awt.Color(0, 0, 0));
-        buscarButton.setText("Filtrar");
-        buscarButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarButtonActionPerformed(evt);
-            }
-        });
-        add(buscarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 540, 130, -1));
-
         jSeparator2.setBackground(new java.awt.Color(81, 3, 23));
         add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 160, 570, 20));
 
@@ -132,7 +113,7 @@ public class buscarPacientePanel extends javax.swing.JPanel {
                 todosBtnActionPerformed(evt);
             }
         });
-        add(todosBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 220, 30));
+        add(todosBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 220, 40));
 
         lstResultados.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -141,7 +122,7 @@ public class buscarPacientePanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(lstResultados);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 630, 750, 130));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 490, 750, 270));
 
         cedulaTxt.setBackground(new java.awt.Color(102, 102, 102));
         cedulaTxt.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -168,7 +149,7 @@ public class buscarPacientePanel extends javax.swing.JPanel {
 
         buscarPacienteButton.setBackground(new java.awt.Color(18, 84, 136));
         buscarPacienteButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        buscarPacienteButton.setForeground(new java.awt.Color(0, 0, 0));
+        buscarPacienteButton.setForeground(new java.awt.Color(255, 255, 255));
         buscarPacienteButton.setText("Buscar Paciente");
         buscarPacienteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -192,7 +173,7 @@ public class buscarPacientePanel extends javax.swing.JPanel {
         jLabel1.setText("Encontrado:");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 280, -1, -1));
 
-        eliminarPacienteButton.setBackground(new java.awt.Color(0, 204, 204));
+        eliminarPacienteButton.setBackground(new java.awt.Color(0, 153, 153));
         eliminarPacienteButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         eliminarPacienteButton.setForeground(new java.awt.Color(0, 0, 0));
         eliminarPacienteButton.setText("Eliminar Paciente");
@@ -201,9 +182,9 @@ public class buscarPacientePanel extends javax.swing.JPanel {
                 eliminarPacienteButtonActionPerformed(evt);
             }
         });
-        add(eliminarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 360, 230, 60));
+        add(eliminarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 350, 230, 60));
 
-        modificarPacienteButton.setBackground(new java.awt.Color(0, 204, 204));
+        modificarPacienteButton.setBackground(new java.awt.Color(0, 153, 153));
         modificarPacienteButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         modificarPacienteButton.setForeground(new java.awt.Color(0, 0, 0));
         modificarPacienteButton.setText("Modificar Paciente");
@@ -212,12 +193,31 @@ public class buscarPacientePanel extends javax.swing.JPanel {
                 modificarPacienteButtonActionPerformed(evt);
             }
         });
-        add(modificarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 230, 60));
+        add(modificarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, 230, 60));
 
         fondo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         fondo.setForeground(new java.awt.Color(51, 51, 51));
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
         add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 800));
+
+        edadLabel.setFont(new java.awt.Font("Roboto", 1, 28)); // NOI18N
+        edadLabel.setForeground(new java.awt.Color(51, 51, 51));
+        edadLabel.setText("Filtrar resultados");
+        add(edadLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 500, -1, 40));
+
+        filtrarBOX.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Todos", " " }));
+        add(filtrarBOX, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 500, 210, -1));
+
+        buscarButton.setBackground(new java.awt.Color(18, 84, 136));
+        buscarButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        buscarButton.setForeground(new java.awt.Color(0, 0, 0));
+        buscarButton.setText("Filtrar");
+        buscarButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarButtonActionPerformed(evt);
+            }
+        });
+        add(buscarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 540, 130, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void buscarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarButtonActionPerformed

@@ -88,7 +88,6 @@ public class InicioForm extends javax.swing.JFrame {
         usuarioTxt.setBackground(new java.awt.Color(204, 204, 204));
         usuarioTxt.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         usuarioTxt.setForeground(new java.awt.Color(51, 51, 51));
-        usuarioTxt.setText("admin");
         usuarioTxt.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
         usuarioTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         usuarioTxt.setOpaque(true);

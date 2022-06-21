@@ -177,6 +177,10 @@ public class InicioPanel extends javax.swing.JPanel {
             } else {
                 saludo = "Bienvenido Dr. ";
             }
+            
+            if (usuario.getRol().equals("Administrador")) {
+                saludo = "Consola Administrativa";
+            }
             bienvenidaLabel.setText(saludo + usuario.getNombre());
         } catch (NullPointerException npe) {
             bienvenidaLabel.setText("Hola  usuario");

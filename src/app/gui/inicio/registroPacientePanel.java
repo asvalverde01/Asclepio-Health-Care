@@ -145,7 +145,6 @@ public class registroPacientePanel extends javax.swing.JPanel {
         nombreTxt.setBackground(new java.awt.Color(102, 102, 102));
         nombreTxt.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         nombreTxt.setForeground(new java.awt.Color(255, 255, 255));
-        nombreTxt.setText("Alberto");
         nombreTxt.setBorder(null);
         nombreTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         nombreTxt.setOpaque(true);
@@ -164,7 +163,6 @@ public class registroPacientePanel extends javax.swing.JPanel {
         apellidoTxt.setBackground(new java.awt.Color(102, 102, 102));
         apellidoTxt.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         apellidoTxt.setForeground(new java.awt.Color(255, 255, 255));
-        apellidoTxt.setText("Valverde");
         apellidoTxt.setBorder(null);
         apellidoTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         apellidoTxt.setOpaque(true);
@@ -213,7 +211,6 @@ public class registroPacientePanel extends javax.swing.JPanel {
         cedulaTxt.setBackground(new java.awt.Color(102, 102, 102));
         cedulaTxt.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
         cedulaTxt.setForeground(new java.awt.Color(255, 255, 255));
-        cedulaTxt.setText("0605226992");
         cedulaTxt.setBorder(null);
         cedulaTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
         cedulaTxt.setOpaque(true);

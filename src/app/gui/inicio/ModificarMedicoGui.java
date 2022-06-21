@@ -1,5 +1,6 @@
-package app.gui.paciente;
+package app.gui.inicio;
 
+import app.gui.paciente.*;
 import app.gui.inicio.MainScreen;
 import app.logic.Fecha;
 import app.logic.Main;
@@ -8,11 +9,11 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
-public class ModificarPacienteGui extends javax.swing.JFrame {
+public class ModificarMedicoGui extends javax.swing.JFrame {
     
     Paciente pacienteModificar;
     
-    public ModificarPacienteGui(Paciente paciente) {
+    public ModificarMedicoGui(Paciente paciente) {
         initComponents();
         this.pacienteModificar = paciente;
         diaSpinner.setValue(paciente.getFechaNacimiento().getDia());
@@ -52,7 +53,7 @@ public class ModificarPacienteGui extends javax.swing.JFrame {
         );
     }
     
-    private ModificarPacienteGui() {
+    private ModificarMedicoGui() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -91,7 +92,7 @@ public class ModificarPacienteGui extends javax.swing.JFrame {
 
         bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
         bienvenidaLabel.setForeground(new java.awt.Color(102, 0, 153));
-        bienvenidaLabel.setText("Modificar Paciente");
+        bienvenidaLabel.setText("Modificar Médico");
         getContentPane().add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, -1, -1));
 
         nombreTxt.setBackground(new java.awt.Color(102, 102, 102));
@@ -305,6 +306,7 @@ public class ModificarPacienteGui extends javax.swing.JFrame {
         // Al final cuando el avatar ya ha sido seleccionado, se procede a continuar a la seleccion de la etapa
         if (correctoCampos && correcto) {
             // Crea un usuario usando el constructor por parametros
+            // TODO
             this.pacienteModificar.modificarInfoUsuario(nombre, apellido, nacimiento);
 
             //this.pacienteModificar.modificarInfoUsuario("Fecha", nombre);
@@ -340,14 +342,18 @@ public class ModificarPacienteGui extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ModificarPacienteGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarMedicoGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ModificarPacienteGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarMedicoGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ModificarPacienteGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarMedicoGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ModificarPacienteGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarMedicoGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -356,7 +362,7 @@ public class ModificarPacienteGui extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ModificarPacienteGui().setVisible(true);
+                new ModificarMedicoGui().setVisible(true);
             }
         });
     }

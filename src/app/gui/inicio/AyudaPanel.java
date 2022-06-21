@@ -45,22 +45,22 @@ public class AyudaPanel extends javax.swing.JPanel {
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
         edadLabel10 = new javax.swing.JLabel();
-        contacto1 = new javax.swing.JLabel();
         edadLabel11 = new javax.swing.JLabel();
-        contacto2 = new javax.swing.JLabel();
         edadLabel12 = new javax.swing.JLabel();
-        contacto3 = new javax.swing.JLabel();
         edadLabel13 = new javax.swing.JLabel();
         edadLabel14 = new javax.swing.JLabel();
         edadLabel15 = new javax.swing.JLabel();
         edadLabel16 = new javax.swing.JLabel();
-        contacto4 = new javax.swing.JLabel();
         edadLabel17 = new javax.swing.JLabel();
         edadLabel18 = new javax.swing.JLabel();
-        contacto5 = new javax.swing.JLabel();
         edadLabel19 = new javax.swing.JLabel();
         edadLabel20 = new javax.swing.JLabel();
         bienvenidaLabel = new javax.swing.JLabel();
+        contacto1 = new javax.swing.JLabel();
+        contacto2 = new javax.swing.JLabel();
+        contacto3 = new javax.swing.JLabel();
+        contacto4 = new javax.swing.JLabel();
+        contacto5 = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -164,24 +164,15 @@ public class AyudaPanel extends javax.swing.JPanel {
         edadLabel10.setText("Desarolladores");
         bg.add(edadLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 450, -1, -1));
 
-        contacto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/contactos/contacto1.png"))); // NOI18N
-        bg.add(contacto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 490, -1, -1));
-
         edadLabel11.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         edadLabel11.setForeground(new java.awt.Color(51, 51, 51));
         edadLabel11.setText("-");
         bg.add(edadLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, -1, -1));
 
-        contacto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/contactos/contacto3.png"))); // NOI18N
-        bg.add(contacto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 490, -1, -1));
-
         edadLabel12.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         edadLabel12.setForeground(new java.awt.Color(204, 204, 0));
         edadLabel12.setText("Estefanía Vinueza ");
         bg.add(edadLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 590, -1, -1));
-
-        contacto3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/contactos/contacto2.png"))); // NOI18N
-        bg.add(contacto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 490, -1, -1));
 
         edadLabel13.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         edadLabel13.setForeground(new java.awt.Color(204, 204, 0));
@@ -204,9 +195,6 @@ public class AyudaPanel extends javax.swing.JPanel {
         edadLabel16.setText("jadira.vinueza@udla.edu.ec");
         bg.add(edadLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 610, -1, -1));
 
-        contacto4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/contactos/contacto1.png"))); // NOI18N
-        bg.add(contacto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 640, -1, -1));
-
         edadLabel17.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         edadLabel17.setForeground(new java.awt.Color(204, 204, 0));
         edadLabel17.setText("Fabiana Liria");
@@ -216,9 +204,6 @@ public class AyudaPanel extends javax.swing.JPanel {
         edadLabel18.setForeground(new java.awt.Color(0, 0, 0));
         edadLabel18.setText("fabiana.liria@udla.edu.ec");
         bg.add(edadLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 760, -1, -1));
-
-        contacto5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/contactos/contacto1.png"))); // NOI18N
-        bg.add(contacto5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 640, -1, -1));
 
         edadLabel19.setFont(new java.awt.Font("Roboto", 0, 18)); // NOI18N
         edadLabel19.setForeground(new java.awt.Color(204, 204, 0));
@@ -234,6 +219,21 @@ public class AyudaPanel extends javax.swing.JPanel {
         bienvenidaLabel.setForeground(new java.awt.Color(102, 0, 153));
         bienvenidaLabel.setText("Ayuda");
         bg.add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 100, -1, -1));
+
+        contacto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/contactos/contacto1.png"))); // NOI18N
+        bg.add(contacto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 490, -1, -1));
+
+        contacto2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/contactos/contacto3.png"))); // NOI18N
+        bg.add(contacto2, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 490, -1, -1));
+
+        contacto3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/contactos/contacto2.png"))); // NOI18N
+        bg.add(contacto3, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 490, -1, -1));
+
+        contacto4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/contactos/contacto1.png"))); // NOI18N
+        bg.add(contacto4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 640, -1, -1));
+
+        contacto5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/contactos/contacto1.png"))); // NOI18N
+        bg.add(contacto5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 640, -1, -1));
 
         fondo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         fondo.setForeground(new java.awt.Color(51, 51, 51));
