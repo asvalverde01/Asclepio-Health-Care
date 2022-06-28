@@ -3,6 +3,8 @@ package app.gui.inicio;
 import app.dataStruct.Lista;
 import app.logic.Fecha;
 import app.logic.Main;
+import app.logic.users.Administrador;
+import app.logic.users.Medico;
 import app.logic.users.Usuario;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -20,9 +22,9 @@ public class registroMedicoPanel extends javax.swing.JPanel {
     private static Lista usuarios;
     private boolean avatarSeleccionado = false;
     private int avatar;
-    private Usuario usuario;
+    private Administrador usuario;
 
-    public void setUsuario(Usuario usuario) {
+    public void setUsuario(Administrador usuario) {
         this.usuario = usuario;
     }
 
@@ -31,7 +33,7 @@ public class registroMedicoPanel extends javax.swing.JPanel {
      *
      * @param usuario
      */
-    public registroMedicoPanel(Usuario usuario) {
+    public registroMedicoPanel(Administrador usuario) {
         initComponents();
         // Invoca al método actualizarFecha enviando un objeto de fecha actual para actualizar el label fecha con la fecha actual 
         actualizarFecha(new Fecha());
@@ -484,6 +486,7 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         String contrasenia = contraseniaTxt.getText();
         String contraseniaRep = contraseniaRepTxt.getText();
         String especialidad = especialidadCombo.getSelectedItem().toString();
+        String correo = correoTxt.getText();
         String sexo = sexoCombo.getSelectedItem().toString();
         System.out.println("sexo " + sexo);
 
@@ -603,8 +606,8 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         // Al final cuando el avatar ya ha sido seleccionado, se procede a continuar a la seleccion de la etapa
         if (avatarSeleccionado && valid && correctoCampos && correcto && contraseniaIgual) {
             // Crea un usuario usando el constructor por parametros
-            Usuario usuarioNuevo = new Usuario(usuario, contrasenia, nombre, apellido, "Medico", cedula, avatar, sexo, nacimiento);
-            if (registrarUsuarioDataBase(usuarioNuevo)) {
+            Medico usuarioNuevo = new Medico(especialidad, correo, usuario, contrasenia, nombre, apellido, "Medico", cedula, avatar, sexo, nacimiento);
+            if (this.usuario.registrarUsuarioDataBase(usuarioNuevo)) {
                 JOptionPane.showMessageDialog(null, "Registrado correctamente");
                 vaciarCampos();
             } else {
@@ -847,41 +850,7 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         return true;
     }
 
-    private boolean registrarUsuarioDataBase(Usuario usuarioNuevo) {
-        boolean conectado = Main.isConectado();
-        if (conectado) {
-            // En el la tabla usuario de la base de datos registra los datos
-            try {
-                String usuario = usuarioNuevo.getUsuario();
-                String contrasenia = usuarioNuevo.getContrasenia();
-                String rol = usuarioNuevo.getRol();
-                String cedula = usuarioNuevo.getCedula();
-                String sexo = usuarioNuevo.getSexo();
-
-                String nombre = usuarioNuevo.getNombre();
-                String apellido = usuarioNuevo.getApellido();
-                int avatar = usuarioNuevo.getAvatar();
-
-                int dia = usuarioNuevo.getFechaNacimiento().getDia();
-                int mes = usuarioNuevo.getFechaNacimiento().getMes();
-                int anio = usuarioNuevo.getFechaNacimiento().getAnio();
-
-                String SQL = "INSERT INTO usuario (usuario, contrasenia, rol, cedula, nombre, apellido,  sexo, avatar, dianac, mesnac, anionac) VALUES ('" + usuario + "', '" + contrasenia + "', '" + rol + "', '" + cedula + "', '" + nombre + "', '" + apellido + "', '" + sexo + "', '" + avatar + "', '" + dia + "', '" + mes + "', '" + anio + "')";
-                PreparedStatement st = Main.getConnect().prepareStatement(SQL);
-                st.executeUpdate();
-                return true;
-
-            } catch (SQLException ex) {
-
-                JOptionPane.showMessageDialog(null, "Error, intente nuevamente");
-                JOptionPane.showMessageDialog(null, ex.getMessage());
-                return false;
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos");
-        }
-        return false;
-    }
+    
 
     private void vaciarCampos() {
         nombreTxt.setText("");

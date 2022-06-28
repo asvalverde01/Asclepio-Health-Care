@@ -42,6 +42,7 @@ public class Usuario {
      * @param contrasenia
      * @param cedula String
      * @param nombre String
+     * @param rol
      * @param apellido String
      * @param avatar int
      * @param sexo

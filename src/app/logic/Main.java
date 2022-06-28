@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.sql.*;
+import java.util.logging.Logger;
 
 /**
  *
@@ -152,7 +153,6 @@ public class Main {
         return true;
     }
 
-     
     /**
      * Metodo que elimina el usuario de la base de datos
      *
@@ -227,10 +227,9 @@ public class Main {
                 nacimiento.setDia(rs.getInt("dia"));
                 nacimiento.setMes(rs.getInt("mes"));
                 nacimiento.setAnio(rs.getInt("anio"));
-                
+
                 nuevoPaciente.setFechaNacimiento(nacimiento);
                 nuevoPaciente.setIdMedicoResponsable(rs.getString("idResponsable"));
-
 
                 // añade el paciente registrado a la lista
                 pacientesLista.agregar(nuevoPaciente);
@@ -241,4 +240,6 @@ public class Main {
         // Regresa el usuario que se ha guardado
         return pacientesLista;
     }
+    //private static final Logger LOG = Logger.getLogger(Main.class.getName());
+
 } // FIN CLASE 

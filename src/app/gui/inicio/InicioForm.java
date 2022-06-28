@@ -3,6 +3,8 @@ package app.gui.inicio;
 import app.dataStruct.Lista;
 import app.logic.Fecha;
 import static app.logic.Main.connect;
+import app.logic.users.Administrador;
+import app.logic.users.Medico;
 import app.logic.users.Usuario;
 import java.awt.HeadlessException;
 import java.awt.event.KeyEvent;
@@ -67,6 +69,7 @@ public class InicioForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Entrar");
+        setMinimumSize(new java.awt.Dimension(1015, 560));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -161,7 +164,7 @@ public class InicioForm extends javax.swing.JFrame {
                 backgroundKeyPressed(evt);
             }
         });
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1110, 620));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -251,7 +254,6 @@ public class InicioForm extends javax.swing.JFrame {
         });
     }
 
-
     private static Lista obtenerUsuarioDataBase(Lista usuariosLista) {
         usuariosLista.eliminarElementos();
         Fecha nacimiento = new Fecha();
@@ -260,9 +262,18 @@ public class InicioForm extends javax.swing.JFrame {
             String sql = "SELECT * FROM usuario";
             PreparedStatement st = connect.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
+            Usuario usuario;
 
             while (rs.next()) {
-                Usuario usuario = new Usuario();
+                // Obtengo el rol del usuario
+                String rol = rs.getString("rol");
+                // Si el rol es Administrador 
+                if (rol.equals("Administrador")) {
+                    usuario = new Administrador();
+                    // Caso contrario es de rol Medico
+                } else {
+                    usuario = new Medico(rs.getString("especialidad"), rs.getString("correo"));
+                }
                 usuario.setUsuario(rs.getString("usuario"));
                 usuario.setContrasenia(rs.getString("contrasenia"));
                 usuario.setRol(rs.getString("rol"));
@@ -280,6 +291,7 @@ public class InicioForm extends javax.swing.JFrame {
 
                 // añade el usuario registrado a la lista
                 usuariosLista.agregar(usuario);
+                usuario = null;
             }
         } catch (HeadlessException | SQLException x) {
             JOptionPane.showMessageDialog(null, x.getMessage());

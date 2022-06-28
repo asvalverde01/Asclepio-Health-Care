@@ -1,14 +1,10 @@
 package app.gui.inicio;
 
 import app.dataStruct.Lista;
-import app.gui.paciente.ModificarPacienteGui;
 import app.logic.Fecha;
-import app.logic.Main;
-import app.logic.users.Paciente;
 import app.logic.users.Usuario;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.Set;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -276,6 +272,7 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
             nombreLabel.setText("Nombre: " + medicoEncontrado.getNombre());
             apellidoLabel.setText("Apellido: " + medicoEncontrado.getApellido());
             modificarMedicoButton.setVisible(true);
+            eliminarMedicoButton.setVisible(true);
             //eliminarMedicoButton.setVisible(true);
             // Habilita los botones
         } else {

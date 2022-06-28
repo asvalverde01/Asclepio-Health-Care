@@ -2,6 +2,8 @@ package app.gui.inicio;
 
 import app.dataStruct.ListaPacientes;
 import app.logic.Main;
+import app.logic.users.Administrador;
+import app.logic.users.Medico;
 import app.logic.users.Usuario;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -67,11 +69,13 @@ public final class MainScreen extends javax.swing.JFrame {
         registrarPacienteButton.setVisible(true);
 
         // Si la el rol es administrador entonces se muestran más opciones
-        if (usuario.getRol().equals("Administrador")) {
+        if (usuario instanceof Administrador) {
             registrarMedicoButton.setVisible(true);
             buscarMedicoButton.setVisible(true);
             registrarPacienteButton.setVisible(false);
             content.setBackground(new java.awt.Color(245, 245, 245));
+        } else if (usuario instanceof Medico) {
+//
         }
 
         // Inicializa los paneles
@@ -430,7 +434,11 @@ public final class MainScreen extends javax.swing.JFrame {
 
         pConfig = new ConfigPanel(usuario);
         pAyuda = new AyudaPanel();
-        pRegistrarMedico = new registroMedicoPanel(usuario);
+        if (usuario instanceof Administrador) {
+            pRegistrarMedico = new registroMedicoPanel((Administrador) usuario);
+        } else {
+            pRegistrarMedico = null;
+        }
         pRegistrarPaciente = new registroPacientePanel();
         pBuscarMedico = new buscarMedicoPanel(usuario);
         pResultados = new buscarPacientePanel();
