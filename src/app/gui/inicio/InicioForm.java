@@ -154,9 +154,9 @@ public class InicioForm extends javax.swing.JFrame {
         jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
         getContentPane().add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 340, 220, 20));
 
-        estadoLbl.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        estadoLbl.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         estadoLbl.setForeground(new java.awt.Color(153, 0, 51));
-        getContentPane().add(estadoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 350, 130, 20));
+        getContentPane().add(estadoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 350, 210, 20));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
         background.addKeyListener(new java.awt.event.KeyAdapter() {

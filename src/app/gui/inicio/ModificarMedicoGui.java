@@ -1,8 +1,6 @@
 package app.gui.inicio;
 
-import app.gui.inicio.MainScreen;
 import app.logic.Fecha;
-import app.logic.Main;
 import app.logic.users.Usuario;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;

@@ -137,6 +137,11 @@ public class buscarPacientePanel extends javax.swing.JPanel {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        lstResultados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lstResultadosMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(lstResultados);
 
         add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 730, 150));
@@ -359,6 +364,12 @@ public class buscarPacientePanel extends javax.swing.JPanel {
         actualizarListaPacientesMedico(cedula);
 
     }//GEN-LAST:event_buscarPacienteButton1ActionPerformed
+
+    private void lstResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstResultadosMouseClicked
+        System.out.println(lstResultados.getSelectedValue());
+        String idSeleccion = lstResultados.getSelectedValue();
+       
+    }//GEN-LAST:event_lstResultadosMouseClicked
 
     public void setUsuario(ListaPacientes usuarioListaPacientes) {
         this.listaPacientes = listaPacientes;

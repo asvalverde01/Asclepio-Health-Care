@@ -311,6 +311,9 @@ public class Usuario {
     /**
      * Metodo que permite modificar un atributo del paciente
      *
+     * @param nombre
+     * @param apellido
+     * @param nuevaFecha
      * @param tipo String tipo de atributo
      * @param nuevo String nuevo valor a cambiar
      * @return Boolean true si se modifico correctamente false si no
@@ -331,7 +334,7 @@ public class Usuario {
             st.setInt(5, anio);
             st.setString(6, cedula);
             st.executeUpdate();
-            
+
             // Cambia en objeto
             setNombre(nombre);
             setApellido(apellido);
@@ -341,7 +344,7 @@ public class Usuario {
             ex.printStackTrace();
             return false;
         }
-        
+
     }
 
     @Override

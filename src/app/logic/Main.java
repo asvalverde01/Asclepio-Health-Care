@@ -208,7 +208,7 @@ public class Main {
 
     public static ListaPacientes obtenerPacientesDataBase() {
         ListaPacientes pacientesLista = new ListaPacientes();
-        Fecha nacimiento = new Fecha();
+
         // Se obtiene la informacion de la tabla usuario en base de datos
         //String medicoActual = MainScreen.getUserID();
         try {
@@ -217,6 +217,7 @@ public class Main {
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
+                Fecha nacimiento = new Fecha();
                 Paciente nuevoPaciente = new Paciente();
 
                 nuevoPaciente.setNombre(rs.getString("nombre"));
@@ -230,9 +231,12 @@ public class Main {
 
                 nuevoPaciente.setFechaNacimiento(nacimiento);
                 nuevoPaciente.setIdMedicoResponsable(rs.getString("idResponsable"));
-
+                //System.out.println("--------------");
+                //System.out.println(nuevoPaciente.getEdad());
+                nuevoPaciente.getEdad();
                 // añade el paciente registrado a la lista
                 pacientesLista.agregar(nuevoPaciente);
+                nacimiento = null;
             }
         } catch (HeadlessException | SQLException x) {
             JOptionPane.showMessageDialog(null, x.getMessage());
@@ -240,6 +244,5 @@ public class Main {
         // Regresa el usuario que se ha guardado
         return pacientesLista;
     }
-    //private static final Logger LOG = Logger.getLogger(Main.class.getName());
 
 } // FIN CLASE 

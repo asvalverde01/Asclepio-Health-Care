@@ -1,6 +1,7 @@
 package app.gui.inicio;
 
 import app.logic.Fecha;
+import app.logic.users.Administrador;
 import app.logic.users.Usuario;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -175,7 +176,7 @@ public class InicioPanel extends javax.swing.JPanel {
                 saludo = "Bienvenido Dr. ";
             }
 
-            if (usuario.getRol().equals("Administrador")) {
+            if (usuario instanceof Administrador) {
                 saludo = "Consola Administrativa - ";
                 text1Label.setText("Dashboard");
             }
@@ -199,7 +200,7 @@ public class InicioPanel extends javax.swing.JPanel {
                 avatarLogo.setIcon(icono);
                 fechaNacLabel.setText("Nacimiento" + usuario.getFechaNacimientoString());
                 // TODO
-                edadLabel.setText("Edad" +"" + " años");
+                edadLabel.setText("Edad" + usuario.getEdad() + " años");
             } catch (NullPointerException npe) {
                 bienvenidaLabel.setText("Problema al encontrar usuario");
             } catch (Exception ex) {

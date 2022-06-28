@@ -50,6 +50,7 @@ public class Paciente {
         this.sexo = sexo;
         this.fechaNacimiento = fechaNacimiento;
         this.idMedicoResponsable = idMedicoResponsable;
+        System.out.println("dentro de" + fechaNacimiento);
     }
 
     /*-------------------------------------------------------------
@@ -161,7 +162,7 @@ public class Paciente {
      * @return int edad
      */
     public int getEdad() {
-        return fechaNacimiento.diferenciaEntreFechas(fechaNacimiento);
+        return fechaNacimiento.diferenciaEntreFechas(this.fechaNacimiento);
     }
 
     public String getIdMedicoResponsable() {
@@ -231,6 +232,9 @@ public class Paciente {
     /**
      * Metodo que permite modificar un atributo del paciente
      *
+     * @param nombre
+     * @param apellido
+     * @param nuevaFecha
      * @param tipo String tipo de atributo
      * @param nuevo String nuevo valor a cambiar
      * @return Boolean true si se modifico correctamente false si no
@@ -267,6 +271,6 @@ public class Paciente {
      */
     @Override
     public String toString() {
-        return cedula + "      " + nombre + "       " + apellido;
+        return cedula + "      " + nombre + "       " + apellido + "       " + getEdad();
     }
 }

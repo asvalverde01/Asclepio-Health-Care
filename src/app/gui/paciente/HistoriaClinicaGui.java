@@ -1,13 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package app.gui.paciente;
 
-/**
- *
- * @author asval
- */
 public class HistoriaClinicaGui extends javax.swing.JFrame {
 
     /**
@@ -15,6 +7,7 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
      */
     public HistoriaClinicaGui() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -28,54 +21,57 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
 
         jSeparator4 = new javax.swing.JSeparator();
         bienvenidaLabel = new javax.swing.JLabel();
-        nombreTxt = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        fondo = new javax.swing.JLabel();
+        salirBtn = new javax.swing.JButton();
+        background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 100, 430, 20));
+        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 430, 20));
 
-        bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
+        bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         bienvenidaLabel.setForeground(new java.awt.Color(102, 0, 153));
         bienvenidaLabel.setText("Historia Clínica");
-        getContentPane().add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 50, -1, -1));
-
-        nombreTxt.setBackground(new java.awt.Color(102, 102, 102));
-        nombreTxt.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
-        nombreTxt.setForeground(new java.awt.Color(255, 255, 255));
-        nombreTxt.setText("Alberto");
-        nombreTxt.setBorder(null);
-        nombreTxt.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        nombreTxt.setOpaque(true);
-        nombreTxt.setSelectedTextColor(new java.awt.Color(153, 153, 153));
-        nombreTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreTxtActionPerformed(evt);
-            }
-        });
-        getContentPane().add(nombreTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 340, 30));
+        getContentPane().add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 51));
         jLabel3.setText("Nombre");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, 30));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, 30));
 
-        fondo.setBackground(new java.awt.Color(102, 102, 102));
-        fondo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        fondo.setForeground(new java.awt.Color(51, 51, 51));
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
-        getContentPane().add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        salirBtn.setBackground(new java.awt.Color(204, 204, 204));
+        salirBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        salirBtn.setForeground(new java.awt.Color(18, 84, 136));
+        salirBtn.setText("X");
+        salirBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salirBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(salirBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, 50, -1));
+
+        background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
+        background.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                backgroundKeyPressed(evt);
+            }
+        });
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 560));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void nombreTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTxtActionPerformed
-        // TODO add your handling code here:
-        nombreTxt.setText("");
-    }//GEN-LAST:event_nombreTxtActionPerformed
+    private void backgroundKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_backgroundKeyPressed
+
+    }//GEN-LAST:event_backgroundKeyPressed
+
+    private void salirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirBtnActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_salirBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -114,10 +110,10 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel background;
     private javax.swing.JLabel bienvenidaLabel;
-    private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JTextField nombreTxt;
+    private javax.swing.JButton salirBtn;
     // End of variables declaration//GEN-END:variables
 }
