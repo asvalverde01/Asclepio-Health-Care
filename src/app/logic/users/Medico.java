@@ -66,4 +66,9 @@ public class Medico extends Usuario {
         this.correo = correo;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + this.especialidad + "  " + this.correo;
+    }
+
 }

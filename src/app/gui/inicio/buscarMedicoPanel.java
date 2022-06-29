@@ -82,19 +82,20 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
         fechaLabel = new javax.swing.JLabel();
         bienvenidaLabel = new javax.swing.JLabel();
         msg2 = new javax.swing.JLabel();
-        jSeparator4 = new javax.swing.JSeparator();
         todosBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstResultados = new javax.swing.JList<>();
         jLabel9 = new javax.swing.JLabel();
         cedulaTxt = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
-        buscarPacienteButton = new javax.swing.JButton();
+        buscarMedicoButton = new javax.swing.JButton();
         modificarMedicoButton = new javax.swing.JButton();
         eliminarMedicoButton = new javax.swing.JButton();
         apellidoLabel = new javax.swing.JLabel();
         nombreLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        refrescarListaBtn = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JSeparator();
         fondo = new javax.swing.JLabel();
         fondo1 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
@@ -121,7 +122,7 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(fechaLabel)
-                .addContainerGap(468, Short.MAX_VALUE))
+                .addContainerGap(398, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,7 +132,7 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
                 .addContainerGap(14, Short.MAX_VALUE))
         );
 
-        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 870, 60));
+        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 800, 60));
 
         bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
         bienvenidaLabel.setForeground(new java.awt.Color(102, 0, 153));
@@ -142,12 +143,10 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
         msg2.setForeground(new java.awt.Color(0, 0, 102));
         bg.add(msg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 520, -1, -1));
 
-        jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
-        bg.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, 480, 20));
-
         todosBtn.setBackground(new java.awt.Color(18, 84, 136));
         todosBtn.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         todosBtn.setForeground(new java.awt.Color(255, 255, 255));
+        todosBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/search_1.png"))); // NOI18N
         todosBtn.setText("Mostrar todos");
         todosBtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         todosBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -155,12 +154,16 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
                 todosBtnActionPerformed(evt);
             }
         });
-        bg.add(todosBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 180, 40));
+        bg.add(todosBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 370, 200, 40));
 
-        lstResultados.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
+        lstResultados.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lstResultadosMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(lstResultados);
 
-        bg.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 710, 150));
+        bg.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 420, 730, 150));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 51, 51));
@@ -185,17 +188,18 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
         bg.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 130, 10));
 
-        buscarPacienteButton.setBackground(new java.awt.Color(18, 84, 136));
-        buscarPacienteButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
-        buscarPacienteButton.setForeground(new java.awt.Color(255, 255, 255));
-        buscarPacienteButton.setText("Buscar Médico");
-        buscarPacienteButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        buscarPacienteButton.addActionListener(new java.awt.event.ActionListener() {
+        buscarMedicoButton.setBackground(new java.awt.Color(18, 84, 136));
+        buscarMedicoButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
+        buscarMedicoButton.setForeground(new java.awt.Color(255, 255, 255));
+        buscarMedicoButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/search_1.png"))); // NOI18N
+        buscarMedicoButton.setText("Buscar Médico");
+        buscarMedicoButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        buscarMedicoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buscarPacienteButtonActionPerformed(evt);
+                buscarMedicoButtonActionPerformed(evt);
             }
         });
-        bg.add(buscarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 200, -1));
+        bg.add(buscarMedicoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 200, -1));
 
         modificarMedicoButton.setBackground(new java.awt.Color(0, 204, 204));
         modificarMedicoButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -206,7 +210,7 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
                 modificarMedicoButtonActionPerformed(evt);
             }
         });
-        bg.add(modificarMedicoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 230, 200, 40));
+        bg.add(modificarMedicoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 320, 200, 40));
 
         eliminarMedicoButton.setBackground(new java.awt.Color(255, 153, 0));
         eliminarMedicoButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -217,7 +221,7 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
                 eliminarMedicoButtonActionPerformed(evt);
             }
         });
-        bg.add(eliminarMedicoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 290, 200, 40));
+        bg.add(eliminarMedicoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 370, 200, 40));
 
         apellidoLabel.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         apellidoLabel.setForeground(new java.awt.Color(51, 51, 51));
@@ -233,6 +237,22 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Encontrado:");
         bg.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 230, -1, -1));
+
+        refrescarListaBtn.setBackground(new java.awt.Color(51, 204, 255));
+        refrescarListaBtn.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        refrescarListaBtn.setForeground(new java.awt.Color(255, 255, 255));
+        refrescarListaBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/refresh_1.png"))); // NOI18N
+        refrescarListaBtn.setText("Refrescar");
+        refrescarListaBtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        refrescarListaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refrescarListaBtnActionPerformed(evt);
+            }
+        });
+        bg.add(refrescarListaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, 150, -1));
+
+        jSeparator2.setBackground(new java.awt.Color(81, 3, 23));
+        bg.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 570, 20));
 
         fondo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         fondo.setForeground(new java.awt.Color(51, 51, 51));
@@ -264,31 +284,17 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
 
     }//GEN-LAST:event_cedulaTxtActionPerformed
 
-    private void buscarPacienteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPacienteButtonActionPerformed
-
-        medicoEncontrado = buscarMedico(cedulaTxt.getText());
-
-        if (medicoEncontrado != null) {
-            nombreLabel.setText("Nombre: " + medicoEncontrado.getNombre());
-            apellidoLabel.setText("Apellido: " + medicoEncontrado.getApellido());
-            modificarMedicoButton.setVisible(true);
-            eliminarMedicoButton.setVisible(true);
-            //eliminarMedicoButton.setVisible(true);
-            // Habilita los botones
-        } else {
-            JOptionPane.showMessageDialog(null, "No encontrado");
-        }
-    }//GEN-LAST:event_buscarPacienteButtonActionPerformed
+    private void buscarMedicoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarMedicoButtonActionPerformed
+        String cedula = cedulaTxt.getText();
+        actualizarMedicoActual(cedula);
+    }//GEN-LAST:event_buscarMedicoButtonActionPerformed
 
     private void modificarMedicoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarMedicoButtonActionPerformed
-        buscarPacienteButtonActionPerformed(evt);
-
         ModificarMedicoGui ventanaModificar = new ModificarMedicoGui(medicoEncontrado);
         ventanaModificar.setVisible(true);
         ventanaModificar.setLocationRelativeTo(null);
 
-        nombreLabel.setText("Nombre: " + medicoEncontrado.getNombre());
-        apellidoLabel.setText("Apellido: " + medicoEncontrado.getApellido());
+        actualizarInfo();
 
     }//GEN-LAST:event_modificarMedicoButtonActionPerformed
 
@@ -308,12 +314,22 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
          */
     }//GEN-LAST:event_eliminarMedicoButtonActionPerformed
 
+    private void refrescarListaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refrescarListaBtnActionPerformed
+        actualizarInfo();
+    }//GEN-LAST:event_refrescarListaBtnActionPerformed
+
+    private void lstResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstResultadosMouseClicked
+        // Corta el String idSeleccion en hasta encontrar un espacio
+        String idSeleccion = lstResultados.getSelectedValue().substring(0, lstResultados.getSelectedValue().indexOf(" "));
+        actualizarMedicoActual(idSeleccion);
+    }//GEN-LAST:event_lstResultadosMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel apellidoLabel;
     private javax.swing.JPanel bg;
     private javax.swing.JLabel bienvenidaLabel;
-    private javax.swing.JButton buscarPacienteButton;
+    private javax.swing.JButton buscarMedicoButton;
     private javax.swing.JTextField cedulaTxt;
     private javax.swing.JButton eliminarMedicoButton;
     private javax.swing.JLabel fechaLabel;
@@ -324,13 +340,14 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JList<String> lstResultados;
     private javax.swing.JButton modificarMedicoButton;
     private javax.swing.JLabel msg2;
     private javax.swing.JLabel nombreLabel;
+    private javax.swing.JButton refrescarListaBtn;
     private javax.swing.JButton todosBtn;
     // End of variables declaration//GEN-END:variables
 
@@ -404,14 +421,33 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
     }
 
     private Usuario buscarMedico(String cedula) {
-        dlm.removeAllElements();
-
         for (Usuario medico : usuarios.getUsuarios()) {
             if (medico.getCedula().equals(cedula)) {
-                dlm.addElement(medico.toString());
                 return medico;
             }
         }
         return null;
+    }
+
+    private void actualizarInfo() {
+        nombreLabel.setText("Nombre: " + medicoEncontrado.getNombre());
+        apellidoLabel.setText("Apellido: " + medicoEncontrado.getApellido());
+        actualizarLista();
+    }
+
+    private void actualizarMedicoActual(String idSeleccion) {
+        usuarios = InicioForm.getUsuarios();
+        medicoEncontrado = buscarMedico(idSeleccion);
+
+        if (medicoEncontrado != null) {
+            nombreLabel.setText("Nombre: " + medicoEncontrado.getNombre());
+            apellidoLabel.setText("Apellido: " + medicoEncontrado.getApellido());
+            modificarMedicoButton.setVisible(true);
+            eliminarMedicoButton.setVisible(true);
+            //eliminarMedicoButton.setVisible(true);
+            // Habilita los botones
+        } else {
+            JOptionPane.showMessageDialog(null, "No encontrado");
+        }
     }
 }
