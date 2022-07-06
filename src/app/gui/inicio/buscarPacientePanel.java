@@ -9,7 +9,7 @@ import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class buscarPacientePanel extends javax.swing.JPanel {
+public class BuscarPacientePanel extends javax.swing.JPanel {
 
     private final Fecha actual;
     // Atributo de lista
@@ -25,11 +25,10 @@ public class buscarPacientePanel extends javax.swing.JPanel {
      *
      * @param usuario
      */
-    public buscarPacientePanel() {
+    public BuscarPacientePanel() {
         initComponents();
         actual = new Fecha();
         pacienteActual = null;
-        actualizarFecha(actual);
         setInformation();
         lstResultados.setModel(dlm);
         modificarPacienteButton.setVisible(false);
@@ -58,10 +57,6 @@ public class buscarPacientePanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        fechaLabel = new javax.swing.JLabel();
-        bienvenidaLabel = new javax.swing.JLabel();
-        jSeparator2 = new javax.swing.JSeparator();
         todosBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstResultados = new javax.swing.JList<>();
@@ -79,6 +74,8 @@ public class buscarPacientePanel extends javax.swing.JPanel {
         jSeparator4 = new javax.swing.JSeparator();
         buscarPacienteButton1 = new javax.swing.JButton();
         refrescarListaBtn = new javax.swing.JButton();
+        tituloLabel = new javax.swing.JLabel();
+        jSeparator10 = new javax.swing.JSeparator();
         fondo = new javax.swing.JLabel();
         edadLabel = new javax.swing.JLabel();
         filtrarBOX = new javax.swing.JComboBox<>();
@@ -86,40 +83,6 @@ public class buscarPacientePanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel1.setBackground(new java.awt.Color(18, 84, 136));
-        jPanel1.setForeground(new java.awt.Color(255, 153, 153));
-
-        fechaLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        fechaLabel.setForeground(new java.awt.Color(255, 255, 255));
-        fechaLabel.setText("El día de hoy es -- de -- del año --");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(fechaLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(fechaLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 800, 60));
-
-        bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
-        bienvenidaLabel.setForeground(new java.awt.Color(102, 0, 153));
-        bienvenidaLabel.setText("Búsqueda Paciente");
-        add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, -1, -1));
-
-        jSeparator2.setBackground(new java.awt.Color(81, 3, 23));
-        add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 570, 20));
 
         todosBtn.setBackground(new java.awt.Color(18, 84, 136));
         todosBtn.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -160,16 +123,16 @@ public class buscarPacientePanel extends javax.swing.JPanel {
                 cedulaTxtActionPerformed(evt);
             }
         });
-        add(cedulaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 140, 30));
+        add(cedulaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 80, 140, 30));
 
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 200, 140, 10));
+        add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 110, 140, 10));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 51, 51));
         jLabel9.setText("Ingrese la cédula del paciente a buscar");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 80, -1, -1));
 
         buscarPacienteButton.setBackground(new java.awt.Color(18, 84, 136));
         buscarPacienteButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
@@ -182,7 +145,7 @@ public class buscarPacientePanel extends javax.swing.JPanel {
                 buscarPacienteButtonActionPerformed(evt);
             }
         });
-        add(buscarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 170, 200, -1));
+        add(buscarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 80, 200, -1));
 
         nombreLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         nombreLabel.setForeground(new java.awt.Color(51, 51, 51));
@@ -202,29 +165,29 @@ public class buscarPacientePanel extends javax.swing.JPanel {
         eliminarPacienteButton.setBackground(new java.awt.Color(255, 102, 102));
         eliminarPacienteButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         eliminarPacienteButton.setForeground(new java.awt.Color(0, 0, 0));
-        eliminarPacienteButton.setText("Eliminar Paciente");
+        eliminarPacienteButton.setText("Eliminar");
         eliminarPacienteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminarPacienteButtonActionPerformed(evt);
             }
         });
-        add(eliminarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 370, 210, 40));
+        add(eliminarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 370, 150, 40));
 
         modificarPacienteButton.setBackground(new java.awt.Color(0, 204, 204));
         modificarPacienteButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         modificarPacienteButton.setForeground(new java.awt.Color(0, 0, 0));
-        modificarPacienteButton.setText("Modificar Paciente");
+        modificarPacienteButton.setText("Modificar");
         modificarPacienteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modificarPacienteButtonActionPerformed(evt);
             }
         });
-        add(modificarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 320, 210, 40));
+        add(modificarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 370, 150, 40));
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 51, 51));
         jLabel10.setText("Ingrese la cédula del doctor a cargo");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, -1));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, -1, -1));
 
         cedulaTxt1.setBackground(new java.awt.Color(102, 102, 102));
         cedulaTxt1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -238,11 +201,11 @@ public class buscarPacientePanel extends javax.swing.JPanel {
                 cedulaTxt1ActionPerformed(evt);
             }
         });
-        add(cedulaTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 230, 140, 30));
+        add(cedulaTxt1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 140, 140, 30));
 
         jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
-        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 260, 140, 10));
+        add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 170, 140, 10));
 
         buscarPacienteButton1.setBackground(new java.awt.Color(18, 84, 136));
         buscarPacienteButton1.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
@@ -254,7 +217,7 @@ public class buscarPacientePanel extends javax.swing.JPanel {
                 buscarPacienteButton1ActionPerformed(evt);
             }
         });
-        add(buscarPacienteButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 230, 200, 30));
+        add(buscarPacienteButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 140, 200, 30));
 
         refrescarListaBtn.setBackground(new java.awt.Color(51, 204, 255));
         refrescarListaBtn.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -268,6 +231,14 @@ public class buscarPacientePanel extends javax.swing.JPanel {
             }
         });
         add(refrescarListaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, 150, -1));
+
+        tituloLabel.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
+        tituloLabel.setForeground(new java.awt.Color(102, 0, 153));
+        tituloLabel.setText("Búsqueda Paciente");
+        add(tituloLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
+
+        jSeparator10.setBackground(new java.awt.Color(81, 3, 23));
+        add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 760, 20));
 
         fondo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         fondo.setForeground(new java.awt.Color(51, 51, 51));
@@ -418,7 +389,6 @@ public class buscarPacientePanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel apellidoLabel;
-    private javax.swing.JLabel bienvenidaLabel;
     private javax.swing.JButton buscarButton;
     private javax.swing.JButton buscarPacienteButton;
     private javax.swing.JButton buscarPacienteButton1;
@@ -426,27 +396,23 @@ public class buscarPacientePanel extends javax.swing.JPanel {
     private javax.swing.JTextField cedulaTxt1;
     private javax.swing.JLabel edadLabel;
     private javax.swing.JButton eliminarPacienteButton;
-    private javax.swing.JLabel fechaLabel;
     private javax.swing.JComboBox<String> filtrarBOX;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JList<String> lstResultados;
     private javax.swing.JButton modificarPacienteButton;
     private javax.swing.JLabel nombreLabel;
     private javax.swing.JButton refrescarListaBtn;
+    private javax.swing.JLabel tituloLabel;
     private javax.swing.JButton todosBtn;
     // End of variables declaration//GEN-END:variables
 
-    private void actualizarFecha(Fecha actual) {
-        fechaLabel.setText("Hoy es " + actual.getDia() + " de " + actual.getMesString() + " del año " + actual.getAnio() + " ");
-    }
 
     public void setInformation() {
 

@@ -21,8 +21,21 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
 
         jSeparator4 = new javax.swing.JSeparator();
         bienvenidaLabel = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         salirBtn = new javax.swing.JButton();
+        sexoLbl = new javax.swing.JLabel();
+        nombreLbl = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        edadLbl = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        ocupacionTxt = new javax.swing.JTextField();
+        nacionalidadCmb = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        estadoCivilCmb = new javax.swing.JComboBox<>();
+        bienvenidaLabel1 = new javax.swing.JLabel();
+        jSeparator5 = new javax.swing.JSeparator();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -38,11 +51,6 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
         bienvenidaLabel.setText("Historia Clínica");
         getContentPane().add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
-        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel3.setText("Nombre");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, 30));
-
         salirBtn.setBackground(new java.awt.Color(204, 204, 204));
         salirBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         salirBtn.setForeground(new java.awt.Color(18, 84, 136));
@@ -53,6 +61,66 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
             }
         });
         getContentPane().add(salirBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, 50, -1));
+
+        sexoLbl.setBackground(new java.awt.Color(51, 51, 51));
+        sexoLbl.setForeground(new java.awt.Color(51, 51, 51));
+        sexoLbl.setText("null");
+        getContentPane().add(sexoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 70, 90, 30));
+
+        nombreLbl.setBackground(new java.awt.Color(51, 51, 51));
+        nombreLbl.setForeground(new java.awt.Color(51, 51, 51));
+        nombreLbl.setText("null");
+        getContentPane().add(nombreLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 90, 30));
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel3.setText("Sexo:");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 70, -1, 30));
+
+        jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel4.setText("Nombre:");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, 30));
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel5.setText("Edad:");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, -1, 30));
+
+        edadLbl.setBackground(new java.awt.Color(51, 51, 51));
+        edadLbl.setForeground(new java.awt.Color(51, 51, 51));
+        edadLbl.setText("null");
+        getContentPane().add(edadLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 80, 30));
+
+        jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel6.setText("Estado civil:");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, -1, 30));
+
+        jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel7.setText("Ocupación:");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, 30));
+        getContentPane().add(ocupacionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 210, -1));
+
+        nacionalidadCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ecuador", "Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudita", "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés", "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Birmania", "Bolivia", "Bosnia y Herzegovina", "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya", "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Ciudad del Vaticano", "Colombia", "Comoras", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba", "Dinamarca", "Dominica", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia", "Eslovenia", "España", "Estados Unidos", "Estonia", "Etiopía", "Filipinas", "Finlandia", "Fiyi", "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guyana", "Guinea", "Guinea ecuatorial", "Guinea-Bisáu", "Haití", "Honduras", "Hungría", "India", "Indonesia", "Irak", "Irán", "Irlanda", "Islandia", "Islas Marshall", "Islas Salomón", "Israel", "Italia", "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Laos", "Lesoto", "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo", "Macedonia del Norte", "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro", "Mozambique", "Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Noruega", "Nueva Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Reino Unido", "República Centroafricana", "República Checa", "República del Congo", "República Democrática del Congo", "República Dominicana", "Ruanda", "Rumanía", "Rusia", "Samoa", "San Cristóbal y Nieves", "San Marino", "San Vicente y las Granadinas", "Santa Lucía", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka", "Suazilandia", "Sudáfrica", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Tanzania", "Tayikistán", "Timor Oriental", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue" }));
+        getContentPane().add(nacionalidadCmb, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 210, -1));
+
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel8.setText("Nacionalidad:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, 30));
+
+        estadoCivilCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solter@", "Casad@", "Divorciad@" }));
+        getContentPane().add(estadoCivilCmb, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 110, 150, -1));
+
+        bienvenidaLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        bienvenidaLabel1.setForeground(new java.awt.Color(51, 51, 51));
+        bienvenidaLabel1.setText("Antecedentes familiares");
+        getContentPane().add(bienvenidaLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
+
+        jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 430, 20));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
         background.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -112,8 +180,21 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel background;
     private javax.swing.JLabel bienvenidaLabel;
+    private javax.swing.JLabel bienvenidaLabel1;
+    private javax.swing.JLabel edadLbl;
+    private javax.swing.JComboBox<String> estadoCivilCmb;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JComboBox<String> nacionalidadCmb;
+    private javax.swing.JLabel nombreLbl;
+    private javax.swing.JTextField ocupacionTxt;
     private javax.swing.JButton salirBtn;
+    private javax.swing.JLabel sexoLbl;
     // End of variables declaration//GEN-END:variables
 }

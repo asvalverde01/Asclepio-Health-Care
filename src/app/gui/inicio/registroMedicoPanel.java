@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * Programa AsclepioHC InicioPanel permite entrar y registrar
  *
  */
-public class registroMedicoPanel extends javax.swing.JPanel {
+public class RegistroMedicoPanel extends javax.swing.JPanel {
 
     // Atributo de lista
     private static Lista usuarios;
@@ -33,10 +33,9 @@ public class registroMedicoPanel extends javax.swing.JPanel {
      *
      * @param usuario
      */
-    public registroMedicoPanel(Administrador usuario) {
+    public RegistroMedicoPanel(Administrador usuario) {
         initComponents();
         // Invoca al método actualizarFecha enviando un objeto de fecha actual para actualizar el label fecha con la fecha actual 
-        actualizarFecha(new Fecha());
         this.usuario = usuario;
         usuarios = InicioForm.getUsuarios();
         anioSpinner.setValue(2000);
@@ -89,18 +88,12 @@ public class registroMedicoPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         bg = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        fechaLabel = new javax.swing.JLabel();
-        bienvenidaLabel = new javax.swing.JLabel();
-        msg2 = new javax.swing.JLabel();
-        avatarLogo = new javax.swing.JLabel();
         nombreTxt = new javax.swing.JTextField();
         jSeparator3 = new javax.swing.JSeparator();
         apellidoTxt = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         diaSpinner = new javax.swing.JSpinner();
-        jSeparator4 = new javax.swing.JSeparator();
         jToggleButton4 = new javax.swing.JToggleButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
@@ -133,6 +126,9 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         contraseniaTxt = new javax.swing.JPasswordField();
         jLabel15 = new javax.swing.JLabel();
         sexoCombo = new javax.swing.JComboBox<>();
+        bienvenidaLabel1 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jSeparator10 = new javax.swing.JSeparator();
         fondo = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(800, 600));
@@ -141,42 +137,6 @@ public class registroMedicoPanel extends javax.swing.JPanel {
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel1.setBackground(new java.awt.Color(18, 84, 136));
-        jPanel1.setForeground(new java.awt.Color(255, 153, 153));
-
-        fechaLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        fechaLabel.setForeground(new java.awt.Color(255, 255, 255));
-        fechaLabel.setText("El día de hoy es -- de -- del año --");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(fechaLabel)
-                .addContainerGap(468, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(fechaLabel)
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-
-        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 870, 60));
-
-        bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
-        bienvenidaLabel.setForeground(new java.awt.Color(102, 0, 153));
-        bienvenidaLabel.setText("Registrar un médico");
-        bg.add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 110, -1, -1));
-
-        msg2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        msg2.setForeground(new java.awt.Color(0, 0, 102));
-        bg.add(msg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 520, -1, -1));
-        bg.add(avatarLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 70, 70));
 
         nombreTxt.setBackground(new java.awt.Color(102, 102, 102));
         nombreTxt.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
@@ -190,11 +150,11 @@ public class registroMedicoPanel extends javax.swing.JPanel {
                 nombreTxtActionPerformed(evt);
             }
         });
-        bg.add(nombreTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 190, 190, 30));
+        bg.add(nombreTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 120, 190, 30));
 
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-        bg.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, 190, 10));
+        bg.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 150, 190, 10));
 
         apellidoTxt.setBackground(new java.awt.Color(102, 102, 102));
         apellidoTxt.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
@@ -208,24 +168,21 @@ public class registroMedicoPanel extends javax.swing.JPanel {
                 apellidoTxtActionPerformed(evt);
             }
         });
-        bg.add(apellidoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 190, 190, 30));
+        bg.add(apellidoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 120, 190, 30));
 
         jLabel12.setBackground(new java.awt.Color(51, 51, 51));
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(51, 51, 51));
         jLabel12.setText("Día");
-        bg.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, 20));
+        bg.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 340, -1, 20));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel3.setText("Nombre");
-        bg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, -1, 30));
+        jLabel3.setText("Complete la información");
+        bg.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 60, -1, 20));
 
         diaSpinner.setValue(1);
-        bg.add(diaSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 440, 90, 30));
-
-        jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
-        bg.add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 430, 20));
+        bg.add(diaSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 370, 90, 30));
 
         jToggleButton4.setBackground(new java.awt.Color(204, 153, 255));
         jToggleButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/avatar/avatar4.png"))); // NOI18N
@@ -236,23 +193,23 @@ public class registroMedicoPanel extends javax.swing.JPanel {
                 jToggleButton4ActionPerformed(evt);
             }
         });
-        bg.add(jToggleButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 440, -1, -1));
+        bg.add(jToggleButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 460, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 51, 51));
         jLabel5.setText("Fecha de Nacimiento");
-        bg.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, -1, -1));
+        bg.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 310, -1, -1));
 
         jLabel8.setBackground(new java.awt.Color(51, 51, 51));
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("Año");
-        bg.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 410, -1, -1));
+        bg.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 340, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 51, 51));
         jLabel4.setText("Especialidad");
-        bg.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 230, -1, -1));
+        bg.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, -1, -1));
 
         jToggleButton1.setBackground(new java.awt.Color(153, 153, 255));
         jToggleButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/avatar/avatar1.png"))); // NOI18N
@@ -263,13 +220,13 @@ public class registroMedicoPanel extends javax.swing.JPanel {
                 jToggleButton1ActionPerformed(evt);
             }
         });
-        bg.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 440, -1, -1));
+        bg.add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 460, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 51, 51));
         jLabel6.setText("Apellido");
-        bg.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 160, -1, -1));
-        bg.add(anioSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, 100, 30));
+        bg.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 90, -1, -1));
+        bg.add(anioSpinner, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 370, 100, 30));
 
         cedulaTxt.setBackground(new java.awt.Color(102, 102, 102));
         cedulaTxt.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
@@ -283,11 +240,11 @@ public class registroMedicoPanel extends javax.swing.JPanel {
                 cedulaTxtActionPerformed(evt);
             }
         });
-        bg.add(cedulaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 190, 190, 30));
+        bg.add(cedulaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, 190, 30));
 
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator2.setForeground(new java.awt.Color(0, 0, 0));
-        bg.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 220, 190, 10));
+        bg.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 190, 10));
 
         jToggleButton2.setBackground(new java.awt.Color(153, 153, 255));
         jToggleButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/avatar/avatar2.png"))); // NOI18N
@@ -298,7 +255,7 @@ public class registroMedicoPanel extends javax.swing.JPanel {
                 jToggleButton2ActionPerformed(evt);
             }
         });
-        bg.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 440, -1, -1));
+        bg.add(jToggleButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, -1, -1));
 
         registrarBtn.setBackground(new java.awt.Color(18, 84, 136));
         registrarBtn.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -310,7 +267,7 @@ public class registroMedicoPanel extends javax.swing.JPanel {
                 registrarBtnActionPerformed(evt);
             }
         });
-        bg.add(registrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 540, 220, 40));
+        bg.add(registrarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 550, 220, 40));
 
         especialidadCombo.setBackground(new java.awt.Color(102, 102, 102));
         especialidadCombo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -321,17 +278,17 @@ public class registroMedicoPanel extends javax.swing.JPanel {
                 especialidadComboActionPerformed(evt);
             }
         });
-        bg.add(especialidadCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 260, 190, 30));
+        bg.add(especialidadCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 190, 30));
 
         jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
-        bg.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 220, 190, 10));
+        bg.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 150, 190, 10));
 
         jLabel10.setBackground(new java.awt.Color(51, 51, 51));
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(51, 51, 51));
         jLabel10.setText("Seleccione un avatar");
-        bg.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 400, -1, -1));
+        bg.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 420, -1, -1));
 
         jToggleButton3.setBackground(new java.awt.Color(204, 153, 255));
         jToggleButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/avatar/avatar3.png"))); // NOI18N
@@ -342,18 +299,18 @@ public class registroMedicoPanel extends javax.swing.JPanel {
                 jToggleButton3ActionPerformed(evt);
             }
         });
-        bg.add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 440, -1, -1));
+        bg.add(jToggleButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 460, -1, -1));
 
         jLabel11.setBackground(new java.awt.Color(51, 51, 51));
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(51, 51, 51));
         jLabel11.setText("Mes");
-        bg.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 470, -1, -1));
+        bg.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 340, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 51, 51));
         jLabel7.setText("Usuario");
-        bg.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, -1, 30));
+        bg.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 160, -1, 30));
 
         usuarioTxt.setBackground(new java.awt.Color(102, 102, 102));
         usuarioTxt.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
@@ -367,15 +324,15 @@ public class registroMedicoPanel extends javax.swing.JPanel {
                 usuarioTxtActionPerformed(evt);
             }
         });
-        bg.add(usuarioTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 190, 30));
+        bg.add(usuarioTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 190, 190, 30));
 
         jSeparator6.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator6.setForeground(new java.awt.Color(0, 0, 0));
-        bg.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 290, 190, 10));
+        bg.add(jSeparator6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 220, 190, 10));
 
         jSeparator7.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator7.setForeground(new java.awt.Color(0, 0, 0));
-        bg.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 290, 190, 10));
+        bg.add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, 190, 10));
 
         correoTxt.setBackground(new java.awt.Color(102, 102, 102));
         correoTxt.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
@@ -389,35 +346,35 @@ public class registroMedicoPanel extends javax.swing.JPanel {
                 correoTxtActionPerformed(evt);
             }
         });
-        bg.add(correoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 190, 30));
+        bg.add(correoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 190, 30));
 
         correoLbl.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         correoLbl.setForeground(new java.awt.Color(0, 51, 51));
         correoLbl.setText("Correo");
-        bg.add(correoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 230, -1, -1));
+        bg.add(correoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 160, -1, -1));
 
         jLabel13.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(0, 51, 51));
         jLabel13.setText("Contraseña");
-        bg.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 300, -1, 30));
+        bg.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 230, -1, 30));
 
         jSeparator8.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator8.setForeground(new java.awt.Color(0, 0, 0));
-        bg.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 190, 10));
+        bg.add(jSeparator8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 290, 190, 10));
 
         jSeparator9.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator9.setForeground(new java.awt.Color(0, 0, 0));
-        bg.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 360, 190, 10));
+        bg.add(jSeparator9, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 290, 190, 10));
 
         jLabel14.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 51, 51));
         jLabel14.setText("Repetir Contraseña");
-        bg.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 300, -1, -1));
+        bg.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 51, 51));
         jLabel9.setText("Cédula");
-        bg.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 160, -1, -1));
+        bg.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 90, -1, -1));
 
         mesCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "enero", "febrero", "marzo", "abril", "mayo", "junio", "julio", "agosto", "septiembre", "octubre", "noviembre", "diciembre" }));
         mesCombo.addActionListener(new java.awt.event.ActionListener() {
@@ -425,21 +382,21 @@ public class registroMedicoPanel extends javax.swing.JPanel {
                 mesComboActionPerformed(evt);
             }
         });
-        bg.add(mesCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 500, 110, 30));
+        bg.add(mesCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 370, 110, 30));
 
         contraseniaRepTxt.setBackground(new java.awt.Color(102, 102, 102));
         contraseniaRepTxt.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        bg.add(contraseniaRepTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 330, 190, 30));
+        bg.add(contraseniaRepTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 260, 190, 30));
 
         contraseniaTxt.setBackground(new java.awt.Color(102, 102, 102));
         contraseniaTxt.setFont(new java.awt.Font("Dialog", 0, 16)); // NOI18N
-        bg.add(contraseniaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 190, 30));
+        bg.add(contraseniaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 190, 30));
 
         jLabel15.setBackground(new java.awt.Color(51, 51, 51));
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(51, 51, 51));
         jLabel15.setText("Sexo");
-        bg.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, -1, -1));
+        bg.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, -1, -1));
 
         sexoCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Femenino", "Masculino" }));
         sexoCombo.addActionListener(new java.awt.event.ActionListener() {
@@ -447,7 +404,20 @@ public class registroMedicoPanel extends javax.swing.JPanel {
                 sexoComboActionPerformed(evt);
             }
         });
-        bg.add(sexoCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 330, 190, 30));
+        bg.add(sexoCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 260, 190, 30));
+
+        bienvenidaLabel1.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
+        bienvenidaLabel1.setForeground(new java.awt.Color(102, 0, 153));
+        bienvenidaLabel1.setText("Registrar un médico");
+        bg.add(bienvenidaLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
+
+        jLabel16.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel16.setText("Nombre");
+        bg.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, 30));
+
+        jSeparator10.setBackground(new java.awt.Color(81, 3, 23));
+        bg.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 760, 20));
 
         fondo.setBackground(new java.awt.Color(102, 102, 102));
         fondo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -455,7 +425,7 @@ public class registroMedicoPanel extends javax.swing.JPanel {
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
         bg.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
-        add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 820, 800));
+        add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 600));
     }// </editor-fold>//GEN-END:initComponents
 
     private void nombreTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTxtActionPerformed
@@ -700,9 +670,8 @@ public class registroMedicoPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSpinner anioSpinner;
     private javax.swing.JTextField apellidoTxt;
-    private javax.swing.JLabel avatarLogo;
     private javax.swing.JPanel bg;
-    private javax.swing.JLabel bienvenidaLabel;
+    private javax.swing.JLabel bienvenidaLabel1;
     private javax.swing.JTextField cedulaTxt;
     private javax.swing.JPasswordField contraseniaRepTxt;
     private javax.swing.JPasswordField contraseniaTxt;
@@ -710,7 +679,6 @@ public class registroMedicoPanel extends javax.swing.JPanel {
     private javax.swing.JTextField correoTxt;
     private javax.swing.JSpinner diaSpinner;
     private javax.swing.JComboBox<String> especialidadCombo;
-    private javax.swing.JLabel fechaLabel;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -718,6 +686,7 @@ public class registroMedicoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -725,10 +694,9 @@ public class registroMedicoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
@@ -739,16 +707,13 @@ public class registroMedicoPanel extends javax.swing.JPanel {
     private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JComboBox<String> mesCombo;
-    private javax.swing.JLabel msg2;
     private javax.swing.JTextField nombreTxt;
     private javax.swing.JButton registrarBtn;
     private javax.swing.JComboBox<String> sexoCombo;
     private javax.swing.JTextField usuarioTxt;
     // End of variables declaration//GEN-END:variables
 
-    private void actualizarFecha(Fecha actual) {
-        fechaLabel.setText("Hoy es " + actual.getDia() + " de " + actual.getMesString() + " del año " + actual.getAnio() + " ");
-    }
+
 
     /**
      * Deshabilita los botones de los avatares

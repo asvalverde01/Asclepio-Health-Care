@@ -349,6 +349,6 @@ public class Usuario {
 
     @Override
     public String toString() {
-        return cedula + "     " + nombre + "      " + apellido + "         " + "       " + rol + "         ";
+        return cedula + "     " + nombre + "      " + apellido + "         " + "       ";
     }
 }

@@ -27,7 +27,6 @@ public class InicioPanel extends javax.swing.JPanel {
     public InicioPanel(Usuario usuario) {
         initComponents();
         // Invoca al método actualizarFecha enviando un objeto de fecha actual para actualizar el label fecha con la fecha actual 
-        actualizarFecha(new Fecha());
         this.usuario = usuario;
         // Método el cual muestra la información el usuairo en los labels del panel
         setInformation();
@@ -50,8 +49,6 @@ public class InicioPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         bg = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        fechaLabel = new javax.swing.JLabel();
         bienvenidaLabel = new javax.swing.JLabel();
         text1Label = new javax.swing.JLabel();
         nombreLabel = new javax.swing.JLabel();
@@ -70,42 +67,16 @@ public class InicioPanel extends javax.swing.JPanel {
         bg.setBackground(new java.awt.Color(255, 255, 255));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(18, 84, 136));
-        jPanel1.setForeground(new java.awt.Color(255, 153, 153));
-
-        fechaLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        fechaLabel.setForeground(new java.awt.Color(255, 255, 255));
-        fechaLabel.setText("El día de hoy es -- de -- del año --");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(fechaLabel)
-                .addContainerGap(468, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(fechaLabel)
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-
-        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 870, 60));
-
         bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
         bienvenidaLabel.setForeground(new java.awt.Color(102, 0, 153));
         bienvenidaLabel.setText("Bienvenido :)");
-        bg.add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));
+        bg.add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 20, -1, -1));
 
         text1Label.setFont(new java.awt.Font("Roboto", 1, 28)); // NOI18N
         text1Label.setForeground(new java.awt.Color(0, 51, 204));
         text1Label.setText("Perfil");
         text1Label.setToolTipText("");
-        bg.add(text1Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, -1, -1));
+        bg.add(text1Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         nombreLabel.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
         nombreLabel.setForeground(new java.awt.Color(51, 51, 51));
@@ -126,22 +97,22 @@ public class InicioPanel extends javax.swing.JPanel {
         adminTxt.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         adminTxt.setForeground(new java.awt.Color(51, 0, 102));
         adminTxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/corporate_profile.png"))); // NOI18N
-        bg.add(adminTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 200, 440, 420));
+        bg.add(adminTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 440, 520));
 
         msg2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         msg2.setForeground(new java.awt.Color(0, 0, 102));
         bg.add(msg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 80, 30));
 
         jSeparator1.setBackground(new java.awt.Color(81, 3, 23));
-        bg.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, 750, 20));
-        bg.add(avatarLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, 70, 70));
+        bg.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 750, 20));
+        bg.add(avatarLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 70, 70));
 
         fondo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         fondo.setForeground(new java.awt.Color(51, 51, 51));
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
-        bg.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 740, 690));
+        bg.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 610));
 
-        add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 800));
+        add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -152,19 +123,15 @@ public class InicioPanel extends javax.swing.JPanel {
     private javax.swing.JPanel bg;
     private javax.swing.JLabel bienvenidaLabel;
     private javax.swing.JLabel edadLabel;
-    private javax.swing.JLabel fechaLabel;
     private javax.swing.JLabel fechaNacLabel;
     private javax.swing.JLabel fondo;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JLabel msg2;
     private javax.swing.JLabel nombreLabel;
     private javax.swing.JLabel text1Label;
     // End of variables declaration//GEN-END:variables
 
-    private void actualizarFecha(Fecha actual) {
-        fechaLabel.setText("Hoy es " + actual.getDia() + " de " + actual.getMesString() + " del año " + actual.getAnio() + " ");
-    }
+
 
     public void setInformation() {
         // Intenta obtener el nombre

@@ -101,6 +101,11 @@ public class InicioForm extends javax.swing.JFrame {
                 usuarioTxtActionPerformed(evt);
             }
         });
+        usuarioTxt.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                usuarioTxtKeyPressed(evt);
+            }
+        });
         getContentPane().add(usuarioTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 250, 220, 40));
 
         jLabel4.setFont(new java.awt.Font("Roboto", 1, 45)); // NOI18N
@@ -214,6 +219,12 @@ public class InicioForm extends javax.swing.JFrame {
             entrarButtonActionPerformed(null);
         }
     }//GEN-LAST:event_contraseniaTxtKeyPressed
+
+    private void usuarioTxtKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usuarioTxtKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            entrarButtonActionPerformed(null);
+        }
+    }//GEN-LAST:event_usuarioTxtKeyPressed
 
     /**
      * @param args the command line arguments

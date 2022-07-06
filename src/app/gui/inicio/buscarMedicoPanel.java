@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  * Programa AsclepioHC InicioPanel permite entrar y registrar
  *
  */
-public class buscarMedicoPanel extends javax.swing.JPanel {
+public class BuscarMedicoPanel extends javax.swing.JPanel {
 
     // Atributo de lista
     private static Lista usuarios;
@@ -31,13 +31,12 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
      *
      * @param usuario
      */
-    public buscarMedicoPanel(Usuario usuario) {
+    public BuscarMedicoPanel(Usuario usuario) {
         initComponents();
         modificarMedicoButton.setVisible(false);
         eliminarMedicoButton.setVisible(false);
         lstResultados.setModel(dlm);
         // Invoca al método actualizarFecha enviando un objeto de fecha actual para actualizar el label fecha con la fecha actual 
-        actualizarFecha(new Fecha());
         this.usuario = usuario;
         usuarios = InicioForm.getUsuarios();
 
@@ -78,9 +77,6 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         bg = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        fechaLabel = new javax.swing.JLabel();
-        bienvenidaLabel = new javax.swing.JLabel();
         msg2 = new javax.swing.JLabel();
         todosBtn = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -95,11 +91,9 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
         nombreLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         refrescarListaBtn = new javax.swing.JButton();
-        jSeparator2 = new javax.swing.JSeparator();
+        jSeparator10 = new javax.swing.JSeparator();
+        tituloLabel = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
-        fondo1 = new javax.swing.JLabel();
-        jSeparator5 = new javax.swing.JSeparator();
-        jLabel10 = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(800, 600));
         setPreferredSize(new java.awt.Dimension(870, 800));
@@ -107,37 +101,6 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
 
         bg.setBackground(new java.awt.Color(255, 255, 255));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jPanel1.setBackground(new java.awt.Color(18, 84, 136));
-        jPanel1.setForeground(new java.awt.Color(255, 153, 153));
-
-        fechaLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        fechaLabel.setForeground(new java.awt.Color(255, 255, 255));
-        fechaLabel.setText("El día de hoy es -- de -- del año --");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(fechaLabel)
-                .addContainerGap(398, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(fechaLabel)
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-
-        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 800, 60));
-
-        bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
-        bienvenidaLabel.setForeground(new java.awt.Color(102, 0, 153));
-        bienvenidaLabel.setText("Búsqueda Médico");
-        bg.add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 110, -1, -1));
 
         msg2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         msg2.setForeground(new java.awt.Color(0, 0, 102));
@@ -168,7 +131,7 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 51, 51));
         jLabel9.setText("Ingrese la cédula del médico a buscar");
-        bg.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, -1));
+        bg.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, -1, -1));
 
         cedulaTxt.setBackground(new java.awt.Color(102, 102, 102));
         cedulaTxt.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
@@ -182,11 +145,11 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
                 cedulaTxtActionPerformed(evt);
             }
         });
-        bg.add(cedulaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 170, 130, 30));
+        bg.add(cedulaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 70, 130, 30));
 
         jSeparator3.setBackground(new java.awt.Color(0, 0, 0));
         jSeparator3.setForeground(new java.awt.Color(0, 0, 0));
-        bg.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 130, 10));
+        bg.add(jSeparator3, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 100, 130, 10));
 
         buscarMedicoButton.setBackground(new java.awt.Color(18, 84, 136));
         buscarMedicoButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
@@ -199,7 +162,7 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
                 buscarMedicoButtonActionPerformed(evt);
             }
         });
-        bg.add(buscarMedicoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 170, 200, -1));
+        bg.add(buscarMedicoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 70, 200, -1));
 
         modificarMedicoButton.setBackground(new java.awt.Color(0, 204, 204));
         modificarMedicoButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -251,27 +214,18 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
         });
         bg.add(refrescarListaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 370, 150, -1));
 
-        jSeparator2.setBackground(new java.awt.Color(81, 3, 23));
-        bg.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 140, 570, 20));
+        jSeparator10.setBackground(new java.awt.Color(81, 3, 23));
+        bg.add(jSeparator10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 760, 20));
+
+        tituloLabel.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
+        tituloLabel.setForeground(new java.awt.Color(102, 0, 153));
+        tituloLabel.setText("Búsqueda Médico");
+        bg.add(tituloLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
         fondo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         fondo.setForeground(new java.awt.Color(51, 51, 51));
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
         bg.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
-
-        fondo1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        fondo1.setForeground(new java.awt.Color(51, 51, 51));
-        fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
-        bg.add(fondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
-
-        jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
-        jSeparator5.setForeground(new java.awt.Color(0, 0, 0));
-        bg.add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 240, 130, 10));
-
-        jLabel10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel10.setText("Ingrese la cédula del médico a buscar");
-        bg.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 210, -1, -1));
 
         add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
     }// </editor-fold>//GEN-END:initComponents
@@ -328,32 +282,24 @@ public class buscarMedicoPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel apellidoLabel;
     private javax.swing.JPanel bg;
-    private javax.swing.JLabel bienvenidaLabel;
     private javax.swing.JButton buscarMedicoButton;
     private javax.swing.JTextField cedulaTxt;
     private javax.swing.JButton eliminarMedicoButton;
-    private javax.swing.JLabel fechaLabel;
     private javax.swing.JLabel fondo;
-    private javax.swing.JLabel fondo1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator5;
     private javax.swing.JList<String> lstResultados;
     private javax.swing.JButton modificarMedicoButton;
     private javax.swing.JLabel msg2;
     private javax.swing.JLabel nombreLabel;
     private javax.swing.JButton refrescarListaBtn;
+    private javax.swing.JLabel tituloLabel;
     private javax.swing.JButton todosBtn;
     // End of variables declaration//GEN-END:variables
 
-    private void actualizarFecha(Fecha actual) {
-        fechaLabel.setText("Hoy es " + actual.getDia() + " de " + actual.getMesString() + " del año " + actual.getAnio() + " ");
-    }
 
     /**
      * Recibe como parametro la cedula y verifica si es una cédula Ecuatoriana

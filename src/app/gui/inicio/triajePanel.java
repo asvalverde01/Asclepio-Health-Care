@@ -2,15 +2,14 @@ package app.gui.inicio;
 
 import app.logic.Fecha;
 import app.logic.users.Usuario;
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
+
 
 /**
- *  Programa BrainUP
- *  InicioPanel permite entrar y registrar
+ * Programa BrainUP InicioPanel permite entrar y registrar
+ *
  * @author Valverde, Vinueza, Vintimilla
  */
-public class triajePanel extends javax.swing.JPanel {
+public class TriajePanel extends javax.swing.JPanel {
 
     private Usuario usuario;
 
@@ -23,14 +22,13 @@ public class triajePanel extends javax.swing.JPanel {
      *
      * @param usuario
      */
-    public triajePanel(Usuario usuario) {
+    public TriajePanel(Usuario usuario) {
         initComponents();
         // Invoca al método actualizarFecha enviando un objeto de fecha actual para actualizar el label fecha con la fecha actual 
         actualizarFecha(new Fecha());
         this.usuario = usuario;
         // Método el cual muestra la información el usuairo en los labels del panel
         setInformation();
-
 
     }
 
@@ -44,17 +42,8 @@ public class triajePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         bg = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        fechaLabel = new javax.swing.JLabel();
         bienvenidaLabel = new javax.swing.JLabel();
-        text1Label = new javax.swing.JLabel();
-        nombreLabel = new javax.swing.JLabel();
-        apellidoLabel = new javax.swing.JLabel();
-        fechaNacLabel = new javax.swing.JLabel();
-        edadLabel = new javax.swing.JLabel();
-        msg2 = new javax.swing.JLabel();
-        jSeparator1 = new javax.swing.JSeparator();
-        avatarLogo = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
         fondo = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(870, 800));
@@ -63,125 +52,35 @@ public class triajePanel extends javax.swing.JPanel {
         bg.setBackground(new java.awt.Color(255, 255, 255));
         bg.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(18, 84, 136));
-        jPanel1.setForeground(new java.awt.Color(255, 153, 153));
-
-        fechaLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
-        fechaLabel.setForeground(new java.awt.Color(255, 255, 255));
-        fechaLabel.setText("El día de hoy es -- de -- del año --");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(fechaLabel)
-                .addContainerGap(468, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(fechaLabel)
-                .addContainerGap(14, Short.MAX_VALUE))
-        );
-
-        bg.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 40, 870, 60));
-
-        bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 48)); // NOI18N
+        bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
         bienvenidaLabel.setForeground(new java.awt.Color(102, 0, 153));
-        bienvenidaLabel.setText("--");
-        bg.add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 120, -1, -1));
+        bienvenidaLabel.setText("Triaje");
+        bg.add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
-        text1Label.setFont(new java.awt.Font("Roboto", 1, 28)); // NOI18N
-        text1Label.setForeground(new java.awt.Color(0, 51, 204));
-        text1Label.setText("--");
-        text1Label.setToolTipText("");
-        bg.add(text1Label, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 200, -1, -1));
-
-        nombreLabel.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
-        nombreLabel.setForeground(new java.awt.Color(51, 51, 51));
-        nombreLabel.setText("nombre");
-        bg.add(nombreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, -1, -1));
-
-        apellidoLabel.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
-        apellidoLabel.setForeground(new java.awt.Color(51, 51, 51));
-        apellidoLabel.setText("apellido");
-        bg.add(apellidoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 310, -1, -1));
-
-        fechaNacLabel.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
-        fechaNacLabel.setForeground(new java.awt.Color(51, 51, 51));
-        fechaNacLabel.setText("Nacimiento");
-        bg.add(fechaNacLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, -1, -1));
-
-        edadLabel.setFont(new java.awt.Font("Roboto", 1, 22)); // NOI18N
-        edadLabel.setForeground(new java.awt.Color(51, 51, 51));
-        edadLabel.setText("Edad");
-        bg.add(edadLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 410, -1, -1));
-
-        msg2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        msg2.setForeground(new java.awt.Color(0, 0, 102));
-        bg.add(msg2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 520, -1, -1));
-
-        jSeparator1.setBackground(new java.awt.Color(81, 3, 23));
-        bg.add(jSeparator1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 230, 570, 20));
-        bg.add(avatarLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 70, 70));
+        jSeparator2.setBackground(new java.awt.Color(81, 3, 23));
+        bg.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 760, 20));
 
         fondo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         fondo.setForeground(new java.awt.Color(51, 51, 51));
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
-        bg.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 800));
+        bg.add(fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
 
-        add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 870, 800));
+        add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel apellidoLabel;
-    private javax.swing.JLabel avatarLogo;
     private javax.swing.JPanel bg;
     private javax.swing.JLabel bienvenidaLabel;
-    private javax.swing.JLabel edadLabel;
-    private javax.swing.JLabel fechaLabel;
-    private javax.swing.JLabel fechaNacLabel;
     private javax.swing.JLabel fondo;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel msg2;
-    private javax.swing.JLabel nombreLabel;
-    private javax.swing.JLabel text1Label;
+    private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 
     private void actualizarFecha(Fecha actual) {
-        fechaLabel.setText("Hoy es " + actual.getDia() + " de " + actual.getMesString() + " del año " + actual.getAnio() + " ");
+        //fechaLabel.setText("Hoy es " + actual.getDia() + " de " + actual.getMesString() + " del año " + actual.getAnio() + " ");
     }
 
     public void setInformation() {
-        // Intenta obtener el nombre
-        try {
-            bienvenidaLabel.setText("Hola " + usuario.getNombre() + " :)");
-        } catch (NullPointerException npe) {
-            bienvenidaLabel.setText("Hola  usuario");
-        } catch (Exception e) {
-            bienvenidaLabel.setText("Problema al encontrar usuario");
-        }
-        // Llena los datos de usuario en los labels
-        try {
-            nombreLabel.setText("Tu nombre es " + usuario.getNombre());
-            apellidoLabel.setText("Tu apellido es " + usuario.getApellido());
-            // Direccion del avatar
-            String direccion = "/imagen/icon/avatar/avatar" + usuario.getAvatar() + ".png";
-            // Crea un objeto de icono 
-            Icon icono = new ImageIcon(getClass().getResource(direccion));
-            // Actializa el icono
-            avatarLogo.setIcon(icono);
-            fechaNacLabel.setText("Naciste el " + usuario.getFechaNacimientoString());
-            edadLabel.setText("Tu edad es " + usuario.getEdad() + " años");
-        } catch (NullPointerException npe) {
-            bienvenidaLabel.setText("Problema al encontrar usuario");
-        } catch (Exception ex) {
-            System.out.println("Error en InicioPanel al leer los datos del usuario");
-        }
+        //
     }
 }
