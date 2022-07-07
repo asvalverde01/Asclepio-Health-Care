@@ -1,6 +1,5 @@
 package app.gui.inicio;
 
-import app.logic.Fecha;
 import app.logic.users.Administrador;
 import app.logic.users.Usuario;
 import javax.swing.Icon;
@@ -97,7 +96,7 @@ public class InicioPanel extends javax.swing.JPanel {
         adminTxt.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         adminTxt.setForeground(new java.awt.Color(51, 0, 102));
         adminTxt.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/corporate_profile.png"))); // NOI18N
-        bg.add(adminTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 440, 520));
+        bg.add(adminTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 330, 250, 290));
 
         msg2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         msg2.setForeground(new java.awt.Color(0, 0, 102));
@@ -136,7 +135,7 @@ public class InicioPanel extends javax.swing.JPanel {
     public void setInformation() {
         // Intenta obtener el nombre
         try {
-            String saludo = "Hola";
+            String saludo;
             if (usuario.getSexo().equals("Femenino")) {
                 saludo = "Bienvenida Dra. ";
             } else {

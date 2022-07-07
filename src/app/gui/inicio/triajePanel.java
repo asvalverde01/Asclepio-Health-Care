@@ -1,6 +1,4 @@
 package app.gui.inicio;
-
-import app.logic.Fecha;
 import app.logic.users.Usuario;
 
 
@@ -25,7 +23,6 @@ public class TriajePanel extends javax.swing.JPanel {
     public TriajePanel(Usuario usuario) {
         initComponents();
         // Invoca al método actualizarFecha enviando un objeto de fecha actual para actualizar el label fecha con la fecha actual 
-        actualizarFecha(new Fecha());
         this.usuario = usuario;
         // Método el cual muestra la información el usuairo en los labels del panel
         setInformation();
@@ -76,9 +73,7 @@ public class TriajePanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 
-    private void actualizarFecha(Fecha actual) {
-        //fechaLabel.setText("Hoy es " + actual.getDia() + " de " + actual.getMesString() + " del año " + actual.getAnio() + " ");
-    }
+
 
     public void setInformation() {
         //

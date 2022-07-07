@@ -4,15 +4,12 @@ import app.logic.Fecha;
 
 public class AyudaPanel extends javax.swing.JPanel {
 
-    private Fecha actual;
-
     /**
      * Creates new form inicioPanel
      *
      */
     public AyudaPanel() {
         initComponents();
-        actual = new Fecha();
         setInformation();
     }
 
@@ -205,7 +202,6 @@ public class AyudaPanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JLabel tituloLabel;
     // End of variables declaration//GEN-END:variables
-
 
     public void setInformation() {
 

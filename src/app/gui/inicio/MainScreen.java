@@ -1,5 +1,9 @@
 package app.gui.inicio;
 
+import app.gui.medico.BuscarMedicoPanel;
+import app.gui.medico.RegistroMedicoPanel;
+import app.gui.paciente.BuscarPacientePanel;
+import app.gui.paciente.RegistroPacientePanel;
 import app.dataStruct.ListaPacientes;
 import app.logic.Fecha;
 import app.logic.Main;
@@ -35,7 +39,7 @@ public final class MainScreen extends javax.swing.JFrame {
     }
 
     public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+        MainScreen.usuario = usuario;
     }
 
     public static String getUserID() {
@@ -174,7 +178,7 @@ public final class MainScreen extends javax.swing.JFrame {
                 helpButtonActionPerformed(evt);
             }
         });
-        content.add(helpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 470, 240, 40));
+        content.add(helpButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 510, 240, 40));
 
         homeButton1.setBackground(new java.awt.Color(42, 147, 213));
         homeButton1.setFont(new java.awt.Font("Segoe UI", 1, 28)); // NOI18N
@@ -236,17 +240,19 @@ public final class MainScreen extends javax.swing.JFrame {
                 configButtonActionPerformed(evt);
             }
         });
-        content.add(configButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 510, 240, 40));
+        content.add(configButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 470, 240, 40));
+
+        contenido.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         javax.swing.GroupLayout contenidoLayout = new javax.swing.GroupLayout(contenido);
         contenido.setLayout(contenidoLayout);
         contenidoLayout.setHorizontalGroup(
             contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGap(0, 796, Short.MAX_VALUE)
         );
         contenidoLayout.setVerticalGroup(
             contenidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 600, Short.MAX_VALUE)
+            .addGap(0, 596, Short.MAX_VALUE)
         );
 
         content.add(contenido, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 50, 800, 600));
@@ -347,7 +353,7 @@ public final class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_homeButton1ActionPerformed
 
     private void helpButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButtonActionPerformed
-        Icon icono = new ImageIcon(getClass().getResource("/imagen/icon/puzzle_component.png"));
+        Icon icono = new ImageIcon(getClass().getResource("/imagen/icon/view_eye.png"));
         iconImg.setIcon(icono);
         colorButtons();
         showPanel(pAyuda);
@@ -355,7 +361,7 @@ public final class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_helpButtonActionPerformed
 
     private void registrarMedicoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarMedicoButtonActionPerformed
-        Icon icono = new ImageIcon(getClass().getResource("/imagen/icon/puzzle_component.png"));
+        Icon icono = new ImageIcon(getClass().getResource("/imagen/icon/pencil.png"));
         iconImg.setIcon(icono);
         colorButtons();
         registrarMedicoButton.setBackground(new java.awt.Color(250, 250, 250));
@@ -365,7 +371,7 @@ public final class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_registrarMedicoButtonActionPerformed
 
     private void buscarPacienteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPacienteButtonActionPerformed
-        Icon icono = new ImageIcon(getClass().getResource("/imagen/icon/news_paper.png"));
+        Icon icono = new ImageIcon(getClass().getResource("/imagen/icon/zoom_search_find.png"));
         iconImg.setIcon(icono);
         colorButtons();
         buscarPacienteButton.setBackground(new java.awt.Color(247, 247, 247));
@@ -373,7 +379,7 @@ public final class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_buscarPacienteButtonActionPerformed
 
     private void registrarPacienteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarPacienteButtonActionPerformed
-        Icon icono = new ImageIcon(getClass().getResource("/imagen/icon/news_paper.png"));
+        Icon icono = new ImageIcon(getClass().getResource("/imagen/icon/pencil.png"));
         iconImg.setIcon(icono);
         colorButtons();
         registrarPacienteButton.setBackground(new java.awt.Color(247, 247, 247));
@@ -389,7 +395,7 @@ public final class MainScreen extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void buscarMedicoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarMedicoButtonActionPerformed
-        Icon icono = new ImageIcon(getClass().getResource("/imagen/icon/cup_reward.png"));
+        Icon icono = new ImageIcon(getClass().getResource("/imagen/icon/zoom_search_find.png"));
         iconImg.setIcon(icono);
         colorButtons();
         buscarMedicoButton.setBackground(new java.awt.Color(251, 251, 251));
