@@ -76,12 +76,14 @@ public final class MainScreen extends javax.swing.JFrame {
         registrarMedicoButton.setVisible(false);
         buscarMedicoButton.setVisible(false);
         registrarPacienteButton.setVisible(true);
+        triajeButton.setVisible(true);
 
         // Si la el rol es administrador entonces se muestran más opciones
         if (usuario instanceof Administrador) {
             registrarMedicoButton.setVisible(true);
             buscarMedicoButton.setVisible(true);
             registrarPacienteButton.setVisible(false);
+            triajeButton.setVisible(false);
             content.setBackground(new java.awt.Color(46, 64, 114));
         } else if (usuario instanceof Medico) {
 //
@@ -481,7 +483,7 @@ public final class MainScreen extends javax.swing.JFrame {
         pInicio = new InicioPanel(usuario);
 
         pConfig = new ConfigPanel(usuario);
-        pTriaje = new TriajePanel(usuario);
+        pTriaje = new TriajePanel();
 
         if (usuario instanceof Administrador) {
             pRegistrarMedico = new RegistroMedicoPanel((Administrador) usuario);

@@ -9,7 +9,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.sql.*;
-import java.util.logging.Logger;
 
 /**
  *
