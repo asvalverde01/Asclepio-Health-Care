@@ -14,7 +14,6 @@ public class TriajeGuiForm extends javax.swing.JFrame {
      *
      * @param paciente
      * @param formulario
-     * @param id
      */
     public TriajeGuiForm(Paciente paciente, SignosVitalesFormulario formulario) {
         initComponents();
@@ -112,7 +111,7 @@ public class TriajeGuiForm extends javax.swing.JFrame {
         edadLbl.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         edadLbl.setForeground(new java.awt.Color(51, 51, 51));
         edadLbl.setText("null");
-        getContentPane().add(edadLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 80, 80, 30));
+        getContentPane().add(edadLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 80, 60, 30));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 51, 51));
@@ -233,6 +232,23 @@ public class TriajeGuiForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_backgroundKeyPressed
 
+    private void actualizarInfo() {
+        nombreLbl.setText(paciente.getNombre());
+        apellidoLbl.setText(paciente.getApellido());
+        cedulaLbl.setText(paciente.getCedula());
+        edadLbl.setText("" + paciente.getEdad());
+        sexoLbl.setText(paciente.getSexo());
+        fechaLbl.setText("" + formulario.getFecha().toString());
+
+        alturaLbl.setText("" + formulario.getAltura());
+        pesoLbl.setText("" + formulario.getPeso());
+        pulsoLbl.setText("" + formulario.getPulso());
+        respiracionLbl.setText("" + formulario.getRespiracion());
+        tensionLbl.setText("" + formulario.getTension());
+        prioridadLbl.setText(formulario.getPrioridadString());
+        grupoSLbl.setText(formulario.getGrupoSanguieno());
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSpinner aSpn2;
@@ -266,22 +282,5 @@ public class TriajeGuiForm extends javax.swing.JFrame {
     private javax.swing.JLabel sexoLbl;
     private javax.swing.JLabel tensionLbl;
     // End of variables declaration//GEN-END:variables
-
-    private void actualizarInfo() {
-        nombreLbl.setText(paciente.getNombre());
-        apellidoLbl.setText(paciente.getApellido());
-        cedulaLbl.setText(paciente.getCedula());
-        edadLbl.setText("" + paciente.getEdad());
-        sexoLbl.setText(paciente.getSexo());
-        fechaLbl.setText("" + formulario.getFecha().toString());
-
-        alturaLbl.setText("" + formulario.getAltura());
-        pesoLbl.setText("" + formulario.getPeso());
-        pulsoLbl.setText("" + formulario.getPulso());
-        respiracionLbl.setText("" + formulario.getRespiracion());
-        tensionLbl.setText("" + formulario.getTension());
-        prioridadLbl.setText(formulario.getPrioridadString());
-        grupoSLbl.setText(formulario.getGrupoSanguieno());
-    }
 
 }

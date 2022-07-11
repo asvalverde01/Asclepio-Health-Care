@@ -114,24 +114,6 @@ public class InicioPanel extends javax.swing.JPanel {
         add(bg, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 600));
     }// </editor-fold>//GEN-END:initComponents
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel adminTxt;
-    private javax.swing.JLabel apellidoLabel;
-    private javax.swing.JLabel avatarLogo;
-    private javax.swing.JPanel bg;
-    private javax.swing.JLabel bienvenidaLabel;
-    private javax.swing.JLabel edadLabel;
-    private javax.swing.JLabel fechaNacLabel;
-    private javax.swing.JLabel fondo;
-    private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JLabel msg2;
-    private javax.swing.JLabel nombreLabel;
-    private javax.swing.JLabel text1Label;
-    // End of variables declaration//GEN-END:variables
-
-
-
     public void setInformation() {
         // Intenta obtener el nombre
         try {
@@ -174,5 +156,21 @@ public class InicioPanel extends javax.swing.JPanel {
             }
         }
     }
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel adminTxt;
+    private javax.swing.JLabel apellidoLabel;
+    private javax.swing.JLabel avatarLogo;
+    private javax.swing.JPanel bg;
+    private javax.swing.JLabel bienvenidaLabel;
+    private javax.swing.JLabel edadLabel;
+    private javax.swing.JLabel fechaNacLabel;
+    private javax.swing.JLabel fondo;
+    private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JLabel msg2;
+    private javax.swing.JLabel nombreLabel;
+    private javax.swing.JLabel text1Label;
+    // End of variables declaration//GEN-END:variables
 
 }

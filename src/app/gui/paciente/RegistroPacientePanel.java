@@ -392,36 +392,6 @@ public class RegistroPacientePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_sexoComboActionPerformed
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSpinner anioSpinner;
-    private javax.swing.JTextField apellidoTxt;
-    private javax.swing.JLabel avatarLogo;
-    private javax.swing.JPanel bg;
-    private javax.swing.JLabel bienvenidaLabel;
-    private javax.swing.JTextField cedulaTxt;
-    private javax.swing.JSpinner diaSpinner;
-    private javax.swing.JLabel fondo;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JComboBox<String> mesCombo;
-    private javax.swing.JLabel msg2;
-    private javax.swing.JTextField nombreTxt;
-    private javax.swing.JButton registrarBtn;
-    private javax.swing.JComboBox<String> sexoCombo;
-    // End of variables declaration//GEN-END:variables
-
-
     /**
      * Recibe como parametro la cedula y verifica si es una cédula Ecuatoriana
      * válida
@@ -505,7 +475,7 @@ public class RegistroPacientePanel extends javax.swing.JPanel {
                 int dia = usuarioNuevo.getFechaNacimiento().getDia();
                 int mes = usuarioNuevo.getFechaNacimiento().getMes();
                 int anio = usuarioNuevo.getFechaNacimiento().getAnio();
-                
+
                 String idMedico = usuarioNuevo.getIdMedicoResponsable();
 
                 String SQL = "INSERT INTO paciente (nombre, apellido, cedula, sexo, dia, mes, anio, idResponsable, estado) VALUES ('" + nombre + "', '" + apellido + "', '" + cedula + "', '" + sexo + "', '" + dia + "', '" + mes + "', '" + anio + "', '" + idMedico + "', '" + "Espera" + "')";
@@ -535,4 +505,33 @@ public class RegistroPacientePanel extends javax.swing.JPanel {
         anioSpinner.setValue(2000);
 
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSpinner anioSpinner;
+    private javax.swing.JTextField apellidoTxt;
+    private javax.swing.JLabel avatarLogo;
+    private javax.swing.JPanel bg;
+    private javax.swing.JLabel bienvenidaLabel;
+    private javax.swing.JTextField cedulaTxt;
+    private javax.swing.JSpinner diaSpinner;
+    private javax.swing.JLabel fondo;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JComboBox<String> mesCombo;
+    private javax.swing.JLabel msg2;
+    private javax.swing.JTextField nombreTxt;
+    private javax.swing.JButton registrarBtn;
+    private javax.swing.JComboBox<String> sexoCombo;
+    // End of variables declaration//GEN-END:variables
+
 }

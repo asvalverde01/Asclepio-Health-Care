@@ -4,8 +4,10 @@ import app.dataStruct.ListaPacientes;
 import app.gui.inicio.DerivarGui;
 import app.gui.inicio.MainScreen;
 import app.logic.Fecha;
+import app.logic.HistoriaClinicaPaciente;
 import app.logic.Main;
 import app.logic.users.Paciente;
+import java.awt.HeadlessException;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -168,6 +170,8 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
         atenderButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         atenderButton.setForeground(new java.awt.Color(0, 0, 0));
         atenderButton.setText("Atender");
+        atenderButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        atenderButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         atenderButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 atenderButtonActionPerformed(evt);
@@ -179,6 +183,8 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
         derivarButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         derivarButton.setForeground(new java.awt.Color(0, 0, 0));
         derivarButton.setText("Derivar");
+        derivarButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        derivarButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         derivarButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 derivarButtonActionPerformed(evt);
@@ -190,6 +196,8 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
         eliminarPacienteButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         eliminarPacienteButton.setForeground(new java.awt.Color(0, 0, 0));
         eliminarPacienteButton.setText("Eliminar");
+        eliminarPacienteButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        eliminarPacienteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         eliminarPacienteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 eliminarPacienteButtonActionPerformed(evt);
@@ -201,6 +209,8 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
         modificarPacienteButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         modificarPacienteButton.setForeground(new java.awt.Color(0, 0, 0));
         modificarPacienteButton.setText("Modificar");
+        modificarPacienteButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        modificarPacienteButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         modificarPacienteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 modificarPacienteButtonActionPerformed(evt);
@@ -333,20 +343,41 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_modificarPacienteButtonActionPerformed
 
     private void eliminarPacienteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarPacienteButtonActionPerformed
-        try {
-            Main.eliminarUsuarioDataBase(this.pacienteActual.getCedula());
-            JOptionPane.showMessageDialog(null, "Eliminado correctamente");
-            modificarPacienteButton.setVisible(false);
-            eliminarPacienteButton.setVisible(false);
-            this.pacienteActual = null;
-            nombreLabel.setText("Nombre: ");
-            apellidoLabel.setText("Apellido:");
-            cedulaTxt.setText("");
-            actualizarListaPacientes();
 
+        // Solicita que se ingrese la clave admin para continuar
+        String clave;
+        try {
+            clave = JOptionPane.showInputDialog(null, "Ingrese la clave de administrador", "Clave", JOptionPane.QUESTION_MESSAGE);
+            if (clave.equals("admin")) {
+                int confirmado = JOptionPane.showConfirmDialog(null, "¿Seguro desea eliminar paciente?", "Borrar", JOptionPane.YES_NO_OPTION);
+
+                if (JOptionPane.OK_OPTION == confirmado) {
+                    try {
+                        Main.eliminarUsuarioDataBase(this.pacienteActual.getCedula());
+                        JOptionPane.showMessageDialog(null, "Eliminado correctamente");
+                        ocultarBotones(false);
+                        this.pacienteActual = null;
+                        nombreLabel.setText("Nombre: ");
+                        apellidoLabel.setText("Apellido:");
+                        cedulaTxt.setText("");
+                        actualizarListaPacientes();
+
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(null, "Error");
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Clave incorrecta", "Clave", JOptionPane.ERROR_MESSAGE);
+            }
+        } catch (NullPointerException e) {
+            System.out.println("No se ingreso nada");
+        } catch (HeadlessException e) {
+            System.out.println("Error: " + e);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error");
+            System.out.println("Error: " + e);
         }
+
+
     }//GEN-LAST:event_eliminarPacienteButtonActionPerformed
 
     private void cedulaTxt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cedulaTxt1ActionPerformed
@@ -387,8 +418,16 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "El paciente ya ha sido atendido", "Advertencia", JOptionPane.INFORMATION_MESSAGE);
                 break;
             default:
-                HistoriaClinicaGui nuevaHistoria = new HistoriaClinicaGui();
-                nuevaHistoria.setVisible(true);
+                 HistoriaClinicaPaciente historiaClinica = Main.obtenerHistoriaClinica(pacienteActual.getCedula()); 
+                if (historiaClinica != null) {
+                    // Muestra
+                    
+                } else {
+                    // Crea una
+                    HistoriaClinicaGui nuevaHistoriaClinica = new HistoriaClinicaGui(pacienteActual);
+                    nuevaHistoriaClinica.setVisible(true);
+                }
+
                 break;
         }
     }//GEN-LAST:event_atenderButtonActionPerformed
@@ -442,35 +481,6 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
         });
     }
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel apellidoLabel;
-    private javax.swing.JButton atenderButton;
-    private javax.swing.JButton buscarButton;
-    private javax.swing.JButton buscarPacienteButton;
-    private javax.swing.JButton buscarPacienteButton1;
-    private javax.swing.JTextField cedulaTxt;
-    private javax.swing.JTextField cedulaTxt1;
-    private javax.swing.JButton derivarButton;
-    private javax.swing.JLabel edadLabel;
-    private javax.swing.JButton eliminarPacienteButton;
-    private javax.swing.JComboBox<String> filtrarBOX;
-    private javax.swing.JLabel fondo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator10;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JList<String> lstResultados;
-    private javax.swing.JButton modificarPacienteButton;
-    private javax.swing.JLabel nombreLabel;
-    private javax.swing.JButton refrescarListaBtn;
-    private javax.swing.JLabel tituloLabel;
-    private javax.swing.JButton todosBtn;
-    // End of variables declaration//GEN-END:variables
-
     public void setInformation() {
 
     }
@@ -514,4 +524,33 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
         modificarPacienteButton.setVisible(booleano);
         eliminarPacienteButton.setVisible(booleano);
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel apellidoLabel;
+    private javax.swing.JButton atenderButton;
+    private javax.swing.JButton buscarButton;
+    private javax.swing.JButton buscarPacienteButton;
+    private javax.swing.JButton buscarPacienteButton1;
+    private javax.swing.JTextField cedulaTxt;
+    private javax.swing.JTextField cedulaTxt1;
+    private javax.swing.JButton derivarButton;
+    private javax.swing.JLabel edadLabel;
+    private javax.swing.JButton eliminarPacienteButton;
+    private javax.swing.JComboBox<String> filtrarBOX;
+    private javax.swing.JLabel fondo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JList<String> lstResultados;
+    private javax.swing.JButton modificarPacienteButton;
+    private javax.swing.JLabel nombreLabel;
+    private javax.swing.JButton refrescarListaBtn;
+    private javax.swing.JLabel tituloLabel;
+    private javax.swing.JButton todosBtn;
+    // End of variables declaration//GEN-END:variables
+
 }

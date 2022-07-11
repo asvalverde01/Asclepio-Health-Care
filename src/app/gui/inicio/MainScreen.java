@@ -443,23 +443,6 @@ public final class MainScreen extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton buscarMedicoButton;
-    private javax.swing.JButton buscarPacienteButton;
-    private javax.swing.JButton configButton;
-    private javax.swing.JPanel contenido;
-    private javax.swing.JPanel content;
-    private javax.swing.JLabel fechaLabel;
-    private javax.swing.JButton helpButton;
-    private javax.swing.JButton homeButton1;
-    private javax.swing.JLabel iconImg;
-    private javax.swing.JButton logoutButton;
-    private javax.swing.JButton registrarMedicoButton;
-    private javax.swing.JButton registrarPacienteButton;
-    private javax.swing.JButton salirButton;
-    private javax.swing.JButton signosVitalesButton;
-    // End of variables declaration//GEN-END:variables
-
     /**
      * Recibe el panel para cabiarlo en el panel contenido
      *
@@ -514,4 +497,22 @@ public final class MainScreen extends javax.swing.JFrame {
     private void actualizarFecha(Fecha actual) {
         fechaLabel.setText("     Hoy es " + actual.getDia() + " de " + actual.getMesString() + " del año " + actual.getAnio() + " ");
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buscarMedicoButton;
+    private javax.swing.JButton buscarPacienteButton;
+    private javax.swing.JButton configButton;
+    private javax.swing.JPanel contenido;
+    private javax.swing.JPanel content;
+    private javax.swing.JLabel fechaLabel;
+    private javax.swing.JButton helpButton;
+    private javax.swing.JButton homeButton1;
+    private javax.swing.JLabel iconImg;
+    private javax.swing.JButton logoutButton;
+    private javax.swing.JButton registrarMedicoButton;
+    private javax.swing.JButton registrarPacienteButton;
+    private javax.swing.JButton salirButton;
+    private javax.swing.JButton signosVitalesButton;
+    // End of variables declaration//GEN-END:variables
+
 }

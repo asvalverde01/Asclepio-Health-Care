@@ -1,6 +1,5 @@
 package app.gui.medico;
 
-import app.gui.medico.ModificarMedicoGui;
 import app.dataStruct.Lista;
 import app.gui.inicio.InicioForm;
 import app.logic.users.Usuario;
@@ -266,29 +265,6 @@ public class BuscarMedicoPanel extends javax.swing.JPanel {
         actualizarMedicoActual(idSeleccion);
     }//GEN-LAST:event_lstResultadosMouseClicked
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel apellidoLabel;
-    private javax.swing.JPanel bg;
-    private javax.swing.JButton buscarMedicoButton;
-    private javax.swing.JTextField cedulaTxt;
-    private javax.swing.JButton eliminarMedicoButton;
-    private javax.swing.JLabel fondo;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator10;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JList<String> lstResultados;
-    private javax.swing.JButton modificarMedicoButton;
-    private javax.swing.JLabel msg2;
-    private javax.swing.JLabel nombreLabel;
-    private javax.swing.JButton refrescarListaBtn;
-    private javax.swing.JLabel tituloLabel;
-    private javax.swing.JButton todosBtn;
-    // End of variables declaration//GEN-END:variables
-
-
     /**
      * Recibe como parametro la cedula y verifica si es una cédula Ecuatoriana
      * válida
@@ -384,4 +360,26 @@ public class BuscarMedicoPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "No encontrado");
         }
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel apellidoLabel;
+    private javax.swing.JPanel bg;
+    private javax.swing.JButton buscarMedicoButton;
+    private javax.swing.JTextField cedulaTxt;
+    private javax.swing.JButton eliminarMedicoButton;
+    private javax.swing.JLabel fondo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JList<String> lstResultados;
+    private javax.swing.JButton modificarMedicoButton;
+    private javax.swing.JLabel msg2;
+    private javax.swing.JLabel nombreLabel;
+    private javax.swing.JButton refrescarListaBtn;
+    private javax.swing.JLabel tituloLabel;
+    private javax.swing.JButton todosBtn;
+    // End of variables declaration//GEN-END:variables
+
 }

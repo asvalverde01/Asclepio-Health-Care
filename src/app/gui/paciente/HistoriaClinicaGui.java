@@ -1,13 +1,23 @@
 package app.gui.paciente;
 
+import app.logic.Fecha;
+import app.logic.users.Paciente;
+
 public class HistoriaClinicaGui extends javax.swing.JFrame {
+
+    Paciente paciente;
 
     /**
      * Creates new form HistoriaClinica
+     *
+     * @param paciente
      */
-    public HistoriaClinicaGui() {
+    public HistoriaClinicaGui(Paciente paciente) {
         initComponents();
+        this.paciente = paciente;
         this.setLocationRelativeTo(null);
+        actualizarInfo();
+
     }
 
     /**
@@ -21,7 +31,6 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
 
         jSeparator4 = new javax.swing.JSeparator();
         bienvenidaLabel = new javax.swing.JLabel();
-        salirBtn = new javax.swing.JButton();
         sexoLbl = new javax.swing.JLabel();
         nombreLbl = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -30,52 +39,67 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
         edadLbl = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        enfermedadesTxt = new javax.swing.JTextField();
+        antecedentesOTxt = new javax.swing.JTextField();
+        antecedentesPTxt = new javax.swing.JTextField();
         ocupacionTxt = new javax.swing.JTextField();
         nacionalidadCmb = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
+        bienvenidaLabel2 = new javax.swing.JLabel();
         estadoCivilCmb = new javax.swing.JComboBox<>();
         bienvenidaLabel1 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        antecedentesMTxt = new javax.swing.JTextField();
+        fallecidoPRadioButton = new javax.swing.JRadioButton();
+        fallecidoMRadioButton = new javax.swing.JRadioButton();
+        cedulaLbl = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        apellidoLbl = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        fechaLbl = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jSeparator7 = new javax.swing.JSeparator();
+        drogasRButton = new javax.swing.JRadioButton();
+        tabacoRButton = new javax.swing.JRadioButton();
+        alcoholRButton = new javax.swing.JRadioButton();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        medicaciónTxt = new javax.swing.JTextField();
+        guardarBtn = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        setMinimumSize(new java.awt.Dimension(1030, 650));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jSeparator4.setBackground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 40, 430, 20));
+        getContentPane().add(jSeparator4, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 40, 430, 20));
 
         bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         bienvenidaLabel.setForeground(new java.awt.Color(102, 0, 153));
         bienvenidaLabel.setText("Historia Clínica");
-        getContentPane().add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
-
-        salirBtn.setBackground(new java.awt.Color(204, 204, 204));
-        salirBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        salirBtn.setForeground(new java.awt.Color(18, 84, 136));
-        salirBtn.setText("X");
-        salirBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salirBtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(salirBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, 50, -1));
+        getContentPane().add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, -1, -1));
 
         sexoLbl.setBackground(new java.awt.Color(51, 51, 51));
+        sexoLbl.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         sexoLbl.setForeground(new java.awt.Color(51, 51, 51));
         sexoLbl.setText("null");
-        getContentPane().add(sexoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 70, 90, 30));
+        getContentPane().add(sexoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 70, 90, 30));
 
         nombreLbl.setBackground(new java.awt.Color(51, 51, 51));
+        nombreLbl.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         nombreLbl.setForeground(new java.awt.Color(51, 51, 51));
         nombreLbl.setText("null");
-        getContentPane().add(nombreLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 90, 30));
+        getContentPane().add(nombreLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 90, 30));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 51));
         jLabel3.setText("Sexo:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 70, -1, 30));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 70, -1, 30));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 51, 51));
@@ -85,42 +109,166 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 51, 51));
         jLabel5.setText("Edad:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, -1, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, -1, 30));
 
         edadLbl.setBackground(new java.awt.Color(51, 51, 51));
+        edadLbl.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         edadLbl.setForeground(new java.awt.Color(51, 51, 51));
         edadLbl.setText("null");
-        getContentPane().add(edadLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 80, 30));
+        getContentPane().add(edadLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 80, 30));
 
         jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 51, 51));
         jLabel6.setText("Estado civil:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, -1, 30));
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 170, -1, 30));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 51, 51));
         jLabel7.setText("Ocupación:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, 30));
-        getContentPane().add(ocupacionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 210, -1));
+        getContentPane().add(enfermedadesTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 660, 30));
+        getContentPane().add(antecedentesOTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 820, 30));
+        getContentPane().add(antecedentesPTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 700, 30));
+        getContentPane().add(ocupacionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 210, -1));
 
         nacionalidadCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ecuador", "Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudita", "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés", "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Birmania", "Bolivia", "Bosnia y Herzegovina", "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya", "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Ciudad del Vaticano", "Colombia", "Comoras", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba", "Dinamarca", "Dominica", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia", "Eslovenia", "España", "Estados Unidos", "Estonia", "Etiopía", "Filipinas", "Finlandia", "Fiyi", "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guyana", "Guinea", "Guinea ecuatorial", "Guinea-Bisáu", "Haití", "Honduras", "Hungría", "India", "Indonesia", "Irak", "Irán", "Irlanda", "Islandia", "Islas Marshall", "Islas Salomón", "Israel", "Italia", "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Laos", "Lesoto", "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo", "Macedonia del Norte", "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro", "Mozambique", "Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Noruega", "Nueva Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Reino Unido", "República Centroafricana", "República Checa", "República del Congo", "República Democrática del Congo", "República Dominicana", "Ruanda", "Rumanía", "Rusia", "Samoa", "San Cristóbal y Nieves", "San Marino", "San Vicente y las Granadinas", "Santa Lucía", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka", "Suazilandia", "Sudáfrica", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Tanzania", "Tayikistán", "Timor Oriental", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue" }));
-        getContentPane().add(nacionalidadCmb, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 160, 210, -1));
+        getContentPane().add(nacionalidadCmb, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 170, 210, -1));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel8.setText("Nacionalidad:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, 30));
+        jLabel8.setText("Enfermedades que padece:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, -1, 30));
+
+        bienvenidaLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
+        bienvenidaLabel2.setForeground(new java.awt.Color(0, 51, 153));
+        bienvenidaLabel2.setText("Antecedentes personales");
+        getContentPane().add(bienvenidaLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 390, -1, -1));
 
         estadoCivilCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solter@", "Casad@", "Divorciad@" }));
-        getContentPane().add(estadoCivilCmb, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 110, 150, -1));
+        getContentPane().add(estadoCivilCmb, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 170, 150, -1));
 
         bienvenidaLabel1.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
-        bienvenidaLabel1.setForeground(new java.awt.Color(51, 51, 51));
+        bienvenidaLabel1.setForeground(new java.awt.Color(0, 51, 153));
         bienvenidaLabel1.setText("Antecedentes familiares");
         getContentPane().add(bienvenidaLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 220, -1, -1));
 
         jSeparator5.setBackground(new java.awt.Color(0, 0, 0));
-        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 430, 20));
+        getContentPane().add(jSeparator5, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 240, 920, 10));
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel10.setText("Padre:");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 260, -1, 30));
+
+        jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel9.setText("Nacionalidad:");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 170, -1, 30));
+        getContentPane().add(antecedentesMTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 300, 700, 30));
+
+        fallecidoPRadioButton.setForeground(new java.awt.Color(51, 51, 51));
+        fallecidoPRadioButton.setText("Fallecido");
+        fallecidoPRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fallecidoPRadioButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(fallecidoPRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 260, -1, -1));
+
+        fallecidoMRadioButton.setForeground(new java.awt.Color(51, 51, 51));
+        fallecidoMRadioButton.setText("Fallecido");
+        fallecidoMRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fallecidoMRadioButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(fallecidoMRadioButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 300, -1, -1));
+
+        cedulaLbl.setBackground(new java.awt.Color(51, 51, 51));
+        cedulaLbl.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        cedulaLbl.setForeground(new java.awt.Color(51, 51, 51));
+        cedulaLbl.setText("null");
+        getContentPane().add(cedulaLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 120, 140, 30));
+
+        jLabel14.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel14.setText("Cédula:");
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 120, -1, 30));
+
+        jLabel11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel11.setText("Apellido:");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, -1, 30));
+
+        apellidoLbl.setBackground(new java.awt.Color(51, 51, 51));
+        apellidoLbl.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        apellidoLbl.setForeground(new java.awt.Color(51, 51, 51));
+        apellidoLbl.setText("null");
+        getContentPane().add(apellidoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 70, 120, 30));
+
+        jLabel15.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel15.setText("Fecha:");
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 120, -1, 30));
+
+        fechaLbl.setBackground(new java.awt.Color(51, 51, 51));
+        fechaLbl.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        fechaLbl.setForeground(new java.awt.Color(51, 51, 51));
+        fechaLbl.setText("null");
+        getContentPane().add(fechaLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 120, 150, 30));
+
+        jLabel12.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel12.setText("Madre:");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, -1, 30));
+
+        jSeparator7.setBackground(new java.awt.Color(0, 0, 0));
+        getContentPane().add(jSeparator7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 410, 920, 10));
+
+        drogasRButton.setForeground(new java.awt.Color(51, 51, 51));
+        drogasRButton.setText("Drogas");
+        getContentPane().add(drogasRButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 430, -1, -1));
+
+        tabacoRButton.setForeground(new java.awt.Color(51, 51, 51));
+        tabacoRButton.setText("Tabaco");
+        getContentPane().add(tabacoRButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 430, -1, -1));
+
+        alcoholRButton.setForeground(new java.awt.Color(51, 51, 51));
+        alcoholRButton.setText("Alcohol");
+        alcoholRButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                alcoholRButtonActionPerformed(evt);
+            }
+        });
+        getContentPane().add(alcoholRButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel13.setText("Otros:");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 340, -1, 30));
+
+        jLabel16.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel16.setText("Consume:");
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 430, -1, 30));
+
+        jLabel17.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel17.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel17.setText("Medicación permanente:");
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 540, -1, 30));
+        getContentPane().add(medicaciónTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 540, 660, 30));
+
+        guardarBtn.setBackground(new java.awt.Color(18, 84, 136));
+        guardarBtn.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        guardarBtn.setForeground(new java.awt.Color(255, 255, 255));
+        guardarBtn.setText("Guardar");
+        guardarBtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        guardarBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                guardarBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(guardarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 590, 210, 40));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
         background.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -128,7 +276,7 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
                 backgroundKeyPressed(evt);
             }
         });
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 560));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -137,64 +285,78 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
 
     }//GEN-LAST:event_backgroundKeyPressed
 
-    private void salirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirBtnActionPerformed
+    private void fallecidoMRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fallecidoMRadioButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fallecidoMRadioButtonActionPerformed
+
+    private void fallecidoPRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fallecidoPRadioButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fallecidoPRadioButtonActionPerformed
+
+    private void alcoholRButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alcoholRButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_alcoholRButtonActionPerformed
+
+    private void guardarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarBtnActionPerformed
+        // Obtiene los datos
+        
+
         this.setVisible(false);
-    }//GEN-LAST:event_salirBtnActionPerformed
+    }//GEN-LAST:event_guardarBtnActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(HistoriaClinicaGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(HistoriaClinicaGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(HistoriaClinicaGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HistoriaClinicaGui.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new HistoriaClinicaGui().setVisible(true);
-            }
-        });
+    private void actualizarInfo() {
+        nombreLbl.setText(paciente.getNombre());
+        apellidoLbl.setText(paciente.getApellido());
+        cedulaLbl.setText(paciente.getCedula());
+        edadLbl.setText("" + paciente.getEdad());
+        sexoLbl.setText(paciente.getSexo());
+        fechaLbl.setText("" + (new Fecha().toString()));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton alcoholRButton;
+    private javax.swing.JTextField antecedentesMTxt;
+    private javax.swing.JTextField antecedentesOTxt;
+    private javax.swing.JTextField antecedentesPTxt;
+    private javax.swing.JLabel apellidoLbl;
     private javax.swing.JLabel background;
     private javax.swing.JLabel bienvenidaLabel;
     private javax.swing.JLabel bienvenidaLabel1;
+    private javax.swing.JLabel bienvenidaLabel2;
+    private javax.swing.JLabel cedulaLbl;
+    private javax.swing.JButton continuarBtn;
+    private javax.swing.JButton continuarBtn1;
+    private javax.swing.JRadioButton drogasRButton;
     private javax.swing.JLabel edadLbl;
+    private javax.swing.JTextField enfermedadesTxt;
     private javax.swing.JComboBox<String> estadoCivilCmb;
+    private javax.swing.JRadioButton fallecidoMRadioButton;
+    private javax.swing.JRadioButton fallecidoPRadioButton;
+    private javax.swing.JLabel fechaLbl;
+    private javax.swing.JButton guardarBtn;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JTextField medicaciónTxt;
     private javax.swing.JComboBox<String> nacionalidadCmb;
     private javax.swing.JLabel nombreLbl;
     private javax.swing.JTextField ocupacionTxt;
-    private javax.swing.JButton salirBtn;
     private javax.swing.JLabel sexoLbl;
+    private javax.swing.JRadioButton tabacoRButton;
     // End of variables declaration//GEN-END:variables
 }

@@ -663,53 +663,6 @@ public class RegistroMedicoPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_sexoComboActionPerformed
 
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSpinner anioSpinner;
-    private javax.swing.JTextField apellidoTxt;
-    private javax.swing.JPanel bg;
-    private javax.swing.JLabel bienvenidaLabel1;
-    private javax.swing.JTextField cedulaTxt;
-    private javax.swing.JPasswordField contraseniaRepTxt;
-    private javax.swing.JPasswordField contraseniaTxt;
-    private javax.swing.JLabel correoLbl;
-    private javax.swing.JTextField correoTxt;
-    private javax.swing.JSpinner diaSpinner;
-    private javax.swing.JComboBox<String> especialidadCombo;
-    private javax.swing.JLabel fondo;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JSeparator jSeparator10;
-    private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JSeparator jSeparator6;
-    private javax.swing.JSeparator jSeparator7;
-    private javax.swing.JSeparator jSeparator8;
-    private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JToggleButton jToggleButton2;
-    private javax.swing.JToggleButton jToggleButton3;
-    private javax.swing.JToggleButton jToggleButton4;
-    private javax.swing.JComboBox<String> mesCombo;
-    private javax.swing.JTextField nombreTxt;
-    private javax.swing.JButton registrarBtn;
-    private javax.swing.JComboBox<String> sexoCombo;
-    private javax.swing.JTextField usuarioTxt;
-    // End of variables declaration//GEN-END:variables
-
     /**
      * Deshabilita los botones de los avatares
      */
@@ -824,4 +777,51 @@ public class RegistroMedicoPanel extends javax.swing.JPanel {
         avatar = 0;
         avatarSeleccionado = false;
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSpinner anioSpinner;
+    private javax.swing.JTextField apellidoTxt;
+    private javax.swing.JPanel bg;
+    private javax.swing.JLabel bienvenidaLabel1;
+    private javax.swing.JTextField cedulaTxt;
+    private javax.swing.JPasswordField contraseniaRepTxt;
+    private javax.swing.JPasswordField contraseniaTxt;
+    private javax.swing.JLabel correoLbl;
+    private javax.swing.JTextField correoTxt;
+    private javax.swing.JSpinner diaSpinner;
+    private javax.swing.JComboBox<String> especialidadCombo;
+    private javax.swing.JLabel fondo;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JSeparator jSeparator3;
+    private javax.swing.JSeparator jSeparator5;
+    private javax.swing.JSeparator jSeparator6;
+    private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
+    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
+    private javax.swing.JToggleButton jToggleButton4;
+    private javax.swing.JComboBox<String> mesCombo;
+    private javax.swing.JTextField nombreTxt;
+    private javax.swing.JButton registrarBtn;
+    private javax.swing.JComboBox<String> sexoCombo;
+    private javax.swing.JTextField usuarioTxt;
+    // End of variables declaration//GEN-END:variables
+
 }

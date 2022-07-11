@@ -1,7 +1,5 @@
 package app.gui.inicio;
 
-import app.logic.Fecha;
-
 public class AyudaPanel extends javax.swing.JPanel {
 
     /**

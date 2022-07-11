@@ -34,6 +34,7 @@ public class DerivarGui extends javax.swing.JFrame {
         actualizarInfo();
         this.setLocationRelativeTo(null);
         lstResultados.setModel(dlm);
+        actualizarLista();
     }
 
     /**
@@ -191,12 +192,13 @@ public class DerivarGui extends javax.swing.JFrame {
             String medicoId = medicoEncontrado.getCedula();
             paciente.setIdMedicoResponsable(medicoId);
 
-            // Actualiza en base de datos
+            // Actualiza en base de datos el atributo idMedicoResponsable del paciente
             try {
                 PreparedStatement st = Main.getConnect().prepareStatement("UPDATE paciente SET idResponsable = ? WHERE cedula = ?");
                 st.setString(1, medicoId);
                 st.setString(2, paciente.getCedula());
                 JOptionPane.showMessageDialog(null, "Se ha asignado el paciente " + paciente.getApellido() + " al médico " + medicoEncontrado.getApellido());
+                st.executeUpdate();
 
                 String nuevoEstado = "Proceso";
                 paciente.setEstado(nuevoEstado);
@@ -205,6 +207,7 @@ public class DerivarGui extends javax.swing.JFrame {
                     st = Main.getConnect().prepareStatement("UPDATE paciente SET estado = ? WHERE cedula = ?");
                     st.setString(1, nuevoEstado);
                     st.setString(2, paciente.getCedula());
+                    st.executeUpdate();
                 } catch (SQLException ex) {
                 }
             } catch (Exception ex) {
@@ -253,25 +256,6 @@ public class DerivarGui extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSpinner aSpn2;
-    private javax.swing.JLabel background;
-    private javax.swing.JLabel bienvenidaLabel;
-    private javax.swing.JButton continuarBtn;
-    private javax.swing.JLabel edadLbl;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JList<String> lstResultados;
-    private javax.swing.JLabel nombreLbl;
-    private javax.swing.JButton salirBtn;
-    private javax.swing.JLabel sexoLbl;
-    private javax.swing.JButton todosBtn;
-    private javax.swing.JButton todosEmergenciaBtn;
-    // End of variables declaration//GEN-END:variables
-
     private void actualizarMedicoActual(String idSeleccion) {
         usuarios = InicioForm.getUsuarios();
         medicoEncontrado = buscarMedico(idSeleccion);
@@ -292,4 +276,24 @@ public class DerivarGui extends javax.swing.JFrame {
         edadLbl.setText("" + paciente.getEdad());
         sexoLbl.setText(paciente.getSexo());
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSpinner aSpn2;
+    private javax.swing.JLabel background;
+    private javax.swing.JLabel bienvenidaLabel;
+    private javax.swing.JButton continuarBtn;
+    private javax.swing.JLabel edadLbl;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JList<String> lstResultados;
+    private javax.swing.JLabel nombreLbl;
+    private javax.swing.JButton salirBtn;
+    private javax.swing.JLabel sexoLbl;
+    private javax.swing.JButton todosBtn;
+    private javax.swing.JButton todosEmergenciaBtn;
+    // End of variables declaration//GEN-END:variables
+
 }

@@ -306,47 +306,12 @@ public class TriajeGui extends javax.swing.JFrame {
         SignosVitales.listaSignosVitales.add(nuevo);
         // TODO guardar en base de datos
         registrarSignosVitalesDataBase(nuevo);
-        
-        
-        
+
         this.setVisible(false);
         DerivarGui derivar = new DerivarGui(this.paciente);
         derivar.setVisible(true);
 
     }//GEN-LAST:event_continuarBtnActionPerformed
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JSpinner aSpn2;
-    private javax.swing.JSpinner alturaSpn;
-    private javax.swing.JLabel background;
-    private javax.swing.JLabel bienvenidaLabel;
-    private javax.swing.JButton continuarBtn;
-    private javax.swing.JLabel edadLbl;
-    private javax.swing.JToggleButton emergenciaTBtn;
-    private javax.swing.JComboBox<String> grupoSanguineoCmb;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JLabel nombreLbl;
-    private javax.swing.JSpinner pesoSpn;
-    private javax.swing.JSpinner pulsoSpn;
-    private javax.swing.JSpinner respiracionSpn;
-    private javax.swing.JToggleButton resucitacionTBtn;
-    private javax.swing.JButton salirBtn;
-    private javax.swing.JLabel sexoLbl;
-    private javax.swing.JToggleButton sinUrgenciaTBtn;
-    private javax.swing.JSpinner tensionSpn;
-    private javax.swing.JToggleButton urgenciaMenorTBtn;
-    private javax.swing.JToggleButton urgenciaTBtn;
-    // End of variables declaration//GEN-END:variables
 
     private void seleccionarUrgencia(JToggleButton botonSeleciconado, int nivelUrgencia) {
         if (nivelUrgenciaSeleccionado == 0) {
@@ -409,4 +374,37 @@ public class TriajeGui extends javax.swing.JFrame {
         }
         return false;
     }
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JSpinner aSpn2;
+    private javax.swing.JSpinner alturaSpn;
+    private javax.swing.JLabel background;
+    private javax.swing.JLabel bienvenidaLabel;
+    private javax.swing.JButton continuarBtn;
+    private javax.swing.JLabel edadLbl;
+    private javax.swing.JToggleButton emergenciaTBtn;
+    private javax.swing.JComboBox<String> grupoSanguineoCmb;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JSeparator jSeparator4;
+    private javax.swing.JLabel nombreLbl;
+    private javax.swing.JSpinner pesoSpn;
+    private javax.swing.JSpinner pulsoSpn;
+    private javax.swing.JSpinner respiracionSpn;
+    private javax.swing.JToggleButton resucitacionTBtn;
+    private javax.swing.JButton salirBtn;
+    private javax.swing.JLabel sexoLbl;
+    private javax.swing.JToggleButton sinUrgenciaTBtn;
+    private javax.swing.JSpinner tensionSpn;
+    private javax.swing.JToggleButton urgenciaMenorTBtn;
+    private javax.swing.JToggleButton urgenciaTBtn;
+    // End of variables declaration//GEN-END:variables
+
 }
