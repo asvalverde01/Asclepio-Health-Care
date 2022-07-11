@@ -24,6 +24,7 @@ public class TriajeGui extends javax.swing.JFrame {
         actualizarInfo();
         this.botones = new JToggleButton[]{sinUrgenciaTBtn, urgenciaMenorTBtn, urgenciaTBtn, emergenciaTBtn, resucitacionTBtn};
         this.setLocationRelativeTo(null);
+        System.out.println("dentro de la clase " + id);
 
     }
 
@@ -295,9 +296,16 @@ public class TriajeGui extends javax.swing.JFrame {
         int prioridad = this.nivelUrgenciaSeleccionado;
         
         // Creo un formulario de Signos Vitales
+        System.out.println(this.id);
         SignosVitalesFormulario nuevo = new SignosVitalesFormulario(this.id, idPaciente, peso, altura, respiracion, tension, pulso, grupoSanguineo, prioridad, new Fecha());
         
         // Guardo la información localmente y en la base de datos.
+        SignosVitales.listaSignosVitales.add(nuevo);
+        // TODO guardar en base de datos
+        
+        this.setVisible(false);
+        DerivarGui derivar = new DerivarGui(this.paciente);
+        derivar.setVisible(true);
         
     }//GEN-LAST:event_continuarBtnActionPerformed
 

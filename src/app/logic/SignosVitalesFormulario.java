@@ -110,4 +110,8 @@ public class SignosVitalesFormulario {
         this.fecha = fecha;
     }
 
+    @Override
+    public String toString() {
+        return "SignosVitalesFormulario{" + "id=" + id + ", fecha=" + fecha + '}';
+    }
 }

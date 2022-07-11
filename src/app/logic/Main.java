@@ -59,7 +59,7 @@ public class Main {
             crearBaseDatos();
             conectado = conectarBaseDatos();
         }
-
+        
         // Inicia el programa mostrando el inicio
         InicioForm mainInicio = new InicioForm(usuarios);
         mainInicio.setVisible(true);
@@ -142,7 +142,7 @@ public class Main {
                     + "	prioridad integer\n"
                     + "	dia integer,\n"
                     + "	mes text,\n"
-                    + "	anio integer,\n"
+                    + "	anio integer\n"
                     + ");";
             st = connect.prepareStatement(sql);
             st.execute();
@@ -265,38 +265,41 @@ public class Main {
     }
 
     public static ArrayList<SignosVitalesFormulario> getFormulariosDataBase() {
-        ArrayList<SignosVitalesFormulario> formularios = Main.getFormulariosDataBase();
+        ArrayList<SignosVitalesFormulario> formularios = new ArrayList<>();
         // Se obtiene la informacion de la tabla usuario en base de datos
-        //String medicoActual = MainScreen.getUserID();
         try {
             String sql = "SELECT * FROM signosvitales";
             PreparedStatement st = connect.prepareStatement(sql);
             ResultSet rs = st.executeQuery();
 
             while (rs.next()) {
-                Fecha nacimiento = new Fecha();
+                Fecha fecha = new Fecha();
                 SignosVitalesFormulario nuevoFormulario = new SignosVitalesFormulario();
 
                 nuevoFormulario.setId(rs.getInt("id"));
-                nuevoFormulario.setApellido(rs.getString("apellido"));
-                nuevoFormulario.setCedula(rs.getString("cedula"));
-                nuevoFormulario.setSexo(rs.getString("sexo"));
+                nuevoFormulario.setPacienteId(rs.getString("pacienteId"));
+                nuevoFormulario.setPeso(rs.getInt("peso"));
+                nuevoFormulario.setAltura(rs.getInt("altura"));
+                nuevoFormulario.setRespiracion(rs.getInt("respiracion"));
+                nuevoFormulario.setTension(rs.getInt("tension"));
+                nuevoFormulario.setPulso(rs.getInt("pulso"));
+                nuevoFormulario.setGrupoSanguieno(rs.getString("grupoSanguineo"));
+                nuevoFormulario.setPrioridad(rs.getInt("prioridad"));
+                // fecha
+                fecha.setDia(rs.getInt("dia"));
+                fecha.setMes(rs.getInt("mes"));
+                fecha.setAnio(rs.getInt("anio"));
 
-                nacimiento.setDia(rs.getInt("dia"));
-                nacimiento.setMes(rs.getInt("mes"));
-                nacimiento.setAnio(rs.getInt("anio"));
+                nuevoFormulario.setFecha(fecha);
 
-                nuevoFormulario.setFechaNacimiento(nacimiento);
-                nuevoFormulario.setIdMedicoResponsable(rs.getString("idResponsable"));
-
-                // añade el paciente registrado a la lista
+                // añade el formulario registrado a la lista
                 formularios.add(nuevoFormulario);
-                nacimiento = null;
+                fecha = null;
             }
         } catch (HeadlessException | SQLException x) {
             JOptionPane.showMessageDialog(null, x.getMessage());
         }
-        // Regresa el usuario que se ha guardado
+        // Regresa la lista de formularios
         return formularios;
     }
 

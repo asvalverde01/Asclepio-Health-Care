@@ -311,7 +311,7 @@ public final class MainScreen extends javax.swing.JFrame {
         fechaLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         fechaLabel.setForeground(new java.awt.Color(255, 255, 255));
         fechaLabel.setText("El día de hoy es -- de -- del año --");
-        content.add(fechaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 10, 370, -1));
+        content.add(fechaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 10, 390, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -388,12 +388,14 @@ public final class MainScreen extends javax.swing.JFrame {
         showPanel(pRegistrarPaciente);
     }//GEN-LAST:event_registrarPacienteButtonActionPerformed
 
+
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         this.dispose();
         // Inicia el programa mostrando el inicio
         InicioForm mainInicio = new InicioForm();
         mainInicio.setVisible(true);
         mainInicio.setLocationRelativeTo(null);
+
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void buscarMedicoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarMedicoButtonActionPerformed
