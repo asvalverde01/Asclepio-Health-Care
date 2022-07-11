@@ -1,9 +1,11 @@
 package app.gui.inicio;
 
 import app.dataStruct.Lista;
-import app.logic.SignosVitalesFormulario;
+import app.logic.Main;
 import app.logic.users.Paciente;
+import app.logic.users.Medico;
 import app.logic.users.Usuario;
+import java.sql.PreparedStatement;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -12,7 +14,7 @@ public class DerivarGui extends javax.swing.JFrame {
     // Atributo de lista
     private static Lista usuarios;
     private final Paciente paciente;
-    private static Usuario medicoEncontrado;
+    private static Medico medicoEncontrado;
     // Modelo lista
     DefaultListModel dlm = new DefaultListModel();
     int id;
@@ -52,11 +54,10 @@ public class DerivarGui extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         edadLbl = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         continuarBtn = new javax.swing.JButton();
-        alturaSpn = new javax.swing.JSpinner();
         jScrollPane2 = new javax.swing.JScrollPane();
         lstResultados = new javax.swing.JList<>();
+        todosEmergenciaBtn = new javax.swing.JButton();
         todosBtn = new javax.swing.JButton();
         background = new javax.swing.JLabel();
 
@@ -117,15 +118,10 @@ public class DerivarGui extends javax.swing.JFrame {
         edadLbl.setText("null");
         getContentPane().add(edadLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 80, 80, 30));
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel7.setText("Altura en cm:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, 30));
-
         continuarBtn.setBackground(new java.awt.Color(18, 84, 136));
         continuarBtn.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         continuarBtn.setForeground(new java.awt.Color(255, 255, 255));
-        continuarBtn.setText("Continuar");
+        continuarBtn.setText("Asignar");
         continuarBtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         continuarBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -134,9 +130,6 @@ public class DerivarGui extends javax.swing.JFrame {
         });
         getContentPane().add(continuarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 510, 210, 40));
 
-        alturaSpn.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
-        getContentPane().add(alturaSpn, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 110, 40));
-
         lstResultados.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lstResultadosMouseClicked(evt);
@@ -144,7 +137,20 @@ public class DerivarGui extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(lstResultados);
 
-        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 730, 150));
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 730, 240));
+
+        todosEmergenciaBtn.setBackground(new java.awt.Color(255, 102, 102));
+        todosEmergenciaBtn.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        todosEmergenciaBtn.setForeground(new java.awt.Color(255, 255, 255));
+        todosEmergenciaBtn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/search_1.png"))); // NOI18N
+        todosEmergenciaBtn.setText("Mostrar todos emergencia");
+        todosEmergenciaBtn.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        todosEmergenciaBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                todosEmergenciaBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(todosEmergenciaBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 200, 350, 40));
 
         todosBtn.setBackground(new java.awt.Color(18, 84, 136));
         todosBtn.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -157,7 +163,7 @@ public class DerivarGui extends javax.swing.JFrame {
                 todosBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(todosBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 290, 200, 40));
+        getContentPane().add(todosBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 200, 200, 40));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
         background.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -180,10 +186,24 @@ public class DerivarGui extends javax.swing.JFrame {
 
     private void continuarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarBtnActionPerformed
         // Obtiene los datos
-        String idPaciente = paciente.getCedula();
-        int altura = (int) alturaSpn.getValue();
+        if (medicoEncontrado != null) {
+            String medicoId = medicoEncontrado.getCedula();
+            paciente.setIdMedicoResponsable(medicoId);
+            this.setVisible(false);
+            // Actualiza en base de datos
+            try {
+                PreparedStatement st = Main.getConnect().prepareStatement("UPDATE paciente SET idResponsable = ? WHERE cedula = ?");
+                st.setString(1, medicoId);
+                st.setString(2, paciente.getCedula());
+                JOptionPane.showMessageDialog(null, "Se ha asignado el paciente " + paciente.getApellido() + " al médico " + medicoEncontrado.getApellido());
 
-        this.setVisible(false);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Seleccione un médico de la lista");
+        }
+
 
     }//GEN-LAST:event_continuarBtnActionPerformed
 
@@ -197,6 +217,10 @@ public class DerivarGui extends javax.swing.JFrame {
         actualizarLista();
     }//GEN-LAST:event_todosBtnActionPerformed
 
+    private void todosEmergenciaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_todosEmergenciaBtnActionPerformed
+        actualizarListaEmergencia();
+    }//GEN-LAST:event_todosEmergenciaBtnActionPerformed
+
     public void actualizarLista() {
         dlm.removeAllElements();
         usuarios = InicioForm.getUsuarios();
@@ -207,9 +231,20 @@ public class DerivarGui extends javax.swing.JFrame {
         });
     }
 
+    public void actualizarListaEmergencia() {
+        dlm.removeAllElements();
+        usuarios = InicioForm.getUsuarios();
+        usuarios.getUsuarios().forEach(usuario -> {
+            if (usuario instanceof Medico) {
+                if (((Medico) usuario).getEspecialidad().equals("Emergencia")) {
+                    dlm.addElement(usuario.toString());
+                }
+            }
+        });
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSpinner aSpn2;
-    private javax.swing.JSpinner alturaSpn;
     private javax.swing.JLabel background;
     private javax.swing.JLabel bienvenidaLabel;
     private javax.swing.JButton continuarBtn;
@@ -217,7 +252,6 @@ public class DerivarGui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JList<String> lstResultados;
@@ -225,25 +259,19 @@ public class DerivarGui extends javax.swing.JFrame {
     private javax.swing.JButton salirBtn;
     private javax.swing.JLabel sexoLbl;
     private javax.swing.JButton todosBtn;
+    private javax.swing.JButton todosEmergenciaBtn;
     // End of variables declaration//GEN-END:variables
 
     private void actualizarMedicoActual(String idSeleccion) {
         usuarios = InicioForm.getUsuarios();
         medicoEncontrado = buscarMedico(idSeleccion);
 
-        if (medicoEncontrado != null) {
-            // Asigno el paciente al médico
-            System.out.println("Asignar?");
-            System.out.println(medicoEncontrado);
-        } else {
-            JOptionPane.showMessageDialog(null, "No encontrado");
-        }
     }
 
-    private Usuario buscarMedico(String cedula) {
+    private Medico buscarMedico(String cedula) {
         for (Usuario medico : usuarios.getUsuarios()) {
             if (medico.getCedula().equals(cedula)) {
-                return medico;
+                return (Medico) medico;
             }
         }
         return null;

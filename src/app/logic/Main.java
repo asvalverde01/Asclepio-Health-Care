@@ -138,10 +138,10 @@ public class Main {
                     + "	respiracion integer,\n"
                     + "	tension integer,\n"
                     + "	pulso integer,\n"
-                    + "	grupoSanguieno integer,\n"
-                    + "	prioridad integer\n"
+                    + "	grupoSanguineo text,\n"
+                    + "	prioridad integer,\n"
                     + "	dia integer,\n"
-                    + "	mes text,\n"
+                    + "	mes integer,\n"
                     + "	anio integer\n"
                     + ");";
             st = connect.prepareStatement(sql);

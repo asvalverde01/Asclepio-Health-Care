@@ -1,9 +1,13 @@
 package app.gui.inicio;
 
 import app.logic.Fecha;
+import app.logic.Main;
 import app.logic.SignosVitalesFormulario;
 import app.logic.users.Paciente;
-import javax.swing.JToggleButton;
+
+import javax.swing.*;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class TriajeGui extends javax.swing.JFrame {
 
@@ -24,7 +28,6 @@ public class TriajeGui extends javax.swing.JFrame {
         actualizarInfo();
         this.botones = new JToggleButton[]{sinUrgenciaTBtn, urgenciaMenorTBtn, urgenciaTBtn, emergenciaTBtn, resucitacionTBtn};
         this.setLocationRelativeTo(null);
-        System.out.println("dentro de la clase " + id);
 
     }
 
@@ -294,19 +297,20 @@ public class TriajeGui extends javax.swing.JFrame {
         int pulso = (int) pulsoSpn.getValue();
         String grupoSanguineo = grupoSanguineoCmb.getSelectedItem().toString();
         int prioridad = this.nivelUrgenciaSeleccionado;
-        
+
         // Creo un formulario de Signos Vitales
-        System.out.println(this.id);
-        SignosVitalesFormulario nuevo = new SignosVitalesFormulario(this.id, idPaciente, peso, altura, respiracion, tension, pulso, grupoSanguineo, prioridad, new Fecha());
-        
+        int idForm = SignosVitales.listaSignosVitalesPaciente.size();
+        SignosVitalesFormulario nuevo = new SignosVitalesFormulario(idForm, idPaciente, peso, altura, respiracion, tension, pulso, grupoSanguineo, prioridad, new Fecha());
+
         // Guardo la información localmente y en la base de datos.
         SignosVitales.listaSignosVitales.add(nuevo);
         // TODO guardar en base de datos
-        
+        registrarSignosVitalesDataBase(nuevo);
+
         this.setVisible(false);
         DerivarGui derivar = new DerivarGui(this.paciente);
         derivar.setVisible(true);
-        
+
     }//GEN-LAST:event_continuarBtnActionPerformed
 
 
@@ -363,5 +367,44 @@ public class TriajeGui extends javax.swing.JFrame {
         nombreLbl.setText(paciente.getNombre());
         edadLbl.setText("" + paciente.getEdad());
         sexoLbl.setText(paciente.getSexo());
+    }
+
+    private boolean registrarSignosVitalesDataBase(SignosVitalesFormulario nuevoFormulario) {
+        boolean conectado = Main.isConectado();
+        if (conectado) {
+            // En el la tabla usuario de la base de datos registra los datos
+            try {
+
+                int id = nuevoFormulario.getId();
+                String pacienteId = nuevoFormulario.getPacienteId();
+                int peso = nuevoFormulario.getPeso();
+                int altura = nuevoFormulario.getAltura();
+                int respiracion = nuevoFormulario.getRespiracion();
+                int tension = nuevoFormulario.getTension();
+                int pulso = nuevoFormulario.getPulso();
+                String grupoSanguineo = nuevoFormulario.getGrupoSanguieno();
+                int prioridad = nuevoFormulario.getPrioridad();
+                Fecha fecha = nuevoFormulario.getFecha();
+                int dia = fecha.getDia();
+                int mes = fecha.getMes();
+                int anio = fecha.getAnio();
+
+                String SQL = "INSERT INTO signosvitales (id, pacienteId, peso, altura, respiracion, tension, pulso, grupoSanguineo, prioridad, dia, mes, anio) VALUES (" + id + ", '" + pacienteId + "', " + peso + ", " + altura + ", " + respiracion + ", " + tension + ", " + pulso + ", '" + grupoSanguineo + "', " + prioridad + ", '" + dia + "', '" + mes + "', '" + anio + "')";
+
+                PreparedStatement st = Main.getConnect().prepareStatement(SQL);
+                st.executeUpdate();
+                System.out.println("registrado");
+                return true;
+
+            } catch (SQLException ex) {
+
+                JOptionPane.showMessageDialog(null, "Error, intente nuevamente");
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+                return false;
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No se pudo conectar a la base de datos");
+        }
+        return false;
     }
 }

@@ -81,11 +81,8 @@ public class ModificarPacienteGui extends javax.swing.JFrame {
         mesCombo = new javax.swing.JComboBox<>();
         anioSpinner = new javax.swing.JSpinner();
         modificarButton = new javax.swing.JButton();
-        salirBtn = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -191,17 +188,6 @@ public class ModificarPacienteGui extends javax.swing.JFrame {
             }
         });
         getContentPane().add(modificarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 450, 220, 40));
-
-        salirBtn.setBackground(new java.awt.Color(204, 204, 204));
-        salirBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        salirBtn.setForeground(new java.awt.Color(18, 84, 136));
-        salirBtn.setText("X");
-        salirBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salirBtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(salirBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(753, 0, 50, -1));
 
         fondo.setBackground(new java.awt.Color(102, 102, 102));
         fondo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -328,10 +314,6 @@ public class ModificarPacienteGui extends javax.swing.JFrame {
             this.dispose();
         }
     }//GEN-LAST:event_modificarButtonActionPerformed
-
-    private void salirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirBtnActionPerformed
-        this.setVisible(false);
-    }//GEN-LAST:event_salirBtnActionPerformed
     private void vaciarCampos() {
         nombreTxt.setText("");
         apellidoTxt.setText("");
@@ -396,7 +378,6 @@ public class ModificarPacienteGui extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> mesCombo;
     private javax.swing.JButton modificarButton;
     private javax.swing.JTextField nombreTxt;
-    private javax.swing.JButton salirBtn;
     private javax.swing.JComboBox<String> sexoCombo;
     // End of variables declaration//GEN-END:variables
 }

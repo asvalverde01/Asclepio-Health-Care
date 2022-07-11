@@ -102,6 +102,30 @@ public class SignosVitalesFormulario {
         this.prioridad = prioridad;
     }
 
+    public String getPrioridadString() {
+        /*
+        1 = Resucitación
+        2 = Emergencia
+        3 = Urgencia
+        4 = Urgencia menor
+        5 = Sin urgencia
+         */
+        switch (prioridad) {
+            case 1:
+                return "Resucitación";
+            case 2:
+                return "Emergencia";
+            case 3:
+                return "Urgencia";
+            case 4:
+                return "Urgencia menor";
+            case 5:
+                return "Sin urgencia";
+            default:
+                return "Sin prioridad";
+        }
+    }
+
     public Fecha getFecha() {
         return fecha;
     }
@@ -112,6 +136,7 @@ public class SignosVitalesFormulario {
 
     @Override
     public String toString() {
-        return "SignosVitalesFormulario{" + "id=" + id + ", fecha=" + fecha + '}';
+        return id + " , prioridad=" + prioridad + ", fecha=" + fecha;
     }
+
 }

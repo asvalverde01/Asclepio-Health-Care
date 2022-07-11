@@ -31,7 +31,7 @@ public class SignosVitales extends javax.swing.JPanel {
         registrarSignosVButton.setVisible(false);
         lstFormularios.setModel(dlm);
         listaSignosVitales = obtenerFormulariosRegistrados();
-
+        
     }
 
     /**
@@ -121,7 +121,7 @@ public class SignosVitales extends javax.swing.JPanel {
                 registrarSignosVButtonActionPerformed(evt);
             }
         });
-        add(registrarSignosVButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 250, 290, 60));
+        add(registrarSignosVButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 270, 290, 60));
 
         tituloLabel.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
         tituloLabel.setForeground(new java.awt.Color(102, 0, 153));
@@ -136,9 +136,14 @@ public class SignosVitales extends javax.swing.JPanel {
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
+        lstFormularios.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lstFormulariosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(lstFormularios);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 400, 660, 130));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 350, 660, 180));
 
         fondo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         fondo.setForeground(new java.awt.Color(51, 51, 51));
@@ -152,13 +157,13 @@ public class SignosVitales extends javax.swing.JPanel {
 
     private void buscarPacienteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPacienteButtonActionPerformed
         String cedula = cedulaTxt.getText();
-
+        
         actualizarPacienteActual(cedula);
         //vaciarCampos();
         // Si se ha encontrado un paciente, entonces 
         if (pacienteActual != null) {
             listaSignosVitalesPaciente = null;
-
+            
             listaSignosVitalesPaciente = filtrarFormularios(cedula);
             actualizarListaFormularios();
 
@@ -168,10 +173,10 @@ public class SignosVitales extends javax.swing.JPanel {
             registrarSignosVButton.setVisible(false);
         }
     }//GEN-LAST:event_buscarPacienteButtonActionPerformed
-
+    
     private void vaciarCampos() {
         cedulaTxt.setText("");
-
+        
     }
 
     private void registrarSignosVButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarSignosVButtonActionPerformed
@@ -182,13 +187,22 @@ public class SignosVitales extends javax.swing.JPanel {
         triajeGui.setVisible(true);
     }//GEN-LAST:event_registrarSignosVButtonActionPerformed
 
+    private void lstFormulariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstFormulariosMouseClicked
+        String idSeleccion = lstFormularios.getSelectedValue().substring(0, lstFormularios.getSelectedValue().indexOf(" "));
+        System.out.println(idSeleccion);
+        
+        TriajeGuiForm ventanaTriaje = new TriajeGuiForm(pacienteActual, listaSignosVitalesPaciente.get(Integer.parseInt(idSeleccion)));
+        ventanaTriaje.setVisible(true);
+
+    }//GEN-LAST:event_lstFormulariosMouseClicked
+    
     public void setUsuario(ListaPacientes usuarioListaPacientes) {
         SignosVitales.listaPacientes = usuarioListaPacientes;
     }
-
+    
     public void actualizarListaFormularios() {
         dlm.removeAllElements();
-
+        
         for (SignosVitalesFormulario formulario : listaSignosVitalesPaciente) {
             dlm.addElement(formulario.toString());
             System.out.println(formulario);
@@ -208,16 +222,14 @@ public class SignosVitales extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JList<String> lstFormularios;
     private javax.swing.JLabel nombreLabel;
-    private javax.swing.JButton refrescarListaBtn;
-    private javax.swing.JButton refrescarListaBtn1;
     private javax.swing.JButton registrarSignosVButton;
     private javax.swing.JLabel tituloLabel;
     // End of variables declaration//GEN-END:variables
 
     public void setInformation() {
-
+        
     }
-
+    
     private Paciente buscarPaciente(String cedula) {
         for (Paciente paciente : listaPacientes.getPacientes()) {
             if (paciente.getCedula().equals(cedula)) {
@@ -226,7 +238,7 @@ public class SignosVitales extends javax.swing.JPanel {
         }
         return null;
     }
-
+    
     private void actualizarPacienteActual(String idSeleccion) {
         listaPacientes = MainScreen.getListaPacientes();
         this.pacienteActual = buscarPaciente(idSeleccion);
@@ -242,17 +254,17 @@ public class SignosVitales extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "No encontrado");
         }
     }
-
+    
     private void actualizarInfo() {
         nombreLabel.setText("Nombre: " + pacienteActual.getNombre());
         apellidoLabel.setText("Apellido: " + pacienteActual.getApellido());
     }
-
+    
     private ArrayList<SignosVitalesFormulario> obtenerFormulariosRegistrados() {
         ArrayList<SignosVitalesFormulario> formularios = Main.getFormulariosDataBase();
         return formularios;
     }
-
+    
     private ArrayList<SignosVitalesFormulario> filtrarFormularios(String cedula) {
         ArrayList<SignosVitalesFormulario> formularios = new ArrayList<>();
         if (!listaSignosVitales.isEmpty()) {
