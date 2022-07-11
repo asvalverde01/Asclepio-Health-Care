@@ -20,6 +20,7 @@ public class Paciente {
     private String sexo;
     private Fecha fechaNacimiento;
     private String idMedicoResponsable;
+    private String estado;
 
     // Lista de fichas medicas (Almacena una lista con las fichas medicas)
     //private List<ResultadoActividad> listaFichas;
@@ -50,7 +51,7 @@ public class Paciente {
         this.sexo = sexo;
         this.fechaNacimiento = fechaNacimiento;
         this.idMedicoResponsable = idMedicoResponsable;
-        System.out.println("dentro de" + fechaNacimiento);
+        estado = "Espera";
     }
 
     /*-------------------------------------------------------------
@@ -173,6 +174,14 @@ public class Paciente {
         this.idMedicoResponsable = idMedicoResponsable;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
     /**
      * Recibe el tipo de argumento por el cual se quieren filtrar las búsquedas
      * de resultados y regresa una lista con Resultados de Actividades
@@ -235,8 +244,6 @@ public class Paciente {
      * @param nombre
      * @param apellido
      * @param nuevaFecha
-     * @param tipo String tipo de atributo
-     * @param nuevo String nuevo valor a cambiar
      * @return Boolean true si se modifico correctamente false si no
      */
     public boolean modificarInfoUsuario(String nombre, String apellido, Fecha nuevaFecha) {

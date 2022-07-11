@@ -73,20 +73,17 @@ public final class MainScreen extends javax.swing.JFrame {
         homeButton1.setBackground(new java.awt.Color(247, 247, 247));
         homeButton1.setForeground(new java.awt.Color(10, 10, 10));
         // Por defecto
-        registrarMedicoButton.setVisible(false);
-        buscarMedicoButton.setVisible(false);
-        registrarPacienteButton.setVisible(true);
-        signosVitalesButton.setVisible(true);
-
-        // Si la el rol es administrador entonces se muestran más opciones
+        // Si  el rol es administrador entonces se muestran más opciones
         if (usuario instanceof Administrador) {
             registrarMedicoButton.setVisible(true);
             buscarMedicoButton.setVisible(true);
-            registrarPacienteButton.setVisible(false);
-            signosVitalesButton.setVisible(false);
+            registrarPacienteButton.setEnabled(false);
+            signosVitalesButton.setEnabled(false);
             content.setBackground(new java.awt.Color(46, 64, 114));
         } else if (usuario instanceof Medico) {
-//
+            registrarMedicoButton.setVisible(false);
+            buscarMedicoButton.setVisible(false);
+            configButton.setVisible(false);
         }
 
         // Inicializa los paneles
@@ -148,7 +145,7 @@ public final class MainScreen extends javax.swing.JFrame {
                 buscarMedicoButtonActionPerformed(evt);
             }
         });
-        content.add(buscarMedicoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 370, 240, 40));
+        content.add(buscarMedicoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 380, 240, 40));
 
         registrarMedicoButton.setBackground(new java.awt.Color(0, 204, 204));
         registrarMedicoButton.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
@@ -163,7 +160,7 @@ public final class MainScreen extends javax.swing.JFrame {
                 registrarMedicoButtonActionPerformed(evt);
             }
         });
-        content.add(registrarMedicoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 330, 240, 40));
+        content.add(registrarMedicoButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 340, 240, 40));
 
         helpButton.setBackground(new java.awt.Color(173, 217, 216));
         helpButton.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -210,7 +207,7 @@ public final class MainScreen extends javax.swing.JFrame {
                 signosVitalesButtonActionPerformed(evt);
             }
         });
-        content.add(signosVitalesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 270, 240, 40));
+        content.add(signosVitalesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 280, 240, 40));
 
         buscarPacienteButton.setBackground(new java.awt.Color(55, 202, 236));
         buscarPacienteButton.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
@@ -225,7 +222,7 @@ public final class MainScreen extends javax.swing.JFrame {
                 buscarPacienteButtonActionPerformed(evt);
             }
         });
-        content.add(buscarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 230, 240, 40));
+        content.add(buscarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 240, 240, 40));
 
         configButton.setBackground(new java.awt.Color(173, 217, 216));
         configButton.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -306,7 +303,7 @@ public final class MainScreen extends javax.swing.JFrame {
                 registrarPacienteButtonActionPerformed(evt);
             }
         });
-        content.add(registrarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 190, 240, 40));
+        content.add(registrarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 200, 240, 40));
 
         fechaLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         fechaLabel.setForeground(new java.awt.Color(255, 255, 255));

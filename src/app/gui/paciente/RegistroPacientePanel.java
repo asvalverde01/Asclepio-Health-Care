@@ -508,7 +508,7 @@ public class RegistroPacientePanel extends javax.swing.JPanel {
                 
                 String idMedico = usuarioNuevo.getIdMedicoResponsable();
 
-                String SQL = "INSERT INTO paciente (nombre, apellido, cedula, sexo, dia, mes, anio, idResponsable) VALUES ('" + nombre + "', '" + apellido + "', '" + cedula + "', '" + sexo + "', '" + dia + "', '" + mes + "', '" + anio + "', '" + idMedico + "')";
+                String SQL = "INSERT INTO paciente (nombre, apellido, cedula, sexo, dia, mes, anio, idResponsable, estado) VALUES ('" + nombre + "', '" + apellido + "', '" + cedula + "', '" + sexo + "', '" + dia + "', '" + mes + "', '" + anio + "', '" + idMedico + "', '" + "Espera" + "')";
                 PreparedStatement st = Main.getConnect().prepareStatement(SQL);
                 st.executeUpdate();
                 System.out.println("registrado");

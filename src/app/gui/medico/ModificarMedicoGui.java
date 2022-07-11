@@ -81,11 +81,8 @@ public class ModificarMedicoGui extends javax.swing.JFrame {
         modificarButton = new javax.swing.JButton();
         especialidadCombo = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
-        salirBtn = new javax.swing.JButton();
         fondo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -207,17 +204,6 @@ public class ModificarMedicoGui extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(0, 51, 51));
         jLabel4.setText("Especialidad");
         getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, -1, -1));
-
-        salirBtn.setBackground(new java.awt.Color(204, 204, 204));
-        salirBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        salirBtn.setForeground(new java.awt.Color(18, 84, 136));
-        salirBtn.setText("X");
-        salirBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                salirBtnActionPerformed(evt);
-            }
-        });
-        getContentPane().add(salirBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(753, 0, 50, -1));
 
         fondo.setBackground(new java.awt.Color(102, 102, 102));
         fondo.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -347,10 +333,6 @@ public class ModificarMedicoGui extends javax.swing.JFrame {
     private void especialidadComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_especialidadComboActionPerformed
 
     }//GEN-LAST:event_especialidadComboActionPerformed
-
-    private void salirBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salirBtnActionPerformed
-        this.setVisible(false);
-    }//GEN-LAST:event_salirBtnActionPerformed
     private void vaciarCampos() {
         nombreTxt.setText("");
         apellidoTxt.setText("");
@@ -421,7 +403,6 @@ public class ModificarMedicoGui extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> mesCombo;
     private javax.swing.JButton modificarButton;
     private javax.swing.JTextField nombreTxt;
-    private javax.swing.JButton salirBtn;
     private javax.swing.JComboBox<String> sexoCombo;
     // End of variables declaration//GEN-END:variables
 }

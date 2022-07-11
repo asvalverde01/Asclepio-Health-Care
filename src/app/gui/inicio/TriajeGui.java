@@ -306,7 +306,9 @@ public class TriajeGui extends javax.swing.JFrame {
         SignosVitales.listaSignosVitales.add(nuevo);
         // TODO guardar en base de datos
         registrarSignosVitalesDataBase(nuevo);
-
+        
+        
+        
         this.setVisible(false);
         DerivarGui derivar = new DerivarGui(this.paciente);
         derivar.setVisible(true);

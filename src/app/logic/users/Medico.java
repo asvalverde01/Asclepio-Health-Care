@@ -95,9 +95,11 @@ public class Medico extends Usuario {
                 nacimiento.setDia(rs.getInt("dia"));
                 nacimiento.setMes(rs.getInt("mes"));
                 nacimiento.setAnio(rs.getInt("anio"));
+                ;
 
                 nuevoPaciente.setFechaNacimiento(nacimiento);
                 nuevoPaciente.setIdMedicoResponsable(rs.getString("idResponsable"));
+                nuevoPaciente.setEstado(rs.getString("estado"));
                 //System.out.println("--------------");
                 //System.out.println(nuevoPaciente.getEdad());
                 nuevoPaciente.getEdad();

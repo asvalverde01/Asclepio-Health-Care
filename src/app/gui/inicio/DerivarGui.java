@@ -6,6 +6,7 @@ import app.logic.users.Paciente;
 import app.logic.users.Medico;
 import app.logic.users.Usuario;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
@@ -189,7 +190,7 @@ public class DerivarGui extends javax.swing.JFrame {
         if (medicoEncontrado != null) {
             String medicoId = medicoEncontrado.getCedula();
             paciente.setIdMedicoResponsable(medicoId);
-            this.setVisible(false);
+
             // Actualiza en base de datos
             try {
                 PreparedStatement st = Main.getConnect().prepareStatement("UPDATE paciente SET idResponsable = ? WHERE cedula = ?");
@@ -197,6 +198,15 @@ public class DerivarGui extends javax.swing.JFrame {
                 st.setString(2, paciente.getCedula());
                 JOptionPane.showMessageDialog(null, "Se ha asignado el paciente " + paciente.getApellido() + " al médico " + medicoEncontrado.getApellido());
 
+                String nuevoEstado = "Proceso";
+                paciente.setEstado(nuevoEstado);
+
+                try {
+                    st = Main.getConnect().prepareStatement("UPDATE paciente SET estado = ? WHERE cedula = ?");
+                    st.setString(1, nuevoEstado);
+                    st.setString(2, paciente.getCedula());
+                } catch (SQLException ex) {
+                }
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -204,7 +214,7 @@ public class DerivarGui extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Seleccione un médico de la lista");
         }
 
-
+        this.setVisible(false);
     }//GEN-LAST:event_continuarBtnActionPerformed
 
     private void lstResultadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstResultadosMouseClicked

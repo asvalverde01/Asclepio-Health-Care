@@ -88,7 +88,7 @@ public class SignosVitales extends javax.swing.JPanel {
         buscarPacienteButton.setFont(new java.awt.Font("Segoe UI", 1, 22)); // NOI18N
         buscarPacienteButton.setForeground(new java.awt.Color(255, 255, 255));
         buscarPacienteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/icon/search_1.png"))); // NOI18N
-        buscarPacienteButton.setText("Buscar Paciente");
+        buscarPacienteButton.setText("Buscar Registros");
         buscarPacienteButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         buscarPacienteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

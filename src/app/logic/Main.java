@@ -124,7 +124,8 @@ public class Main {
                     + "	dia integer,\n"
                     + "	mes text,\n"
                     + "	anio integer,\n"
-                    + "	idResponsable text\n"
+                    + "	idResponsable text,\n"
+                    + "	estado text\n"
                     + ");";
             st = connect.prepareStatement(sql);
             st.execute();
@@ -250,6 +251,7 @@ public class Main {
 
                 nuevoPaciente.setFechaNacimiento(nacimiento);
                 nuevoPaciente.setIdMedicoResponsable(rs.getString("idResponsable"));
+                nuevoPaciente.setEstado(rs.getString("estado"));
                 //System.out.println("--------------");
                 //System.out.println(nuevoPaciente.getEdad());
                 nuevoPaciente.getEdad();
