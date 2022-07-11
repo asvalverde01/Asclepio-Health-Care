@@ -1,51 +1,30 @@
 package app.gui.inicio;
 
+import app.logic.Fecha;
+import app.logic.SignosVitalesFormulario;
 import app.logic.users.Paciente;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import javax.swing.JToggleButton;
 
 public class TriajeGui extends javax.swing.JFrame {
 
-    JToggleButton[] botones;
-    Paciente paciente;
+    private final JToggleButton[] botones;
+    private final Paciente paciente;
+    int id;
     int nivelUrgenciaSeleccionado;
 
     /**
      * Creates new form HistoriaClinica
      *
      * @param paciente
+     * @param id
      */
-    public TriajeGui(Paciente paciente) {
+    public TriajeGui(Paciente paciente, int id) {
         initComponents();
         this.paciente = paciente;
         actualizarInfo();
         this.botones = new JToggleButton[]{sinUrgenciaTBtn, urgenciaMenorTBtn, urgenciaTBtn, emergenciaTBtn, resucitacionTBtn};
         this.setLocationRelativeTo(null);
-        
-        
-        // Permite solamente ingresar dígitos en el text field
-        alturaTxt.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                char c = e.getKeyChar();
-                if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || c == KeyEvent.VK_DELETE)) {
-                    e.consume();  // ignore the event if it's not an alphabet
-                }
-            }
-        }
-        );
-        
-        pesoTxt.addKeyListener(new KeyAdapter() {
-            @Override
-            public void keyTyped(KeyEvent e) {
-                char c = e.getKeyChar();
-                if (!(Character.isDigit(c) || (c == KeyEvent.VK_BACK_SPACE) || c == KeyEvent.VK_DELETE)) {
-                    e.consume();  // ignore the event if it's not an alphabet
-                }
-            }
-        }
-        );
+
     }
 
     /**
@@ -57,6 +36,7 @@ public class TriajeGui extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        aSpn2 = new javax.swing.JSpinner();
         jSeparator4 = new javax.swing.JSeparator();
         bienvenidaLabel = new javax.swing.JLabel();
         salirBtn = new javax.swing.JButton();
@@ -66,12 +46,9 @@ public class TriajeGui extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         edadLbl = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        alturaTxt = new javax.swing.JTextField();
-        nacionalidadCmb = new javax.swing.JComboBox<>();
+        grupoSanguineoCmb = new javax.swing.JComboBox<>();
         jLabel8 = new javax.swing.JLabel();
-        estadoCivilCmb = new javax.swing.JComboBox<>();
         urgenciaMenorTBtn = new javax.swing.JToggleButton();
         urgenciaTBtn = new javax.swing.JToggleButton();
         emergenciaTBtn = new javax.swing.JToggleButton();
@@ -79,7 +56,14 @@ public class TriajeGui extends javax.swing.JFrame {
         sinUrgenciaTBtn = new javax.swing.JToggleButton();
         continuarBtn = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
-        pesoTxt = new javax.swing.JTextField();
+        pesoSpn = new javax.swing.JSpinner();
+        alturaSpn = new javax.swing.JSpinner();
+        tensionSpn = new javax.swing.JSpinner();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        respiracionSpn = new javax.swing.JSpinner();
+        jLabel12 = new javax.swing.JLabel();
+        pulsoSpn = new javax.swing.JSpinner();
         background = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -107,62 +91,51 @@ public class TriajeGui extends javax.swing.JFrame {
         getContentPane().add(salirBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 0, 50, -1));
 
         sexoLbl.setBackground(new java.awt.Color(51, 51, 51));
+        sexoLbl.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         sexoLbl.setForeground(new java.awt.Color(51, 51, 51));
         sexoLbl.setText("null");
-        getContentPane().add(sexoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 70, 90, 30));
+        getContentPane().add(sexoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 80, 90, 30));
 
         nombreLbl.setBackground(new java.awt.Color(51, 51, 51));
+        nombreLbl.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         nombreLbl.setForeground(new java.awt.Color(51, 51, 51));
         nombreLbl.setText("null");
-        getContentPane().add(nombreLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 70, 210, 30));
+        getContentPane().add(nombreLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 80, 210, 30));
 
         jLabel3.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 51));
         jLabel3.setText("Sexo:");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 70, -1, 30));
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 80, -1, 30));
 
         jLabel4.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 51, 51));
         jLabel4.setText("Nombre:");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, -1, 30));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 80, -1, 30));
 
         jLabel5.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 51, 51));
         jLabel5.setText("Edad:");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 70, -1, 30));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 80, -1, 30));
 
         edadLbl.setBackground(new java.awt.Color(51, 51, 51));
+        edadLbl.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         edadLbl.setForeground(new java.awt.Color(51, 51, 51));
         edadLbl.setText("null");
-        getContentPane().add(edadLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, 80, 30));
-
-        jLabel6.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel6.setText("Estado civil:");
-        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 120, -1, 30));
+        getContentPane().add(edadLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 80, 80, 30));
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 51, 51));
         jLabel7.setText("Altura en cm:");
-        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, 30));
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, -1, 30));
 
-        alturaTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                alturaTxtActionPerformed(evt);
-            }
-        });
-        getContentPane().add(alturaTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 110, 210, -1));
-
-        nacionalidadCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ecuador", "Afganistán", "Albania", "Alemania", "Andorra", "Angola", "Antigua y Barbuda", "Arabia Saudita", "Argelia", "Argentina", "Armenia", "Australia", "Austria", "Azerbaiyán", "Bahamas", "Bangladés", "Barbados", "Baréin", "Bélgica", "Belice", "Benín", "Bielorrusia", "Birmania", "Bolivia", "Bosnia y Herzegovina", "Botsuana", "Brasil", "Brunéi", "Bulgaria", "Burkina Faso", "Burundi", "Bután", "Cabo Verde", "Camboya", "Camerún", "Canadá", "Catar", "Chad", "Chile", "China", "Chipre", "Ciudad del Vaticano", "Colombia", "Comoras", "Corea del Norte", "Corea del Sur", "Costa de Marfil", "Costa Rica", "Croacia", "Cuba", "Dinamarca", "Dominica", "Egipto", "El Salvador", "Emiratos Árabes Unidos", "Eritrea", "Eslovaquia", "Eslovenia", "España", "Estados Unidos", "Estonia", "Etiopía", "Filipinas", "Finlandia", "Fiyi", "Francia", "Gabón", "Gambia", "Georgia", "Ghana", "Granada", "Grecia", "Guatemala", "Guyana", "Guinea", "Guinea ecuatorial", "Guinea-Bisáu", "Haití", "Honduras", "Hungría", "India", "Indonesia", "Irak", "Irán", "Irlanda", "Islandia", "Islas Marshall", "Islas Salomón", "Israel", "Italia", "Jamaica", "Japón", "Jordania", "Kazajistán", "Kenia", "Kirguistán", "Kiribati", "Kuwait", "Laos", "Lesoto", "Letonia", "Líbano", "Liberia", "Libia", "Liechtenstein", "Lituania", "Luxemburgo", "Macedonia del Norte", "Madagascar", "Malasia", "Malaui", "Maldivas", "Malí", "Malta", "Marruecos", "Mauricio", "Mauritania", "México", "Micronesia", "Moldavia", "Mónaco", "Mongolia", "Montenegro", "Mozambique", "Namibia", "Nauru", "Nepal", "Nicaragua", "Níger", "Nigeria", "Noruega", "Nueva Zelanda", "Omán", "Países Bajos", "Pakistán", "Palaos", "Panamá", "Papúa Nueva Guinea", "Paraguay", "Perú", "Polonia", "Portugal", "Reino Unido", "República Centroafricana", "República Checa", "República del Congo", "República Democrática del Congo", "República Dominicana", "Ruanda", "Rumanía", "Rusia", "Samoa", "San Cristóbal y Nieves", "San Marino", "San Vicente y las Granadinas", "Santa Lucía", "Santo Tomé y Príncipe", "Senegal", "Serbia", "Seychelles", "Sierra Leona", "Singapur", "Siria", "Somalia", "Sri Lanka", "Suazilandia", "Sudáfrica", "Sudán", "Sudán del Sur", "Suecia", "Suiza", "Surinam", "Tailandia", "Tanzania", "Tayikistán", "Timor Oriental", "Togo", "Tonga", "Trinidad y Tobago", "Túnez", "Turkmenistán", "Turquía", "Tuvalu", "Ucrania", "Uganda", "Uruguay", "Uzbekistán", "Vanuatu", "Venezuela", "Vietnam", "Yemen", "Yibuti", "Zambia", "Zimbabue" }));
-        getContentPane().add(nacionalidadCmb, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 220, 210, -1));
+        grupoSanguineoCmb.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        grupoSanguineoCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A+", "B+", "AB+", "AB-", "A-", "B-", "0+", "0-" }));
+        getContentPane().add(grupoSanguineoCmb, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 230, 110, 40));
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel8.setText("-:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 230, -1, 30));
-
-        estadoCivilCmb.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Solter@", "Casad@", "Divorciad@" }));
-        getContentPane().add(estadoCivilCmb, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 110, 150, -1));
+        jLabel8.setText("Grupo sanguíneo:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 240, -1, 30));
 
         urgenciaMenorTBtn.setBackground(new java.awt.Color(0, 161, 0));
         urgenciaMenorTBtn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -239,14 +212,37 @@ public class TriajeGui extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 51, 51));
         jLabel9.setText("Peso en libras:");
-        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, 30));
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 190, -1, 30));
 
-        pesoTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pesoTxtActionPerformed(evt);
-            }
-        });
-        getContentPane().add(pesoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 150, 210, -1));
+        pesoSpn.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        getContentPane().add(pesoSpn, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 180, 110, 40));
+
+        alturaSpn.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        getContentPane().add(alturaSpn, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 130, 110, 40));
+
+        tensionSpn.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        getContentPane().add(tensionSpn, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 180, 110, 40));
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel10.setText("Tensión arterial:");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 190, -1, 30));
+
+        jLabel11.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel11.setText("Respiración:");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 140, -1, 30));
+
+        respiracionSpn.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        getContentPane().add(respiracionSpn, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 130, 110, 40));
+
+        jLabel12.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel12.setText("Pulso:");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 240, -1, 30));
+
+        pulsoSpn.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        getContentPane().add(pulsoSpn, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 230, 110, 40));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
         background.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -288,41 +284,52 @@ public class TriajeGui extends javax.swing.JFrame {
     }//GEN-LAST:event_resucitacionTBtnActionPerformed
 
     private void continuarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_continuarBtnActionPerformed
-        // ---
+        // Obtiene los datos
+        String idPaciente = paciente.getCedula();
+        int altura = (int) alturaSpn.getValue();
+        int peso = (int) pesoSpn.getValue();
+        int respiracion = (int) respiracionSpn.getValue();
+        int tension = (int) tensionSpn.getValue();
+        int pulso = (int) pulsoSpn.getValue();
+        String grupoSanguineo = grupoSanguineoCmb.getSelectedItem().toString();
+        int prioridad = this.nivelUrgenciaSeleccionado;
+        
+        // Creo un formulario de Signos Vitales
+        SignosVitalesFormulario nuevo = new SignosVitalesFormulario(this.id, idPaciente, peso, altura, respiracion, tension, pulso, grupoSanguineo, prioridad, new Fecha());
+        
+        // Guardo la información localmente y en la base de datos.
+        
     }//GEN-LAST:event_continuarBtnActionPerformed
-
-    private void alturaTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_alturaTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_alturaTxtActionPerformed
-
-    private void pesoTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pesoTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_pesoTxtActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField alturaTxt;
+    private javax.swing.JSpinner aSpn2;
+    private javax.swing.JSpinner alturaSpn;
     private javax.swing.JLabel background;
     private javax.swing.JLabel bienvenidaLabel;
     private javax.swing.JButton continuarBtn;
     private javax.swing.JLabel edadLbl;
     private javax.swing.JToggleButton emergenciaTBtn;
-    private javax.swing.JComboBox<String> estadoCivilCmb;
+    private javax.swing.JComboBox<String> grupoSanguineoCmb;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator4;
-    private javax.swing.JComboBox<String> nacionalidadCmb;
     private javax.swing.JLabel nombreLbl;
-    private javax.swing.JTextField pesoTxt;
+    private javax.swing.JSpinner pesoSpn;
+    private javax.swing.JSpinner pulsoSpn;
+    private javax.swing.JSpinner respiracionSpn;
     private javax.swing.JToggleButton resucitacionTBtn;
     private javax.swing.JButton salirBtn;
     private javax.swing.JLabel sexoLbl;
     private javax.swing.JToggleButton sinUrgenciaTBtn;
+    private javax.swing.JSpinner tensionSpn;
     private javax.swing.JToggleButton urgenciaMenorTBtn;
     private javax.swing.JToggleButton urgenciaTBtn;
     // End of variables declaration//GEN-END:variables

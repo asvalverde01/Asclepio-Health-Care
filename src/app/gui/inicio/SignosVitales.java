@@ -1,16 +1,19 @@
 package app.gui.inicio;
 
 import app.dataStruct.ListaPacientes;
-import app.gui.paciente.ModificarPacienteGui;
+import app.logic.Main;
+import app.logic.SignosVitalesFormulario;
 import app.logic.users.Paciente;
+import java.util.ArrayList;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
 
-public class TriajePanel extends javax.swing.JPanel {
+public class SignosVitales extends javax.swing.JPanel {
 
     // Atributo de lista
     private static ListaPacientes listaPacientes;
     private Paciente pacienteActual;
+    public static ArrayList<SignosVitalesFormulario> listaSignosVitales;
 
     // Modelo lista
     private DefaultListModel dlm = new DefaultListModel();
@@ -20,11 +23,12 @@ public class TriajePanel extends javax.swing.JPanel {
      *
      * @param usuario
      */
-    public TriajePanel() {
+    public SignosVitales() {
         initComponents();
         pacienteActual = null;
         setInformation();
-        modificarPacienteButton.setVisible(false);
+        registrarSignosVButton.setVisible(false);
+
     }
 
     /**
@@ -43,7 +47,7 @@ public class TriajePanel extends javax.swing.JPanel {
         nombreLabel = new javax.swing.JLabel();
         apellidoLabel = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        modificarPacienteButton = new javax.swing.JButton();
+        registrarSignosVButton = new javax.swing.JButton();
         tituloLabel = new javax.swing.JLabel();
         jSeparator10 = new javax.swing.JSeparator();
         fondo = new javax.swing.JLabel();
@@ -91,32 +95,32 @@ public class TriajePanel extends javax.swing.JPanel {
         nombreLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         nombreLabel.setForeground(new java.awt.Color(51, 51, 51));
         nombreLabel.setText("nombre");
-        add(nombreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 270, -1, -1));
+        add(nombreLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 160, -1, -1));
 
         apellidoLabel.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         apellidoLabel.setForeground(new java.awt.Color(51, 51, 51));
         apellidoLabel.setText("apellido");
-        add(apellidoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 270, -1, -1));
+        add(apellidoLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 160, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Encontrado:");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 270, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, -1, -1));
 
-        modificarPacienteButton.setBackground(new java.awt.Color(0, 204, 204));
-        modificarPacienteButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        modificarPacienteButton.setForeground(new java.awt.Color(0, 0, 0));
-        modificarPacienteButton.setText("Modificar");
-        modificarPacienteButton.addActionListener(new java.awt.event.ActionListener() {
+        registrarSignosVButton.setBackground(new java.awt.Color(0, 204, 204));
+        registrarSignosVButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        registrarSignosVButton.setForeground(new java.awt.Color(0, 0, 0));
+        registrarSignosVButton.setText("Registrar Signos Vitales");
+        registrarSignosVButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modificarPacienteButtonActionPerformed(evt);
+                registrarSignosVButtonActionPerformed(evt);
             }
         });
-        add(modificarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 370, 150, 40));
+        add(registrarSignosVButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, 260, 170));
 
         tituloLabel.setFont(new java.awt.Font("Roboto", 1, 30)); // NOI18N
         tituloLabel.setForeground(new java.awt.Color(102, 0, 153));
-        tituloLabel.setText("Triaje");
+        tituloLabel.setText("Signos Vitales");
         add(tituloLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 10, -1, -1));
 
         jSeparator10.setBackground(new java.awt.Color(81, 3, 23));
@@ -133,14 +137,19 @@ public class TriajePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_cedulaTxtActionPerformed
 
     private void buscarPacienteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarPacienteButtonActionPerformed
+        // Vacío la lista de signos vitales
 
         String cedula = cedulaTxt.getText();
         actualizarPacienteActual(cedula);
         vaciarCampos();
-        // Si se ha encontrado un paciente, entonces
+        // Si se ha encontrado un paciente, entonces 
         if (pacienteActual != null) {
-            TriajeGui triajeGui = new TriajeGui(pacienteActual);
-            triajeGui.setVisible(true);
+
+            listaSignosVitales = null;
+            // Muestra los botones
+            registrarSignosVButton.setVisible(true);
+        } else {
+            registrarSignosVButton.setVisible(false);
         }
     }//GEN-LAST:event_buscarPacienteButtonActionPerformed
 
@@ -149,15 +158,13 @@ public class TriajePanel extends javax.swing.JPanel {
 
     }
 
-    private void modificarPacienteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarPacienteButtonActionPerformed
-        ModificarPacienteGui ventanaModificar = new ModificarPacienteGui(pacienteActual);
-        ventanaModificar.setVisible(true);
-        ventanaModificar.setLocationRelativeTo(null);
-        actualizarInfo();
-    }//GEN-LAST:event_modificarPacienteButtonActionPerformed
+    private void registrarSignosVButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarSignosVButtonActionPerformed
+        TriajeGui triajeGui = new TriajeGui(pacienteActual, listaSignosVitales.size());
+        triajeGui.setVisible(true);
+    }//GEN-LAST:event_registrarSignosVButtonActionPerformed
 
     public void setUsuario(ListaPacientes usuarioListaPacientes) {
-        TriajePanel.listaPacientes = usuarioListaPacientes;
+        SignosVitales.listaPacientes = usuarioListaPacientes;
     }
 
     public void actualizarListaPacientes() {
@@ -208,8 +215,8 @@ public class TriajePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JSeparator jSeparator10;
     private javax.swing.JSeparator jSeparator3;
-    private javax.swing.JButton modificarPacienteButton;
     private javax.swing.JLabel nombreLabel;
+    private javax.swing.JButton registrarSignosVButton;
     private javax.swing.JLabel tituloLabel;
     // End of variables declaration//GEN-END:variables
 
@@ -231,12 +238,11 @@ public class TriajePanel extends javax.swing.JPanel {
         this.pacienteActual = buscarPaciente(idSeleccion);
         if (pacienteActual != null) {
             if (pacienteActual.getIdMedicoResponsable().equals(MainScreen.getUserID())) {
-                modificarPacienteButton.setVisible(true);
+                registrarSignosVButton.setVisible(true);
                 actualizarInfo();
             } else {
                 JOptionPane.showMessageDialog(null, "Paciente a cargo de otro médico");
             }
-
             // Habilita los botones
         } else {
             JOptionPane.showMessageDialog(null, "No encontrado");
@@ -247,5 +253,13 @@ public class TriajePanel extends javax.swing.JPanel {
         nombreLabel.setText("Nombre: " + pacienteActual.getNombre());
         apellidoLabel.setText("Apellido: " + pacienteActual.getApellido());
         actualizarListaPacientes();
+
+        // Llena la lista con información de formularios previamente registrados
+        listaSignosVitales = obtenerFormulariosRegistrados();
+    }
+
+    private ArrayList<SignosVitalesFormulario> obtenerFormulariosRegistrados() {
+        ArrayList<SignosVitalesFormulario> formularios = Main.getFormulariosDataBase();
+        return formularios;
     }
 }

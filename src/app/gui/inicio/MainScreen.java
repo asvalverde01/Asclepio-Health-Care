@@ -23,7 +23,7 @@ public final class MainScreen extends javax.swing.JFrame {
     // Paneles
     private app.gui.inicio.InicioPanel pInicio = null;
     private BuscarPacientePanel pResultados = null;
-    private TriajePanel pTriaje = null;
+    private SignosVitales pTriaje = null;
     private ConfigPanel pConfig = null;
     private AyudaPanel pAyuda = null;
     private RegistroMedicoPanel pRegistrarMedico = null;
@@ -76,14 +76,14 @@ public final class MainScreen extends javax.swing.JFrame {
         registrarMedicoButton.setVisible(false);
         buscarMedicoButton.setVisible(false);
         registrarPacienteButton.setVisible(true);
-        triajeButton.setVisible(true);
+        signosVitalesButton.setVisible(true);
 
         // Si la el rol es administrador entonces se muestran más opciones
         if (usuario instanceof Administrador) {
             registrarMedicoButton.setVisible(true);
             buscarMedicoButton.setVisible(true);
             registrarPacienteButton.setVisible(false);
-            triajeButton.setVisible(false);
+            signosVitalesButton.setVisible(false);
             content.setBackground(new java.awt.Color(46, 64, 114));
         } else if (usuario instanceof Medico) {
 //
@@ -116,7 +116,7 @@ public final class MainScreen extends javax.swing.JFrame {
         registrarMedicoButton = new javax.swing.JButton();
         helpButton = new javax.swing.JButton();
         homeButton1 = new javax.swing.JButton();
-        triajeButton = new javax.swing.JButton();
+        signosVitalesButton = new javax.swing.JButton();
         buscarPacienteButton = new javax.swing.JButton();
         configButton = new javax.swing.JButton();
         contenido = new javax.swing.JPanel();
@@ -197,20 +197,20 @@ public final class MainScreen extends javax.swing.JFrame {
         });
         content.add(homeButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 120, 240, 50));
 
-        triajeButton.setBackground(new java.awt.Color(55, 202, 236));
-        triajeButton.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
-        triajeButton.setForeground(new java.awt.Color(36, 36, 36));
-        triajeButton.setText("Triaje");
-        triajeButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        triajeButton.setBorderPainted(false);
-        triajeButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        triajeButton.setFocusPainted(false);
-        triajeButton.addActionListener(new java.awt.event.ActionListener() {
+        signosVitalesButton.setBackground(new java.awt.Color(55, 202, 236));
+        signosVitalesButton.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
+        signosVitalesButton.setForeground(new java.awt.Color(36, 36, 36));
+        signosVitalesButton.setText("Signos Vitales");
+        signosVitalesButton.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        signosVitalesButton.setBorderPainted(false);
+        signosVitalesButton.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        signosVitalesButton.setFocusPainted(false);
+        signosVitalesButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                triajeButtonActionPerformed(evt);
+                signosVitalesButtonActionPerformed(evt);
             }
         });
-        content.add(triajeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 270, 240, 40));
+        content.add(signosVitalesButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, 270, 240, 40));
 
         buscarPacienteButton.setBackground(new java.awt.Color(55, 202, 236));
         buscarPacienteButton.setFont(new java.awt.Font("Segoe UI", 0, 22)); // NOI18N
@@ -335,14 +335,14 @@ public final class MainScreen extends javax.swing.JFrame {
         configButton.setBackground(new java.awt.Color(254, 254, 254));
     }//GEN-LAST:event_configButtonActionPerformed
 
-    private void triajeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_triajeButtonActionPerformed
+    private void signosVitalesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signosVitalesButtonActionPerformed
         Icon icono = new ImageIcon(getClass().getResource("/imagen/icon/news_paper.png"));
         iconImg.setIcon(icono);
         colorButtons();
-        triajeButton.setBackground(new java.awt.Color(247, 247, 247));
+        signosVitalesButton.setBackground(new java.awt.Color(247, 247, 247));
         // TODO
         showPanel(pTriaje);
-    }//GEN-LAST:event_triajeButtonActionPerformed
+    }//GEN-LAST:event_signosVitalesButtonActionPerformed
 
     private void homeButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homeButton1ActionPerformed
         showPanel(pInicio);
@@ -458,7 +458,7 @@ public final class MainScreen extends javax.swing.JFrame {
     private javax.swing.JButton registrarMedicoButton;
     private javax.swing.JButton registrarPacienteButton;
     private javax.swing.JButton salirButton;
-    private javax.swing.JButton triajeButton;
+    private javax.swing.JButton signosVitalesButton;
     // End of variables declaration//GEN-END:variables
 
     /**
@@ -483,7 +483,7 @@ public final class MainScreen extends javax.swing.JFrame {
         pInicio = new InicioPanel(usuario);
 
         pConfig = new ConfigPanel(usuario);
-        pTriaje = new TriajePanel();
+        pTriaje = new SignosVitales();
 
         if (usuario instanceof Administrador) {
             pRegistrarMedico = new RegistroMedicoPanel((Administrador) usuario);
@@ -502,7 +502,7 @@ public final class MainScreen extends javax.swing.JFrame {
         homeButton1.setBackground(new java.awt.Color(55, 202, 236));
         registrarMedicoButton.setBackground(new java.awt.Color(0, 204, 204));
         buscarMedicoButton.setBackground(new java.awt.Color(0, 204, 204));
-        triajeButton.setBackground(new java.awt.Color(55, 202, 236));
+        signosVitalesButton.setBackground(new java.awt.Color(55, 202, 236));
         buscarPacienteButton.setBackground(new java.awt.Color(55, 202, 236));
         registrarPacienteButton.setBackground(new java.awt.Color(55, 202, 236));
         configButton.setBackground(new java.awt.Color(55, 202, 236));

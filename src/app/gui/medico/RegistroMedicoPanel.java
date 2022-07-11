@@ -456,7 +456,6 @@ public class RegistroMedicoPanel extends javax.swing.JPanel {
         String especialidad = especialidadCombo.getSelectedItem().toString();
         String correo = correoTxt.getText();
         String sexo = sexoCombo.getSelectedItem().toString();
-        System.out.println("sexo " + sexo);
 
         int dia = (Integer) diaSpinner.getValue();
         String mes = mesCombo.getSelectedItem().toString();
@@ -711,8 +710,6 @@ public class RegistroMedicoPanel extends javax.swing.JPanel {
     private javax.swing.JTextField usuarioTxt;
     // End of variables declaration//GEN-END:variables
 
-
-
     /**
      * Deshabilita los botones de los avatares
      */
@@ -812,8 +809,6 @@ public class RegistroMedicoPanel extends javax.swing.JPanel {
         // En caso de no encontrar
         return true;
     }
-
-    
 
     private void vaciarCampos() {
         nombreTxt.setText("");

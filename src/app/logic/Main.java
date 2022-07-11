@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.sql.*;
+import java.util.ArrayList;
 
 /**
  *
@@ -47,7 +48,6 @@ public class Main {
         // Objeto del archivo de la base de datos
         File file = new File("appdata.sqlite");
 
-
         /*-------------------------------------------------------------
         /Se busca si existe una archivo base de datos
         /-------------------------------------------------------------*/
@@ -59,6 +59,7 @@ public class Main {
             crearBaseDatos();
             conectado = conectarBaseDatos();
         }
+
         // Inicia el programa mostrando el inicio
         InicioForm mainInicio = new InicioForm(usuarios);
         mainInicio.setVisible(true);
@@ -127,6 +128,25 @@ public class Main {
                     + ");";
             st = connect.prepareStatement(sql);
             st.execute();
+
+            // Se crea la tabla con informacion de Signos Vitales de paciente
+            sql = "CREATE TABLE IF NOT EXISTS signosvitales (\n"
+                    + "	id integer,\n"
+                    + "	pacienteId text,\n"
+                    + "	peso integer,\n"
+                    + "	altura integer,\n"
+                    + "	respiracion integer,\n"
+                    + "	tension integer,\n"
+                    + "	pulso integer,\n"
+                    + "	grupoSanguieno integer,\n"
+                    + "	prioridad integer\n"
+                    + "	dia integer,\n"
+                    + "	mes text,\n"
+                    + "	anio integer,\n"
+                    + ");";
+            st = connect.prepareStatement(sql);
+            st.execute();
+
             System.out.println("Base de datos creada con usuario administrador");
 
         } catch (HeadlessException | SQLException x) {
@@ -242,6 +262,42 @@ public class Main {
         }
         // Regresa el usuario que se ha guardado
         return pacientesLista;
+    }
+
+    public static ArrayList<SignosVitalesFormulario> getFormulariosDataBase() {
+        ArrayList<SignosVitalesFormulario> formularios = Main.getFormulariosDataBase();
+        // Se obtiene la informacion de la tabla usuario en base de datos
+        //String medicoActual = MainScreen.getUserID();
+        try {
+            String sql = "SELECT * FROM signosvitales";
+            PreparedStatement st = connect.prepareStatement(sql);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+                Fecha nacimiento = new Fecha();
+                SignosVitalesFormulario nuevoFormulario = new SignosVitalesFormulario();
+
+                nuevoFormulario.setId(rs.getInt("id"));
+                nuevoFormulario.setApellido(rs.getString("apellido"));
+                nuevoFormulario.setCedula(rs.getString("cedula"));
+                nuevoFormulario.setSexo(rs.getString("sexo"));
+
+                nacimiento.setDia(rs.getInt("dia"));
+                nacimiento.setMes(rs.getInt("mes"));
+                nacimiento.setAnio(rs.getInt("anio"));
+
+                nuevoFormulario.setFechaNacimiento(nacimiento);
+                nuevoFormulario.setIdMedicoResponsable(rs.getString("idResponsable"));
+
+                // añade el paciente registrado a la lista
+                formularios.add(nuevoFormulario);
+                nacimiento = null;
+            }
+        } catch (HeadlessException | SQLException x) {
+            JOptionPane.showMessageDialog(null, x.getMessage());
+        }
+        // Regresa el usuario que se ha guardado
+        return formularios;
     }
 
 } // FIN CLASE 
