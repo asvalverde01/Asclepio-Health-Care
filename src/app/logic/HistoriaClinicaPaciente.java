@@ -23,6 +23,9 @@ public class HistoriaClinicaPaciente {
     private boolean drogas;
     private String enfermedades;
     private String medicacion;
+    private String motivoConsulta;
+    private String sintomas;
+    private String comentarios;
 
 
     /*-------------------------------------------------------------
@@ -51,8 +54,11 @@ public class HistoriaClinicaPaciente {
      * @param antecedentesMadre
      * @param enfermedades
      * @param medicacion
+     * @param motivoConsulta
+     * @param sintomas
+     * @param comentarios
      */
-    public HistoriaClinicaPaciente(String pacienteId, String ocupacion, String nacionalidad, String estadoCivil, boolean padreFallecido, boolean madreFallecido, String antecedentesPadre, String antecedentesMadre, String otros, boolean alcohol, boolean tabaco, boolean drogas, String enfermedades, String medicacion) {
+    public HistoriaClinicaPaciente(String pacienteId, String ocupacion, String nacionalidad, String estadoCivil, boolean padreFallecido, boolean madreFallecido, String antecedentesPadre, String antecedentesMadre, String otros, boolean alcohol, boolean tabaco, boolean drogas, String enfermedades, String medicacion, String motivoConsulta, String sintomas, String comentarios) {
         this.pacienteId = pacienteId;
         this.ocupacion = ocupacion;
         this.nacionalidad = nacionalidad;
@@ -67,6 +73,9 @@ public class HistoriaClinicaPaciente {
         this.drogas = drogas;
         this.enfermedades = enfermedades;
         this.medicacion = medicacion;
+        this.motivoConsulta = motivoConsulta;
+        this.sintomas = sintomas;
+        this.comentarios = comentarios;
     }
 
     /*-------------------------------------------------------------
@@ -184,11 +193,33 @@ public class HistoriaClinicaPaciente {
         this.medicacion = medicacion;
     }
 
+    public String getMotivoConsulta() {
+        return motivoConsulta;
+    }
+
+    public void setMotivoConsulta(String motivoConsulta) {
+        this.motivoConsulta = motivoConsulta;
+    }
+
+    public String getSintomas() {
+        return sintomas;
+    }
+
+    public void setSintomas(String sintomas) {
+        this.sintomas = sintomas;
+    }
+
+    public String getComentarios() {
+        return comentarios;
+    }
+
+    public void setComentarios(String comentarios) {
+        this.comentarios = comentarios;
+    }
+
     @Override
     public String toString() {
         return "HistoriaClinicaPaciente{" + "pacienteId=" + pacienteId + ", ocupacion=" + ocupacion + ", nacionalidad=" + nacionalidad + ", estadoCivil=" + estadoCivil + ", padreFallecido=" + padreFallecido + ", madreFallecido=" + madreFallecido + ", antecedentesPadre=" + antecedentesPadre + ", antecedentesMadre=" + antecedentesMadre + ", otros=" + otros + ", alcohol=" + alcohol + ", tabaco=" + tabaco + ", drogas=" + drogas + ", enfermedades=" + enfermedades + ", medicacion=" + medicacion + '}';
     }
-    
-    
 
 }

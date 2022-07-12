@@ -17,10 +17,11 @@ import org.netbeans.lib.awtextra.AbsoluteConstraints;
 
 public final class MainScreen extends javax.swing.JFrame {
 
+    // Atributos estáticos para poder acceder a estos en cualquier parte del programa
     public static Usuario usuario;
-    public static String userID;
-    public static ListaPacientes listaPacientes;
-    // Paneles
+    public static String userID; // Guarda el numero de cedula del doctor que ha entrado
+    public static ListaPacientes listaPacientes; //
+    // Paneles de contenido para cada botón
     private app.gui.inicio.InicioPanel pInicio = null;
     private BuscarPacientePanel pResultados = null;
     private SignosVitales pTriaje = null;
@@ -34,6 +35,7 @@ public final class MainScreen extends javax.swing.JFrame {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    // Getters y setters para los atributos estáticos
     public static Usuario getUsuario() {
         return usuario;
     }
@@ -67,6 +69,7 @@ public final class MainScreen extends javax.swing.JFrame {
     public MainScreen(Usuario usuario) {
         MainScreen.usuario = usuario;
         MainScreen.userID = usuario.getCedula();
+        // LLeno la lista de pacientes
         MainScreen.listaPacientes = Main.obtenerPacientesDataBase();
         initComponents();
         actualizarFecha(new Fecha());
@@ -92,10 +95,9 @@ public final class MainScreen extends javax.swing.JFrame {
         //setInformation();
         this.setVisible(true);
         showPanel(pInicio);
+        // Guardo el número de cédula del usuario como un identificador de quién ha entrado
         MainScreen.userID = usuario.getCedula();
-
-        // Obtiene la lista de Resultados de actividades y la asigna al usuario
-        //usuario.setListaResultado(Main.obtenerResultadoActividadDataBase(usuario.getCedula()));
+        
     }
 
     /**
@@ -407,41 +409,6 @@ public final class MainScreen extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_salirButtonActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainScreen.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new MainScreen().setVisible(true);
-            }
-        });
-    }
 
     /**
      * Recibe el panel para cabiarlo en el panel contenido
@@ -457,7 +424,7 @@ public final class MainScreen extends javax.swing.JFrame {
     }
 
     /**
-     * Inicializa los paneles
+     * Inicializa los paneles enviando información necesaria para cada una de las clases
      *
      * @param usuario
      */
@@ -480,6 +447,7 @@ public final class MainScreen extends javax.swing.JFrame {
         pConfig.setUsuario(usuario);
     }
 
+    // Colorea los botones
     private void colorButtons() {
         homeButton1.setBackground(new java.awt.Color(55, 202, 236));
         registrarMedicoButton.setBackground(new java.awt.Color(0, 204, 204));
@@ -494,6 +462,7 @@ public final class MainScreen extends javax.swing.JFrame {
 
     }
 
+    // ...
     private void actualizarFecha(Fecha actual) {
         fechaLabel.setText("     Hoy es " + actual.getDia() + " de " + actual.getMesString() + " del año " + actual.getAnio() + " ");
     }

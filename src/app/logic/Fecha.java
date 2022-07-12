@@ -3,11 +3,6 @@ package app.logic;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
-/**
- * Programa BrainUP Clase Fecha
- *
- * @author Valverde, Vinueza, Vintimilla
- */
 public final class Fecha {
 
     /*-------------------------------------------------------------
@@ -16,7 +11,6 @@ public final class Fecha {
     private int dia;
     private int mes;
     private int anio;
-
 
     /*-------------------------------------------------------------
     /Constructores

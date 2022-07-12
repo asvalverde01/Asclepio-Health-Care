@@ -74,6 +74,12 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         medicaciónTxt = new javax.swing.JTextField();
         guardarBtn = new javax.swing.JButton();
+        jLabel18 = new javax.swing.JLabel();
+        sintomasTxt = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        motivoTxt = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        comentariosTxt = new javax.swing.JTextField();
         background = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1030, 650));
@@ -130,7 +136,7 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(0, 51, 51));
         jLabel7.setText("Ocupación:");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 120, -1, 30));
-        getContentPane().add(enfermedadesTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 490, 660, 30));
+        getContentPane().add(enfermedadesTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 470, 240, 30));
         getContentPane().add(antecedentesOTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 340, 820, 30));
         getContentPane().add(antecedentesPTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 260, 700, 30));
         getContentPane().add(ocupacionTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 120, 210, -1));
@@ -140,8 +146,8 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
 
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 51, 51));
-        jLabel8.setText("Enfermedades que padece:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 490, -1, 30));
+        jLabel8.setText("Enfermedades:");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 470, -1, 30));
 
         bienvenidaLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         bienvenidaLabel2.setForeground(new java.awt.Color(0, 51, 153));
@@ -259,8 +265,8 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 51, 51));
         jLabel17.setText("Medicación permanente:");
-        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 540, -1, 30));
-        getContentPane().add(medicaciónTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 540, 660, 30));
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 470, -1, 30));
+        getContentPane().add(medicaciónTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 470, 240, 30));
 
         guardarBtn.setBackground(new java.awt.Color(18, 84, 136));
         guardarBtn.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
@@ -272,7 +278,25 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
                 guardarBtnActionPerformed(evt);
             }
         });
-        getContentPane().add(guardarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 590, 210, 40));
+        getContentPane().add(guardarBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 630, 210, 40));
+
+        jLabel18.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel18.setText("Síntomas:");
+        getContentPane().add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 550, -1, 30));
+        getContentPane().add(sintomasTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 550, 720, 30));
+
+        jLabel19.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel19.setText("Motivo de consulta:");
+        getContentPane().add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 510, 190, 30));
+        getContentPane().add(motivoTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 510, 720, 30));
+
+        jLabel20.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel20.setText("Comentarios:");
+        getContentPane().add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 590, -1, 30));
+        getContentPane().add(comentariosTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 590, 720, 30));
 
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
         background.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -280,7 +304,7 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
                 backgroundKeyPressed(evt);
             }
         });
-        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 650));
+        getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 680));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -326,13 +350,17 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
 
         String enfermedades = enfermedadesTxt.getText();
         String medicacion = medicaciónTxt.getText();
+        
+        String motivoConsulta = motivoTxt.getText();
+        String sintomas = sintomasTxt.getText();
+        String comentarios = comentariosTxt.getText();
 
-        HistoriaClinicaPaciente nuevaHistoria = new HistoriaClinicaPaciente(pacienteId, ocupacion, nacionalidad, estadoCivil, padreFallecido, madreFallecido, antecedentesPadre, antecedentesMadre, otros, alcohol, tabaco, drogas, enfermedades, medicacion);
+        HistoriaClinicaPaciente nuevaHistoria = new HistoriaClinicaPaciente(pacienteId, ocupacion, nacionalidad, estadoCivil, padreFallecido, madreFallecido, antecedentesPadre, antecedentesMadre, otros, alcohol, tabaco, drogas, enfermedades, medicacion, motivoConsulta, sintomas, comentarios);
         paciente.setHistoriaClinica(nuevaHistoria);
         // Guarda los datos en la base de datos
         try {
             // Guarda los datos en la base de datos
-            String sql = "INSERT INTO historiaclinica (pacienteId, ocupacion, nacionalidad, estado_civil, padre_fallecido, madre_fallecido, antecedentes_padre, antecedentes_madre, otros, alcohol, tabaco, drogas, enfermedades, medicacion) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            String sql = "INSERT INTO historiaclinica (pacienteId, ocupacion, nacionalidad, estado_civil, padre_fallecido, madre_fallecido, antecedentes_padre, antecedentes_madre, otros, alcohol, tabaco, drogas, enfermedades, medicacion, motivo, sintomas, comentarios) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
             PreparedStatement pst = Main.getConnect().prepareStatement(sql);
             pst.setString(1, pacienteId);
             pst.setString(2, ocupacion);
@@ -348,6 +376,9 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
             pst.setBoolean(12, drogas);
             pst.setString(13, enfermedades);
             pst.setString(14, medicacion);
+            pst.setString(15, motivoConsulta);
+            pst.setString(16, sintomas);
+            pst.setString(17, comentarios);
             pst.executeUpdate();
 
             JOptionPane.showMessageDialog(null, "Historia Clínica guardada");
@@ -378,6 +409,7 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
     private javax.swing.JLabel bienvenidaLabel1;
     private javax.swing.JLabel bienvenidaLabel2;
     private javax.swing.JLabel cedulaLbl;
+    private javax.swing.JTextField comentariosTxt;
     private javax.swing.JRadioButton drogasRButton;
     private javax.swing.JLabel edadLbl;
     private javax.swing.JTextField enfermedadesTxt;
@@ -394,6 +426,9 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -405,10 +440,12 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JTextField medicaciónTxt;
+    private javax.swing.JTextField motivoTxt;
     private javax.swing.JComboBox<String> nacionalidadCmb;
     private javax.swing.JLabel nombreLbl;
     private javax.swing.JTextField ocupacionTxt;
     private javax.swing.JLabel sexoLbl;
+    private javax.swing.JTextField sintomasTxt;
     private javax.swing.JRadioButton tabacoRButton;
     // End of variables declaration//GEN-END:variables
 }

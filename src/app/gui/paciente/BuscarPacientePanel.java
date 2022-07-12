@@ -18,8 +18,9 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
     // Atributo de lista
     private static ListaPacientes listaPacientes;
     private DefaultTableModel model;
-    private Paciente pacienteActual;
+    public static Paciente pacienteActual;
 
+ 
     // Modelo lista
     private DefaultListModel dlm = new DefaultListModel();
 
@@ -418,12 +419,12 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "El paciente ya ha sido atendido", "Advertencia", JOptionPane.INFORMATION_MESSAGE);
                 break;
             default:
-                 HistoriaClinicaPaciente historiaClinica = Main.obtenerHistoriaClinica(pacienteActual.getCedula()); 
-                 pacienteActual.setHistoriaClinica(historiaClinica);
-                 System.out.println(historiaClinica);
+                HistoriaClinicaPaciente historiaClinica = Main.obtenerHistoriaClinica(pacienteActual.getCedula());
+                pacienteActual.setHistoriaClinica(historiaClinica);
+                System.out.println(historiaClinica);
                 if (historiaClinica.getPacienteId() != null) {
                     // Muestra
-                    
+                    JOptionPane.showMessageDialog(null, "El paciente ya ha sido atendido", "Advertencia", JOptionPane.INFORMATION_MESSAGE);
                     HistoriaClinicaPanel historiaClinicaPanel = new HistoriaClinicaPanel(pacienteActual);
                     historiaClinicaPanel.setVisible(true);
                 } else {

@@ -20,7 +20,6 @@ public class HistoriaClinicaPanel extends javax.swing.JFrame {
         this.historiaClinica = paciente.getHistoriaClinica();
         this.setLocationRelativeTo(null);
         actualizarInfo();
-
     }
 
     /**
@@ -75,6 +74,12 @@ public class HistoriaClinicaPanel extends javax.swing.JFrame {
         consumeDrogasLbl = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         consumeAlcoholLbl = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        comentariosLbl = new javax.swing.JLabel();
+        motivoLbl = new javax.swing.JLabel();
+        sintomasLbl = new javax.swing.JLabel();
         background = new javax.swing.JLabel();
 
         setMinimumSize(new java.awt.Dimension(1030, 650));
@@ -135,7 +140,7 @@ public class HistoriaClinicaPanel extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 51, 51));
         jLabel8.setText("Enfermedades que padece:");
-        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, -1, 30));
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, -1, 30));
 
         bienvenidaLabel2.setFont(new java.awt.Font("Roboto", 1, 18)); // NOI18N
         bienvenidaLabel2.setForeground(new java.awt.Color(0, 51, 153));
@@ -214,13 +219,13 @@ public class HistoriaClinicaPanel extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 51, 51));
         jLabel17.setText("Medicación permanente:");
-        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 580, -1, 30));
+        getContentPane().add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 480, -1, 30));
 
         medicacionLbl.setBackground(new java.awt.Color(51, 51, 51));
         medicacionLbl.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         medicacionLbl.setForeground(new java.awt.Color(51, 51, 51));
         medicacionLbl.setText("null");
-        getContentPane().add(medicacionLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 580, 670, 30));
+        getContentPane().add(medicacionLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 480, 320, 30));
 
         padreEstadoLbl.setBackground(new java.awt.Color(51, 51, 51));
         padreEstadoLbl.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -268,7 +273,7 @@ public class HistoriaClinicaPanel extends javax.swing.JFrame {
         enfermedadesLbl.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
         enfermedadesLbl.setForeground(new java.awt.Color(51, 51, 51));
         enfermedadesLbl.setText("null");
-        getContentPane().add(enfermedadesLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 530, 670, 30));
+        getContentPane().add(enfermedadesLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 430, 320, 30));
 
         padreAntecedentesLbl.setBackground(new java.awt.Color(51, 51, 51));
         padreAntecedentesLbl.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -309,6 +314,39 @@ public class HistoriaClinicaPanel extends javax.swing.JFrame {
         consumeAlcoholLbl.setText("null");
         getContentPane().add(consumeAlcoholLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 430, 70, 30));
 
+        jLabel21.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel21.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel21.setText("Comentarios:");
+        getContentPane().add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 610, -1, 30));
+
+        jLabel22.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel22.setText("Síntomas:");
+        getContentPane().add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 570, -1, 30));
+
+        jLabel23.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        jLabel23.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel23.setText("Motivo de consulta:");
+        getContentPane().add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, 190, 30));
+
+        comentariosLbl.setBackground(new java.awt.Color(51, 51, 51));
+        comentariosLbl.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        comentariosLbl.setForeground(new java.awt.Color(51, 51, 51));
+        comentariosLbl.setText("null");
+        getContentPane().add(comentariosLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 610, 730, 30));
+
+        motivoLbl.setBackground(new java.awt.Color(51, 51, 51));
+        motivoLbl.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        motivoLbl.setForeground(new java.awt.Color(51, 51, 51));
+        motivoLbl.setText("null");
+        getContentPane().add(motivoLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 530, 730, 30));
+
+        sintomasLbl.setBackground(new java.awt.Color(51, 51, 51));
+        sintomasLbl.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
+        sintomasLbl.setForeground(new java.awt.Color(51, 51, 51));
+        sintomasLbl.setText("null");
+        getContentPane().add(sintomasLbl, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 570, 730, 30));
+
         background.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagen/backgroundMain.jpg"))); // NOI18N
         background.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -346,6 +384,9 @@ public class HistoriaClinicaPanel extends javax.swing.JFrame {
         enfermedadesLbl.setText(historiaClinica.getEnfermedades());
         medicacionLbl.setText(historiaClinica.getMedicacion());
 
+        motivoLbl.setText(historiaClinica.getMotivoConsulta());
+        sintomasLbl.setText(historiaClinica.getSintomas());
+        comentariosLbl.setText(historiaClinica.getComentarios());
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -355,6 +396,7 @@ public class HistoriaClinicaPanel extends javax.swing.JFrame {
     private javax.swing.JLabel bienvenidaLabel1;
     private javax.swing.JLabel bienvenidaLabel2;
     private javax.swing.JLabel cedulaLbl;
+    private javax.swing.JLabel comentariosLbl;
     private javax.swing.JLabel consumeAlcoholLbl;
     private javax.swing.JLabel consumeDrogasLbl;
     private javax.swing.JLabel consumeTabacolLbl;
@@ -373,6 +415,9 @@ public class HistoriaClinicaPanel extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -386,6 +431,7 @@ public class HistoriaClinicaPanel extends javax.swing.JFrame {
     private javax.swing.JLabel madreAntecedentesLbl;
     private javax.swing.JLabel madreEstadoLbl;
     private javax.swing.JLabel medicacionLbl;
+    private javax.swing.JLabel motivoLbl;
     private javax.swing.JLabel nacionalidadlbl;
     private javax.swing.JLabel nombreLbl;
     private javax.swing.JLabel ocupacionLbl;
@@ -393,5 +439,6 @@ public class HistoriaClinicaPanel extends javax.swing.JFrame {
     private javax.swing.JLabel padreAntecedentesLbl;
     private javax.swing.JLabel padreEstadoLbl;
     private javax.swing.JLabel sexoLbl;
+    private javax.swing.JLabel sintomasLbl;
     // End of variables declaration//GEN-END:variables
 }

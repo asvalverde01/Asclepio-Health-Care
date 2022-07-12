@@ -265,56 +265,6 @@ public class BuscarMedicoPanel extends javax.swing.JPanel {
         actualizarMedicoActual(idSeleccion);
     }//GEN-LAST:event_lstResultadosMouseClicked
 
-    /**
-     * Recibe como parametro la cedula y verifica si es una cédula Ecuatoriana
-     * válida
-     *
-     * @param document String cédula a evaluar
-     * @return boolean true si es una cédula válida, false en caso de ser
-     * inválida
-     */
-    private boolean validarCedula(String document) {
-        byte sum = 0;
-        try {
-            if (document.trim().length() != 10) {
-                JOptionPane.showMessageDialog(null, "Cédula debe constar de 10 dígitos");
-                return false;
-            }
-            String[] data = document.split("");
-            byte verifier = Byte.parseByte(data[0] + data[1]);
-            if (verifier < 1 || verifier > 24) {
-                JOptionPane.showMessageDialog(null, "Formato de cédula inválido");
-                return false;
-            }
-            byte[] digits = new byte[data.length];
-            for (byte i = 0; i < digits.length; i++) {
-                digits[i] = Byte.parseByte(data[i]);
-            }
-            if (digits[2] > 6) {
-                JOptionPane.showMessageDialog(null, "Formato de cédula inválido");
-                return false;
-            }
-            for (byte i = 0; i < digits.length - 1; i++) {
-                if (i % 2 == 0) {
-                    verifier = (byte) (digits[i] * 2);
-                    if (verifier > 9) {
-                        verifier = (byte) (verifier - 9);
-                    }
-                } else {
-                    verifier = digits[i];
-                }
-                sum = (byte) (sum + verifier);
-            }
-            if ((sum - (sum % 10) + 10 - sum) == digits[9]) {
-                return true;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        JOptionPane.showMessageDialog(null, "Formato de cédula inválido");
-        return false;
-    }
-
     private void vaciarCampos() {
         cedulaTxt.setText("");
 

@@ -270,7 +270,7 @@ public class RegistroMedicoPanel extends javax.swing.JPanel {
         especialidadCombo.setBackground(new java.awt.Color(102, 102, 102));
         especialidadCombo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         especialidadCombo.setForeground(new java.awt.Color(51, 51, 51));
-        especialidadCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Medicina Interna", "Cardiología", "Neurología", "Dermatología", " ", " ", " " }));
+        especialidadCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Emergencia", "Medicina Interna", "Cardiología", "Neurología", "Dermatología", " ", " ", " " }));
         especialidadCombo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 especialidadComboActionPerformed(evt);
@@ -578,7 +578,7 @@ public class RegistroMedicoPanel extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Registrado correctamente");
                 vaciarCampos();
             } else {
-                System.out.println("error en registro");
+                JOptionPane.showMessageDialog(null, "Error");
             }
         } else {
             // En caso de que el avatar no haya sido seleccionado

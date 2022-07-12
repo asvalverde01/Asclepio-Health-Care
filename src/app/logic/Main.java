@@ -167,7 +167,10 @@ public class Main {
                     + "	medicacion text,\n"
                     + "	dia integer,\n"
                     + "	mes integer,\n"
-                    + "	anio integer\n"
+                    + "	anio integer,\n"
+                    + "	motivo text,\n"
+                    + "	sintomas text,\n"
+                    + "	comentarios text\n"
                     + ");";
             st = connect.prepareStatement(sql);
             st.execute();
@@ -355,7 +358,11 @@ public class Main {
                 nuevaHistoria.setTabaco(rs.getBoolean("tabaco"));
                 nuevaHistoria.setDrogas(rs.getBoolean("drogas"));
                 nuevaHistoria.setEnfermedades(rs.getString("enfermedades"));
-                nuevaHistoria.setMedicacion(rs.getString("medicacion"));
+                nuevaHistoria.setMedicacion(rs.getString("medicacion"));                
+                
+                nuevaHistoria.setMotivoConsulta(rs.getString("motivo"));
+                nuevaHistoria.setSintomas(rs.getString("sintomas"));
+                nuevaHistoria.setComentarios(rs.getString("comentarios"));
                 // añade el formulario registrado a la lista
                 historia = nuevaHistoria;
             }

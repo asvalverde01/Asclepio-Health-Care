@@ -1,6 +1,7 @@
 package app.gui.inicio;
 
 import app.dataStruct.Lista;
+import app.gui.paciente.BuscarPacientePanel;
 import app.logic.Main;
 import app.logic.users.Paciente;
 import app.logic.users.Medico;
@@ -201,7 +202,9 @@ public class DerivarGui extends javax.swing.JFrame {
                 st.executeUpdate();
 
                 String nuevoEstado = "Proceso";
+                BuscarPacientePanel.pacienteActual.setEstado(nuevoEstado);
                 paciente.setEstado(nuevoEstado);
+                
 
                 try {
                     st = Main.getConnect().prepareStatement("UPDATE paciente SET estado = ? WHERE cedula = ?");
@@ -239,6 +242,7 @@ public class DerivarGui extends javax.swing.JFrame {
         usuarios = InicioForm.getUsuarios();
         usuarios.getUsuarios().forEach(usuario -> {
             if (usuario.getRol().equals("Medico")) {
+
                 dlm.addElement(usuario.toString());
             }
         });

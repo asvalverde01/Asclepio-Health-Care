@@ -19,6 +19,7 @@ public class InicioForm extends javax.swing.JFrame {
     // Atributo de lista
     private static Lista usuarios = new Lista();
 
+    
     public static Lista getUsuarios() {
         return obtenerUsuarioDataBase(usuarios);
     }
@@ -29,6 +30,7 @@ public class InicioForm extends javax.swing.JFrame {
 
     public InicioForm() {
         initComponents();
+        // Obtiene la lista de usuarios de la clase InicioForm y la guarda
         InicioForm.usuarios = obtenerUsuarioDataBase(usuarios);
     }
 
@@ -182,8 +184,11 @@ public class InicioForm extends javax.swing.JFrame {
 
         // Busca en la lista de usuarios un match en usuairo y contraseña
         for (Usuario usuario : usuarios.getUsuarios()) {
+            // Busco un usuario co el mismo nombre de usuario
             if (usuario.getUsuario().equals(usuarioInput)) {
+                // Verifico que la contraseña ingresada sea igual a la que tiene el usuario
                 if (usuario.getContrasenia().equals(contraseniaInput)) {
+                    // Si son iguales entonces inicio el programa y envío el usuairo
                     MainScreen main = new MainScreen(usuario);
                     main.setVisible(true);
                     main.setLocationRelativeTo(null);
@@ -193,6 +198,7 @@ public class InicioForm extends javax.swing.JFrame {
                 }
             }
         }
+        // Si no ha ingresado info
         if (usuarioInput.equals("") || contraseniaInput.equals("")) {
             JOptionPane.showMessageDialog(null, "Por favor ingrese todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
             estadoLbl.setText("");
@@ -266,7 +272,9 @@ public class InicioForm extends javax.swing.JFrame {
         });
     }
 
+    // Recive una lista vacía y la llena con información de usuarios
     private static Lista obtenerUsuarioDataBase(Lista usuariosLista) {
+        // Vacío la lista antes de llenarla para evitar que al cerrar sesión se duplique la información
         usuariosLista.eliminarElementos();
         Fecha nacimiento = new Fecha();
         // Se obtiene la informacion de la tabla usuario en base de datos
@@ -281,9 +289,11 @@ public class InicioForm extends javax.swing.JFrame {
                 String rol = rs.getString("rol");
                 // Si el rol es Administrador 
                 if (rol.equals("Administrador")) {
+                    // Instancio el Usuario como Administrador
                     usuario = new Administrador();
                     // Caso contrario es de rol Medico
                 } else {
+                    // Instancio como Medico
                     usuario = new Medico(rs.getString("especialidad"), rs.getString("correo"));
                 }
                 usuario.setUsuario(rs.getString("usuario"));
