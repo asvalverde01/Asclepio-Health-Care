@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 /**
  * Programa AsclepioHC Clase Usuario
  *
- * @author Valverde, Vinueza, Vintimilla, Liria, Ordoñez
+ * @author Valverde, Vinueza, Vintimilla, Liria, Ordoñez, Avila
  */
 public class Medico extends Usuario {
 

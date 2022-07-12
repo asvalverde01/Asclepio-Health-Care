@@ -220,7 +220,6 @@ public class Main {
             // st.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
             return false;
         }
         return true;
@@ -358,8 +357,8 @@ public class Main {
                 nuevaHistoria.setTabaco(rs.getBoolean("tabaco"));
                 nuevaHistoria.setDrogas(rs.getBoolean("drogas"));
                 nuevaHistoria.setEnfermedades(rs.getString("enfermedades"));
-                nuevaHistoria.setMedicacion(rs.getString("medicacion"));                
-                
+                nuevaHistoria.setMedicacion(rs.getString("medicacion"));
+
                 nuevaHistoria.setMotivoConsulta(rs.getString("motivo"));
                 nuevaHistoria.setSintomas(rs.getString("sintomas"));
                 nuevaHistoria.setComentarios(rs.getString("comentarios"));

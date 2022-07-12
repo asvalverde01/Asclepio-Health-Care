@@ -1,7 +1,6 @@
 package app.dataStruct;
 
 import app.logic.users.Paciente;
-import app.logic.users.Usuario;
 
 import java.util.ArrayList;
 
@@ -18,7 +17,7 @@ public class ArbolPacientes {
     }
 
     private void insertar(Nodo nuevo, Nodo actual) {
-        if (nuevo.getDato().getNombre().charAt(0)< actual.getDato().getNombre().charAt(0)) {
+        if (nuevo.getDato().getNombre().charAt(0) < actual.getDato().getNombre().charAt(0)) {
             if (actual.getIzquierda() == null) {
                 actual.setIzquierda(nuevo);
             } else {
@@ -62,11 +61,11 @@ public class ArbolPacientes {
 
     public ArrayList<Paciente> getPacientes() {
         ArrayList<Paciente> pacientes = new ArrayList<>();
-       // Recorre el arbol sacando los pacientes y agregandolos a a lista
+        // Recorre el arbol sacando los pacientes y agregandolos a a lista
         if (raiz != null) {
             getPacientes(raiz, pacientes);
         }
-        
+
         return pacientes;
     }
 
@@ -77,6 +76,5 @@ public class ArbolPacientes {
             getPacientes(raiz.getDerecha(), pacientes);
         }
     }
-
 
 }
