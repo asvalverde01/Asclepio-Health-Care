@@ -107,7 +107,7 @@ public class Usuario {
      * Regresa el nombre del listaFichas
      *
      * @param sexo
-     * @return String nombre
+     * @return String hombre
      */
     public void setSexo(String sexo) {
         this.sexo = sexo;
@@ -250,29 +250,6 @@ public class Usuario {
                     st.setString(2, cedula);
                     apellido = nuevo;
                 }
-                /* TODO
-                case "Etapa": {
-                    // Verifica que el nuevo valor sea valido "Leve" , "Moderada" o "Avanzada"
-                    if (nuevo.equals("Leve") || nuevo.equals("Moderada") || nuevo.equals("Avanzada")) {
-                        int nuevoValor;
-                        switch (nuevo) {
-                            case "Moderada":
-                                nuevoValor = 1;
-                            case "Avanzada":
-                                nuevoValor = 2;
-                            default:
-                                nuevoValor = 0;
-                        };
-                        st = Main.getConnect().prepareStatement("UPDATE listaFichas SET etapa = ? WHERE cedula = ?");
-                        st.setInt(1, nuevoValor);
-                        st.setString(2, cedula);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Ingrese solamente \"Leve\" - \"Moderada\" - \"Avanzada\"");
-                        return false;
-                    }
-                }
-                 */
-
                 case "fecha": {
                     //Separa el string si encuentra "/"
                     String[] fecha = nuevo.split("/");
@@ -314,8 +291,6 @@ public class Usuario {
      * @param nombre
      * @param apellido
      * @param nuevaFecha
-     * @param tipo String tipo de atributo
-     * @param nuevo String nuevo valor a cambiar
      * @return Boolean true si se modifico correctamente false si no
      */
     public boolean modificarInfoUsuario(String nombre, String apellido, Fecha nuevaFecha) {

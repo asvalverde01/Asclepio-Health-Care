@@ -1,6 +1,6 @@
 package app.logic.users;
 
-import app.dataStruct.ListaPacientes;
+import app.dataStruct.ArbolPacientes;
 import app.logic.Fecha;
 import static app.logic.Main.connect;
 import java.awt.HeadlessException;
@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
 /**
  * Programa AsclepioHC Clase Usuario
  *
- * @author Valverde, Vinueza, Vintimilla, Liria, Ordoñez
+ * @author Valverde, Vinueza, Vintimilla, Liria, Ordoñez, Avila
  */
 public class Medico extends Usuario {
 
@@ -72,9 +72,9 @@ public class Medico extends Usuario {
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-    
-     public static ListaPacientes obtenerSignosVitalesPaciente() {
-        ListaPacientes pacientesLista = new ListaPacientes();
+
+    public static ArbolPacientes obtenerSignosVitalesPaciente() {
+        ArbolPacientes pacientesLista = new ArbolPacientes();
 
         // Se obtiene la informacion de la tabla usuario en base de datos
         //String medicoActual = MainScreen.getUserID();
@@ -104,7 +104,7 @@ public class Medico extends Usuario {
                 //System.out.println(nuevoPaciente.getEdad());
                 nuevoPaciente.getEdad();
                 // añade el paciente registrado a la lista
-                pacientesLista.agregar(nuevoPaciente);
+                pacientesLista.insertar(nuevoPaciente);
                 nacimiento = null;
             }
         } catch (HeadlessException | SQLException x) {

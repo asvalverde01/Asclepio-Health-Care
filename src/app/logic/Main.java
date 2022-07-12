@@ -1,7 +1,7 @@
 package app.logic;
 
+import app.dataStruct.ArbolPacientes;
 import app.dataStruct.Lista;
-import app.dataStruct.ListaPacientes;
 import app.gui.inicio.InicioForm;
 import app.logic.users.Paciente;
 
@@ -220,7 +220,6 @@ public class Main {
             // st.executeUpdate();
 
         } catch (SQLException e) {
-            e.printStackTrace();
             return false;
         }
         return true;
@@ -249,12 +248,12 @@ public class Main {
         return false;
     }
 
-    public static ListaPacientes getPacientes() {
+    public static ArbolPacientes getPacientes() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public static ListaPacientes obtenerPacientesDataBase() {
-        ListaPacientes pacientesLista = new ListaPacientes();
+    public static ArbolPacientes obtenerPacientesDataBase() {
+        ArbolPacientes pacientesLista = new ArbolPacientes();
 
         // Se obtiene la informacion de la tabla usuario en base de datos
         //String medicoActual = MainScreen.getUserID();
@@ -283,7 +282,7 @@ public class Main {
                 //System.out.println(nuevoPaciente.getEdad());
                 nuevoPaciente.getEdad();
                 // añade el paciente registrado a la lista
-                pacientesLista.agregar(nuevoPaciente);
+                pacientesLista.insertar(nuevoPaciente);
                 nacimiento = null;
             }
         } catch (HeadlessException | SQLException x) {
@@ -358,8 +357,8 @@ public class Main {
                 nuevaHistoria.setTabaco(rs.getBoolean("tabaco"));
                 nuevaHistoria.setDrogas(rs.getBoolean("drogas"));
                 nuevaHistoria.setEnfermedades(rs.getString("enfermedades"));
-                nuevaHistoria.setMedicacion(rs.getString("medicacion"));                
-                
+                nuevaHistoria.setMedicacion(rs.getString("medicacion"));
+
                 nuevaHistoria.setMotivoConsulta(rs.getString("motivo"));
                 nuevaHistoria.setSintomas(rs.getString("sintomas"));
                 nuevaHistoria.setComentarios(rs.getString("comentarios"));

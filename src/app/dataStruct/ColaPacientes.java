@@ -1,11 +1,10 @@
 package app.dataStruct;
 
-
 import app.logic.users.Paciente;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class ColaPacientes {
+public final class ColaPacientes {
 
     private Queue<Paciente> cola;
 
@@ -38,10 +37,38 @@ public class ColaPacientes {
 
     public String listarEstudiantes() {
         String resultado = "";
-        for (Paciente estudiante : cola) {
-            resultado += estudiante;
+        for (Paciente paciente : cola) {
+            resultado += paciente;
         }
         return resultado;
     }
 
-}
+    // Ordenar por prioridad
+    /*
+    public void ordenar() {
+        Queue<Paciente> colaOrdenada = new LinkedList();
+        while (!cola.isEmpty()) {
+            Paciente paciente = cola.poll();
+            if (colaOrdenada.isEmpty()) {
+                colaOrdenada.add(paciente);
+            } else {
+                boolean agregado = false;
+                for (Paciente pacienteOrdenado : colaOrdenada) {
+                    if (paciente.getEdad() < pacienteOrdenado.getEdad()) {
+                        colaOrdenada.add(colaOrdenada.indexOf(pacienteOrdenado), paciente);
+                        agregado = true;
+                        break;
+                    }
+                }
+                if (!agregado) {
+                    colaOrdenada.add(paciente);
+                }
+            }
+        }
+        cola = colaOrdenada;
+    }
+*/
+
+}//end ColaPacientes
+//end file
+

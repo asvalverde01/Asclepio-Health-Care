@@ -1,10 +1,11 @@
 package app.gui.inicio;
 
+import app.dataStruct.ArbolPacientes;
+import app.dataStruct.ColaPacientes;
 import app.gui.medico.BuscarMedicoPanel;
 import app.gui.medico.RegistroMedicoPanel;
 import app.gui.paciente.BuscarPacientePanel;
 import app.gui.paciente.RegistroPacientePanel;
-import app.dataStruct.ListaPacientes;
 import app.logic.Fecha;
 import app.logic.Main;
 import app.logic.users.Administrador;
@@ -20,7 +21,8 @@ public final class MainScreen extends javax.swing.JFrame {
     // Atributos estáticos para poder acceder a estos en cualquier parte del programa
     public static Usuario usuario;
     public static String userID; // Guarda el numero de cedula del doctor que ha entrado
-    public static ListaPacientes listaPacientes; //
+    public static ArbolPacientes listaPacientes; //
+    public static ColaPacientes colaEmergencia; 
     // Paneles de contenido para cada botón
     private app.gui.inicio.InicioPanel pInicio = null;
     private BuscarPacientePanel pResultados = null;
@@ -52,12 +54,12 @@ public final class MainScreen extends javax.swing.JFrame {
         MainScreen.userID = userID;
     }
 
-    public static ListaPacientes getListaPacientes() {
+    public static ArbolPacientes getListaPacientes() {
         MainScreen.listaPacientes = Main.obtenerPacientesDataBase();
         return listaPacientes;
     }
 
-    public static void setListaPacientes(ListaPacientes listaPacientes) {
+    public static void setListaPacientes(ArbolPacientes listaPacientes) {
         MainScreen.listaPacientes = listaPacientes;
     }
 
