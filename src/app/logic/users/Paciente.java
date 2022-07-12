@@ -1,6 +1,7 @@
 package app.logic.users;
 
 import app.logic.Fecha;
+import app.logic.HistoriaClinicaPaciente;
 import app.logic.Main;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -21,7 +22,8 @@ public class Paciente {
     private Fecha fechaNacimiento;
     private String idMedicoResponsable;
     private String estado;
-
+    private HistoriaClinicaPaciente historiaClinica;
+    
     // Lista de fichas medicas (Almacena una lista con las fichas medicas)
     //private List<ResultadoActividad> listaFichas;
 
@@ -182,59 +184,16 @@ public class Paciente {
         this.estado = estado;
     }
 
-    /**
-     * Recibe el tipo de argumento por el cual se quieren filtrar las búsquedas
-     * de resultados y regresa una lista con Resultados de Actividades
-     *
-     * @param filtro String filtro de actividades a buscar
-     * @return listaFichasFiltro
-     */
-    /*
-    public List<ResultadoActividad> buscarResultadoActividad(String filtro) {
-        List<ResultadoActividad> listaFichasFiltro = new ArrayList<>();
-
-        try {
-            switch (filtro) {
-                case "Todos": {
-                    // Regresa la lista de resultados de actividades
-                    return listaFichas;
-                }
-
-                case "Moderada": {
-                    // Recorre la lista de resultados de actividades
-                    for (ResultadoActividad resultado : listaFichas) {
-                        // Si el resultado de la actividad es del tipo filtro
-                        if (resultado.getEtapa().equals(filtro)) {
-                            // Agrega el resultado a la lista de resultados filtrados
-                            listaFichasFiltro.add(resultado);
-                        }
-                    }
-                    // Regresa la lista de resultados filtrados
-                    return listaFichasFiltro;
-                }
-
-                case "Hoy": {
-                    // Recorre la lista de resultados de actividades
-                    for (ResultadoActividad resultado : listaFichas) {
-                        // Si el resultado de la actividad es del tipo filtro
-                        if (resultado.getFecha().getDia() == (new Fecha()).getDia()) {
-                            // Agrega el resultado a la lista de resultados filtrados
-                            listaFichasFiltro.add(resultado);
-                        }
-                    }
-                    return listaFichasFiltro;
-                }
-
-            }
-        } catch (NullPointerException npe) {
-            npe.printStackTrace();
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-        return listaFichasFiltro;
+    public HistoriaClinicaPaciente getHistoriaClinica() {
+        return historiaClinica;
     }
-     */
 
+    public void setHistoriaClinica(HistoriaClinicaPaciente historiaClinica) {
+        this.historiaClinica = historiaClinica;
+    }
+
+    
+    
  /*-------------------------------------------------------------
     /Métodos capa de negocio
     /-------------------------------------------------------------*/

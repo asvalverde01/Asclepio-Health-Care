@@ -177,7 +177,7 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
                 atenderButtonActionPerformed(evt);
             }
         });
-        add(atenderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 150, 70));
+        add(atenderButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 250, 150, 80));
 
         derivarButton.setBackground(new java.awt.Color(204, 204, 0));
         derivarButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -190,7 +190,7 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
                 derivarButtonActionPerformed(evt);
             }
         });
-        add(derivarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 150, 70));
+        add(derivarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 250, 150, 80));
 
         eliminarPacienteButton.setBackground(new java.awt.Color(255, 102, 102));
         eliminarPacienteButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -203,7 +203,7 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
                 eliminarPacienteButtonActionPerformed(evt);
             }
         });
-        add(eliminarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 250, 150, 70));
+        add(eliminarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 250, 150, 80));
 
         modificarPacienteButton.setBackground(new java.awt.Color(0, 204, 204));
         modificarPacienteButton.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -216,7 +216,7 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
                 modificarPacienteButtonActionPerformed(evt);
             }
         });
-        add(modificarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 150, 70));
+        add(modificarPacienteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 250, 150, 80));
 
         jLabel10.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 51, 51));
@@ -419,9 +419,10 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
                 break;
             default:
                  HistoriaClinicaPaciente historiaClinica = Main.obtenerHistoriaClinica(pacienteActual.getCedula()); 
-                if (historiaClinica != null) {
+                 System.out.println(historiaClinica);
+                if (historiaClinica.getPacienteId() != null) {
                     // Muestra
-                    
+                    System.out.println(historiaClinica);
                 } else {
                     // Crea una
                     HistoriaClinicaGui nuevaHistoriaClinica = new HistoriaClinicaGui(pacienteActual);

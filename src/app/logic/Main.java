@@ -59,7 +59,7 @@ public class Main {
             crearBaseDatos();
             conectado = conectarBaseDatos();
         }
-        
+
         // Inicia el programa mostrando el inicio
         InicioForm mainInicio = new InicioForm(usuarios);
         mainInicio.setVisible(true);
@@ -141,6 +141,30 @@ public class Main {
                     + "	pulso integer,\n"
                     + "	grupoSanguineo text,\n"
                     + "	prioridad integer,\n"
+                    + "	dia integer,\n"
+                    + "	mes integer,\n"
+                    + "	anio integer\n"
+                    + ");";
+            st = connect.prepareStatement(sql);
+            st.execute();
+
+            // Se crea la tabla con informacion de historiaclinica
+            sql = "CREATE TABLE IF NOT EXISTS historiaclinica (\n"
+                    + "	id integer,\n"
+                    + "	pacienteId text,\n"
+                    + "	ocupacion text,\n"
+                    + "	nacionalidad text,\n"
+                    + "	estado_civil text,\n"
+                    + "	padre_fallecido boolean,\n"
+                    + "	madre_fallecido boolean,\n"
+                    + "	antecedentes_padre text,\n"
+                    + "	antecedentes_madre text,\n"
+                    + "	otros text,\n"
+                    + "	alcohol boolean,\n"
+                    + "	tabaco boolean,\n"
+                    + "	drogas boolean,\n"
+                    + "	enfermedades text,\n"
+                    + "	medicacion text,\n"
                     + "	dia integer,\n"
                     + "	mes integer,\n"
                     + "	anio integer\n"
@@ -306,7 +330,40 @@ public class Main {
     }
 
     public static HistoriaClinicaPaciente obtenerHistoriaClinica(String cedula) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        HistoriaClinicaPaciente historia = new HistoriaClinicaPaciente();
+        // Se obtiene la informacion de la tabla usuario en base de datos
+        try {
+            String sql = "SELECT * FROM historiaclinica WHERE pacienteId = ?";
+            PreparedStatement st = connect.prepareStatement(sql);
+            st.setString(1, cedula);
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+
+                HistoriaClinicaPaciente nuevaHistoria = new HistoriaClinicaPaciente();
+
+                nuevaHistoria.setPacienteId(rs.getString("pacienteId"));
+                nuevaHistoria.setOcupacion(rs.getString("ocupacion"));
+                nuevaHistoria.setNacionalidad(rs.getString("nacionalidad"));
+                nuevaHistoria.setEstadoCivil(rs.getString("estado_civil"));
+                nuevaHistoria.setPadreFallecido(rs.getBoolean("padre_fallecido"));
+                nuevaHistoria.setMadreFallecido(rs.getBoolean("madre_fallecido"));
+                nuevaHistoria.setAntecedentesPadre(rs.getString("antecedentes_padre"));
+                nuevaHistoria.setAntecedentesMadre(rs.getString("antecedentes_madre"));
+                nuevaHistoria.setOtros(rs.getString("otros"));
+                nuevaHistoria.setAlcohol(rs.getBoolean("alcohol"));
+                nuevaHistoria.setTabaco(rs.getBoolean("tabaco"));
+                nuevaHistoria.setDrogas(rs.getBoolean("drogas"));
+                nuevaHistoria.setEnfermedades(rs.getString("enfermedades"));
+                nuevaHistoria.setMedicacion(rs.getString("medicacion"));
+                // añade el formulario registrado a la lista
+                historia = nuevaHistoria;
+            }
+        } catch (HeadlessException | SQLException x) {
+            JOptionPane.showMessageDialog(null, x.getMessage());
+        }
+        // Regresa la lista de formularios
+        return historia;
     }
 
 } // FIN CLASE 

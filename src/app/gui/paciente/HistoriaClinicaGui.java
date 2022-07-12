@@ -1,7 +1,11 @@
 package app.gui.paciente;
 
 import app.logic.Fecha;
+import app.logic.HistoriaClinicaPaciente;
+import app.logic.Main;
 import app.logic.users.Paciente;
+import java.sql.PreparedStatement;
+import javax.swing.JOptionPane;
 
 public class HistoriaClinicaGui extends javax.swing.JFrame {
 
@@ -298,8 +302,58 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
     }//GEN-LAST:event_alcoholRButtonActionPerformed
 
     private void guardarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarBtnActionPerformed
+        String pacienteId = paciente.getCedula();
         // Obtiene los datos
-        
+        String ocupacion = ocupacionTxt.getText();
+
+        // Saca del combobox el valor seleccionado
+        String nacionalidad = (String) nacionalidadCmb.getSelectedItem();
+        String estadoCivil = (String) estadoCivilCmb.getSelectedItem();
+
+        // Atecedentes familiares
+        // Checkea el radio button
+        boolean padreFallecido = fallecidoPRadioButton.isSelected();
+        boolean madreFallecido = fallecidoMRadioButton.isSelected();
+
+        String antecedentesPadre = antecedentesPTxt.getText();
+        String antecedentesMadre = antecedentesMTxt.getText();
+        String otros = antecedentesOTxt.getText();
+
+        // Antecedentes personales
+        boolean alcohol = alcoholRButton.isSelected();
+        boolean tabaco = tabacoRButton.isSelected();
+        boolean drogas = drogasRButton.isSelected();
+
+        String enfermedades = enfermedadesTxt.getText();
+        String medicacion = medicaciónTxt.getText();
+
+        HistoriaClinicaPaciente nuevaHistoria = new HistoriaClinicaPaciente(pacienteId, ocupacion, nacionalidad, estadoCivil, padreFallecido, madreFallecido, antecedentesPadre, antecedentesMadre, otros, alcohol, tabaco, drogas, enfermedades, medicacion);
+        paciente.setHistoriaClinica(nuevaHistoria);
+        // Guarda los datos en la base de datos
+        try {
+            // Guarda los datos en la base de datos
+            String sql = "INSERT INTO historiaclinica (pacienteId, ocupacion, nacionalidad, estado_civil, padre_fallecido, madre_fallecido, antecedentes_padre, antecedentes_madre, otros, alcohol, tabaco, drogas, enfermedades, medicacion) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+            PreparedStatement pst = Main.getConnect().prepareStatement(sql);
+            pst.setString(1, pacienteId);
+            pst.setString(2, ocupacion);
+            pst.setString(3, nacionalidad);
+            pst.setString(4, estadoCivil);
+            pst.setBoolean(5, padreFallecido);
+            pst.setBoolean(6, madreFallecido);
+            pst.setString(7, antecedentesPadre);
+            pst.setString(8, antecedentesMadre);
+            pst.setString(9, otros);
+            pst.setBoolean(10, alcohol);
+            pst.setBoolean(11, tabaco);
+            pst.setBoolean(12, drogas);
+            pst.setString(13, enfermedades);
+            pst.setString(14, medicacion);
+            pst.executeUpdate();
+
+            JOptionPane.showMessageDialog(null, "Historia Clínica guardada");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, e);
+        }
 
         this.setVisible(false);
     }//GEN-LAST:event_guardarBtnActionPerformed
