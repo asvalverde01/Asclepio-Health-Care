@@ -1,6 +1,6 @@
 package app.gui.paciente;
 
-import app.dataStruct.ListaPacientes;
+import app.dataStruct.ArbolPacientes;
 import app.gui.inicio.MainScreen;
 import app.logic.Fecha;
 import app.logic.Main;
@@ -450,7 +450,7 @@ public class RegistroPacientePanel extends javax.swing.JPanel {
      */
     private boolean validarCedulaUnica(String cedula) {
         // Busca en la lista listaPacientes si ya existe la cedula
-        ListaPacientes listaPacientes = MainScreen.getListaPacientes();
+        ArbolPacientes listaPacientes = MainScreen.getListaPacientes();
         for (Paciente paciente : listaPacientes.getPacientes()) {
             if (paciente.getCedula().equals(cedula)) {
                 JOptionPane.showMessageDialog(null, "Paciente ya registrado");

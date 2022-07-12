@@ -303,7 +303,6 @@ public class BuscarMedicoPanel extends javax.swing.JPanel {
             nombreLabel.setText("Nombre: " + medicoEncontrado.getNombre());
             apellidoLabel.setText("Apellido: " + medicoEncontrado.getApellido());
             modificarMedicoButton.setVisible(true);
-            eliminarMedicoButton.setVisible(true);
             //eliminarMedicoButton.setVisible(true);
             // Habilita los botones
         } else {

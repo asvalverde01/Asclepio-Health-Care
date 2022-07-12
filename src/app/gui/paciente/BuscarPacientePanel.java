@@ -1,6 +1,6 @@
 package app.gui.paciente;
 
-import app.dataStruct.ListaPacientes;
+import app.dataStruct.ArbolPacientes;
 import app.gui.inicio.DerivarGui;
 import app.gui.inicio.MainScreen;
 import app.logic.Fecha;
@@ -16,11 +16,10 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
 
     private final Fecha actual;
     // Atributo de lista
-    private static ListaPacientes listaPacientes;
+    private static ArbolPacientes listaPacientes;
     private DefaultTableModel model;
     public static Paciente pacienteActual;
 
- 
     // Modelo lista
     private DefaultListModel dlm = new DefaultListModel();
 
@@ -444,7 +443,7 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
         actualizarInfo();
     }//GEN-LAST:event_derivarButtonActionPerformed
 
-    public void setUsuario(ListaPacientes usuarioListaPacientes) {
+    public void setUsuario(ArbolPacientes usuarioListaPacientes) {
         this.listaPacientes = usuarioListaPacientes;
     }
 

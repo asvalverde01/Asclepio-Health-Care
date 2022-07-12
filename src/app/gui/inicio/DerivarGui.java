@@ -213,6 +213,9 @@ public class DerivarGui extends javax.swing.JFrame {
                     st.executeUpdate();
                 } catch (SQLException ex) {
                 }
+                MainScreen.colaEmergencia.agregar(paciente);
+                
+                
             } catch (Exception ex) {
                 ex.printStackTrace();
             }

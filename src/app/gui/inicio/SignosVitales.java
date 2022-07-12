@@ -1,6 +1,6 @@
 package app.gui.inicio;
 
-import app.dataStruct.ListaPacientes;
+import app.dataStruct.ArbolPacientes;
 import app.logic.Main;
 import app.logic.SignosVitalesFormulario;
 import app.logic.users.Paciente;
@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 public class SignosVitales extends javax.swing.JPanel {
 
     // Atributo de lista
-    private static ListaPacientes listaPacientes;
+    private static ArbolPacientes listaPacientes;
     private Paciente pacienteActual;
     public static ArrayList<SignosVitalesFormulario> listaSignosVitales;
     public static ArrayList<SignosVitalesFormulario> listaSignosVitalesPaciente;
@@ -194,7 +194,7 @@ public class SignosVitales extends javax.swing.JPanel {
 
     }//GEN-LAST:event_lstFormulariosMouseClicked
 
-    public void setUsuario(ListaPacientes usuarioListaPacientes) {
+    public void setUsuario(ArbolPacientes usuarioListaPacientes) {
         SignosVitales.listaPacientes = usuarioListaPacientes;
     }
 
