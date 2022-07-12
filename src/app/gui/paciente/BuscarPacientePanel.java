@@ -419,10 +419,13 @@ public class BuscarPacientePanel extends javax.swing.JPanel {
                 break;
             default:
                  HistoriaClinicaPaciente historiaClinica = Main.obtenerHistoriaClinica(pacienteActual.getCedula()); 
+                 pacienteActual.setHistoriaClinica(historiaClinica);
                  System.out.println(historiaClinica);
                 if (historiaClinica.getPacienteId() != null) {
                     // Muestra
-                    System.out.println(historiaClinica);
+                    
+                    HistoriaClinicaPanel historiaClinicaPanel = new HistoriaClinicaPanel(pacienteActual);
+                    historiaClinicaPanel.setVisible(true);
                 } else {
                     // Crea una
                     HistoriaClinicaGui nuevaHistoriaClinica = new HistoriaClinicaGui(pacienteActual);

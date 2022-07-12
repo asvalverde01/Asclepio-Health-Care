@@ -85,8 +85,8 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
 
         bienvenidaLabel.setFont(new java.awt.Font("Roboto", 1, 24)); // NOI18N
         bienvenidaLabel.setForeground(new java.awt.Color(102, 0, 153));
-        bienvenidaLabel.setText("Historia Clínica");
-        getContentPane().add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 10, -1, -1));
+        bienvenidaLabel.setText("Registrar Historia Clínica");
+        getContentPane().add(bienvenidaLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 10, -1, -1));
 
         sexoLbl.setBackground(new java.awt.Color(51, 51, 51));
         sexoLbl.setFont(new java.awt.Font("Segoe UI", 0, 20)); // NOI18N
@@ -378,8 +378,6 @@ public class HistoriaClinicaGui extends javax.swing.JFrame {
     private javax.swing.JLabel bienvenidaLabel1;
     private javax.swing.JLabel bienvenidaLabel2;
     private javax.swing.JLabel cedulaLbl;
-    private javax.swing.JButton continuarBtn;
-    private javax.swing.JButton continuarBtn1;
     private javax.swing.JRadioButton drogasRButton;
     private javax.swing.JLabel edadLbl;
     private javax.swing.JTextField enfermedadesTxt;
